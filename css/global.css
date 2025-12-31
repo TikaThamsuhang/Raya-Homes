@@ -1,0 +1,426 @@
+/* =========================================
+   1. IMPORTS & FONTS
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap');
+
+/* =========================================
+   2. CSS VARIABLES (:root)
+   ========================================= */
+:root {
+    /* --- Colors --- */
+    /* Primary Brand Colors */
+    --color-primary: #3C2328;   
+    --color-primary-light: #56343a;
+    --color-secondary: #AE583D;
+    --color-secondary-light: #b56851;
+    --color-accent: #D7914F;    
+    
+    /* Backgrounds */
+    --color-bg-body: #ececec;
+    --color-bg-light: #f5f7fa;
+    --color-white: #ffffff;
+    
+    /* Text */
+    --color-text-dark: #1a1a1a;
+    --color-text-body: #555555;
+    --color-text-muted: #888888;
+    --color-text-light: #ffffff;
+
+    /* Borders */
+    --color-border: #cdcdcd;
+    --color-border-light: rgba(0,0,0,0.05);
+
+    /* --- Typography --- */
+    --font-primary: 'Outfit', sans-serif;
+    --font-heading: 'Playfair Display', serif;
+
+    /* --- Spacing & Radius --- */
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 4rem;
+
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 12px;
+    --radius-xl: 20px;
+    --radius-round: 50%;
+
+    /* --- Effects (Glassmorphism & Shadows) --- */
+    --glass-white: rgba(255, 255, 255, 0.95);
+    --glass-blur: blur(12px);
+    --glass-border: 1px solid rgba(255, 255, 255, 0.4);
+    
+    --shadow-sm: 0 4px 6px rgba(0,0,0,0.02);
+    --shadow-md: 0 4px 10px rgba(0,0,0,0.03);
+    --shadow-lg: 0 10px 25px rgba(0,0,0,0.05);
+    --shadow-float: 0 20px 40px rgba(0,0,0,0.08);
+}
+
+/* =========================================
+   3. RESET & BASE STYLES
+   ========================================= */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 16px;
+}
+
+body {
+    background: var(--color-bg-body);
+    font-family: var(--font-primary);
+    color: var(--color-text-body);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    min-height: 100vh;
+}
+
+button {
+    font-family: var(--font-primary);
+    cursor: pointer;
+}
+
+main{
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.2s ease;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* =========================================
+   4. TYPOGRAPHY
+   ========================================= */
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    line-height: 1.2;
+}
+
+h1 { font-size: 3rem; }
+h2 { font-size: 2.25rem; }
+h3 { font-size: 1.5rem; }
+h4 { font-size: 1.25rem; }
+h5 { font-size: 1rem; }
+
+p {
+    margin-bottom: var(--spacing-md);
+    color: var(--color-text-body);
+}
+
+.text-primary { color: var(--color-primary); }
+.text-secondary { color: var(--color-secondary); }
+.text-accent { color: var(--color-accent); }
+.text-muted { color: var(--color-text-muted); }
+.text-center { text-align: center; }
+.font-heading { font-family: var(--font-heading); }
+
+/* =========================================
+   5. BUTTONS
+   ========================================= */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #3C2328;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+    border-radius: var(--radius-round);
+    font-family: var(--font-primary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid transparent;
+    white-space: nowrap;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Primary Dark Button */
+.btn-dark, .btn-primary {
+    background: var(--color-primary);
+    color: var(--color-white);
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 12px rgba(10,35,66,0.3);
+}
+
+.btn-dark:hover, .btn-primary:hover {
+    background: var(--color-primary-light);
+    box-shadow: 0 6px 16px rgba(10,35,66,0.4);
+}
+
+/* Secondary Button */
+.btn-secondary {
+    background: var(--color-secondary);
+    color: var(--color-white);
+    border-color: var(--color-secondary);
+    box-shadow: 0 4px 12px rgba(174, 88, 61, 0.3);
+}
+
+.btn-secondary:hover {
+    background: var(--color-secondary-light);
+    box-shadow: 0 6px 16px rgba(174, 88, 61, 0.4);
+}
+
+/* Outline Button */
+.btn-outline {
+    background: var(--color-white);
+    border-color: #e0e0e0;
+    color: var(--color-text-dark);
+}
+
+.btn-outline:hover {
+    border-color: var(--color-primary);
+    background: #fafafa;
+    color: var(--color-primary);
+}
+
+/* Ghost / Back Button */
+.btn-ghost, .btn-back {
+    background: transparent;
+    color: var(--color-text-muted);
+    padding-left: 0;
+    box-shadow: none;
+}
+
+.btn-ghost:hover, .btn-back:hover {
+    color: var(--color-text-dark);
+    transform: none;
+    box-shadow: none;
+}
+
+/* Full Width Helper */
+.btn-block {
+    width: 100%;
+}
+
+/* =========================================
+   6. FORMS
+   ========================================= */
+.form-group {
+    margin-bottom: var(--spacing-md);
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    font-size: 0.9rem;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="tel"],
+input[type="number"],
+select,
+textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    background: #f9f9f9;
+    border-radius: var(--radius-md);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    transition: all 0.2s;
+}
+
+input:focus, select:focus, textarea:focus {
+    background: var(--color-white);
+    border-color: var(--color-accent);
+    outline: none;
+    /* box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.1); */
+}
+
+/* Radio Cards (for Selection) */
+.radio-group {
+    display: flex;
+    gap: 1rem;
+}
+
+.radio-option {
+    flex: 1;
+    position: relative;
+}
+
+.radio-option input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.radio-tile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    background: var(--color-white);
+    transition: all 0.3s;
+    position: relative;
+    z-index: 1;
+}
+
+.radio-option input:checked + .radio-tile {
+    background-color: rgba(10, 35, 66, 0.03);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* Checkbox Cards */
+.checkbox-card {
+    display: inline-flex;
+    align-items: center;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.checkbox-card input {
+    width: auto;
+    margin-right: 0.5rem;
+}
+
+.checkbox-card:hover {
+    border-color: var(--color-primary);
+}
+
+/* =========================================
+   7. UTILITIES & LAYOUT
+   ========================================= */
+/* Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-md);
+}
+
+/* Flexbox Helpers */
+.d-flex { display: flex; }
+.flex-column { flex-direction: column; }
+.align-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-sm { gap: var(--spacing-sm); }
+.gap-md { gap: var(--spacing-md); }
+
+/* Grid Helpers */
+.grid { display: grid; gap: var(--spacing-md); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+
+/* Spacing Helpers */
+.mt-1 { margin-top: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mt-3 { margin-top: var(--spacing-lg); }
+.mb-1 { margin-bottom: var(--spacing-sm); }
+.mb-2 { margin-bottom: var(--spacing-md); }
+.mb-3 { margin-bottom: var(--spacing-lg); }
+
+/* Glassmorphism Card */
+.glass-panel {
+    background: var(--glass-white);
+    backdrop-filter: var(--glass-blur);
+    -webkit-backdrop-filter: var(--glass-blur);
+    border: var(--glass-border);
+    box-shadow: var(--shadow-float);
+    border-radius: var(--radius-xl);
+}
+
+/* Badges */
+.badge {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+.badge-luxury {
+    background: var(--color-primary);
+    color: var(--color-accent);
+}
+.badge-success {
+    background: #e6f9ed;
+    color: #28a745;
+}
+
+/* =========================================
+   8. ANIMATIONS
+   ========================================= */
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.animate-slide-up {
+    animation: slideUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* =========================================
+   9. MEDIA QUERIES
+   ========================================= */
+@media (max-width: 768px) {
+    h1 { font-size: 2.25rem; }
+    h2 { font-size: 1.75rem; }
+    .grid-2 { grid-template-columns: 1fr; }
+    
+    .btn {
+        width: 100%; /* Mobile buttons often full width */
+    }
+    
+    .radio-group {
+        flex-direction: column;
+    }
+}
