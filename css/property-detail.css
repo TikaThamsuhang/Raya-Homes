@@ -778,11 +778,18 @@ main {
     text-decoration: underline;
 } */
 
-/* Sticky Card Top Adjustment */
+/* Contact Card - Sticky Position */
 .sticky-card {
     position: sticky;
-    top: 120px !important; /* Clears the fixed header + spacing */
-    z-index: 10; 
+    top: 120px;
+    z-index: 10;
+    /* No right/width needed - sticky stays in normal flow */
+}
+
+@media (max-width: 900px) {
+    .sticky-card {
+        position: static;
+    }
 }
 
 /* --- New Listings Carousel --- */
