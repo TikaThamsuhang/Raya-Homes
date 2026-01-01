@@ -643,7 +643,7 @@ html, body {
 }
 
 .card-price {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     font-weight: 700;
     color: var(--color-text-dark);
     margin-bottom: 0.25rem;

@@ -247,4 +247,16 @@
                     }
                 }
             });
+
+            // Card Click Redirect Logic
+            document.querySelectorAll('.listing-card').forEach(card => {
+                card.style.cursor = 'pointer'; 
+                card.addEventListener('click', (e) => {
+                    // Ignore clicks on buttons or links (prev/next, fav, email agent)
+                    if (e.target.closest('button') || e.target.closest('a')) {
+                        return;
+                    }
+                    window.location.href = 'property-detail.html';
+                });
+            });
         });

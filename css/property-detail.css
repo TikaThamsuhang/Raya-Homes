@@ -1,0 +1,527 @@
+/* =========================================
+   PROPERTY DETAIL PAGE STYLES
+   ========================================= */
+
+.app-container {
+    padding: 0;
+}
+
+.text-sm{
+    margin-bottom: 0.5rem;
+}
+
+/* --- Header Specifics --- */
+.detail-header {
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 2px solid var(--color-white);
+    transition: all 0.3s ease; /* smooth transition */
+}
+
+.detail-header.scrolled {
+    background: var(--color-white);
+    border-bottom: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Optional: adds subtle separation */
+}
+
+.back-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-primary);
+}
+
+.back-link:hover {
+    color: var(--color-primary);
+    transform: translateX(-4px);
+}
+
+.back-link span{
+    text-decoration: underline;
+}
+
+.logo-img {
+    height: 55px; 
+    width: auto;
+}
+
+.circle-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--color-text-dark);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.circle-btn:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+}
+
+/* --- Gallery Grid (Bento Style) --- */
+.gallery-section {
+    padding-bottom: var(--spacing-lg);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr; /* 2/3 and 1/3 split */
+    gap: 1rem; 
+    /* Strictly enforce height */
+    height: 600px !important; 
+    max-height: 600px;
+    overflow: hidden; /* Cut off anything that protrudes */
+}
+
+/* Main Image Wrapper */
+.gallery-main {
+    height: 100%;
+    border-radius: 20px 0 0 20px;
+    overflow: hidden;
+    position: relative;
+    min-height: 0; /* Important for grid/flex sizing */
+}
+
+/* Thumbs Wrapper */
+.gallery-thumbnails {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    height: 100%;
+    min-height: 0;
+    overflow: hidden;
+}
+
+.thumb-item {
+    flex: 1; 
+    overflow: hidden;
+    position: relative;
+    min-height: 0;
+}
+
+.thumb-item:nth-child(1){
+    border-radius: 0 20px 0 0;
+}
+.thumb-item:nth-child(3){
+    border-radius: 0 0 20px 0;
+}
+
+/* Common Image Styles */
+.img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures image fills the box without stretching */
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+/* Hover Effect for Images */
+.gallery-main:hover .img-cover,
+.thumb-item:hover .img-cover {
+    transform: scale(1.03);
+}
+
+/* --- Floating Elements on Main Image --- */
+.relative {
+    position: relative;
+}
+
+.nav-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: rgba(0, 0, 0, 0.4);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    opacity: 0; 
+    transition: all 0.3s ease;
+}
+
+.gallery-main:hover .nav-arrow {
+    opacity: 1;
+}
+
+.nav-prev { left: 20px; }
+.nav-next { right: 20px; }
+
+.nav-arrow:hover {
+    background: rgba(0, 0, 0, 0.7);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.btn-see-all {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    padding: 0.5rem 1.25rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    z-index: 2;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255,255,255,0.5);
+    border-radius: 30px; 
+    transition: all 0.2s;
+}
+
+.btn-see-all:hover {
+    background: white;
+    transform: scale(1.05);
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 900px) {
+    .gallery-grid {
+        height: 350px !important; /* Shorter on tablets */
+        max-height: 350px;
+    }
+    
+    .content-grid {
+        grid-template-columns: 1fr; /* Stack */
+        gap: 2rem;
+    }
+    
+    .sticky-card {
+        position: static; /* No sticky on mobile */
+    }
+    
+    .mini-map-preview {
+        display: none; /* Hide map preview on smaller screens if too crowded */
+    }
+}
+
+@media (max-width: 768px) {
+    .detail-header {
+        padding: 1rem 0;
+    }
+
+    .gallery-grid {
+        grid-template-columns: 1fr; /* Stack vertically */
+        height: auto !important; /* Let content dictate height on mobile */
+        max-height: none;
+    }
+
+    .gallery-main {
+        height: 300px; 
+    }
+
+    .gallery-thumbnails {
+        flex-direction: row; 
+        height: 100px;
+    }
+    
+    .thumb-item {
+        /* Reset border radius for mobile stack if needed, or keep */
+    }
+    
+    .thumb-item:nth-child(1), .thumb-item:nth-child(3) {
+        border-radius: 20px; /* Simplify radius for mobile row */
+    }
+}
+
+/* --- Content Grid Layout --- */
+.property-content {
+    /* Uses .container max-width from global */
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr; /* 65% - 35% roughly */
+    gap: 3rem;
+    align-items: start;
+}
+
+/* --- Left Column: Details --- */
+.property-price {
+    font-size: 2.5rem;
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    line-height: 1;
+}
+
+
+.property-specs {
+    font-size: 1.1rem;
+    color: var(--color-text-dark);
+}
+
+.spec-item strong {
+    font-size: 1.25rem;
+    color: var(--color-primary);
+}
+
+.separator {
+    width: 1px;
+    height: 20px;
+    background: var(--color-border);
+}
+
+.property-address {
+    font-size: 1rem;
+}
+
+.divider {
+    height: 1px;
+    background: var(--color-border);
+    margin: 1.5rem 0;
+}
+
+/* Agent & Map Strip */
+.agent-map-strip {
+    /* Flexbox handled by utility classes */
+}
+
+.badge-outline {
+    border: 1px solid var(--color-border);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+}
+
+.mini-map-preview {
+    width: 250px; /* Fixed width for the preview */
+    height: 140px;
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    position: relative;
+    border: 1px solid var(--color-border-light);
+}
+
+.map-overlay {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background: white;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    pointer-events: none;
+}
+
+/* Description Section */
+.section-title {
+    font-size: 1.5rem;
+    margin-bottom: 0.25rem;
+    color: var(--color-primary);
+}
+
+.property-subtitle {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.description-text p {
+    margin-bottom: 1rem;
+    color: var(--color-text-body);
+    font-size: 1rem;
+    line-height: 1.7;
+}
+
+.read-more-link {
+    display: inline-flex;
+    align-items: center;
+    color: var(--color-primary); /* Using primary color instead of blue */
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+}
+.read-more-link:hover {
+    border-bottom-color: var(--color-primary);
+}
+
+/* Facts Pills */
+.facts-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.fact-pill {
+    background: var(--color-bg-light);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    color: var(--color-text-dark);
+}
+
+/* --- Right Column: Sticky Sidebar --- */
+.sidebar-column {
+    position: relative;
+}
+
+.sticky-card {
+    position: sticky;
+    top: 100px; /* Offset from header */
+    padding: 2rem;
+    background: white;
+    border: 1px solid var(--color-border-light);
+    box-shadow: var(--shadow-md);
+    border-radius: 20px 20px 0 0; /* Unique touch: top rounded only? Or full rounded */
+    border-radius: 20px; /* Let's go full rounded for premium feel */
+}
+
+/* Adjust Glass Panel if reusing */
+.glass-panel {
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+}
+
+.card-title {
+    font-size: 1.25rem;
+    margin-bottom: 1rem;
+    color: var(--color-primary);
+}
+
+.input-rounded {
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+    border: 1px solid var(--color-border);
+    border-radius: 12px; /* Soft rounded inputs */
+    background: #fdfdfd;
+    font-family: var(--font-primary);
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.input-rounded:focus {
+    border-color: var(--color-primary);
+    background: white;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(60, 35, 40, 0.05); /* Primary color shadow */
+}
+
+.date-input-wrapper {
+    position: relative;
+}
+.icon-trailing {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+/* Hide icon ONLY when input is focused */
+.input-rounded:focus ~ .icon-trailing {
+    opacity: 0;
+}
+
+.btn-lg {
+    padding: 1rem;
+    font-size: 1.1rem;
+    border-radius: 12px;
+    margin-top: 0.5rem;
+    background: var(--color-primary); /* Your Primary */
+    border: none;
+}
+
+.btn-lg:hover {
+    background: var(--color-primary-light);
+    box-shadow: 0 4px 15px rgba(60, 35, 40, 0.3);
+}
+
+.disclaimer-text {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    margin-top: 1rem;
+    line-height: 1.4;
+}
+
+/* --- Floating Labels --- */
+.floating-group {
+    position: relative;
+    margin-bottom: 1rem; /* Adjust if needed */
+}
+
+.floating-label {
+    position: absolute;
+    top: 50%;
+    left: 1.2rem; /* Matches input padding */
+    transform: translateY(-50%);
+    pointer-events: none;
+    transition: all 0.2s ease;
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: 0.95rem;
+    font-weight: 400;
+}
+
+/* For Textarea label top alignment base */
+textarea + .floating-label {
+    top: 1.2rem;
+    transform: none;
+}
+
+/* Float Up State */
+.input-rounded:focus + .floating-label,
+.input-rounded:not(:placeholder-shown) + .floating-label {
+    top: 0;
+    left: 1rem;
+    transform: translateY(-50%) scale(0.85);
+    background: white; /* Mask the border */
+    padding: 0 6px;
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+/* --- Status Badge (Copied from Index/Property CSS) --- */
+.status-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: white;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.status-tag.for-sale {
+    background: rgba(34, 197, 94, 0.9); /* Green */
+    box-shadow: 0 2px 10px rgba(34, 197, 94, 0.3);
+}
+
+.status-tag.coming-soon {
+    background: rgba(59, 130, 246, 0.9); /* Blue */
+    box-shadow: 0 2px 10px rgba(59, 130, 246, 0.3);
+}
+
+.status-tag.sold {
+    background: rgba(239, 68, 68, 0.9); /* Red */
+    box-shadow: 0 2px 10px rgba(239, 68, 68, 0.3);
+}

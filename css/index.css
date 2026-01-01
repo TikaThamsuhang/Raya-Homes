@@ -1,14 +1,4 @@
 /* =========================================
-   LAYOUT CONTAINER
-   ========================================= */
-.app-container {
-    max-width: 1440px; /* Limit max width for large screens */
-    margin: 0 auto;
-    padding-top: 1.25rem;
-    position: relative;
-}
-
-/* =========================================
    FLOATING HEADER
    ========================================= */
 .floating-header {
