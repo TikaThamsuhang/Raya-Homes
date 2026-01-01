@@ -7,6 +7,7 @@
     
     <!-- CSS Imports -->
     <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/property.css">
     <link rel="stylesheet" href="css/property-detail.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -86,7 +87,8 @@
              PROPERTY CONTENT (Split Layout)
              ========================================= -->
         <section class="property-content mt-2 mb-3">
-            <div class="content-grid">
+            <div class="app-container">
+                <div class="content-grid">
                 
                 <!-- LEFT COLUMN: Main Details -->
                 <div class="details-column">
@@ -154,24 +156,216 @@
                         <h3 class="section-title">About This Home</h3>
                         <h4 class="property-subtitle text-muted">97 Schnoor Road</h4>
                         
-                        <div class="description-text mt-1">
+                        <div class="description-text mt-1" id="descriptionContainer">
                             <p>Beautifully updated 1,800 sq. ft. four-bedroom Colonial set on a private 3.3-acre lot with an oversized two-car garage. This move-in-ready home features an eat-in kitchen with cherry cabinetry, granite countertops, tile flooring, and new appliances, opening to a comfortable sitting area with a fireplace. Recent improvements include new hardwood floors, updated bathrooms, and a modern heating system.</p>
                             <p>The outdoor space is a private oasis with a stone patio, mature trees, and plenty of room for a pool. Located in a quiet cul-de-sac neighborhood, just minutes from town center and schools.</p>
+                            <p>Additional features include a finished basement with potential for a home office or gym, a newer roof (2020), and a generator hookup. The property is conveniently situated near major highways for easy commuting, while still offering the tranquility of a countryside setting. Don't miss the opportunity to own this well-maintained home in a sought-after community.</p>
                         </div>
                         
                         <a href="#" class="read-more-link">Continue Reading <i class="fa-solid fa-chevron-down"></i></a>
                     </div>
 
+                    <div class="divider"></div>
+
                     <!-- Facts Placeholder -->
-                    <div class="home-facts">
-                        <h3 class="section-title">Home Facts</h3>
-                        <div class="facts-grid mt-1">
-                           <!-- Will populate later if needed -->
-                           <div class="fact-pill">Built 1985</div>
-                           <div class="fact-pill">Central Air</div>
-                           <div class="fact-pill">Oil Heat</div>
-                           <div class="fact-pill">Private Sewer</div>
+                    <!-- Rich Property Details Section -->
+                    <div class="property-details-section mt-3">
+                        
+                        <!-- 1. Home Facts -->
+                        <div class="details-block mb-3">
+                            <h3 class="section-title mb-2">Home Facts</h3>
+                            <div class="facts-grid-cols">
+                                <div class="fact-item">
+                                    <div class="fact-icon-box">
+                                        <i class="fa-solid fa-house-chimney"></i>
+                                    </div>
+                                    <div class="fact-text">
+                                        <span class="fact-label">Property Type</span>
+                                        <span class="fact-value">Single Family</span>
+                                    </div>
+                                </div>
+                                <div class="fact-item">
+                                    <div class="fact-icon-box">
+                                        <i class="fa-solid fa-calendar-days"></i>
+                                    </div>
+                                    <div class="fact-text">
+                                        <span class="fact-label">Year Built</span>
+                                        <span class="fact-value">1985</span>
+                                    </div>
+                                </div>
+                                <div class="fact-item">
+                                    <div class="fact-icon-box">
+                                        <i class="fa-solid fa-temperature-arrow-up"></i>
+                                    </div>
+                                    <div class="fact-text">
+                                        <span class="fact-label">Heating</span>
+                                        <span class="fact-value">Oil, Baseboard</span>
+                                    </div>
+                                </div>
+                                <div class="fact-item">
+                                    <div class="fact-icon-box">
+                                        <i class="fa-solid fa-snowflake"></i>
+                                    </div>
+                                    <div class="fact-text">
+                                        <span class="fact-label">Cooling</span>
+                                        <span class="fact-value">Central Air</span>
+                                    </div>
+                                </div>
+                                <div class="fact-item">
+                                    <div class="fact-icon-box">
+                                        <i class="fa-solid fa-warehouse"></i>
+                                    </div>
+                                    <div class="fact-text">
+                                        <span class="fact-label">Garage</span>
+                                        <span class="fact-value">2 Cars, Detached</span>
+                                    </div>
+                                </div>
+                                <div class="fact-item">
+                                    <div class="fact-icon-box">
+                                        <i class="fa-solid fa-ruler-combined"></i>
+                                    </div>
+                                    <div class="fact-text">
+                                        <span class="fact-label">Lot Size</span>
+                                        <span class="fact-value">3.30 Acres</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <div class="divider"></div>
+
+                        <!-- 2. Rooms & Interior -->
+                        <div class="details-block mb-3">
+                            <div class="d-flex align-center gap-sm mb-2">
+                                <i class="fa-solid fa-bed text-primary font-size-lg"></i>
+                                <h3 class="section-title mb-0">Rooms & Interior</h3>
+                            </div>
+                            
+                            <div class="interior-grid">
+                                <div class="interior-col">
+                                    <h4 class="subsection-title">Bedrooms</h4>
+                                    <ul class="detail-list">
+                                        <li>Total Bedrooms: <strong>4</strong></li>
+                                        <li>Master Bedroom: <strong>Main Level, 16x14</strong></li>
+                                        <li>Bedroom 2: <strong>Upper Level, 12x12</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="interior-col">
+                                    <h4 class="subsection-title">Bathrooms</h4>
+                                    <ul class="detail-list">
+                                        <li>Total Bathrooms: <strong>2</strong></li>
+                                        <li>Full Bathrooms: <strong>2</strong></li>
+                                        <li>Half Bathrooms: <strong>0</strong></li>
+                                    </ul>
+                                </div>
+                                <div class="interior-col">
+                                    <h4 class="subsection-title">Interior Stats</h4>
+                                    <ul class="detail-list">
+                                        <li>Living Area: <strong>1,800 Sq. Ft.</strong></li>
+                                        <li>Basement: <strong>Full, Unfinished</strong></li>
+                                        <li>Fireplaces: <strong>1 (Wood Burning)</strong></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <!-- 3. Price & Financials -->
+                        <!-- 3. Structure -->
+                        <div class="details-block mb-3">
+                            <div class="d-flex align-center gap-sm mb-2">
+                                <i class="fa-solid fa-hotel text-primary font-size-lg"></i>
+                                <h3 class="section-title mb-0">Structure</h3>
+                            </div>
+                            <div class="list-block-container">
+                                <h4 class="subsection-title">Structure</h4>
+                                <ul class="simple-data-list">
+                                    <li><span class="label">Architectural Style:</span> <span class="val">Colonial</span></li>
+                                    <li><span class="label">Building Area:</span> <span class="val">1,800 Sq. Ft.</span></li>
+                                    <li><span class="label">Year Built:</span> <span class="val">1973</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <!-- 4. Lot -->
+                        <div class="details-block mb-3">
+                            <div class="d-flex align-center gap-sm mb-2">
+                                <i class="fa-solid fa-tree text-primary font-size-lg"></i>
+                                <h3 class="section-title mb-0">Lot</h3>
+                            </div>
+                            <div class="list-block-container">
+                                <ul class="simple-data-list">
+                                    <li><span class="label">Lot Size (Sq. Ft):</span> <span class="val">143,748</span></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <!-- 5. Finances & Disclosures -->
+                        <div class="details-block">
+                             <div class="d-flex align-center gap-sm mb-2">
+                                <i class="fa-solid fa-file-invoice-dollar text-primary font-size-lg"></i>
+                                <h3 class="section-title mb-0">Finances & Disclosures</h3>
+                            </div>
+                            
+                            <div class="list-block-container">
+                                <h4 class="subsection-title">Finances</h4>
+                                <ul class="simple-data-list">
+                                    <li><span class="label">Price:</span> <span class="val font-weight-bold">$539,900</span></li>
+                                    <li><span class="label">Price per Sq. Ft:</span> <span class="val">$299 per Sq. Ft.</span></li>
+                                </ul>
+                            </div>
+
+                             <!-- MLS Metadata (Restored) -->
+                             <div class="mls-metadata-box mt-2">
+                                <div class="meta-row">
+                                    <span>MLS #: <strong>24146371</strong></span>
+                                    <span>Added: <strong>15 hours ago</strong></span>
+                                </div>
+                             </div>
+                        </div>
+
+                        <div class="divider"></div>
+
+                        <!-- 6. Listing Agents -->
+                        <div class="details-block mb-3">
+                            <h3 class="section-title mb-1">Listing Agents</h3>
+                            <p class="text-muted text-sm mb-2">for 97 Schnoor Road</p>
+                            
+                            <div class="agent-card-horizontal">
+                                <div class="agent-photo">
+                                    <!-- Using a placeholder for now as no local agent image exists -->
+                                    <img src="imgs/Agents/agent-1.jpg" alt="Romina D'Angelo" class="img-cover">
+                                </div>
+                                <div class="agent-details">
+                                    <div class="agent-logo mb-1">
+                                        <img src="imgs/logo-no-background.png" alt="Raya Homes Realty" style="height: 20px; opacity: 0.8;">
+                                    </div>
+                                    <h4 class="agent-name">Romina D'Angelo</h4>
+                                    <div class="agent-contact-row mt-1">
+                                        <i class="fa-solid fa-phone"></i>
+                                        <span>(860) 555-0123</span>
+                                    </div>
+                                    <div class="agent-contact-row mt-1">
+                                        <i class="fa-regular fa-envelope"></i>
+                                        <a href="#contactForm">Contact</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 7. Disclaimer -->
+                        <div class="disclaimer-section mt-3">
+                            <p class="source-label">Source: CT</p>
+                            <p class="legal-text">
+                                The data relating to real estate for sale on this website appears in part through the SMARTMLS Internet Data Exchange program, a voluntary cooperative exchange of property listing data between licensed real estate brokerage firms, and is provided by SMARTMLS through a licensing agreement. Listing information is from various brokers who participate in the SMARTMLS IDX program and not all listings may be visible on the site. The property information being provided on or through the website is for the personal, non-commercial use of consumers and such information may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. Some properties which appear for sale on the website may no longer be available because they are for instance, under contract, sold or are no longer being offered for sale. Property information displayed is deemed reliable but is not guaranteed. Copyright 2026 SmartMLS, Inc.
+                            </p>
+                        </div>
+
                     </div>
 
                 </div>
@@ -210,6 +404,139 @@
                     </div>
                 </div>
 
+            </div>
+            </div>
+
+            <div class="divider mt-4 mb-4"></div>
+
+            <!-- New Listings Carousel Section -->
+            <div class="new-listings-section mb-5">
+                <div class="d-flex justify-between align-center mb-2">
+                    <div>
+                        <h3 class="section-title mb-0">New Listings</h3>
+                        <p class="text-muted text-sm" style="margin-top: 0.2rem;">near 97 Schnoor Road</p>
+                    </div>
+                    <div class="carousel-nav-buttons">
+                        <button id="nl-prev" class="nav-btn-circle disabled"><i class="fa-solid fa-chevron-left"></i></button>
+                        <button id="nl-next" class="nav-btn-circle"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+                </div>
+
+                <div class="listings-carousel-wrapper">
+                    <div class="listings-carousel-track" id="newListingsTrack">
+                        
+                        <!-- Card 1 -->
+                        <div class="listing-card carousel-card">
+                            <div class="card-image-wrapper">
+                                <div class="image-slider">
+                                    <img src="imgs/Properties/prop-1.png" alt="Luxury Home" class="active">
+                                    <img src="imgs/Properties/prop-2.png" alt="Luxury Home">
+                                    <img src="imgs/Properties/prop-3.png" alt="Luxury Home">
+                                </div>
+                                <button class="slider-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
+                                <button class="slider-btn next"><i class="fa-solid fa-chevron-right"></i></button>
+                                <div class="slider-counter">1/3</div>
+                                <span class="status-tag for-sale">For Sale <i class="fa-solid fa-circle-check"></i></span>
+                                <button class="fav-icon">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="card-content">
+                                <div class="d-flex justify-between align-center mb-1">
+                                    <h3 class="card-price">$890,000</h3>
+                                </div>
+                                <div class="card-specs">4 Beds &nbsp; 3 Baths &nbsp; 2,350 Sq. Ft.</div>
+                                <div class="card-address">722 Denburn Place, Raleigh, NC</div>
+                                <div class="d-flex justify-between align-center">
+                                    <a href="#" class="email-agent-btn">Email Agent</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="listing-card carousel-card">
+                            <div class="card-image-wrapper">
+                                <div class="image-slider">
+                                    <img src="imgs/Properties/prop-2.png" alt="Modern Home" class="active">
+                                    <img src="imgs/Properties/prop-3.png" alt="Modern Home">
+                                    <img src="imgs/Properties/prop-1.png" alt="Modern Home">
+                                </div>
+                                <button class="slider-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
+                                <button class="slider-btn next"><i class="fa-solid fa-chevron-right"></i></button>
+                                <div class="slider-counter">1/3</div>
+                                <span class="status-tag coming-soon">Coming Soon <i class="fa-solid fa-clock"></i></span>
+                                <button class="fav-icon">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="card-content">
+                                <div class="d-flex justify-between align-center mb-1">
+                                    <h3 class="card-price">$650,000</h3>
+                                </div>
+                                <div class="card-specs">3 Beds &nbsp; 2 Baths &nbsp; 1,800 Sq. Ft.</div>
+                                <div class="card-address">45 Park Avenue, Raleigh, NC</div>
+                                <div class="d-flex justify-between align-center">
+                                    <a href="#" class="email-agent-btn">Email Agent</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="listing-card carousel-card">
+                            <div class="card-image-wrapper">
+                                <div class="image-slider">
+                                     <img src="imgs/Properties/prop-3.png" alt="Villa" class="active">
+                                     <img src="imgs/Properties/prop-1.png" alt="Villa">
+                                     <img src="imgs/Properties/prop-2.png" alt="Villa">
+                                </div>
+                                <button class="slider-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
+                                <button class="slider-btn next"><i class="fa-solid fa-chevron-right"></i></button>
+                                <div class="slider-counter">1/3</div>
+                                <span class="status-tag for-sale">For Sale <i class="fa-solid fa-circle-check"></i></span>
+                                <button class="fav-icon">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="card-content">
+                                <div class="d-flex justify-between align-center mb-1">
+                                    <h3 class="card-price">$1,200,000</h3>
+                                </div>
+                                <div class="card-specs">5 Beds &nbsp; 4 Baths &nbsp; 3,200 Sq. Ft.</div>
+                                <div class="card-address">88 Estate Dr, Raleigh, NC</div>
+                                <div class="d-flex justify-between align-center">
+                                    <a href="#" class="email-agent-btn">Email Agent</a>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 4 -->
+                        <div class="listing-card carousel-card">
+                            <div class="card-image-wrapper">
+                                <div class="image-slider">
+                                    <img src="imgs/Properties/prop-1.png" alt="Mansion" class="active">
+                                    <img src="imgs/Properties/prop-3.png" alt="Mansion">
+                                </div>
+                                <button class="slider-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
+                                <button class="slider-btn next"><i class="fa-solid fa-chevron-right"></i></button>
+                                <div class="slider-counter">1/2</div>
+                                <span class="status-tag sold">Sold <i class="fa-solid fa-circle-xmark"></i></span>
+                                <button class="fav-icon">
+                                    <i class="fa-regular fa-heart"></i>
+                                </button>
+                            </div>
+                            <div class="card-content">
+                                <div class="d-flex justify-between align-center mb-1">
+                                    <h3 class="card-price">$1,550,000</h3>
+                                </div>
+                                <div class="card-specs">6 Beds &nbsp; 5 Baths &nbsp; 4,000 Sq. Ft.</div>
+                                <div class="card-address">12 Hilltop Rd, Raleigh, NC</div>
+                                <div class="d-flex justify-between align-center">
+                                    <a href="#" class="email-agent-btn">Email Agent</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
