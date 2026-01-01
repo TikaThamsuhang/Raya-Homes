@@ -2,10 +2,31 @@
    PROPERTY PAGE STYLES
    ========================================= */
 
+/* Global Reset for Fixed Viewport */
+html, body {
+    height: 100%;
+    overflow: hidden; /* Prevent page-level scroll */
+    margin: 0;
+    padding: 0;
+}
+/* Main Screen Flex Container */
+.main-screen-layout {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+}
+
+/* Ensure app-container behaves correctly in flex column */
+.main-screen-layout > .app-container {
+    width: 100%;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
 /* Filter Bar
    ========================================= */
 .filter-bar-container {
-    margin-bottom: 2rem;
+    margin-bottom: 1.25rem;
 }
 
 .filter-bar {
@@ -19,6 +40,10 @@
     flex: 2;
     min-width: 300px;
     position: relative;
+}
+
+.search-input-wrapper{
+    padding: 0;
 }
 
 .filter-search-wrapper input {
@@ -35,6 +60,344 @@
 .filter-search-wrapper input:focus {
     border-color: var(--color-accent);
     outline: none;
+}
+
+#propertySearchSuggestions {
+    max-height: 300px;
+    overflow-y: auto;
+    width: 100%;
+    /* Override index.css top if needed or ensure it matches */
+    top: calc(100% + 10px); 
+}
+
+/* Filter Dropdown 
+   ========================================= */
+.filter-dropdown {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 280px;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+    padding: 0;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    border: 1px solid #eee;
+}
+
+/* Helper for right-aligned dropdowns (Price, More) */
+.filter-dropdown.dropdown-right {
+    right: 0;
+    left: auto;
+}
+
+.filter-dropdown.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.dropdown-header {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-header h6 {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+}
+
+.dropdown-content {
+    padding: 0.5rem 0;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    padding: 0.5rem 1.5rem;
+    transition: background 0.1s;
+    user-select: none;
+    position: relative;
+    gap: 0.8rem;
+    margin-bottom: 0;
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--color-text-dark);
+}
+
+.checkbox-item:hover {
+    background: #f9f9f9;
+}
+
+.checkbox-item input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    height: 20px;
+    width: 20px;
+    background-color: transparent;
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.checkbox-item input:checked ~ .checkmark {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+.checkmark:after {
+    content: "";
+    display: none;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+    margin-top: -2px;
+}
+
+.checkbox-item input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-grid .checkbox-item {
+    padding: 0;
+}
+
+.label-text {
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.dropdown-footer {
+    padding: 1rem 1.5rem;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-reset {
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    text-decoration: underline;
+}
+
+.btn-reset:hover {
+    color: var(--color-text-dark);
+}
+
+.btn-done {
+    background: var(--color-primary);
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+}
+
+.btn-done:hover {
+    opacity: 0.9;
+}
+
+/* Price Range Inputs
+   ========================================= */
+.filter-dropdown.price-range-dropdown {
+    width: 340px;
+}
+
+.price-inputs-container {
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.price-input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    position: relative;
+}
+
+.price-input-group label {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.price-input-group input {
+    width: 100%;
+    padding: 0.6rem 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-family: var(--font-primary);
+    font-size: 0.9rem;
+    color: var(--color-text-dark);
+}
+
+.price-input-group input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+}
+
+.price-separator {
+    color: #999;
+    font-weight: 500;
+    margin-top: 1rem; /* align with input */
+}
+
+/* Price Suggestions List */
+.price-suggestions-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    list-style: none;
+    padding: 0;
+    margin: 0.2rem 0 0 0;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 101;
+    display: none; /* hidden by default */
+}
+
+.price-suggestions-list.show {
+    display: block;
+}
+
+.price-suggestions-list li {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: background 0.1s;
+}
+
+.price-suggestions-list li:hover {
+    background: #f9f9f9;
+    color: var(--color-primary);
+}
+
+/* More Filter Dropdown
+   ========================================= */
+.filter-dropdown.more-filters-dropdown {
+    width: 600px;
+    max-width: 90vw; /* Responsive constraint */
+    padding: 0;
+    overflow: hidden;
+}
+
+.more-filters-grid {
+    display: flex;
+    max-height: 400px; /* limits height if screen is small */
+    overflow-y: auto;
+}
+
+.more-filter-column {
+    flex: 1;
+    border-right: 1px solid #f0f0f0;
+}
+
+.more-filter-column:last-child {
+    border-right: none;
+}
+
+.dropdown-section {
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-section:last-child {
+    border-bottom: none;
+}
+
+.dropdown-section h6 {
+    margin: 0 0 1rem 0;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.checkbox-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.checkbox-grid.two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.5rem 1rem;
+}
+
+/* Property Facts Inputs */
+.facts-input-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.fact-group label {
+    display: block;
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0.4rem;
+}
+
+.min-max-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.min-max-row input {
+    width: 100%;
+    padding: 0.5rem 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-family: var(--font-primary);
+}
+
+.min-max-row span {
+    color: #999;
 }
 
 .search-icon-btn {
@@ -79,15 +442,22 @@
    ========================================= */
 .property-split-layout {
     display: flex;
-    height: calc(100vh - 180px); /* Adjust based on header+filter height */
-    overflow: hidden;
+    flex: 1; /* Take remaining height */
+    overflow: hidden; /* Contain children */
     position: relative;
+    width: 100%; /* Full width */
 }
 
 /* Listings Column */
 .listings-column {
     flex: 0 0 50%;
-    overflow-y: auto;
+    height: 100%; /* Full height of parent */
+    overflow-y: auto; /* Independent scroll */
+    padding: 0; /* Remove padding to allow footer full width */
+}
+
+.listings-content-wrapper {
+    padding: 0 2rem 2rem 2rem;
 }
 
 .listings-header {
@@ -102,7 +472,7 @@
 .listings-meta {
     display: flex;
     justify-content: space-between;
-    color: var(--color-text-muted);
+
     font-size: 0.9rem;
 }
 
@@ -110,6 +480,41 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
+}
+
+/* Pagination
+   ========================================= */
+.pagination-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 0 1rem 0;
+    gap: 1.5rem;
+}
+
+.page-control {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-primary);
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--color-text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    transition: color 0.2s;
+}
+
+.page-control:hover {
+    color: var(--color-primary);
+}
+
+.page-info {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #666;
 }
 
 /* Map Column */
@@ -120,10 +525,10 @@
     background: #e6e6e6;
 }
 
-.map-placeholder {
+.map-column iframe {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    border: 0;
 }
 
 /* Listing Card (Renamed to avoid conflict with index.css .property-card)
@@ -145,58 +550,93 @@
 
 .card-image-wrapper {
     position: relative;
-    height: 220px;
+    height: 240px;
 }
 
 .card-image-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: absolute; /* Changed for slider */
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
 
-.card-status {
+.card-image-wrapper img.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Slider Controls
+   ========================================= */
+.slider-btn {
     position: absolute;
-    top: 1rem;
-    left: 1rem;
-    background: white;
-    color: var(--color-text-dark);
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.75rem;
-    font-weight: 700;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-}
-
-.status-dot {
-    width: 8px;
-    height: 8px;
-    background: #28a745;
-    border-radius: 50%;
-}
-
-.card-like-btn {
-    position: absolute;
-    bottom: 1rem;
-    right: 1rem;
-    width: 36px;
-    height: 36px;
-    background: rgba(0,0,0,0.4);
-    backdrop-filter: blur(4px);
+    top: 50%;
+    transform: translateY(-50%);
+    width: 32px;
+    height: 32px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    color: white;
-    border: none;
     cursor: pointer;
-    transition: background 0.2s;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    color: var(--color-text-dark);
+    font-size: 0.8rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 }
 
-.card-like-btn:hover {
-    background: rgba(0,0,0,0.6);
+.slider-btn:hover {
+    background: white;
+    transform: translateY(-50%) scale(1.1);
 }
+
+.slider-btn.prev {
+    left: 10px;
+}
+
+.slider-btn.next {
+    right: 10px;
+}
+
+.slider-counter {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background: rgba(0, 0, 0, 0.6);
+    color: white;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.2s;
+    backdrop-filter: blur(4px);
+}
+
+/* Show on hover */
+.listing-card:hover .slider-btn,
+.listing-card:hover .slider-counter {
+    opacity: 1;
+}
+
+/* Position status tag over image */
+.listing-card .status-tag {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 2;
+}
+
+
+
 
 .card-content {
     padding: 1.25rem;
@@ -251,6 +691,7 @@
 @media (max-width: 768px) {
     .property-split-layout {
         flex-direction: column-reverse; /* Map on top usually, or hiding map */
+        flex: auto; /* Reset flex */
         height: auto;
         overflow: visible;
     }
@@ -267,4 +708,43 @@
     .listings-header h1 {
         font-size: 1.25rem;
     }
+}
+
+/* Sort Dropdown
+   ========================================= */
+.sort-dropdown-menu {
+    position: absolute;
+    top: calc(100% + 5px);
+    right: 0;
+    width: 200px;
+    background: white;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    padding: 0.5rem 0;
+    display: none;
+    z-index: 50;
+}
+
+.sort-dropdown-menu.show {
+    display: block;
+}
+
+.sort-option {
+    padding: 0.6rem 1rem;
+    font-size: 0.9rem;
+    color: var(--color-text-dark);
+    cursor: pointer;
+    transition: background 0.1s;
+}
+
+.sort-option:hover {
+    background: #f9f9f9;
+    color: var(--color-primary);
+}
+
+.sort-option.active {
+    background: #f0f0f0;
+    font-weight: 600;
+    color: var(--color-primary);
 }

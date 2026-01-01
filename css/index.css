@@ -4,7 +4,7 @@
 .app-container {
     max-width: 1440px; /* Limit max width for large screens */
     margin: 0 auto;
-    padding-top: 1.5rem;
+    padding-top: 1.25rem;
     position: relative;
 }
 
@@ -19,7 +19,7 @@
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.25rem;
     position: relative;
     z-index: 100;
 }
@@ -58,7 +58,7 @@
 .nav-list a {
     color: var(--color-text-dark);
     font-weight: 500;
-    font-size: 0.95rem;
+    font-size: 1rem;
 }
 
 .nav-list a:hover {
@@ -396,7 +396,7 @@
     width: 45px;
     height: 45px;
     background: rgba(255,255,255,0.25);
-    backdrop-filter: blur(5px);
+    backdrop-filter: blur(15px);
     border: 1px solid rgba(255,255,255,0.2);
     border-radius: 50%;
     display: flex;
@@ -410,9 +410,10 @@
 }
 
 .fav-icon:hover {
-    background: white;
-    color: var(--color-secondary);
+    background: #3C2328;
+    color: white;
 }
+
 
 /* Enhanced Glass-morphism Overlay */
 .card-overlay {
