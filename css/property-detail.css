@@ -10,8 +10,10 @@
 /* Override property.css lock */
 html, body {
     height: auto !important;
-    overflow-x: hidden !important;
-    overflow-y: visible !important; /* Force visible to enable sticky */
+    min-height: 100% !important;
+    overflow: visible !important; /* Critical: Must be visible on BOTH axes */
+    overflow-x: visible !important; /* hidden here would break sticky y! */
+    overflow-y: visible !important;
 }
 
 .text-sm{
@@ -171,7 +173,7 @@ main {
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     opacity: 0; 
     transition: all 0.3s ease;
 }
@@ -185,6 +187,7 @@ main {
 
 .nav-arrow:hover {
     background: rgba(0, 0, 0, 0.7);
+    color: var(--color-white);
     transform: translateY(-50%) scale(1.1);
 }
 
@@ -301,8 +304,8 @@ main {
 }
 
 .fav-icon:hover {
-    background: white;
-    color: #ef4444; /* Red heart on hover */
+    background: var(--color-primary);
+    color: var(--color-white); /* Red heart on hover */
     transform: scale(1.1);
 }
 
@@ -356,9 +359,9 @@ main {
 }
 
 .mini-map-preview {
-    width: 250px; /* Fixed width for the preview */
+    width: 300px; /* Fixed width for the preview */
     height: 140px;
-    border-radius: var(--radius-md);
+    /* border-radius: var(--radius-md); */
     overflow: hidden;
     position: relative;
     border: 1px solid var(--color-border-light);
@@ -583,9 +586,10 @@ main {
 
 /* MLS Metadata Box */
 .mls-metadata-box {
+    width: fit-content;
     background: white;
     margin-top: 1.5rem;
-    padding: 1rem;
+    padding: 1rem 1.5rem;
     border-radius: 8px;
     border-left: 4px solid var(--color-primary);
     font-size: 0.85rem;
@@ -888,7 +892,6 @@ main {
 /* --- Floating Labels --- */
 .floating-group {
     position: relative;
-    margin-bottom: 1rem; /* Adjust if needed */
 }
 
 .floating-label {
@@ -1085,7 +1088,7 @@ textarea + .floating-label {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    padding: 1rem;
+    /* padding: 1rem; */
 }
 
 .main-viewer {
@@ -1269,7 +1272,6 @@ textarea + .floating-label {
     width: 100%;
     height: 100%;
     position: relative;
-    border-radius: 8px;
     overflow: hidden;
 }
 

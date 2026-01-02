@@ -166,7 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
         "imgs/Single/img-bed-1.png",
         "imgs/Single/img-wash-1.png",
         "imgs/Single/img-kitchen-1.png",
-        "imgs/Single/img-1.png", // Added for demo length
+        "imgs/Single/img-1.png", 
         "imgs/Single/img-bed-1.png",
         "imgs/Single/img-wash-1.png",
         "imgs/Single/img-kitchen-1.png",
@@ -200,7 +200,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const closeGallery = () => {
         if(galleryOverlay) {
             galleryOverlay.classList.remove('active');
-            document.body.style.overflow = ''; // Restore scroll
+            document.body.style.overflow = ''; // Restore to CSS control (important!)
         }
     };
 
