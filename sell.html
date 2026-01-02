@@ -6,6 +6,8 @@
     <title>Raya Homes - Find Your Dream Home</title>
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/sell.css" />
+
     <!-- FontAwesome for Icons -->
     <link
       rel="stylesheet"
@@ -23,12 +25,15 @@
       <section class="hero-card">
         <div class="hero-overlay"></div>
         <div class="hero-content">
-          <h1 class="animate-slide-up">Sell your home for<br />what's it truely worth</h1>
+          <h1 class="animate-slide-up">
+            Sell your home for<br />what's it truely worth
+          </h1>
           <p
             class="hero-subtitle animate-slide-up"
             style="animation-delay: 0.1s"
           >
-            Work with local experts who know your neighborhood and the market. Get a precise valuation instantly.
+            Work with local experts who know your neighborhood and the market.
+            Get a precise valuation instantly.
           </p>
 
           <!-- Search Container -->
@@ -38,8 +43,7 @@
           >
             <!-- Tabs -->
             <div class="search-tabs">
-              <button class="tab-btn active" data-tab="buy">Buy</button>
-              <button class="tab-btn" data-tab="sell">Sell</button>
+              <button class="tab-btn active" data-tab="sell">Location</button>
             </div>
 
             <!-- Search Bar -->
@@ -49,12 +53,12 @@
                   <input
                     type="text"
                     id="searchInput"
-                    placeholder="City, Zip, Address, Property Name"
+                    placeholder="Enter your home address"
                     autocomplete="off"
                   />
                 </div>
                 <button type="submit" class="btn-search-pill">
-                  Search <i class="fa-solid fa-magnifying-glass"></i>
+                  Get Started <i class="fa-solid fa-arrow-right"></i>
                 </button>
               </form>
 
@@ -92,7 +96,244 @@
       </section>
 
       <main>
+        <!-- Home Valuation Section -->
+        <section class="valuation-section">
+          
 
+          <!-- Main Valuation Card with 2 Columns -->
+          <div class="valuation-card">
+            <!-- Left Column: Map -->
+            <div class="valuation-map-column">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.9873196845946!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+                width="100%"
+                height="100%"
+                style="border: 0"
+                allowfullscreen=""
+                loading="lazy"
+              >
+              </iframe>
+            </div>
+
+            <!-- Right Column: All Details -->
+            <div class="valuation-details-column">
+                <div class="valuation-header">
+                    <h2>Raya Homes Estimate</h2>
+                </div>
+              <!-- Property Address with Image -->
+              <div class="property-header">
+                <div class="house-image">
+                  <img src="imgs/Single/img-1.png" alt="Property" />
+                </div>
+                <div class="address-text">
+                  <h3>722 Denburn Place</h3>
+                  <p>722 Denburn Place, Raleigh, NC 27603</p>
+                </div>
+              </div>
+
+              <!-- Estimate Value -->
+              <div class="estimate-section">
+                <div class="estimate-label">Estimated Home Value</div>
+                <div class="estimate-value">$539,900</div>
+
+                <!-- Price Range with Low/High Labels -->
+                <div class="price-range-bar">
+                  <div class="range-label-left">
+                    <span class="label-text">Low</span>
+                    <span class="label-value">$512,405</span>
+                  </div>
+                  <div class="range-indicator">
+                    <div class="range-line"></div>
+                    <div class="range-marker"></div>
+                  </div>
+                  <div class="range-label-right">
+                    <span class="label-text">High</span>
+                    <span class="label-value">$567,395</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Property Metrics -->
+              <div class="property-metrics-inline">
+                <div class="metric-item">
+                  <i class="fa-solid fa-bed"></i>
+                  <span class="metric-value">4</span>
+                  <span class="metric-label">Beds</span>
+                </div>
+                <div class="metric-item">
+                  <i class="fa-solid fa-bath"></i>
+                  <span class="metric-value">3</span>
+                  <span class="metric-label">Baths</span>
+                </div>
+                <div class="metric-item">
+                  <i class="fa-solid fa-ruler-combined"></i>
+                  <span class="metric-value">1,800</span>
+                  <span class="metric-label">Sq. Ft.</span>
+                </div>
+              </div>
+
+              <!-- Market Insights Compact -->
+              <!-- <div class="market-insights-compact">
+                <h4>Market Trends</h4>
+                <div class="insights-list">
+                  <div class="insight-item">
+                    <i class="fa-solid fa-arrow-trend-up"></i>
+                    <div>
+                      <div class="insight-value">+5.2%</div>
+                      <div class="insight-label">Price Growth (YoY)</div>
+                    </div>
+                  </div>
+                  <div class="insight-item">
+                    <i class="fa-solid fa-clock"></i>
+                    <div>
+                      <div class="insight-value">28 Days</div>
+                      <div class="insight-label">Avg. Days on Market</div>
+                    </div>
+                  </div>
+                  <div class="insight-item">
+                    <i class="fa-solid fa-house-circle-check"></i>
+                    <div>
+                      <div class="insight-value">156</div>
+                      <div class="insight-label">Homes Sold (30 days)</div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
+
+              <!-- CTA Buttons -->
+              <!-- <div class="valuation-actions">
+                <button class="btn-primary-large">
+                  Connect with an Agent <i class="fa-solid fa-arrow-right"></i>
+                </button>
+                <button class="btn-secondary-outline">
+                  <i class="fa-solid fa-download"></i> Download Report
+                </button>
+              </div> -->
+
+              <!-- Disclaimer -->
+              <div class="estimate-disclaimer">
+                <i class="fa-solid fa-circle-info"></i>
+                This is a preliminary estimate based on market data. Connect
+                with an agent for a precise valuation.
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Seller Process Section -->
+        <section class="seller-process-section">
+          <div class="section-header-center">
+            <h2>Simple Steps to Sell Your Home</h2>
+            <p>
+              We simplify the selling journey. From valuation to closing, we
+              guide you every step of the way.
+            </p>
+          </div>
+
+          <div class="process-steps-grid">
+            <!-- Step 1 -->
+            <div class="process-card">
+              <div class="step-icon">
+                <i class="fa-solid fa-location-dot"></i>
+                <span class="step-number">1</span>
+              </div>
+              <h3>Enter Your Address</h3>
+              <p>
+                Start by providing your property location to get a preliminary
+                market assessment.
+              </p>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="process-card">
+              <div class="step-icon">
+                <i class="fa-solid fa-chart-line"></i>
+                <span class="step-number">2</span>
+              </div>
+              <h3>Get Instant Evaluation</h3>
+              <p>
+                Our algorithms analyze local data to provide an instant
+                estimated value range.
+              </p>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="process-card">
+              <div class="step-icon">
+                <i class="fa-solid fa-handshake-simple"></i>
+                <span class="step-number">3</span>
+              </div>
+              <h3>Connect with an Agent</h3>
+              <p>
+                Review your estimate and connect with a top-rated local agent to
+                finalize your listing.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Agent Preview Section -->
+        <section class="agent-preview-section mt-5 mb-5">
+          <div class="agent-preview-card">
+            <div class="agent-content-wrapper">
+              <div class="agent-text">
+                <h2 class="animate-slide-up">Expert Guidance at Every Step</h2>
+                <p class="animate-slide-up" style="animation-delay: 0.1s">
+                  Our select team of real estate professionals brings decades of
+                  market expertise. Whether buying or selling, partner with an
+                  agent who understands your vision.
+                </p>
+                <a
+                  href="#"
+                  class="btn-light-pill animate-slide-up"
+                  style="animation-delay: 0.2s"
+                  >Find the Agents <i class="fa-solid fa-arrow-right"></i
+                ></a>
+              </div>
+              <div class="agent-visual">
+                <!-- Abstract Team Visual -->
+                <div class="circle-decoration"></div>
+
+                <!-- Floating Agent Cards (Abstract Team) -->
+                <div class="agent-stack">
+                  <div class="agent-card-small card-1">
+                    <div class="agent-avatar">
+                      <i class="fa-solid fa-user"></i>
+                    </div>
+                    <div class="agent-lines">
+                      <div class="line short"></div>
+                      <div class="line long"></div>
+                    </div>
+                  </div>
+                  <div class="agent-card-small card-2">
+                    <div class="agent-avatar">
+                      <i class="fa-solid fa-user-tie"></i>
+                    </div>
+                    <div class="agent-lines">
+                      <div class="line short"></div>
+                      <div class="line long"></div>
+                    </div>
+                  </div>
+                  <div class="agent-card-small card-3">
+                    <div class="verified-badge">
+                      <i class="fa-solid fa-shield-halved"></i>
+                      <div class="verified-check">
+                        <i class="fa-solid fa-check"></i>
+                      </div>
+                    </div>
+                    <div class="verified-info">
+                      <span class="v-title">Raya Certified</span>
+                      <div class="v-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <span>5.0 Top Rated</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
       </main>
     </div>
 
@@ -103,5 +344,6 @@
     <script src="js/load-components.js"></script>
 
     <script src="js/index.js"></script>
+    <script src="js/sell.js"></script>
   </body>
 </html>

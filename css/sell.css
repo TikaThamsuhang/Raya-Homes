@@ -1,0 +1,405 @@
+/* =========================================
+   SELLER PROCESS SECTION
+   ========================================= */
+.seller-process-section {
+    padding: 4rem 1rem !important;
+}
+
+.section-header-center {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+}
+
+.section-header-center h2 {
+    font-size: 2.5rem;
+    color: #3C2328;
+    margin-bottom: 1rem;
+    font-weight: 700;
+}
+
+.section-header-center p {
+    font-size: 1.05rem;
+    color: var(--color-text-body);
+    line-height: 1.6;
+}
+
+.process-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.process-card {
+    background: white;
+    padding: 2.5rem 2rem;
+    border-radius: 20px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.process-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+}
+
+
+/* =========================================
+   HOME VALUATION SECTION
+   ========================================= */
+.valuation-section {
+    padding: 2rem 1rem;
+    max-width: 1360px;
+    margin: 0 auto;
+}
+
+.valuation-header h2 {
+    font-size: 2.25rem;
+    color: #3C2328;
+    font-weight: 700;
+}
+
+/* Main Valuation Card - 2 Column Layout */
+.valuation-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    background: white;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
+    min-height: 700px;
+}
+
+/* Left Column: Map */
+.valuation-map-column {
+    position: relative;
+    background: #f5f5f5;
+}
+
+.valuation-map-column iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* Right Column: Details */
+.valuation-details-column {
+    padding: 3rem 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* Property Header (Image + Address) */
+.property-header {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.house-image {
+    width: 120px;
+    height: 100px;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+}
+
+.house-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.address-text h3 {
+    font-size: 1.3rem;
+    color: #3C2328;
+    margin-bottom: 0.25rem;
+    font-weight: 600;
+}
+
+.address-text p {
+    font-size: 0.95rem;
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+}
+
+/* Estimate Section */
+.estimate-section {
+    text-align: center;
+}
+
+.estimate-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 0.75rem;
+    font-weight: 600;
+}
+
+.estimate-value {
+    font-size: 3.5rem;
+    font-weight: 700;
+    color: #3C2328;
+    margin-bottom: 1.5rem;
+    line-height: 1;
+}
+
+/* Price Range Bar */
+.price-range-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.range-label-left,
+.range-label-right {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.label-text {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.label-value {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #3C2328;
+}
+
+.range-indicator {
+    flex: 1;
+    position: relative;
+    height: 30px;
+    display: flex;
+    align-items: center;
+}
+
+.range-line {
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(to right, rgba(212, 175, 55, 0.2), rgba(212, 175, 55, 0.6), rgba(212, 175, 55, 0.2));
+    border-radius: 2px;
+}
+
+.range-marker {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 14px;
+    height: 14px;
+    background: var(--color-secondary);
+    border: 3px solid white;
+    border-radius: 50%;
+    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
+}
+
+/* Property Metrics Inline */
+.property-metrics-inline {
+    display: flex;
+    justify-content: space-around;
+    padding: 1.5rem;
+    background: rgba(212, 175, 55, 0.05);
+    border-radius: 16px;
+}
+
+.metric-item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.metric-item i {
+    font-size: 1.5rem;
+    color: var(--color-secondary);
+}
+
+.metric-item .metric-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #3C2328;
+}
+
+.metric-item .metric-label {
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+/* Market Insights Compact */
+.market-insights-compact h4 {
+    font-size: 1.2rem;
+    color: #3C2328;
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+.insights-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.insight-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem;
+    background: white;
+    border-radius: 12px;
+    border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.insight-item i {
+    font-size: 1.3rem;
+    color: var(--color-secondary);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(212, 175, 55, 0.1);
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+
+.insight-item i.fa-arrow-trend-up {
+    color: #22c55e;
+    background: rgba(34, 197, 94, 0.1);
+}
+
+.insight-item .insight-value {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #3C2328;
+    margin-bottom: 0.15rem;
+}
+
+.insight-item .insight-label {
+    font-size: 0.8rem;
+    color: var(--color-text-muted);
+}
+
+/* Valuation Actions */
+.valuation-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-primary-large {
+    flex: 1;
+    background: var(--color-secondary);
+    color: #3C2328;
+    border: none;
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-primary-large:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+}
+
+.btn-secondary-outline {
+    flex: 1;
+    background: transparent;
+    color: #3C2328;
+    border: 2px solid rgba(60, 35, 40, 0.2);
+    padding: 1rem 1.5rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary-outline:hover {
+    background: rgba(60, 35, 40, 0.05);
+    border-color: rgba(60, 35, 40, 0.4);
+}
+
+/* Disclaimer */
+.estimate-disclaimer {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 1rem;
+    background: rgba(59, 130, 246, 0.05);
+    border-radius: 12px;
+    border-left: 3px solid rgba(59, 130, 246, 0.4);
+    font-size: 0.85rem;
+    color: var(--color-text-body);
+    line-height: 1.5;
+    text-align: left;
+}
+
+.estimate-disclaimer i {
+    color: rgba(59, 130, 246, 0.8);
+    font-size: 1rem;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 968px) {
+    .valuation-card {
+        grid-template-columns: 1fr;
+        min-height: auto;
+    }
+
+    .valuation-map-column {
+        height: 300px;
+    }
+
+    .valuation-details-column {
+        padding: 2rem 1.5rem;
+    }
+
+    .valuation-actions {
+        flex-direction: column;
+    }
+
+    .estimate-value {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .process-steps-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .property-metrics-inline {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .metric-item {
+        justify-content: center;
+    }
+}
