@@ -159,4 +159,206 @@ document.addEventListener('DOMContentLoaded', () => {
             window.location.href = 'property-detail.html';
         });
     });
+
+    // --- Gallery Data & Logic ---
+    const galleryImages = [
+        "imgs/Single/img-1.png",
+        "imgs/Single/img-bed-1.png",
+        "imgs/Single/img-wash-1.png",
+        "imgs/Single/img-kitchen-1.png",
+        "imgs/Single/img-1.png", // Added for demo length
+        "imgs/Single/img-bed-1.png",
+        "imgs/Single/img-wash-1.png",
+        "imgs/Single/img-kitchen-1.png",
+        "imgs/Single/img-1.png",
+        "imgs/Single/img-bed-1.png",
+        "imgs/Single/img-wash-1.png", 
+        "imgs/Single/img-kitchen-1.png"
+    ];
+
+    let currentGalleryIndex = 0;
+    const galleryOverlay = document.getElementById('gallery-overlay');
+    const galleryMainImage = document.getElementById('galleryMainImage');
+    const galleryCounterIndex = document.getElementById('currentImageIndex');
+    const galleryCounterTotal = document.getElementById('totalImages');
+    const thumbnailStrip = document.getElementById('thumbnailStrip');
+
+    // Initialize Total
+    if(galleryCounterTotal) galleryCounterTotal.textContent = galleryImages.length;
+
+    // Open Gallery Function
+    window.openGallery = (index = 0) => {
+        currentGalleryIndex = index;
+        updateGalleryUI();
+        if(galleryOverlay) {
+            galleryOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Lock scroll
+        }
+    };
+
+    // Close Gallery Function
+    const closeGallery = () => {
+        if(galleryOverlay) {
+            galleryOverlay.classList.remove('active');
+            document.body.style.overflow = ''; // Restore scroll
+        }
+    };
+
+    // Update UI (Image, Counter, Thumbnails)
+    const updateGalleryUI = () => {
+        if(galleryMainImage) {
+            // Add fade effect
+            galleryMainImage.style.opacity = '0.5';
+            setTimeout(() => {
+                galleryMainImage.src = galleryImages[currentGalleryIndex];
+                galleryMainImage.style.opacity = '1';
+            }, 100);
+        }
+        
+        if(galleryCounterIndex) galleryCounterIndex.textContent = currentGalleryIndex + 1;
+        
+        // Update Thumbnails
+        renderThumbnails();
+        scrollThumbnailIntoView();
+    };
+
+    // Render Thumbnails
+    const renderThumbnails = () => {
+        if(!thumbnailStrip) return;
+        thumbnailStrip.innerHTML = galleryImages.map((img, idx) => `
+            <div class="thumb ${idx === currentGalleryIndex ? 'active' : ''}" 
+                 onclick="openGallery(${idx})">
+                <img src="${img}" loading="lazy">
+            </div>
+        `).join('');
+    };
+
+    // Scroll active thumbnail into view
+    const scrollThumbnailIntoView = () => {
+        if(!thumbnailStrip) return;
+        const activeThumb = thumbnailStrip.children[currentGalleryIndex];
+        if(activeThumb) {
+            activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+    };
+
+    // Navigation Controls
+    const showNextImage = () => {
+        currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
+        updateGalleryUI();
+    };
+
+    const showPrevImage = () => {
+        currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
+        updateGalleryUI();
+    };
+
+    // Event Listeners
+    document.getElementById('galleryNextBtn')?.addEventListener('click', showNextImage);
+    document.getElementById('galleryPrevBtn')?.addEventListener('click', showPrevImage);
+    document.getElementById('closeGalleryBtn')?.addEventListener('click', closeGallery);
+    document.querySelector('.gallery-backdrop')?.addEventListener('click', closeGallery);
+
+    // Keyboard Navigation
+    document.addEventListener('keydown', (e) => {
+        if (!galleryOverlay?.classList.contains('active')) return;
+        
+        if (e.key === 'Escape') closeGallery();
+        if (e.key === 'ArrowRight') showNextImage();
+        if (e.key === 'ArrowLeft') showPrevImage();
+    });
+
+    // Wire up "See all photos" button
+    document.querySelector('.btn-see-all')?.addEventListener('click', () => openGallery(0));
+
+    // Wire up Main Grid Images
+    document.querySelectorAll('.gallery-main img, .thumb-item img').forEach((img, index) => {
+        img.style.cursor = 'pointer';
+        img.addEventListener('click', () => {
+            // Map grid images to gallery index (simplified logic for demo)
+            // Main image is index 0, thumbnails follow
+            let targetIndex = 0;
+            if (img.closest('.gallery-thumbnails')) {
+                // Find index based on parent structure or just use simple math
+                // For this demo, we'll just check the standard order
+                const thumbs = Array.from(document.querySelectorAll('.thumb-item img'));
+                targetIndex = thumbs.indexOf(img) + 1; // +1 because main image is 0
+            }
+            openGallery(targetIndex);
+        });
+    });
+
+    // --- Map Toggle Logic ---
+    const photoView = document.getElementById('photoView');
+    const mapView = document.getElementById('mapView');
+    const galleryFooter = document.querySelector('.gallery-footer'); // Get footer
+    const tabBtns = document.querySelectorAll('.tab-btn');
+
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Update Tab UI
+            tabBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            // Toggle View
+            const tabName = btn.getAttribute('data-tab');
+            if (tabName === 'map') {
+                photoView.classList.add('hidden');
+                mapView.classList.remove('hidden');
+                if(galleryFooter) galleryFooter.style.display = 'none'; // Hide footer
+            } else {
+                mapView.classList.add('hidden');
+                photoView.classList.remove('hidden');
+                if(galleryFooter) galleryFooter.style.display = 'flex'; // Show footer
+            }
+        });
+    });
+
+    // --- Hero Carousel Logic ---
+    // Make the hero image interactive (sync with same gallery images)
+    const heroPrevBtn = document.getElementById('heroPrevBtn');
+    const heroNextBtn = document.getElementById('heroNextBtn');
+    const heroCounterIndex = document.getElementById('heroCurrentIndex');
+    const heroCounterTotal = document.getElementById('heroTotalCount');
+    const heroImage = document.querySelector('.gallery-main img');
+
+    if(heroCounterTotal) heroCounterTotal.textContent = galleryImages.length;
+
+    const updateHeroUI = () => {
+        if(heroImage) {
+            heroImage.style.opacity = '0.8';
+            setTimeout(() => {
+                heroImage.src = galleryImages[currentGalleryIndex];
+                heroImage.style.opacity = '1';
+            }, 100);
+        }
+        if(heroCounterIndex) heroCounterIndex.textContent = currentGalleryIndex + 1;
+    };
+
+    if(heroPrevBtn) {
+        heroPrevBtn.addEventListener('click', (e) => {
+            e.stopPropagation(); // Don't trigger openGallery
+            currentGalleryIndex = (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
+            updateHeroUI();
+        });
+    }
+
+    if(heroNextBtn) {
+        heroNextBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
+            updateHeroUI();
+        });
+    }
+
+    // Connect Hero Image Click to Open Gallery (Updated to sync index)
+    if(heroImage) {
+        // Remove old listener if any (cleaner way is to assume fresh load)
+        // Since we replaced the listener above, we just ensure openGallery uses current index
+        heroImage.addEventListener('click', () => {
+            openGallery(currentGalleryIndex);
+        });
+    }
+
+    // --- End Gallery Logic ---
 });
