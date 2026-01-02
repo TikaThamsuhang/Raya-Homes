@@ -5,7 +5,7 @@
 /* Global Reset for Fixed Viewport */
 html, body {
     height: 100%;
-    overflow: hidden; /* Prevent page-level scroll */
+    overflow: auto; /* Allow page-level scroll - FIXED */
     margin: 0;
     padding: 0;
 }
@@ -748,3 +748,223 @@ html, body {
     font-weight: 600;
     color: var(--color-primary);
 }
+
+/* Contact Form Overlay
+   ========================================= */
+.contact-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.contact-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.contact-modal {
+    position: relative;
+    max-width: 480px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+}
+
+.contact-overlay.show .contact-modal {
+    transform: scale(1);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: var(--color-text-dark);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    z-index: 10;
+    transition: all 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: rotate(90deg);
+}
+
+.contact-overlay .contact-card {
+    padding: 1.5rem;
+    background: white;
+    border: 1px solid var(--color-border-light);
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+    border-radius: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+
+.contact-overlay .glass-panel {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+}
+
+.contact-overlay .card-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.contact-overlay .input-rounded {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    background: #fdfdfd;
+    font-family: var(--font-primary);
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    box-sizing: border-box;
+}
+
+.contact-overlay .input-rounded:focus {
+    border-color: var(--color-primary);
+    background: white;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(60, 35, 40, 0.05);
+}
+
+.form-group {
+    position: relative;
+}
+
+.floating-group {
+    position: relative;
+}
+
+.floating-label {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: white;
+    padding: 0 0.4rem;
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    pointer-events: none;
+    transition: all 0.2s ease;
+}
+
+.floating-group textarea ~ .floating-label {
+    top: 1.2rem;
+    transform: none;
+}
+
+.contact-overlay .input-rounded:focus ~ .floating-label,
+.contact-overlay .input-rounded:not(:placeholder-shown) ~ .floating-label {
+    top: -0.6rem;
+    font-size: 0.75rem;
+    color: var(--color-primary);
+}
+
+.floating-group textarea.input-rounded:focus ~ .floating-label,
+.floating-group textarea.input-rounded:not(:placeholder-shown) ~ .floating-label {
+    top: -0.6rem;
+}
+
+.contact-overlay .icon-trailing {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--color-text-muted);
+    pointer-events: none;
+    transition: opacity 0.2s;
+}
+
+.contact-overlay .input-rounded:focus ~ .icon-trailing {
+    opacity: 0;
+}
+
+.disclaimer-text {
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+    margin-top: 0.5rem;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.mt-1 {
+    margin-top: 0.5rem;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.contact-overlay .btn-lg {
+    padding: 0.9rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 12px;
+    background: var(--color-primary);
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.contact-overlay .btn-lg:hover {
+    opacity: 0.9;
+}
+
+/* Scrollbar for modal */
+.contact-modal::-webkit-scrollbar {
+    width: 8px;
+}
+
+.contact-modal::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.contact-modal::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.contact-modal::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+

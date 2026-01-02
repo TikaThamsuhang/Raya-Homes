@@ -622,8 +622,46 @@
 
 
 
+    <!-- Contact Form Overlay -->
+    <div class="contact-overlay" id="contactOverlay">
+        <div class="contact-modal">
+            <button class="modal-close-btn" id="closeModalBtn">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="contact-card glass-panel">
+                <h3 class="card-title">Contact an Agent</h3>
+                <form class="contact-form mt-1">
+                    <div class="form-group floating-group">
+                        <input type="text" id="contactName" class="input-rounded" placeholder=" ">
+                        <label for="contactName" class="floating-label">Full Name (Required)</label>
+                    </div>
+                    <div class="form-group floating-group">
+                        <input type="email" id="contactEmail" class="input-rounded" placeholder=" ">
+                        <label for="contactEmail" class="floating-label">Email Address (Required)</label>
+                    </div>
+                    <div class="form-group floating-group">
+                        <input type="tel" id="contactMobile" class="input-rounded" placeholder=" ">
+                        <label for="contactMobile" class="floating-label">Mobile Number</label>
+                    </div>
+                    <div class="form-group floating-group">
+                        <input type="text" id="tourDate" class="input-rounded" placeholder=" " onfocus="(this.type='date')" onblur="(this.type='text')">
+                        <label for="tourDate" class="floating-label">Preferred Tour Date</label>
+                        <i class="fa-regular fa-calendar icon-trailing"></i>
+                    </div>
+                    <div class="form-group floating-group">
+                        <textarea id="contactMsg" rows="4" class="input-rounded" placeholder=" ">Hi, I would like to know more about this property</textarea>
+                        <label for="contactMsg" class="floating-label">Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">Contact Agent</button>
+                    <p class="disclaimer-text mt-1 text-center">
+                        By clicking Contact, you agree to our Terms of Use and Privacy Policy.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </div>
+
     <script src="js/load-components.js"></script>
     <script src="js/property.js"></script>
-    script
 </body>
 </html>

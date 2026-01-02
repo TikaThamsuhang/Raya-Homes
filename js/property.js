@@ -259,4 +259,62 @@
                     window.location.href = 'property-detail.html';
                 });
             });
+
+            // Contact Form Overlay Logic
+            const contactOverlay = document.getElementById('contactOverlay');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const emailAgentBtns = document.querySelectorAll('.email-agent-btn');
+
+            // Open overlay when any "Email Agent" button is clicked
+            emailAgentBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    contactOverlay.classList.add('show');
+                    // Prevent body scroll when modal is open
+                    document.body.style.overflow = 'hidden';
+                    document.documentElement.style.overflow = 'hidden';
+                });
+            });
+
+            // Function to close overlay
+            const closeOverlay = () => {
+                contactOverlay.classList.remove('show');
+                // Restore body scroll
+                document.body.style.overflow = '';
+                document.documentElement.style.overflow = '';
+            };
+
+            // Close overlay when close button is clicked
+            if (closeModalBtn) {
+                closeModalBtn.addEventListener('click', closeOverlay);
+            }
+
+            // Close overlay when clicking on backdrop
+            if (contactOverlay) {
+                contactOverlay.addEventListener('click', (e) => {
+                    if (e.target === contactOverlay) {
+                        closeOverlay();
+                    }
+                });
+            }
+
+            // Close overlay on Escape key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && contactOverlay.classList.contains('show')) {
+                    closeOverlay();
+                }
+            });
+
+            // Handle form submission (prevent default for now)
+            const contactForm = contactOverlay?.querySelector('.contact-form');
+            if (contactForm) {
+                contactForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    // Add your form submission logic here
+                    console.log('Form submitted');
+                    // Close overlay after submission
+                    closeOverlay();
+                });
+            }
         });
