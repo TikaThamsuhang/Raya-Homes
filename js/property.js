@@ -317,4 +317,73 @@
                     closeOverlay();
                 });
             }
+
+            // Save Search Modal Logic
+            const saveSearchBtn = document.getElementById('saveSearchBtn');
+            const saveSearchOverlay = document.getElementById('saveSearchOverlay');
+            const cancelSaveSearchBtn = document.getElementById('cancelSaveSearchBtn');
+            const confirmSaveSearchBtn = document.getElementById('confirmSaveSearchBtn');
+            const searchNameInput = document.getElementById('searchNameInput');
+            let isFirstSave = true;
+
+            if (saveSearchBtn && saveSearchOverlay) {
+                // Open Modal
+                saveSearchBtn.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    searchNameInput.value = "address and price entered"; // Reset/Pre-fill
+                    saveSearchOverlay.classList.add('show');
+                    document.body.style.overflow = 'hidden'; // Prevent scroll
+                });
+
+                // Close Modal Function
+                const closeSaveSearch = () => {
+                    saveSearchOverlay.classList.remove('show');
+                    document.body.style.overflow = ''; // Restore scroll
+                };
+
+                // Cancel Button
+                if (cancelSaveSearchBtn) {
+                    cancelSaveSearchBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        closeSaveSearch();
+                    });
+                }
+
+                // Toast Logic
+                const saveToast = document.getElementById('saveToast');
+                const toastMessage = document.getElementById('toastMessage');
+
+                const showToast = (message) => {
+                    if (saveToast && toastMessage) {
+                        toastMessage.textContent = message;
+                        saveToast.classList.add('show');
+                        setTimeout(() => {
+                            saveToast.classList.remove('show');
+                        }, 3000);
+                    }
+                };
+
+                // Confirm Save
+                if (confirmSaveSearchBtn) {
+                    confirmSaveSearchBtn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        
+                        if (isFirstSave) {
+                            showToast("Search saved successfully!");
+                            isFirstSave = false;
+                        } else {
+                            showToast("Search updated!");
+                        }
+                        
+                        closeSaveSearch();
+                    });
+                }
+
+                // Close on Backdrop Click
+                saveSearchOverlay.addEventListener('click', (e) => {
+                    if (e.target === saveSearchOverlay) {
+                        closeSaveSearch();
+                    }
+                });
+            }
         });
