@@ -1,0 +1,536 @@
+/* Agent Page Specific Styles */
+/* Refactored for 3-Column Layout */
+
+.app-container{
+    padding: 0;
+}
+/* --- Container & Grid --- */
+
+.agent-profile-section {
+    display: grid;
+    grid-template-columns: 300px minmax(300px, 1fr) 380px;
+    gap: 3rem;
+    padding-top: 2rem;
+    padding-bottom: 4rem;
+    align-items: start;
+}
+
+/* --- Left Column: Photo & Socials --- */
+.profile-col-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.agent-photo-box {
+    width: 100%;
+    height: 360px; 
+    border-radius: 20px;
+    overflow: hidden;
+    background: white;
+}
+
+.agent-photo-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.agent-socials-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.social-link-row a {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    color: var(--color-text-dark);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.social-link-row a:hover {
+    color: var(--color-primary);
+}
+
+.social-link-row i {
+    width: 35px;
+    height: 35px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+}
+.social-link-row span {
+    text-decoration: underline;
+}
+
+.specialty-text {
+    font-size: 0.95rem;
+    color: var(--color-text-dark);
+    line-height: 1.5;
+    margin-bottom: 0rem;
+}
+
+/* --- Middle Column: Info & Bio --- */
+.profile-col-middle {
+    padding-top: 1rem;
+}
+
+.agent-name-large {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #333;
+    line-height: 1.1;
+    margin-bottom: 0.5rem;
+}
+
+.agent-role {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.2rem;
+}
+
+.agent-brokerage {
+    font-size: 1.1rem;
+    color: #666;
+    margin-bottom: 0.2rem;
+}
+
+.agent-license {
+    font-size: 0.9rem;
+    color: #888;
+}
+
+.agent-contact-rows {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    margin-top: 1.5rem;
+}
+
+.contact-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 1rem;
+    color: #333;
+}
+
+.contact-row i {
+    color: #3e2b26; /* Dark brown/black from image icons */
+    font-size: 1.1rem;
+}
+
+.contact-row a {
+    color: #3e2b26;
+    text-decoration: underline;
+}
+
+.subsection-header {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.bio-content p {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 1rem;
+}
+
+/* --- Right Column: Sticky Form --- */
+.profile-col-right {
+    position: relative;
+    /* Ensure it doesn't overlap listings if they come up */
+    z-index: 10; 
+}
+
+.sticky-contact-box {
+    position: sticky;
+    top: 100px;
+    background: transparent; /* Or transparent if inputs are on background */
+    /* Wait, image assumes inputs are just on layout? Nope, "Contact An Agent" is a header. */
+    /* Form itself seems to not have a distinct white box background in the provided image? 
+       Actually inputs are white pills on grey background. */
+}
+
+.form-header {
+    font-size: 1.5rem;
+    color: #3e2b26; /* Dark */
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.modern-form {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Note: Main input styles are now at the bottom of file to ensure cascade wins */
+
+
+.btn-submit-dark {
+    background-color: #3e2b26; /* Dark brown/black */
+    color: white;
+    padding: 1rem;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    border: none;
+    margin-top: 0.5rem;
+    transition: background 0.3s;
+}
+
+.btn-submit-dark:hover {
+    background-color: #2a1d1a;
+}
+
+.legal-disclaimer {
+    font-size: 0.7rem;
+    color: #777;
+    margin-top: 1rem;
+    line-height: 1.5;
+    text-align: justify;
+}
+
+/* --- Listings Section --- */
+.agent-listings-section {
+    padding: 2rem 0;
+    border-top: 1px solid #c4c4c4;
+}
+
+.agent-listings-grid {
+    display: grid;
+    /* 3 Columns min, collapsing to 1 on small screens */
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
+    gap: 2rem;
+}
+
+
+/* --- Responsive --- */
+@media (max-width: 1024px) {
+    .agent-profile-section {
+        grid-template-columns: 1fr 1fr;
+    }
+    .profile-col-right {
+        grid-column: 1 / -1; /* Move form to bottom or stacks? */
+        /* Design image shows desktop. On tablet, maybe stack form at bottom. */
+    }
+    .sticky-contact-box {
+        position: static;
+    }
+}
+
+@media (max-width: 768px) {
+    .agent-profile-section {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    .agent-photo-box {
+        height: 350px;
+        max-width: 350px;
+        margin: 0 auto;
+    }
+    .profile-col-left {
+        align-items: center;
+        text-align: center;
+    }
+    .profile-col-middle {
+        text-align: center;
+    }
+    .agent-contact-rows {
+        align-items: center; 
+    }
+}
+
+/* --- Header Specifics (Copied from property-detail.css) --- */
+.detail-header {
+    padding: 1rem 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background: transparent;
+    border-bottom: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+.detail-header.scrolled {
+    background: var(--color-white);
+    border-bottom: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.back-link {
+    font-size: 1rem;
+    font-weight: 500;
+    color: var(--color-text-dark);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: var(--font-primary);
+}
+
+.back-link:hover {
+    color: var(--color-primary);
+    transform: translateX(-4px);
+}
+
+.back-link span {
+    text-decoration: underline;
+}
+
+.logo-img {
+    width: 75px;
+    height: auto;
+}
+
+.circle-btn {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--color-text-dark);
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.circle-btn:hover {
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+    color: var(--color-white);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-2px);
+}
+
+/* Adjust page content to account for fixed header */
+/* Ensure main content isn't hidden behind fixed header */
+/* But wait, in agent page structure, we have .agent-page-wrapper. 
+   We should add padding-top to it or body. */
+body {
+    padding-top: 0; /* Let header overlay for transparent effect if desired? */
+    /* property-detail.css has main { padding-top: 90px; } */
+}
+
+/* We want transparent header initially, so top content should be under it. 
+   But agent page starts with profile section which has white background usually. 
+   If we want "Sync Design", property detail has a hero section (gallery) under the header.
+   Agent page has white background. 
+   So we probably WANT padding-top so content starts below header, 
+   UNLESS user wants header to overlap a hero image (which we don't have yet).
+   Let's add padding-top to wrapper to emulate property-detail layout behavior.
+*/
+.agent-page-wrapper {
+    padding-top: 90px;
+}
+.detail-header {
+    background: var(--color-white); /* Force white bg initially if no hero image under it */
+    /* Wait, user asked for "same designed header", property-detail starts transparent over image.
+       If we don't have an image, transparent header over white bg is fine, but text might clash?
+       Back link is dark, logo is image. 
+       Let's keep it transparent but add bg via JS scroll or just set to white if always on white.
+       Actually, let's keep it consistent: property-detail has transparent, but usually over hero.
+       Agent page top is white. 
+       Let's stick to the property-detail CSS exactly first (transparent), 
+       but if it looks broken, I'll adjust. 
+       For now, adding a background to .agent-page-wrapper to differentiate? 
+       No, keep it simple.
+    */
+    background: rgba(255,255,255,0.95); /* Slight white for readability on agent page */
+}
+
+/* --- Floating Labels Fix --- */
+.floating-group {
+    position: relative;
+}
+
+.input-modern {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 1px solid var(--color-border);
+    border-radius: 30px !important;
+    background: white !important;
+    font-size: 0.95rem;
+    outline: none;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+    transition: all 0.2s;
+    /* Ensure stacking context */
+    position: relative;
+    z-index: 1;
+}
+
+.input-modern:focus {
+    border-color: var(--color-primary);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.floating-label {
+    position: absolute;
+    top: 50%;
+    left: 1.5rem;
+    transform: translateY(-50%);
+    color: #999;
+    font-size: 0.95rem;
+    pointer-events: none;
+    transition: all 0.2s ease;
+    background: white; 
+    padding: 0 5px;
+    z-index: 10; /* Always on top of input */
+}
+
+.input-modern:focus ~ .floating-label,
+.input-modern:not(:placeholder-shown) ~ .floating-label {
+    top: 0; 
+    left: 1.2rem;
+    font-size: 0.75rem;
+    color: var(--color-primary);
+    transform: translateY(-50%);
+    z-index: 10;
+    /* Hack: Gradient match top (body gray) and bottom (input white) to hide border line */
+    background: linear-gradient(180deg, var(--color-bg-body) 55%, white 50%);
+    padding: 0 4px;
+}
+
+/* Textarea tweaks */
+textarea.input-modern {
+    border-radius: 20px;
+    padding-top: 1rem;
+}
+textarea.input-modern ~ .floating-label {
+    top: 1.5rem;
+}
+textarea.input-modern:focus ~ .floating-label,
+textarea.input-modern:not(:placeholder-shown) ~ .floating-label {
+    top: 0;
+}
+
+/* --- My Office Card --- */
+.office-card {
+    display: flex;
+    flex-direction: column; /* Stack vertically */
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    overflow: hidden;
+    width: 100%;  /* Fill container */
+    margin-top: 1rem;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.office-card:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.office-img-col {
+    width: 100%; /* Full width */
+    height: 170px; /* Fixed height for image area */
+    flex-shrink: 0;
+}
+
+.office-img-col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.office-info-col {
+    padding: 1.2rem;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.office-logo-mini {
+    height: auto;
+    width: 75px;
+    display: block;
+}
+
+.office-info-col h4 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--color-text-dark);
+    margin-bottom: 0rem;
+}
+
+.office-loc {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 0rem;
+}
+
+.office-contact-list p {
+    font-size: 0.9rem;
+    color: #555;
+    margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.6rem;
+    align-items: flex-start;
+}
+.office-contact-list p i {
+    color: var(--color-text-dark);
+    margin-top: 4px;
+    width: 16px; /* Align icons */
+}
+
+.office-contact-list p:last-child a {
+    color: var(--color-text-dark);
+    text-decoration: underline;
+}
+.office-contact-list p:last-child:hover {
+    color: var(--color-primary);
+}
+
+
+.office-action-col {
+    width: 100%;
+    padding: 1rem;
+    background-color: #3e2b26;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+
+.office-action-col:hover {
+    background-color: #2a1d1a;
+}
+
+.office-action-col span {
+    writing-mode: horizontal-tb;
+    transform: none;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.img-slider-container{
+ height: 300px;
+}
+
+#agentListingCount{
+    color: var(--color-text-dark);
+    font-weight: 600;
+}

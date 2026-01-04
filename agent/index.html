@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agent Profile | Raya Homes</title>
+
+    <!-- Relative paths up one level -->
+    <link rel="stylesheet" href="../css/global.css" />
+    <link rel="stylesheet" href="../css/index.css" />
+    <link rel="stylesheet" href="css/agent.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="detail-header">
+      <div class="app-container d-flex align-center justify-between">
+        <!-- Left: Back Button -->
+        <a href="property.html" class="back-link">
+          <i class="fa-solid fa-arrow-left"></i> <span>Back To Agent List</span>
+        </a>
+
+        <!-- Center: Logo -->
+        <a href="../index.html">
+          <div class="logo">
+            <img
+              src="../imgs/logo-no-background.png"
+              alt="Raya Homes"
+              class="logo-img"
+            />
+          </div>
+        </a>
+
+        <!-- Right: Action Buttons -->
+        <div class="header-actions d-flex align-center gap-sm">
+          <button class="btn-icon circle-btn" aria-label="Share Agent">
+            <i class="fa-regular fa-share-from-square"></i>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content Wrapper -->
+    <main>
+      <div class="agent-page-wrapper">
+        <!-- 3-Column Profile Section -->
+        <section class="agent-profile-section app-container">
+          <!-- COL 1: Left (Photo, Socials, Specialties) -->
+          <div class="profile-col-left">
+            <div class="agent-photo-box">
+              <img src="" alt="Agent Profile" id="agentImage" />
+            </div>
+
+            <div class="mt-3">
+              <h3>Socials</h3>
+              <div class="agent-socials-vertical" id="agentSocials">
+                <!-- Socials Populated by JS -->
+              </div>
+            </div>
+
+            <div class="agent-specialties mt-3">
+              <h3>Specialties</h3>
+              <p class="specialty-text">Languages: English, Spanish</p>
+            </div>
+
+            <div class="mt-3">
+              <h3>My Office</h3>
+              <a href="">
+                <div class="office-card">
+                  <div class="office-img-col">
+                    <img
+                      src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=400&q=80"
+                      alt="Raya Homes Office"
+                    />
+                  </div>
+                  <div class="office-info-col">
+                    <div class="d-flex align-center gap-md">
+                      <img
+                        src="../imgs/logo-no-background.png"
+                        class="office-logo-mini"
+                        alt="Raya Logo"
+                      />
+                      <div
+                        class="d-flex flex-column gap-xs align-center justify-center"
+                      >
+                        <h4>Raya Homes</h4>
+                        <p class="office-loc">Miami Beach, FL</p>
+                      </div>
+                    </div>
+
+                    <div class="office-contact-list">
+                      <p><i class="fa-solid fa-phone"></i> (305) 573-2577</p>
+                      <p>
+                        <i class="fa-solid fa-location-dot"></i>
+                        <a href=""
+                          >1682 Jefferson Ave Ste 103, Miami Beach, FL 33139</a
+                        >
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- COL 2: Middle (Info, Bio) -->
+          <div class="profile-col-middle">
+            <div class="agent-header-block mb-3">
+              <h2 class="agent-name-large" id="agentName">Loading...</h2>
+              <p class="agent-role" id="agentTitle">Sales Associate</p>
+              <p class="agent-brokerage">Raya Homes</p>
+              <p class="agent-license">License #: SL3526976</p>
+
+              <div class="agent-contact-rows mt-3">
+                <div class="contact-row">
+                  <i class="fa-solid fa-phone"></i>
+                  <a href="tel:" id="agentPhoneDisplay">Loading...</a>
+                  <span class="text-muted">(Home)</span>
+                </div>
+                <div class="contact-row">
+                  <i class="fa-regular fa-envelope"></i>
+                  <a href="mailto:" id="agentEmailLink">Loading...</a>
+                </div>
+                <div class="contact-row">
+                  <i class="fa-solid fa-building"></i>
+                  <a href="" id="agentOfficeLink">Loading...</a>
+                </div>
+              </div>
+            </div>
+
+            <div class="agent-bio-block mt-4">
+              <h3 class="subsection-header">About Me</h3>
+              <div class="bio-content" id="agentBio">
+                <!-- Bio Text -->
+              </div>
+            </div>
+          </div>
+
+          <!-- COL 3: Right (Sticky Contact Form) -->
+          <div class="profile-col-right">
+            <div class="sticky-contact-box">
+              <h3 class="form-header">Contact Me</h3>
+
+              <form id="agentContactForm" class="modern-form">
+                <div class="form-group floating-group">
+                  <input
+                    type="text"
+                    id="contactName"
+                    class="input-modern"
+                    placeholder=" "
+                    required
+                  />
+                  <label for="contactName" class="floating-label"
+                    >Enter Your Name</label
+                  >
+                </div>
+                <div class="form-group floating-group">
+                  <input
+                    type="email"
+                    id="contactEmail"
+                    class="input-modern"
+                    placeholder=" "
+                    required
+                  />
+                  <label for="contactEmail" class="floating-label"
+                    >Enter Your Email Address</label
+                  >
+                </div>
+                <div class="form-group floating-group">
+                  <input
+                    type="tel"
+                    id="contactPhone"
+                    class="input-modern"
+                    placeholder=" "
+                  />
+                  <label for="contactPhone" class="floating-label"
+                    >Enter Your Phone Number</label
+                  >
+                </div>
+
+                <div class="form-group floating-group">
+                  <textarea
+                    id="contactMsg"
+                    rows="4"
+                    class="input-modern"
+                    placeholder=" "
+                    required
+                  ></textarea>
+                  <label for="contactMsg" class="floating-label"
+                    >Write Your Message ...</label
+                  >
+                </div>
+
+                <button type="submit" class="btn-submit-dark">Contact</button>
+
+                <p class="legal-disclaimer">
+                  Yes, I would like more information from Raya Homes. Please use
+                  and/or share my information with a Raya Homes agent to contact
+                  me about my real estate needs. By clicking Contact I agree a
+                  Raya Homes Agent may contact me by phone or text message
+                  including by automated means and prerecorded messages about
+                  real estate services, and that I can access real estate
+                  services without providing my phone number. I acknowledge that
+                  I have read and agree to the Terms of Use and Privacy Policy.
+                </p>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <!-- Exclusive Listings (Below Profile) -->
+        <section class="agent-listings-section app-container mt-5 mb-5">
+          <div class="listings-header mb-4">
+            <h2>Current Listings</h2>
+            <p class="text-muted">
+              <span id="agentListingCount"></span> Active properties represented
+              by <span id="agentNameSmall"></span>
+            </p>
+          </div>
+
+          <div class="agent-listings-grid" id="agentListingsGrid">
+            <div class="loading-state">Loading Listings...</div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Scripts with relative paths -->
+    <script src="../js/properties-data.js"></script>
+    <script src="js/agents-data.js"></script>
+    <script src="js/agent.js"></script>
+  </body>
+</html>
