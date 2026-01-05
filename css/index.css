@@ -4,7 +4,7 @@
 .floating-header {
     background: var(--color-white);
     border-radius: 50px; /* Extreme pill rounding */
-    padding: 0.75rem 2rem;
+    padding: 0.68rem 2rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -16,7 +16,7 @@
 }
 
 .logo {
-    width: 70px;
+    width: 68px;
     height: auto;
 }
 
@@ -1154,6 +1154,10 @@
 .valuation-cta-container {
     max-width: 700px;
     margin: 0 auto;
+}
+
+.valuation-form {
+    position: relative;
 }
 
 .valuation-input-wrapper {

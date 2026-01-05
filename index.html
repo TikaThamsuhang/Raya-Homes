@@ -13,76 +13,158 @@
     />
   </head>
   <body>
-      <!-- Header -->
-      <!-- Header -->
-      <div class="app-container" id="header-placeholder"></div>
+    <!-- Header -->
+    <div class="app-container" id="header-placeholder"></div>
 
-      <!-- Hero Section -->
-      <section class="app-container hero-card">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-          <h1 class="animate-slide-up">Find The<br />Right Home</h1>
-          <p
-            class="hero-subtitle animate-slide-up"
-            style="animation-delay: 0.1s"
-          >
-            Raya Homes is your trusted source for comfortable and reliable
-            rental living! Our properties are thoughtfully selected.
-          </p>
+    <!-- Hero Section -->
+    <section class="app-container hero-card">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <h1 class="animate-slide-up">Find The<br />Right Home</h1>
+        <p class="hero-subtitle animate-slide-up" style="animation-delay: 0.1s">
+          Raya Homes is your trusted source for comfortable and reliable rental
+          living! Our properties are thoughtfully selected.
+        </p>
 
-          <!-- Search Container -->
-          <div
-            class="hero-search-container animate-slide-up"
-            style="animation-delay: 0.2s"
-          >
-            <!-- Tabs -->
-            <div class="search-tabs">
-              <button class="tab-btn active" data-tab="buy">Buy</button>
-              <button class="tab-btn" data-tab="sell">Sell</button>
+        <!-- Search Container -->
+        <div
+          class="hero-search-container animate-slide-up"
+          style="animation-delay: 0.2s"
+        >
+          <!-- Tabs -->
+          <div class="search-tabs">
+            <button class="tab-btn active" data-tab="buy">Buy</button>
+            <button class="tab-btn" data-tab="sell">Sell</button>
+          </div>
+
+          <!-- Search Bar -->
+          <div class="search-wrapper-relative">
+            <form class="single-search-form">
+              <div class="search-input-wrapper">
+                <input
+                  type="text"
+                  id="searchInput"
+                  placeholder="City, Zip, Address, Property Name"
+                  autocomplete="off"
+                />
+              </div>
+              <button type="submit" class="btn-search-pill">
+                Search <i class="fa-solid fa-magnifying-glass"></i>
+              </button>
+            </form>
+
+            <!-- Suggestion Dropdown -->
+            <div class="search-suggestions" id="searchSuggestions">
+              <div class="suggestion-group">
+                <h6>Popular Locations</h6>
+                <ul>
+                  <li>
+                    <i class="fa-solid fa-location-dot"></i> Beverly Hills, CA
+                  </li>
+                  <li><i class="fa-solid fa-location-dot"></i> New York, NY</li>
+                  <li><i class="fa-solid fa-location-dot"></i> Miami, FL</li>
+                </ul>
+              </div>
+              <div class="suggestion-group">
+                <h6>Recent Searches</h6>
+                <ul>
+                  <li>
+                    <i class="fa-solid fa-clock-rotate-left"></i> Modern Villa
+                    with Pool
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-clock-rotate-left"></i> Downtown
+                    Apartment
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main>
+      <!-- Featured Section (Bottom of Viewport area) -->
+      <section class="main-container featured-preview mt-3">
+        <div class="featured-header">
+          <h2>Our Featured Properties</h2>
+          <div class="featured-desc">
+            <p>
+              Discover a curated selection of our most sought-after homes. These
+              featured listings showcase the best in comfort, convenience, and
+              modern living.
+            </p>
+            <div class="featured-nav">
+              <button class="nav-arrow prev">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="nav-arrow next">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Property Grid (Carousel) -->
+        <div class="featured-carousel-container" id="featuredCarousel">
+          <div class="carousel-track">
+            <!-- Card 1 -->
+            <div
+              class="property-card"
+              style="background-image: url('imgs/Properties/prop-1.png')"
+            >
+              <div class="fav-icon"><i class="fa-regular fa-heart"></i></div>
+              <div class="card-overlay">
+                <div class="card-header-row">
+                  <div class="card-price">$25,000</div>
+                  <div class="status-tag for-sale">
+                    For Sale <i class="fa-solid fa-circle-check"></i>
+                  </div>
+                </div>
+                <div class="card-details">3 beds 2 baths 1,650 sq ft</div>
+                <div class="card-address">
+                  1234 Washington Street, Austin, TX 1300
+                </div>
+              </div>
             </div>
 
-            <!-- Search Bar -->
-            <div class="search-wrapper-relative">
-              <form class="single-search-form">
-                <div class="search-input-wrapper">
-                  <input
-                    type="text"
-                    id="searchInput"
-                    placeholder="City, Zip, Address, Property Name"
-                    autocomplete="off"
-                  />
+            <!-- Card 2 (Active/Center initially) -->
+            <div
+              class="property-card active"
+              style="background-image: url('imgs/Properties/prop-2.png')"
+            >
+              <div class="fav-icon"><i class="fa-regular fa-heart"></i></div>
+              <div class="card-overlay">
+                <div class="card-header-row">
+                  <div class="card-price">$35,000</div>
+                  <div class="status-tag coming-soon">
+                    Coming Soon <i class="fa-solid fa-clock"></i>
+                  </div>
                 </div>
-                <button type="submit" class="btn-search-pill">
-                  Search <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-              </form>
+                <div class="card-details">4 beds 3 baths 2,200 sq ft</div>
+                <div class="card-address">
+                  5678 Lincoln Avenue, Miami, FL 33101
+                </div>
+              </div>
+            </div>
 
-              <!-- Suggestion Dropdown -->
-              <div class="search-suggestions" id="searchSuggestions">
-                <div class="suggestion-group">
-                  <h6>Popular Locations</h6>
-                  <ul>
-                    <li>
-                      <i class="fa-solid fa-location-dot"></i> Beverly Hills, CA
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-location-dot"></i> New York, NY
-                    </li>
-                    <li><i class="fa-solid fa-location-dot"></i> Miami, FL</li>
-                  </ul>
+            <!-- Card 3 -->
+            <div
+              class="property-card"
+              style="background-image: url('imgs/Properties/prop-3.png')"
+            >
+              <div class="fav-icon"><i class="fa-regular fa-heart"></i></div>
+              <div class="card-overlay">
+                <div class="card-header-row">
+                  <div class="card-price">$45,000</div>
+                  <div class="status-tag sold">
+                    Sold <i class="fa-solid fa-lock"></i>
+                  </div>
                 </div>
-                <div class="suggestion-group">
-                  <h6>Recent Searches</h6>
-                  <ul>
-                    <li>
-                      <i class="fa-solid fa-clock-rotate-left"></i> Modern Villa
-                      with Pool
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-clock-rotate-left"></i> Downtown
-                      Apartment
-                    </li>
-                  </ul>
+                <div class="card-details">5 beds 4 baths 3,000 sq ft</div>
+                <div class="card-address">
+                  9101 Beverly Boulevard, LA, CA 90210
                 </div>
               </div>
             </div>
@@ -90,454 +172,403 @@
         </div>
       </section>
 
-      <main>
-        <!-- Featured Section (Bottom of Viewport area) -->
-        <section class="main-container featured-preview mt-3">
-          <div class="featured-header">
-            <h2>Our Featured Properties</h2>
-            <div class="featured-desc">
-              <p>
-                Discover a curated selection of our most sought-after homes.
-                These featured listings showcase the best in comfort,
-                convenience, and modern living.
-              </p>
-              <div class="featured-nav">
-                <button class="nav-arrow prev">
-                  <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <button class="nav-arrow next">
-                  <i class="fa-solid fa-chevron-right"></i>
-                </button>
+      <!-- Exclusive Portfolio Section (Explore Homes) -->
+      <section class="main-container exclusive-portfolio mt-5">
+        <div class="portfolio-header">
+          <h2>Explore Our Exclusive Portfolio</h2>
+          <div class="header-right">
+            <p>
+              Browse our comprehensive collection of premium properties. From
+              modern apartments to spacious villas, find the home that truly
+              reflects your lifestyle.
+            </p>
+            <a href="#" class="btn-outline-pill"
+              >View All Properties <i class="fa-solid fa-arrow-right"></i
+            ></a>
+          </div>
+        </div>
+
+        <div class="portfolio-grid">
+          <!-- Card 1 -->
+          <div class="portfolio-card">
+            <!-- Image Slider -->
+            <div class="img-slider-container">
+              <div class="img-slider-track">
+                <div
+                  class="img-slide"
+                  style="background-image: url('imgs/Properties/prop-1.png')"
+                ></div>
+                <div
+                  class="img-slide"
+                  style="background-image: url('imgs/Properties/prop-2.png')"
+                ></div>
+                <div
+                  class="img-slide"
+                  style="background-image: url('imgs/hero-banner.png')"
+                ></div>
               </div>
+
+              <!-- Controls -->
+              <button class="slider-arrow slider-prev">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="slider-arrow slider-next">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+
+              <!-- Pagination -->
+              <div class="slider-pagination">1/3</div>
+
+              <!-- Fav Icon -->
+              <button class="fav-icon-small">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+            </div>
+
+            <div class="content-container">
+              <div class="portfolio-card-header">
+                <h3 class="prop-title">732 Denburn Place</h3>
+                <div
+                  class="status-tag coming-soon"
+                  style="font-size: 0.6rem; padding: 0.2rem 0.6rem"
+                >
+                  Coming Soon <i class="fa-solid fa-clock"></i>
+                </div>
+              </div>
+              <p class="prop-specs">4 Beds 3 Baths 2,350 Sq. Ft.</p>
+              <p class="prop-address">732 Denburn Place, Raleigh, NC 27603</p>
+              <div class="divider"></div>
+              <div class="prop-price">$2,425,000</div>
             </div>
           </div>
 
-          <!-- Property Grid (Carousel) -->
-          <div class="featured-carousel-container" id="featuredCarousel">
-            <div class="carousel-track">
-              <!-- Card 1 -->
-              <div
-                class="property-card"
-                style="background-image: url('imgs/Properties/prop-1.png')"
-              >
-                <div class="fav-icon"><i class="fa-regular fa-heart"></i></div>
-                <div class="card-overlay">
-                  <div class="card-header-row">
-                    <div class="card-price">$25,000</div>
-                    <div class="status-tag for-sale">
-                      For Sale <i class="fa-solid fa-circle-check"></i>
-                    </div>
-                  </div>
-                  <div class="card-details">3 beds 2 baths 1,650 sq ft</div>
-                  <div class="card-address">
-                    1234 Washington Street, Austin, TX 1300
-                  </div>
-                </div>
+          <!-- Card 2 -->
+          <div class="portfolio-card">
+            <!-- Image Slider -->
+            <div class="img-slider-container">
+              <div class="img-slider-track">
+                <div
+                  class="img-slide"
+                  style="background-image: url('imgs/hero-banner.png')"
+                ></div>
+                <div
+                  class="img-slide"
+                  style="background-image: url('imgs/Properties/prop-3.png')"
+                ></div>
+                <div
+                  class="img-slide"
+                  style="background-image: url('imgs/Properties/prop-2.png')"
+                ></div>
               </div>
 
-              <!-- Card 2 (Active/Center initially) -->
-              <div
-                class="property-card active"
-                style="background-image: url('imgs/Properties/prop-2.png')"
-              >
-                <div class="fav-icon"><i class="fa-regular fa-heart"></i></div>
-                <div class="card-overlay">
-                  <div class="card-header-row">
-                    <div class="card-price">$35,000</div>
-                    <div class="status-tag coming-soon">
-                      Coming Soon <i class="fa-solid fa-clock"></i>
-                    </div>
-                  </div>
-                  <div class="card-details">4 beds 3 baths 2,200 sq ft</div>
-                  <div class="card-address">
-                    5678 Lincoln Avenue, Miami, FL 33101
-                  </div>
-                </div>
-              </div>
+              <!-- Controls -->
+              <button class="slider-arrow slider-prev">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="slider-arrow slider-next">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
 
-              <!-- Card 3 -->
-              <div
-                class="property-card"
-                style="background-image: url('imgs/Properties/prop-3.png')"
-              >
-                <div class="fav-icon"><i class="fa-regular fa-heart"></i></div>
-                <div class="card-overlay">
-                  <div class="card-header-row">
-                    <div class="card-price">$45,000</div>
-                    <div class="status-tag sold">
-                      Sold <i class="fa-solid fa-lock"></i>
-                    </div>
-                  </div>
-                  <div class="card-details">5 beds 4 baths 3,000 sq ft</div>
-                  <div class="card-address">
-                    9101 Beverly Boulevard, LA, CA 90210
-                  </div>
+              <!-- Pagination -->
+              <div class="slider-pagination">1/3</div>
+
+              <button class="fav-icon-small">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+            </div>
+
+            <div class="content-container">
+              <div class="portfolio-card-header">
+                <h3 class="prop-title">1050 Brickell Bay Dr</h3>
+                <div
+                  class="status-tag for-sale"
+                  style="font-size: 0.6rem; padding: 0.2rem 0.6rem"
+                >
+                  For Sale <i class="fa-solid fa-circle-check"></i>
                 </div>
               </div>
+              <p class="prop-specs">3 Beds 2 Baths 1,800 Sq. Ft.</p>
+              <p class="prop-address">1050 Brickell Bay Dr, Miami, FL 33131</p>
+              <div class="divider"></div>
+              <div class="prop-price">$1,850,000</div>
             </div>
           </div>
-        </section>
 
-        <!-- Exclusive Portfolio Section (Explore Homes) -->
-        <section class="main-container exclusive-portfolio mt-5">
-          <div class="portfolio-header">
-            <h2>Explore Our Exclusive Portfolio</h2>
-            <div class="header-right">
-              <p>
-                Browse our comprehensive collection of premium properties. From
-                modern apartments to spacious villas, find the home that truly
-                reflects your lifestyle.
+          <!-- Card 1 -->
+          <div class="portfolio-card">
+            <!-- Image Slider -->
+            <div class="img-slider-container">
+              <div class="img-slider-track">
+                <div
+                  class="img-slide"
+                  style="background-image: url('imgs/Properties/prop-1.png')"
+                ></div>
+                <div
+                  class="img-slide"
+                  style="background-image: url('imgs/Properties/prop-2.png')"
+                ></div>
+                <div
+                  class="img-slide"
+                  style="background-image: url('imgs/hero-banner.png')"
+                ></div>
+              </div>
+
+              <!-- Controls -->
+              <button class="slider-arrow slider-prev">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="slider-arrow slider-next">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+
+              <!-- Pagination -->
+              <div class="slider-pagination">1/3</div>
+
+              <!-- Fav Icon -->
+              <button class="fav-icon-small">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+            </div>
+
+            <div class="content-container">
+              <div class="portfolio-card-header">
+                <h3 class="prop-title">732 Denburn Place</h3>
+                <div
+                  class="status-tag coming-soon"
+                  style="font-size: 0.6rem; padding: 0.2rem 0.6rem"
+                >
+                  Coming Soon <i class="fa-solid fa-clock"></i>
+                </div>
+              </div>
+              <p class="prop-specs">4 Beds 3 Baths 2,350 Sq. Ft.</p>
+              <p class="prop-address">732 Denburn Place, Raleigh, NC 27603</p>
+              <div class="divider"></div>
+              <div class="prop-price">$2,425,000</div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="portfolio-card">
+            <!-- Image Slider -->
+            <div class="img-slider-container">
+              <div class="img-slider-track">
+                <div
+                  class="img-slide"
+                  style="background-image: url('imgs/hero-banner.png')"
+                ></div>
+                <div
+                  class="img-slide"
+                  style="background-image: url('imgs/Properties/prop-3.png')"
+                ></div>
+                <div
+                  class="img-slide"
+                  style="background-image: url('imgs/Properties/prop-2.png')"
+                ></div>
+              </div>
+
+              <!-- Controls -->
+              <button class="slider-arrow slider-prev">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="slider-arrow slider-next">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+
+              <!-- Pagination -->
+              <div class="slider-pagination">1/3</div>
+
+              <button class="fav-icon-small">
+                <i class="fa-regular fa-heart"></i>
+              </button>
+            </div>
+
+            <div class="content-container">
+              <div class="portfolio-card-header">
+                <h3 class="prop-title">1050 Brickell Bay Dr</h3>
+                <div
+                  class="status-tag for-sale"
+                  style="font-size: 0.6rem; padding: 0.2rem 0.6rem"
+                >
+                  For Sale <i class="fa-solid fa-circle-check"></i>
+                </div>
+              </div>
+              <p class="prop-specs">3 Beds 2 Baths 1,800 Sq. Ft.</p>
+              <p class="prop-address">1050 Brickell Bay Dr, Miami, FL 33131</p>
+              <div class="divider"></div>
+              <div class="prop-price">$1,850,000</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Agent Preview Section -->
+      <section class="main-container agent-preview-section mt-5 mb-5">
+        <div class="agent-preview-card">
+          <div class="agent-content-wrapper">
+            <div class="agent-text">
+              <h2 class="animate-slide-up">Expert Guidance at Every Step</h2>
+              <p class="animate-slide-up" style="animation-delay: 0.1s">
+                Our select team of real estate professionals brings decades of
+                market expertise. Whether buying or selling, partner with an
+                agent who understands your vision.
               </p>
-              <a href="#" class="btn-outline-pill"
-                >View All Properties <i class="fa-solid fa-arrow-right"></i
+              <a
+                href="#"
+                class="btn-light-pill animate-slide-up"
+                style="animation-delay: 0.2s"
+                >Find the Agents <i class="fa-solid fa-arrow-right"></i
               ></a>
             </div>
-          </div>
+            <div class="agent-visual">
+              <!-- Abstract Team Visual -->
+              <div class="circle-decoration"></div>
 
-          <div class="portfolio-grid">
-            <!-- Card 1 -->
-            <div class="portfolio-card">
-              <!-- Image Slider -->
-              <div class="img-slider-container">
-                <div class="img-slider-track">
-                  <div
-                    class="img-slide"
-                    style="background-image: url('imgs/Properties/prop-1.png')"
-                  ></div>
-                  <div
-                    class="img-slide"
-                    style="background-image: url('imgs/Properties/prop-2.png')"
-                  ></div>
-                  <div
-                    class="img-slide"
-                    style="background-image: url('imgs/hero-banner.png')"
-                  ></div>
-                </div>
-
-                <!-- Controls -->
-                <button class="slider-arrow slider-prev">
-                  <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <button class="slider-arrow slider-next">
-                  <i class="fa-solid fa-chevron-right"></i>
-                </button>
-
-                <!-- Pagination -->
-                <div class="slider-pagination">1/3</div>
-
-                <!-- Fav Icon -->
-                <button class="fav-icon-small">
-                  <i class="fa-regular fa-heart"></i>
-                </button>
-              </div>
-
-              <div class="content-container">
-                <div class="portfolio-card-header">
-                  <h3 class="prop-title">732 Denburn Place</h3>
-                  <div
-                    class="status-tag coming-soon"
-                    style="font-size: 0.6rem; padding: 0.2rem 0.6rem"
-                  >
-                    Coming Soon <i class="fa-solid fa-clock"></i>
+              <!-- Floating Agent Cards (Abstract Team) -->
+              <div class="agent-stack">
+                <div class="agent-card-small card-1">
+                  <div class="agent-avatar">
+                    <i class="fa-solid fa-user"></i>
+                  </div>
+                  <div class="agent-lines">
+                    <div class="line short"></div>
+                    <div class="line long"></div>
                   </div>
                 </div>
-                <p class="prop-specs">4 Beds 3 Baths 2,350 Sq. Ft.</p>
-                <p class="prop-address">732 Denburn Place, Raleigh, NC 27603</p>
-                <div class="divider"></div>
-                <div class="prop-price">$2,425,000</div>
-              </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="portfolio-card">
-              <!-- Image Slider -->
-              <div class="img-slider-container">
-                <div class="img-slider-track">
-                  <div
-                    class="img-slide"
-                    style="background-image: url('imgs/hero-banner.png')"
-                  ></div>
-                  <div
-                    class="img-slide"
-                    style="background-image: url('imgs/Properties/prop-3.png')"
-                  ></div>
-                  <div
-                    class="img-slide"
-                    style="background-image: url('imgs/Properties/prop-2.png')"
-                  ></div>
-                </div>
-
-                <!-- Controls -->
-                <button class="slider-arrow slider-prev">
-                  <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <button class="slider-arrow slider-next">
-                  <i class="fa-solid fa-chevron-right"></i>
-                </button>
-
-                <!-- Pagination -->
-                <div class="slider-pagination">1/3</div>
-
-                <button class="fav-icon-small">
-                  <i class="fa-regular fa-heart"></i>
-                </button>
-              </div>
-
-              <div class="content-container">
-                <div class="portfolio-card-header">
-                  <h3 class="prop-title">1050 Brickell Bay Dr</h3>
-                  <div
-                    class="status-tag for-sale"
-                    style="font-size: 0.6rem; padding: 0.2rem 0.6rem"
-                  >
-                    For Sale <i class="fa-solid fa-circle-check"></i>
+                <div class="agent-card-small card-2">
+                  <div class="agent-avatar">
+                    <i class="fa-solid fa-user-tie"></i>
+                  </div>
+                  <div class="agent-lines">
+                    <div class="line short"></div>
+                    <div class="line long"></div>
                   </div>
                 </div>
-                <p class="prop-specs">3 Beds 2 Baths 1,800 Sq. Ft.</p>
-                <p class="prop-address">
-                  1050 Brickell Bay Dr, Miami, FL 33131
-                </p>
-                <div class="divider"></div>
-                <div class="prop-price">$1,850,000</div>
-              </div>
-            </div>
-
-            <!-- Card 1 -->
-            <div class="portfolio-card">
-              <!-- Image Slider -->
-              <div class="img-slider-container">
-                <div class="img-slider-track">
-                  <div
-                    class="img-slide"
-                    style="background-image: url('imgs/Properties/prop-1.png')"
-                  ></div>
-                  <div
-                    class="img-slide"
-                    style="background-image: url('imgs/Properties/prop-2.png')"
-                  ></div>
-                  <div
-                    class="img-slide"
-                    style="background-image: url('imgs/hero-banner.png')"
-                  ></div>
-                </div>
-
-                <!-- Controls -->
-                <button class="slider-arrow slider-prev">
-                  <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <button class="slider-arrow slider-next">
-                  <i class="fa-solid fa-chevron-right"></i>
-                </button>
-
-                <!-- Pagination -->
-                <div class="slider-pagination">1/3</div>
-
-                <!-- Fav Icon -->
-                <button class="fav-icon-small">
-                  <i class="fa-regular fa-heart"></i>
-                </button>
-              </div>
-
-              <div class="content-container">
-                <div class="portfolio-card-header">
-                  <h3 class="prop-title">732 Denburn Place</h3>
-                  <div
-                    class="status-tag coming-soon"
-                    style="font-size: 0.6rem; padding: 0.2rem 0.6rem"
-                  >
-                    Coming Soon <i class="fa-solid fa-clock"></i>
-                  </div>
-                </div>
-                <p class="prop-specs">4 Beds 3 Baths 2,350 Sq. Ft.</p>
-                <p class="prop-address">732 Denburn Place, Raleigh, NC 27603</p>
-                <div class="divider"></div>
-                <div class="prop-price">$2,425,000</div>
-              </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="portfolio-card">
-              <!-- Image Slider -->
-              <div class="img-slider-container">
-                <div class="img-slider-track">
-                  <div
-                    class="img-slide"
-                    style="background-image: url('imgs/hero-banner.png')"
-                  ></div>
-                  <div
-                    class="img-slide"
-                    style="background-image: url('imgs/Properties/prop-3.png')"
-                  ></div>
-                  <div
-                    class="img-slide"
-                    style="background-image: url('imgs/Properties/prop-2.png')"
-                  ></div>
-                </div>
-
-                <!-- Controls -->
-                <button class="slider-arrow slider-prev">
-                  <i class="fa-solid fa-chevron-left"></i>
-                </button>
-                <button class="slider-arrow slider-next">
-                  <i class="fa-solid fa-chevron-right"></i>
-                </button>
-
-                <!-- Pagination -->
-                <div class="slider-pagination">1/3</div>
-
-                <button class="fav-icon-small">
-                  <i class="fa-regular fa-heart"></i>
-                </button>
-              </div>
-
-              <div class="content-container">
-                <div class="portfolio-card-header">
-                  <h3 class="prop-title">1050 Brickell Bay Dr</h3>
-                  <div
-                    class="status-tag for-sale"
-                    style="font-size: 0.6rem; padding: 0.2rem 0.6rem"
-                  >
-                    For Sale <i class="fa-solid fa-circle-check"></i>
-                  </div>
-                </div>
-                <p class="prop-specs">3 Beds 2 Baths 1,800 Sq. Ft.</p>
-                <p class="prop-address">
-                  1050 Brickell Bay Dr, Miami, FL 33131
-                </p>
-                <div class="divider"></div>
-                <div class="prop-price">$1,850,000</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Agent Preview Section -->
-        <section class="main-container agent-preview-section mt-5 mb-5">
-          <div class="agent-preview-card">
-            <div class="agent-content-wrapper">
-              <div class="agent-text">
-                <h2 class="animate-slide-up">Expert Guidance at Every Step</h2>
-                <p class="animate-slide-up" style="animation-delay: 0.1s">
-                  Our select team of real estate professionals brings decades of
-                  market expertise. Whether buying or selling, partner with an
-                  agent who understands your vision.
-                </p>
-                <a
-                  href="#"
-                  class="btn-light-pill animate-slide-up"
-                  style="animation-delay: 0.2s"
-                  >Find the Agents <i class="fa-solid fa-arrow-right"></i
-                ></a>
-              </div>
-              <div class="agent-visual">
-                <!-- Abstract Team Visual -->
-                <div class="circle-decoration"></div>
-
-                <!-- Floating Agent Cards (Abstract Team) -->
-                <div class="agent-stack">
-                  <div class="agent-card-small card-1">
-                    <div class="agent-avatar">
-                      <i class="fa-solid fa-user"></i>
-                    </div>
-                    <div class="agent-lines">
-                      <div class="line short"></div>
-                      <div class="line long"></div>
+                <div class="agent-card-small card-3">
+                  <div class="verified-badge">
+                    <i class="fa-solid fa-shield-halved"></i>
+                    <div class="verified-check">
+                      <i class="fa-solid fa-check"></i>
                     </div>
                   </div>
-                  <div class="agent-card-small card-2">
-                    <div class="agent-avatar">
-                      <i class="fa-solid fa-user-tie"></i>
-                    </div>
-                    <div class="agent-lines">
-                      <div class="line short"></div>
-                      <div class="line long"></div>
-                    </div>
-                  </div>
-                  <div class="agent-card-small card-3">
-                    <div class="verified-badge">
-                      <i class="fa-solid fa-shield-halved"></i>
-                      <div class="verified-check">
-                        <i class="fa-solid fa-check"></i>
-                      </div>
-                    </div>
-                    <div class="verified-info">
-                      <span class="v-title">Raya Certified</span>
-                      <div class="v-rating">
-                        <i class="fa-solid fa-star"></i>
-                        <span>5.0 Top Rated</span>
-                      </div>
+                  <div class="verified-info">
+                    <span class="v-title">Raya Certified</span>
+                    <div class="v-rating">
+                      <i class="fa-solid fa-star"></i>
+                      <span>5.0 Top Rated</span>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Seller Process Section -->
-        <section class="main-container seller-process-section mt-5 mb-5">
-          <div class="section-header-center">
-            <h2>Simple Steps to Sell Your Home</h2>
+      <!-- Seller Process Section -->
+      <section class="main-container seller-process-section mt-5 mb-5">
+        <div class="section-header-center">
+          <h2>Simple Steps to Sell Your Home</h2>
+          <p>
+            We simplify the selling journey. From valuation to closing, we guide
+            you every step of the way.
+          </p>
+        </div>
+
+        <div class="process-steps-grid">
+          <!-- Step 1 -->
+          <div class="process-card">
+            <div class="step-icon">
+              <i class="fa-solid fa-location-dot"></i>
+              <span class="step-number">1</span>
+            </div>
+            <h3>Enter Your Address</h3>
             <p>
-              We simplify the selling journey. From valuation to closing, we
-              guide you every step of the way.
+              Start by providing your property location to get a preliminary
+              market assessment.
             </p>
           </div>
 
-          <div class="process-steps-grid">
-            <!-- Step 1 -->
-            <div class="process-card">
-              <div class="step-icon">
-                <i class="fa-solid fa-location-dot"></i>
-                <span class="step-number">1</span>
-              </div>
-              <h3>Enter Your Address</h3>
-              <p>
-                Start by providing your property location to get a preliminary
-                market assessment.
-              </p>
+          <!-- Step 2 -->
+          <div class="process-card">
+            <div class="step-icon">
+              <i class="fa-solid fa-chart-line"></i>
+              <span class="step-number">2</span>
             </div>
-
-            <!-- Step 2 -->
-            <div class="process-card">
-              <div class="step-icon">
-                <i class="fa-solid fa-chart-line"></i>
-                <span class="step-number">2</span>
-              </div>
-              <h3>Get Instant Evaluation</h3>
-              <p>
-                Our algorithms analyze local data to provide an instant
-                estimated value range.
-              </p>
-            </div>
-
-            <!-- Step 3 -->
-            <div class="process-card">
-              <div class="step-icon">
-                <i class="fa-solid fa-handshake-simple"></i>
-                <span class="step-number">3</span>
-              </div>
-              <h3>Connect with an Agent</h3>
-              <p>
-                Review your estimate and connect with a top-rated local agent to
-                finalize your listing.
-              </p>
-            </div>
+            <h3>Get Instant Evaluation</h3>
+            <p>
+              Our algorithms analyze local data to provide an instant estimated
+              value range.
+            </p>
           </div>
 
-          <!-- Valuation Input Mockup -->
-          <div class="valuation-cta-container">
+          <!-- Step 3 -->
+          <div class="process-card">
+            <div class="step-icon">
+              <i class="fa-solid fa-handshake-simple"></i>
+              <span class="step-number">3</span>
+            </div>
+            <h3>Connect with an Agent</h3>
+            <p>
+              Review your estimate and connect with a top-rated local agent to
+              finalize your listing.
+            </p>
+          </div>
+        </div>
+
+        <!-- Valuation Input with Autocomplete -->
+        <div class="valuation-cta-container">
+          <form class="valuation-form" id="valuationForm">
             <div class="valuation-input-wrapper">
               <i class="fa-solid fa-magnifying-glass search-icon"></i>
               <input
                 type="text"
+                id="valuationInput"
                 placeholder="Enter your home address for a free estimate..."
+                autocomplete="off"
               />
-              <button class="btn-dark-pill">Get Estimate</button>
+              <button type="submit" class="btn-dark-pill">Get Estimate</button>
             </div>
-          </div>
-        </section>
-      </main>
+
+            <!-- Suggestion Dropdown -->
+            <div
+              class="search-suggestions valuation-suggestions"
+              id="valuationSuggestions"
+            >
+              <div class="suggestion-group">
+                <h6>Popular Addresses</h6>
+                <ul>
+                  <li>
+                    <i class="fa-solid fa-location-dot"></i> 722 Denburn Place,
+                    Raleigh, NC 27603
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-location-dot"></i> 1234 Washington
+                    Street, Austin, TX 1300
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-location-dot"></i> 5678 Lincoln
+                    Avenue, Miami, FL 33101
+                  </li>
+                </ul>
+              </div>
+              <div class="suggestion-group">
+                <h6>Recent Valuations</h6>
+                <ul>
+                  <li>
+                    <i class="fa-solid fa-clock-rotate-left"></i> 9101 Beverly
+                    Boulevard, LA, CA 90210
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-clock-rotate-left"></i> 1050 Brickell
+                    Bay Dr, Miami, FL 33131
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
 
     <!-- Footer -->
     <!-- Footer -->
