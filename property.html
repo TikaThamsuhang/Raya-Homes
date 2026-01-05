@@ -14,460 +14,473 @@
   </head>
   <body>
     <div class="main-screen-layout">
-        <!-- Header Placeholder -->
-        <div class="app-container" id="header-placeholder"></div>
+      <!-- Header Placeholder -->
+      <div class="app-container" id="header-placeholder"></div>
 
-        <!-- Filter Bar Section -->
-        <div class="app-container filter-bar-container">
-          <div class="filter-bar">
-            <div class="filter-search-wrapper">
-              <!-- Added relative for dropdown positioning -->
-              <div class="search-input-wrapper">
-                <input
-                  type="text"
-                  id="propertySearchInput"
-                  placeholder="Manhattan, NY"
-                  autocomplete="off"
-                />
-                <button class="search-icon-btn">
-                  <i class="fa-solid fa-magnifying-glass"></i>
-                </button>
-              </div>
-
-              <!-- Dropdown with Scrollbar -->
-              <div class="search-suggestions" id="propertySearchSuggestions">
-                <div class="suggestion-group">
-                  <h6>Popular Locations</h6>
-                  <ul>
-                    <li>
-                      <i class="fa-solid fa-location-dot"></i> Manhattan, NY
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-location-dot"></i> Brooklyn, NY
-                    </li>
-                    <li><i class="fa-solid fa-location-dot"></i> Queens, NY</li>
-                    <li>
-                      <i class="fa-solid fa-location-dot"></i> Beverly Hills, CA
-                    </li>
-                    <li><i class="fa-solid fa-location-dot"></i> Miami, FL</li>
-                    <li>
-                      <i class="fa-solid fa-location-dot"></i> Chicago, IL
-                    </li>
-                    <li><i class="fa-solid fa-location-dot"></i> Austin, TX</li>
-                    <li>
-                      <i class="fa-solid fa-location-dot"></i> Seattle, WA
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-location-dot"></i> San Francisco, CA
-                    </li>
-                    <li><i class="fa-solid fa-location-dot"></i> Boston, MA</li>
-                  </ul>
-                </div>
-                <div class="suggestion-group">
-                  <h6>Recent Searches</h6>
-                  <ul>
-                    <li>
-                      <i class="fa-solid fa-clock-rotate-left"></i> Luxury
-                      Apartment
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-clock-rotate-left"></i> Villa with
-                      Pool
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-clock-rotate-left"></i> Penthouse
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-
-            <!-- Property Type Filter -->
-            <div class="filter-dropdown-wrapper" style="position: relative">
-              <button class="filter-pill" id="propertyTypeBtn">
-                <i class="fa-solid fa-house"></i> Property Type
-                <i class="fa-solid fa-chevron-down"></i>
+      <!-- Filter Bar Section -->
+      <div class="app-container filter-bar-container">
+        <div class="filter-bar">
+          <div class="filter-search-wrapper">
+            <!-- Added relative for dropdown positioning -->
+            <div class="search-input-wrapper">
+              <input
+                type="text"
+                id="propertySearchInput"
+                placeholder="Manhattan, NY"
+                autocomplete="off"
+              />
+              <button class="search-icon-btn">
+                <i class="fa-solid fa-magnifying-glass"></i>
               </button>
-              <div class="filter-dropdown" id="propertyTypeDropdown">
-                <div class="dropdown-header">
-                  <h6>Select Property Type</h6>
-                </div>
-                <div class="dropdown-content">
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="type" value="house" />
-                    <span class="checkmark"></span>
-                    <span class="label-text"
-                      ><i class="fa-solid fa-house-chimney"></i> House</span
-                    >
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="type" value="apartment" />
-                    <span class="checkmark"></span>
-                    <span class="label-text"
-                      ><i class="fa-solid fa-building"></i> Apartment</span
-                    >
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="type" value="condo" />
-                    <span class="checkmark"></span>
-                    <span class="label-text"
-                      ><i class="fa-solid fa-city"></i> Condo</span
-                    >
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="type" value="villa" />
-                    <span class="checkmark"></span>
-                    <span class="label-text"
-                      ><i class="fa-solid fa-umbrella-beach"></i> Villa</span
-                    >
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="type" value="land" />
-                    <span class="checkmark"></span>
-                    <span class="label-text"
-                      ><i class="fa-solid fa-tree"></i> Land</span
-                    >
-                  </label>
-                </div>
-                <div class="dropdown-footer">
-                  <button class="btn-reset">Reset</button>
-                  <button class="btn-done">Done</button>
-                </div>
-              </div>
             </div>
 
-            <!-- Bedrooms Filter -->
-            <div class="filter-dropdown-wrapper" style="position: relative">
-              <button class="filter-pill" id="bedroomsBtn">
-                <i class="fa-solid fa-bed"></i> Bedrooms
-                <i class="fa-solid fa-chevron-down"></i>
-              </button>
-              <div class="filter-dropdown" id="bedroomsDropdown">
-                <div class="dropdown-header">
-                  <h6>Select Bedrooms</h6>
-                </div>
-                <div class="dropdown-content">
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="beds" value="any" />
-                    <span class="checkmark"></span>
-                    <span class="label-text">Any</span>
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="beds" value="1" />
-                    <span class="checkmark"></span>
-                    <span class="label-text">1+ Bedroom</span>
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="beds" value="2" />
-                    <span class="checkmark"></span>
-                    <span class="label-text">2+ Bedrooms</span>
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="beds" value="3" />
-                    <span class="checkmark"></span>
-                    <span class="label-text">3+ Bedrooms</span>
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="beds" value="4" />
-                    <span class="checkmark"></span>
-                    <span class="label-text">4+ Bedrooms</span>
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="beds" value="5" />
-                    <span class="checkmark"></span>
-                    <span class="label-text">5+ Bedrooms</span>
-                  </label>
-                </div>
-                <div class="dropdown-footer">
-                  <button class="btn-reset">Reset</button>
-                  <button class="btn-done">Done</button>
-                </div>
+            <!-- Dropdown with Scrollbar -->
+            <div class="search-suggestions" id="propertySearchSuggestions">
+              <div class="suggestion-group">
+                <h6>Popular Locations</h6>
+                <ul>
+                  <li>
+                    <i class="fa-solid fa-location-dot"></i> Manhattan, NY
+                  </li>
+                  <li><i class="fa-solid fa-location-dot"></i> Brooklyn, NY</li>
+                  <li><i class="fa-solid fa-location-dot"></i> Queens, NY</li>
+                  <li>
+                    <i class="fa-solid fa-location-dot"></i> Beverly Hills, CA
+                  </li>
+                  <li><i class="fa-solid fa-location-dot"></i> Miami, FL</li>
+                  <li><i class="fa-solid fa-location-dot"></i> Chicago, IL</li>
+                  <li><i class="fa-solid fa-location-dot"></i> Austin, TX</li>
+                  <li><i class="fa-solid fa-location-dot"></i> Seattle, WA</li>
+                  <li>
+                    <i class="fa-solid fa-location-dot"></i> San Francisco, CA
+                  </li>
+                  <li><i class="fa-solid fa-location-dot"></i> Boston, MA</li>
+                </ul>
+              </div>
+              <div class="suggestion-group">
+                <h6>Recent Searches</h6>
+                <ul>
+                  <li>
+                    <i class="fa-solid fa-clock-rotate-left"></i> Luxury
+                    Apartment
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-clock-rotate-left"></i> Villa with
+                    Pool
+                  </li>
+                  <li>
+                    <i class="fa-solid fa-clock-rotate-left"></i> Penthouse
+                  </li>
+                </ul>
               </div>
             </div>
-
-            <!-- Bathrooms Filter -->
-            <div class="filter-dropdown-wrapper" style="position: relative">
-              <button class="filter-pill" id="bathroomsBtn">
-                <i class="fa-solid fa-bath"></i> Bathrooms
-                <i class="fa-solid fa-chevron-down"></i>
-              </button>
-              <div class="filter-dropdown" id="bathroomsDropdown">
-                <div class="dropdown-header">
-                  <h6>Select Bathrooms</h6>
-                </div>
-                <div class="dropdown-content">
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="baths" value="any" />
-                    <span class="checkmark"></span>
-                    <span class="label-text">Any</span>
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="baths" value="1" />
-                    <span class="checkmark"></span>
-                    <span class="label-text">1+ Bathroom</span>
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="baths" value="2" />
-                    <span class="checkmark"></span>
-                    <span class="label-text">2+ Bathrooms</span>
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="baths" value="3" />
-                    <span class="checkmark"></span>
-                    <span class="label-text">3+ Bathrooms</span>
-                  </label>
-                  <label class="checkbox-item">
-                    <input type="checkbox" name="baths" value="4" />
-                    <span class="checkmark"></span>
-                    <span class="label-text">4+ Bathrooms</span>
-                  </label>
-                </div>
-                <div class="dropdown-footer">
-                  <button class="btn-reset">Reset</button>
-                  <button class="btn-done">Done</button>
-                </div>
-              </div>
-            </div>
-            <!-- Price Filter -->
-            <div class="filter-dropdown-wrapper" style="position: relative">
-              <button class="filter-pill" id="priceBtn">
-                <i class="fa-solid fa-tag"></i> Price
-                <i class="fa-solid fa-chevron-down"></i>
-              </button>
-              <div
-                class="filter-dropdown price-range-dropdown dropdown-right"
-                id="priceDropdown"
-              >
-                <div class="dropdown-header">
-                  <h6>Price Range</h6>
-                </div>
-                <div class="price-inputs-container">
-                  <div class="price-input-group">
-                    <label>Minimum</label>
-                    <input
-                      type="text"
-                      placeholder="No Min"
-                      id="minPriceInput"
-                    />
-                    <ul class="price-suggestions-list" id="minPriceSuggestions">
-                      <li data-value="0">0</li>
-                      <li data-value="100000">$100,000</li>
-                      <li data-value="200000">$200,000</li>
-                      <li data-value="300000">$300,000</li>
-                      <li data-value="400000">$400,000</li>
-                      <li data-value="500000">$500,000</li>
-                      <li data-value="600000">$600,000</li>
-                    </ul>
-                  </div>
-                  <div class="price-separator">-</div>
-                  <div class="price-input-group">
-                    <label>Maximum</label>
-                    <input
-                      type="text"
-                      placeholder="No Max"
-                      id="maxPriceInput"
-                    />
-                    <ul class="price-suggestions-list" id="maxPriceSuggestions">
-                      <li data-value="500000">$500,000</li>
-                      <li data-value="600000">$600,000</li>
-                      <li data-value="700000">$700,000</li>
-                      <li data-value="800000">$800,000</li>
-                      <li data-value="900000">$900,000</li>
-                      <li data-value="1000000">$1M</li>
-                      <li data-value="any">Any Price</li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="dropdown-footer">
-                  <button class="btn-reset">Reset</button>
-                  <button class="btn-done">Done</button>
-                </div>
-              </div>
-            </div>
-
-            <!-- More Filter -->
-            <div class="filter-dropdown-wrapper" style="position: relative">
-              <button class="filter-pill" id="moreBtn">
-                More <i class="fa-solid fa-chevron-down"></i>
-              </button>
-              <div
-                class="filter-dropdown more-filters-dropdown dropdown-right"
-                id="moreDropdown"
-              >
-                <div class="more-filters-grid">
-                  <!-- Col 1 -->
-                  <div class="more-filter-column">
-                    <div class="dropdown-section">
-                      <h6>Listing Status</h6>
-                      <div class="checkbox-grid">
-                        <label class="checkbox-item">
-                          <input
-                            type="checkbox"
-                            name="status"
-                            value="for-sale"
-                          />
-                          <span class="checkmark"></span>
-                          <span class="label-text">For Sale</span>
-                        </label>
-                        <label class="checkbox-item">
-                          <input
-                            type="checkbox"
-                            name="status"
-                            value="pending"
-                          />
-                          <span class="checkmark"></span>
-                          <span class="label-text">Pending</span>
-                        </label>
-                        <label class="checkbox-item">
-                          <input type="checkbox" name="status" value="sold" />
-                          <span class="checkmark"></span>
-                          <span class="label-text">Sold</span>
-                        </label>
-                        <label class="checkbox-item">
-                          <input type="checkbox" name="status" value="new" />
-                          <span class="checkmark"></span>
-                          <span class="label-text">New Construction</span>
-                        </label>
-                      </div>
-                    </div>
-                    <div class="dropdown-section">
-                      <h6>Listing Type</h6>
-                      <div class="checkbox-grid">
-                        <label class="checkbox-item">
-                          <input
-                            type="checkbox"
-                            name="listing_type"
-                            value="agent"
-                          />
-                          <span class="checkmark"></span>
-                          <span class="label-text">Agent Listed</span>
-                        </label>
-                        <label class="checkbox-item">
-                          <input
-                            type="checkbox"
-                            name="listing_type"
-                            value="owner"
-                          />
-                          <span class="checkmark"></span>
-                          <span class="label-text">By Owner</span>
-                        </label>
-                        <label class="checkbox-item">
-                          <input
-                            type="checkbox"
-                            name="listing_type"
-                            value="foreclosure"
-                          />
-                          <span class="checkmark"></span>
-                          <span class="label-text">Foreclosure</span>
-                        </label>
-                        <label class="checkbox-item">
-                          <input
-                            type="checkbox"
-                            name="listing_type"
-                            value="upcoming"
-                          />
-                          <span class="checkmark"></span>
-                          <span class="label-text">Coming Soon</span>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Col 2 -->
-                  <div class="more-filter-column">
-                    <div class="dropdown-section">
-                      <h6>Property Facts</h6>
-                      <div class="facts-input-grid">
-                        <div class="fact-group">
-                          <label>Square Feet</label>
-                          <div class="min-max-row">
-                            <input type="number" placeholder="Min" />
-                            <span>-</span>
-                            <input type="number" placeholder="Max" />
-                          </div>
-                        </div>
-                        <div class="fact-group">
-                          <label>Lot Size (sq ft)</label>
-                          <div class="min-max-row">
-                            <input type="number" placeholder="Min" />
-                            <span>-</span>
-                            <input type="number" placeholder="Max" />
-                          </div>
-                        </div>
-                        <div class="fact-group">
-                          <label>Year Built</label>
-                          <div class="min-max-row">
-                            <input type="number" placeholder="Min" />
-                            <span>-</span>
-                            <input type="number" placeholder="Max" />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="dropdown-section">
-                      <h6>Other Amenities</h6>
-                      <div class="checkbox-grid two-col">
-                        <label class="checkbox-item">
-                          <input type="checkbox" name="amenity" value="pool" />
-                          <span class="checkmark"></span>
-                          <span class="label-text">Pool</span>
-                        </label>
-                        <label class="checkbox-item">
-                          <input type="checkbox" name="amenity" value="ac" />
-                          <span class="checkmark"></span>
-                          <span class="label-text">A/C</span>
-                        </label>
-                        <label class="checkbox-item">
-                          <input
-                            type="checkbox"
-                            name="amenity"
-                            value="waterfront"
-                          />
-                          <span class="checkmark"></span>
-                          <span class="label-text">Waterfront</span>
-                        </label>
-                        <label class="checkbox-item">
-                          <input
-                            type="checkbox"
-                            name="amenity"
-                            value="garage"
-                          />
-                          <span class="checkmark"></span>
-                          <span class="label-text">Garage</span>
-                        </label>
-                        <label class="checkbox-item">
-                          <input
-                            type="checkbox"
-                            name="amenity"
-                            value="basement"
-                          />
-                          <span class="checkmark"></span>
-                          <span class="label-text">Basement</span>
-                        </label>
-                        <label class="checkbox-item">
-                          <input type="checkbox" name="amenity" value="view" />
-                          <span class="checkmark"></span>
-                          <span class="label-text">View</span>
-                        </label>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="dropdown-footer">
-                  <button class="btn-reset">Reset All</button>
-                  <button class="btn-done">Done</button>
-                </div>
-              </div>
-            </div>
-            <button
-              class="btn btn-secondary"
-              id="saveSearchBtn"
-              style="border-radius: 50px; padding: 0.8rem 1.5rem"
-            >
-              Save Search
-            </button>
           </div>
+
+          <!-- Mobile Filter Button (Shows on Mobile) -->
+          <button class="mobile-filter-btn" id="mobileFilterBtn">
+            <i class="fa-solid fa-sliders"></i>
+            <span>Filters</span>
+          </button>
+
+          <!-- Property Type Filter -->
+          <div class="filter-dropdown-wrapper" style="position: relative">
+            <button class="filter-pill" id="propertyTypeBtn">
+              <i class="fa-solid fa-house"></i> Property Type
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="filter-dropdown" id="propertyTypeDropdown">
+              <div class="dropdown-header">
+                <h6>Select Property Type</h6>
+              </div>
+              <div class="dropdown-content">
+                <label class="checkbox-item">
+                  <input type="checkbox" name="type" value="house" />
+                  <span class="checkmark"></span>
+                  <span class="label-text"
+                    ><i class="fa-solid fa-house-chimney"></i> House</span
+                  >
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="type" value="apartment" />
+                  <span class="checkmark"></span>
+                  <span class="label-text"
+                    ><i class="fa-solid fa-building"></i> Apartment</span
+                  >
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="type" value="condo" />
+                  <span class="checkmark"></span>
+                  <span class="label-text"
+                    ><i class="fa-solid fa-city"></i> Condo</span
+                  >
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="type" value="villa" />
+                  <span class="checkmark"></span>
+                  <span class="label-text"
+                    ><i class="fa-solid fa-umbrella-beach"></i> Villa</span
+                  >
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="type" value="land" />
+                  <span class="checkmark"></span>
+                  <span class="label-text"
+                    ><i class="fa-solid fa-tree"></i> Land</span
+                  >
+                </label>
+              </div>
+              <div class="dropdown-footer">
+                <button class="btn-reset">Reset</button>
+                <button class="btn-done">Done</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bedrooms Filter -->
+          <div class="filter-dropdown-wrapper" style="position: relative">
+            <button class="filter-pill" id="bedroomsBtn">
+              <i class="fa-solid fa-bed"></i> Bedrooms
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="filter-dropdown" id="bedroomsDropdown">
+              <div class="dropdown-header">
+                <h6>Select Bedrooms</h6>
+              </div>
+              <div class="dropdown-content">
+                <label class="checkbox-item">
+                  <input type="checkbox" name="beds" value="any" />
+                  <span class="checkmark"></span>
+                  <span class="label-text">Any</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="beds" value="1" />
+                  <span class="checkmark"></span>
+                  <span class="label-text">1+ Bedroom</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="beds" value="2" />
+                  <span class="checkmark"></span>
+                  <span class="label-text">2+ Bedrooms</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="beds" value="3" />
+                  <span class="checkmark"></span>
+                  <span class="label-text">3+ Bedrooms</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="beds" value="4" />
+                  <span class="checkmark"></span>
+                  <span class="label-text">4+ Bedrooms</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="beds" value="5" />
+                  <span class="checkmark"></span>
+                  <span class="label-text">5+ Bedrooms</span>
+                </label>
+              </div>
+              <div class="dropdown-footer">
+                <button class="btn-reset">Reset</button>
+                <button class="btn-done">Done</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bathrooms Filter -->
+          <div class="filter-dropdown-wrapper" style="position: relative">
+            <button class="filter-pill" id="bathroomsBtn">
+              <i class="fa-solid fa-bath"></i> Bathrooms
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="filter-dropdown" id="bathroomsDropdown">
+              <div class="dropdown-header">
+                <h6>Select Bathrooms</h6>
+              </div>
+              <div class="dropdown-content">
+                <label class="checkbox-item">
+                  <input type="checkbox" name="baths" value="any" />
+                  <span class="checkmark"></span>
+                  <span class="label-text">Any</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="baths" value="1" />
+                  <span class="checkmark"></span>
+                  <span class="label-text">1+ Bathroom</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="baths" value="2" />
+                  <span class="checkmark"></span>
+                  <span class="label-text">2+ Bathrooms</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="baths" value="3" />
+                  <span class="checkmark"></span>
+                  <span class="label-text">3+ Bathrooms</span>
+                </label>
+                <label class="checkbox-item">
+                  <input type="checkbox" name="baths" value="4" />
+                  <span class="checkmark"></span>
+                  <span class="label-text">4+ Bathrooms</span>
+                </label>
+              </div>
+              <div class="dropdown-footer">
+                <button class="btn-reset">Reset</button>
+                <button class="btn-done">Done</button>
+              </div>
+            </div>
+          </div>
+          <!-- Price Filter -->
+          <div class="filter-dropdown-wrapper" style="position: relative">
+            <button class="filter-pill" id="priceBtn">
+              <i class="fa-solid fa-tag"></i> Price
+              <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div
+              class="filter-dropdown price-range-dropdown dropdown-right"
+              id="priceDropdown"
+            >
+              <div class="dropdown-header">
+                <h6>Price Range</h6>
+              </div>
+              <div class="price-inputs-container">
+                <div class="price-input-group">
+                  <label>Minimum</label>
+                  <input type="text" placeholder="No Min" id="minPriceInput" />
+                  <ul class="price-suggestions-list" id="minPriceSuggestions">
+                    <li data-value="0">0</li>
+                    <li data-value="100000">$100,000</li>
+                    <li data-value="200000">$200,000</li>
+                    <li data-value="300000">$300,000</li>
+                    <li data-value="400000">$400,000</li>
+                    <li data-value="500000">$500,000</li>
+                    <li data-value="600000">$600,000</li>
+                  </ul>
+                </div>
+                <div class="price-separator">-</div>
+                <div class="price-input-group">
+                  <label>Maximum</label>
+                  <input type="text" placeholder="No Max" id="maxPriceInput" />
+                  <ul class="price-suggestions-list" id="maxPriceSuggestions">
+                    <li data-value="500000">$500,000</li>
+                    <li data-value="600000">$600,000</li>
+                    <li data-value="700000">$700,000</li>
+                    <li data-value="800000">$800,000</li>
+                    <li data-value="900000">$900,000</li>
+                    <li data-value="1000000">$1M</li>
+                    <li data-value="any">Any Price</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="dropdown-footer">
+                <button class="btn-reset">Reset</button>
+                <button class="btn-done">Done</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- More Filter -->
+          <div class="filter-dropdown-wrapper" style="position: relative">
+            <button class="filter-pill" id="moreBtn">
+              More <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div
+              class="filter-dropdown more-filters-dropdown dropdown-right"
+              id="moreDropdown"
+            >
+              <div class="more-filters-grid">
+                <!-- Col 1 -->
+                <div class="more-filter-column">
+                  <div class="dropdown-section">
+                    <h6>Listing Status</h6>
+                    <div class="checkbox-grid">
+                      <label class="checkbox-item">
+                        <input type="checkbox" name="status" value="for-sale" />
+                        <span class="checkmark"></span>
+                        <span class="label-text">For Sale</span>
+                      </label>
+                      <label class="checkbox-item">
+                        <input type="checkbox" name="status" value="pending" />
+                        <span class="checkmark"></span>
+                        <span class="label-text">Pending</span>
+                      </label>
+                      <label class="checkbox-item">
+                        <input type="checkbox" name="status" value="sold" />
+                        <span class="checkmark"></span>
+                        <span class="label-text">Sold</span>
+                      </label>
+                      <label class="checkbox-item">
+                        <input type="checkbox" name="status" value="new" />
+                        <span class="checkmark"></span>
+                        <span class="label-text">New Construction</span>
+                      </label>
+                    </div>
+                  </div>
+                  <div class="dropdown-section">
+                    <h6>Listing Type</h6>
+                    <div class="checkbox-grid">
+                      <label class="checkbox-item">
+                        <input
+                          type="checkbox"
+                          name="listing_type"
+                          value="agent"
+                        />
+                        <span class="checkmark"></span>
+                        <span class="label-text">Agent Listed</span>
+                      </label>
+                      <label class="checkbox-item">
+                        <input
+                          type="checkbox"
+                          name="listing_type"
+                          value="owner"
+                        />
+                        <span class="checkmark"></span>
+                        <span class="label-text">By Owner</span>
+                      </label>
+                      <label class="checkbox-item">
+                        <input
+                          type="checkbox"
+                          name="listing_type"
+                          value="foreclosure"
+                        />
+                        <span class="checkmark"></span>
+                        <span class="label-text">Foreclosure</span>
+                      </label>
+                      <label class="checkbox-item">
+                        <input
+                          type="checkbox"
+                          name="listing_type"
+                          value="upcoming"
+                        />
+                        <span class="checkmark"></span>
+                        <span class="label-text">Coming Soon</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Col 2 -->
+                <div class="more-filter-column">
+                  <div class="dropdown-section">
+                    <h6>Property Facts</h6>
+                    <div class="facts-input-grid">
+                      <div class="fact-group">
+                        <label>Square Feet</label>
+                        <div class="min-max-row">
+                          <input type="number" placeholder="Min" />
+                          <span>-</span>
+                          <input type="number" placeholder="Max" />
+                        </div>
+                      </div>
+                      <div class="fact-group">
+                        <label>Lot Size (sq ft)</label>
+                        <div class="min-max-row">
+                          <input type="number" placeholder="Min" />
+                          <span>-</span>
+                          <input type="number" placeholder="Max" />
+                        </div>
+                      </div>
+                      <div class="fact-group">
+                        <label>Year Built</label>
+                        <div class="min-max-row">
+                          <input type="number" placeholder="Min" />
+                          <span>-</span>
+                          <input type="number" placeholder="Max" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="dropdown-section">
+                    <h6>Other Amenities</h6>
+                    <div class="checkbox-grid two-col">
+                      <label class="checkbox-item">
+                        <input type="checkbox" name="amenity" value="pool" />
+                        <span class="checkmark"></span>
+                        <span class="label-text">Pool</span>
+                      </label>
+                      <label class="checkbox-item">
+                        <input type="checkbox" name="amenity" value="ac" />
+                        <span class="checkmark"></span>
+                        <span class="label-text">A/C</span>
+                      </label>
+                      <label class="checkbox-item">
+                        <input
+                          type="checkbox"
+                          name="amenity"
+                          value="waterfront"
+                        />
+                        <span class="checkmark"></span>
+                        <span class="label-text">Waterfront</span>
+                      </label>
+                      <label class="checkbox-item">
+                        <input type="checkbox" name="amenity" value="garage" />
+                        <span class="checkmark"></span>
+                        <span class="label-text">Garage</span>
+                      </label>
+                      <label class="checkbox-item">
+                        <input
+                          type="checkbox"
+                          name="amenity"
+                          value="basement"
+                        />
+                        <span class="checkmark"></span>
+                        <span class="label-text">Basement</span>
+                      </label>
+                      <label class="checkbox-item">
+                        <input type="checkbox" name="amenity" value="view" />
+                        <span class="checkmark"></span>
+                        <span class="label-text">View</span>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="dropdown-footer">
+                <button class="btn-reset">Reset All</button>
+                <button class="btn-done">Done</button>
+              </div>
+            </div>
+          </div>
+          <button
+            class="btn btn-secondary"
+            id="saveSearchBtn"
+            style="border-radius: 50px; padding: 0.8rem 1.5rem"
+          >
+            Save Search
+          </button>
         </div>
+      </div>
+
+      <!-- Mobile Filter Modal (Full Screen) -->
+      <div class="mobile-filter-modal" id="mobileFilterModal">
+        <div class="mobile-filter-header">
+          <button class="mobile-filter-close" id="closeFilterModal">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <h2>Filters</h2>
+          <button class="mobile-filter-reset">Reset All</button>
+        </div>
+
+        <div class="mobile-filter-content">
+          <!-- All filters will be cloned here via JavaScript -->
+        </div>
+
+        <div class="mobile-filter-footer">
+          <button class="btn btn-primary btn-block" id="applyFiltersBtn">
+            Show Results
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Bottom Action Bar -->
+      <div class="mobile-bottom-bar">
+        <button class="mobile-action-btn" id="viewMapBtn">
+          <i class="fa-solid fa-map"></i>
+          <span>View Map</span>
+        </button>
+        <button class="mobile-action-btn" id="mobileSaveSearchBtn">
+          <i class="fa-solid fa-bookmark"></i>
+          <span>Save Search</span>
+        </button>
+      </div>
 
       <!-- Split Layout Content -->
       <div class="property-split-layout">
@@ -935,5 +948,7 @@ Hi, I would like to know more about this property</textarea
 
     <script src="js/load-components.js"></script>
     <script src="js/property.js"></script>
+    <script src="js/property-mobile.js"></script>
+    <script src="js/property-sticky.js"></script>
   </body>
 </html>

@@ -62,24 +62,46 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
-
+@media (max-width: 1024px) {
     .valuation-hero-section {
-        height: 400px;
+        height: 50vh;
+        min-height: 450px;
+    }
+
+    .valuation-hero-section h1 {
+        font-size: 3rem;
+    }
+
+    .valuation-section-overlap {
+        margin-top: -100px; /* Reduce overlap on tablet */
+        padding: 0 2rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-overlay{
+        border-radius: 0;
+    }
+    .valuation-hero-section {
+        height: auto;
         min-height: 400px;
+        padding: 4rem 0 6rem; /* Add padding for content */
         border-radius: 0;
     }
 
     .valuation-hero-section h1 {
-        font-size: 2.25rem;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
     }
 
-    .valuation-hero-section .hero-subtitle {
-        font-size: 1rem;
+    .valuation-hero-section .hero-content {
+        padding: 0 1rem;
     }
 
+    /* Adjust overlap for mobile stack */
     .valuation-section-overlap {
-        margin-top: -150px;
+        margin-top: -100px; /* Less overlap on mobile */
+        padding: 0 1rem;
     }
 
     .valuation-section-overlap .valuation-card {
@@ -88,7 +110,70 @@
     }
 
     .valuation-map-column {
-        height: 300px;
+        height: 250px; /* Fixed height map on top */
+    }
+
+    .valuation-details-column {
+        padding: 1.5rem;
+        gap: 1.5rem;
+    }
+
+    .address-text h3 {
+        font-size: 1.2rem;
+    }
+
+    .estimate-value {
+        font-size: 2.5rem;
+    }
+
+    .property-metrics-inline {
+        padding: 1rem;
+        gap: 1rem;
+        flex-direction: row !important;
+        flex-wrap: wrap;
+    }
+    
+    .metric-item {
+        flex-direction: row;
+        gap: 0.25rem;
+        text-align: center;
+    }
+    
+    .metric-value {
+        font-size: 1.2rem;
+    }
+
+    .price-range-bar {
+        flex-direction: row;
+        gap: 1rem;
+        margin: 1rem 0;
+    }
+
+    .range-indicator {
+        width: 100%;
+        height: 20px;
+    }
+
+    .agent-card-static{
+        padding: 1.5rem 1rem !important;
+    }
+    .contact-section-premium{
+        padding: 0 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .valuation-hero-section h1 {
+        font-size: 2rem;
+    }
+    
+    .estimate-value {
+        font-size: 2rem;
+    }
+    
+    .btn-search-pill {
+        width: 100%;
+        justify-content: center;
     }
 }
 
@@ -96,9 +181,10 @@
    WHITE BACKGROUND SECTION WRAPPER
    ========================================= */
 .background-section {
-    background: #3C232810;
+    background: #f9f9f9; /* Slight grey to differentiate */
     padding: 4rem 0;
     margin-top: 4rem;
+    border-top: 1px solid #eee;
 }
 
 .background-section .agent-recommendation-section {
@@ -108,6 +194,7 @@
 
 @media (max-width: 768px) {
     .background-section {
-        padding: 2rem 0;
+        padding: 3rem 0;
+        margin-top: 2rem;
     }
 }
