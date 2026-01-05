@@ -2,7 +2,7 @@
    SELLER PROCESS SECTION
    ========================================= */
 .seller-process-section {
-    padding: 4rem 1rem !important;
+    padding: 0rem 1rem 4rem !important;
 }
 
 .section-header-center {
@@ -70,7 +70,6 @@
     border-radius: 24px;
     overflow: hidden;
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.1);
-    min-height: 700px;
 }
 
 /* Left Column: Map */
@@ -134,7 +133,7 @@
 }
 
 .estimate-label {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
     color: var(--color-text-muted);
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -394,201 +393,6 @@
         grid-template-columns: 1fr;
     }
 
-    transform: translateX(-50%);
-    width: 14px;
-    height: 14px;
-    background: var(--color-secondary);
-    border: 3px solid white;
-    border-radius: 50%;
-    box-shadow: 0 2px 8px rgba(212, 175, 55, 0.4);
-}
-
-/* Property Metrics Inline */
-.property-metrics-inline {
-    display: flex;
-    justify-content: space-around;
-    padding: 1.5rem;
-    background: rgba(212, 175, 55, 0.05);
-    border-radius: 16px;
-}
-
-.metric-item {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-}
-
-.metric-item i {
-    font-size: 1.5rem;
-    color: var(--color-secondary);
-}
-
-.metric-item .metric-value {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #3C2328;
-}
-
-.metric-item .metric-label {
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-}
-
-/* Market Insights Compact */
-.market-insights-compact h4 {
-    font-size: 1.2rem;
-    color: #3C2328;
-    margin-bottom: 1rem;
-    font-weight: 600;
-}
-
-.insights-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-}
-
-.insight-item {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 1rem;
-    background: white;
-    border-radius: 12px;
-    border: 1px solid rgba(0, 0, 0, 0.06);
-}
-
-.insight-item i {
-    font-size: 1.3rem;
-    color: var(--color-secondary);
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(212, 175, 55, 0.1);
-    border-radius: 10px;
-    flex-shrink: 0;
-}
-
-.insight-item i.fa-arrow-trend-up {
-    color: #22c55e;
-    background: rgba(34, 197, 94, 0.1);
-}
-
-.insight-item .insight-value {
-    font-size: 1.3rem;
-    font-weight: 700;
-    color: #3C2328;
-    margin-bottom: 0.15rem;
-}
-
-.insight-item .insight-label {
-    font-size: 0.8rem;
-    color: var(--color-text-muted);
-}
-
-/* Valuation Actions */
-.valuation-actions {
-    display: flex;
-    gap: 1rem;
-}
-
-.btn-primary-large {
-    flex: 1;
-    background: var(--color-secondary);
-    color: #3C2328;
-    border: none;
-    padding: 1rem 1.5rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    transition: all 0.3s ease;
-}
-
-.btn-primary-large:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
-}
-
-.btn-secondary-outline {
-    flex: 1;
-    background: transparent;
-    color: #3C2328;
-    border: 2px solid rgba(60, 35, 40, 0.2);
-    padding: 1rem 1.5rem;
-    border-radius: 50px;
-    font-weight: 600;
-    font-size: 0.95rem;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    transition: all 0.3s ease;
-}
-
-.btn-secondary-outline:hover {
-    background: rgba(60, 35, 40, 0.05);
-    border-color: rgba(60, 35, 40, 0.4);
-}
-
-/* Disclaimer */
-.estimate-disclaimer {
-    display: flex;
-    align-items: flex-start;
-    gap: 0.75rem;
-    padding: 1rem;
-    background: rgba(59, 130, 246, 0.05);
-    border-radius: 12px;
-    border-left: 3px solid rgba(59, 130, 246, 0.4);
-    font-size: 0.85rem;
-    color: var(--color-text-body);
-    line-height: 1.5;
-    text-align: left;
-}
-
-.estimate-disclaimer i {
-    color: rgba(59, 130, 246, 0.8);
-    font-size: 1rem;
-    margin-top: 2px;
-    flex-shrink: 0;
-}
-
-/* Responsive Design */
-@media (max-width: 968px) {
-    .valuation-card {
-        grid-template-columns: 1fr;
-        min-height: auto;
-    }
-
-    .valuation-map-column {
-        height: 300px;
-    }
-
-    .valuation-details-column {
-        padding: 2rem 1.5rem;
-    }
-
-    .valuation-actions {
-        flex-direction: column;
-    }
-
-    .estimate-value {
-        font-size: 2.5rem;
-    }
-}
-
-@media (max-width: 768px) {
-    .process-steps-grid {
-        grid-template-columns: 1fr;
-    }
-
     .property-metrics-inline {
         flex-direction: column;
         gap: 1rem;
@@ -604,7 +408,7 @@
 
 .agent-recommendation-section {
     position: relative;
-    padding: 2rem 0;
+    padding: 3rem 0;
 }
 
 .agent-cards-grid {
@@ -641,8 +445,8 @@
 }
 
 .agent-image-wrapper {
-    width: 80px;
-    height: 80px;
+    width: 100px;
+    height: 100px;
     border-radius: 50%;
     overflow: hidden;
     border: 2px solid var(--color-white);
@@ -727,10 +531,189 @@
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     margin-top: auto;
+    height: 40px;
 }
 
-.agent-actions .btn-block {
-    padding: 0.6rem 1rem;
+.agent-actions button{
+    font-size: 1rem;
+}
+
+
+/* Agent Contact Info */
+.agent-contact-info {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.contact-row {
+    font-size: 0.85rem;
+    color: var(--color-text-body);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.contact-row i {
+    color: var(--color-secondary);
     font-size: 0.9rem;
+    width: 16px; 
+    text-align: center;
+}
+
+/* Agent Logo Badge */
+.agent-logo-badge {
+    margin-left: auto;
+    width: 55px;
+    height: 50px;
+    opacity: 0.8;
+}
+
+.agent-logo-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+@media (max-width: 480px) {
+    .agent-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+    }
+}
+
+
+/* =========================================
+   7. PREMIUM CONTACT SECTION (Centered)
+   ========================================= */
+
+.contact-section-premium {
+    position: relative;
+    padding: 4rem 0;
+    overflow: hidden;
+}
+
+.contact-header-centered {
+    margin-bottom: 3rem;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.contact-header-centered h2 {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.contact-header-centered p {
+    font-size: 1.1rem;
+    color: var(--color-text-body);
+}
+
+.contact-form-centered {
+    max-width: 700px;
+    margin: 0 auto;
+    background: #ffffff;
+    padding: 2.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+}
+
+.premium-contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+/* Floating Label Group */
+.floating-label-group {
+    position: relative;
+}
+
+.premium-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    transition: all 0.2s;
+    font-family: var(--font-primary);
+}
+
+.premium-input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(174, 88, 61, 0.1);
+}
+
+.premium-input::placeholder {
+    color: #ccc;
+    font-weight: 300;
+}
+
+/* Label Styling: Always Floating */
+.floating-label-group label {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: #ffffff;
+    padding: 0 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    pointer-events: none;
+    transition: all 0.2s;
+    line-height: 1;
+}
+
+.required {
+    color: #dc3545;
+}
+
+/* Checkbox */
+.form-check-group {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.9rem;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+    text-align: left; /* Ensure left align even in centered container */
+}
+
+.form-check-group input[type="checkbox"] {
+    margin-top: 0.3rem;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    flex-shrink: 0;
+    accent-color: var(--color-primary);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .form-row {
+        grid-template-columns: 1fr;
+    }
+    
+    .contact-content-wrapper {
+        padding: 2rem 1.5rem;
+    }
+    
+    .contact-form-centered {
+        padding: 1.5rem;
+    }
 }
 

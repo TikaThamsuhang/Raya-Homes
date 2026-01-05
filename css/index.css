@@ -9,6 +9,7 @@
     align-items: center;
     justify-content: space-between;
     box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    margin-top: 1.25rem;
     margin-bottom: 1.25rem;
     position: relative;
     z-index: 100;

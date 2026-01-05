@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home Valuation - Raya Homes</title>
+    <!-- Imports -->
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/valuation.css" />
+    <link rel="stylesheet" href="css/sell.css" />
+    <link rel="stylesheet" href="css/agent-modal.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="app-container" id="header-placeholder"></div>
+
+    <!-- Hero Section with Overlapping Valuation -->
+    <div class="valuation-page-wrapper">
+      <section class="app-container hero-card valuation-hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1 class="animate-slide-up">Raya Homes Estimation</h1>
+
+          <!-- Search Bar -->
+          <div
+            class="search-wrapper-relative animate-slide-up"
+            style="animation-delay: 0.2s"
+          >
+            <form class="single-search-form" onsubmit="event.preventDefault();">
+              <div class="search-input-wrapper">
+                <input
+                  type="text"
+                  id="searchInput"
+                  placeholder="Enter your home address"
+                  autocomplete="off"
+                  required
+                />
+              </div>
+              <button type="submit" class="btn-search-pill">
+                Get Estimate <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Overlapping Valuation Card -->
+      <section class="valuation-section-overlap">
+        <div class="valuation-card">
+          <!-- Left Column: Map -->
+          <div class="valuation-map-column">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.9873196845946!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+            >
+            </iframe>
+          </div>
+
+          <!-- Right Column: All Details -->
+          <div class="valuation-details-column">
+            <!-- Property Address with Image -->
+            <div class="property-header">
+              <div class="house-image">
+                <img src="imgs/Single/img-1.png" alt="Property" />
+              </div>
+              <div class="address-text">
+                <h3 id="propertyAddressTitle">722 Denburn Place</h3>
+                <p id="propertyAddressFull">
+                  722 Denburn Place, Raleigh, NC 27603
+                </p>
+              </div>
+            </div>
+
+            <!-- Estimate Value -->
+            <div class="estimate-section">
+              <div class="estimate-label">Estimated Home Value</div>
+              <div class="estimate-value">$539,900</div>
+
+              <!-- Price Range with Low/High Labels -->
+              <div class="price-range-bar">
+                <div class="range-label-left">
+                  <span class="label-text">Low</span>
+                  <span class="label-value">$512,405</span>
+                </div>
+                <div class="range-indicator">
+                  <div class="range-line"></div>
+                  <div class="range-marker"></div>
+                </div>
+                <div class="range-label-right">
+                  <span class="label-text">High</span>
+                  <span class="label-value">$567,395</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Property Metrics -->
+            <div class="property-metrics-inline">
+              <div class="metric-item">
+                <i class="fa-solid fa-bed"></i>
+                <span class="metric-value">4</span>
+                <span class="metric-label">Beds</span>
+              </div>
+              <div class="metric-item">
+                <i class="fa-solid fa-bath"></i>
+                <span class="metric-value">3</span>
+                <span class="metric-label">Baths</span>
+              </div>
+              <div class="metric-item">
+                <i class="fa-solid fa-ruler-combined"></i>
+                <span class="metric-value">1,800</span>
+                <span class="metric-label">Sq. Ft.</span>
+              </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div class="estimate-disclaimer">
+              <i class="fa-solid fa-circle-info"></i>
+              This is a preliminary estimate based on market data. Connect with
+              an agent for a precise valuation.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <main>
+      <!-- White Background Section: Agents Only -->
+      <section class="background-section">
+        <!-- Agent Recommendation Section (Transferred) -->
+        <section class="main-container agent-recommendation-section">
+          <div class="container">
+            <div class="section-header-center mb-3">
+              <h2 class="animate-slide-up">Connect with Local Agents</h2>
+              <p class="animate-slide-up" style="animation-delay: 0.1s">
+                Connect with our top-rated local experts who specialize in your
+                neighborhood.
+              </p>
+            </div>
+
+            <div class="agent-cards-grid">
+              <!-- Agent 1: Sarah Jenkins -->
+              <div
+                class="agent-card-static glass-panel animate-slide-up"
+                style="animation-delay: 0.2s"
+              >
+                <div class="agent-card-header">
+                  <div class="agent-image-wrapper">
+                    <img src="imgs/Agents/agent-2.jpg" alt="Sarah Jenkins" />
+                  </div>
+                  <div class="agent-info">
+                    <h3>Sarah Jenkins</h3>
+                    <p class="agent-title">Senior Luxury Estate Agent</p>
+                    <div class="agent-contact-info">
+                      <div class="contact-row">
+                        <i class="fa-solid fa-phone"></i> +1 (212) 555-0123
+                      </div>
+                      <div class="contact-row">
+                        <i class="fa-solid fa-envelope"></i>
+                        sarah.jenkins@rayahomes.com
+                      </div>
+                    </div>
+                  </div>
+                  <div class="agent-logo-badge">
+                    <img src="imgs/logo-no-background.png" alt="Raya Homes" />
+                  </div>
+                </div>
+
+                <div class="agent-stats-row">
+                  <div class="stat-item">
+                    <span class="stat-value">142</span>
+                    <span class="stat-label">Sold</span>
+                  </div>
+                  <div class="stat-separator"></div>
+                  <div class="stat-item">
+                    <span class="stat-value">12</span>
+                    <span class="stat-label">Active</span>
+                  </div>
+                  <div class="stat-separator"></div>
+                  <div class="stat-item">
+                    <span class="stat-value">15 Yrs</span>
+                    <span class="stat-label">Experience</span>
+                  </div>
+                </div>
+
+                <div class="agent-actions">
+                  <button
+                    class="btn-primary btn-block"
+                    onclick="openAgentContactModal('Sarah Jenkins', 'sarah.jenkins@rayahomes.com', '+1 (305) 555-0888')"
+                  >
+                    Contact Agent
+                  </button>
+                  <button
+                    class="btn-outline btn-block"
+                    onclick="window.location.href='agent/index.html?id=agent-1'"
+                  >
+                    View Profile
+                  </button>
+                </div>
+              </div>
+
+              <!-- Agent 2: Michael Chang -->
+              <div
+                class="agent-card-static glass-panel animate-slide-up"
+                style="animation-delay: 0.3s"
+              >
+                <div class="agent-card-header">
+                  <div class="agent-image-wrapper">
+                    <img src="imgs/Agents/agent-3.avif" alt="Michael Chang" />
+                  </div>
+                  <div class="agent-info">
+                    <h3>Michael Chang</h3>
+                    <p class="agent-title">Luxury Condo Specialist</p>
+                    <div class="agent-contact-info">
+                      <div class="contact-row">
+                        <i class="fa-solid fa-phone"></i> +1 (305) 555-0888
+                      </div>
+                      <div class="contact-row">
+                        <i class="fa-solid fa-envelope"></i>
+                        michael.chang@rayahomes.com
+                      </div>
+                    </div>
+                  </div>
+                  <div class="agent-logo-badge">
+                    <img src="imgs/logo-no-background.png" alt="Raya Homes" />
+                  </div>
+                </div>
+
+                <div class="agent-stats-row">
+                  <div class="stat-item">
+                    <span class="stat-value">85</span>
+                    <span class="stat-label">Sold</span>
+                  </div>
+                  <div class="stat-separator"></div>
+                  <div class="stat-item">
+                    <span class="stat-value">5</span>
+                    <span class="stat-label">Active</span>
+                  </div>
+                  <div class="stat-separator"></div>
+                  <div class="stat-item">
+                    <span class="stat-value">10 Yrs</span>
+                    <span class="stat-label">Experience</span>
+                  </div>
+                </div>
+
+                <div class="agent-actions">
+                  <button
+                    class="btn-primary btn-block"
+                    onclick="openAgentContactModal('Michael Chang', 'michael.chang@rayahomes.com', '+1 (305) 555-0888')"
+                  >
+                    Contact Agent
+                  </button>
+                  <button
+                    class="btn-outline btn-block"
+                    onclick="window.location.href='agent/index.html?id=agent-2'"
+                  >
+                    View Profile
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <!-- Premium Contact Section (Transferred) -->
+      <section class="main-container contact-section-premium mt-5 mb-5">
+        <div class="contact-content-wrapper text-center">
+          <div class="contact-header-centered">
+            <h2 class="animate-slide-up">Contact an Agent</h2>
+            <p class="animate-slide-up" style="animation-delay: 0.1s">
+              We'll match you with a Raya Homes agent in the market you're
+              interested in. Complete the form below and an agent will be in
+              touch.
+            </p>
+          </div>
+
+          <div
+            class="contact-form-centered animate-slide-up"
+            style="animation-delay: 0.2s"
+          >
+            <form class="premium-contact-form">
+              <div class="form-row">
+                <div class="floating-label-group">
+                  <input
+                    type="text"
+                    id="c_name"
+                    class="premium-input"
+                    placeholder="e.g. John Doe"
+                    required
+                  />
+                  <label for="c_name"
+                    >Full Name <span class="required">*</span></label
+                  >
+                </div>
+                <div class="floating-label-group">
+                  <input
+                    type="email"
+                    id="c_email"
+                    class="premium-input"
+                    placeholder="e.g. john@example.com"
+                    required
+                  />
+                  <label for="c_email"
+                    >Email Address <span class="required">*</span></label
+                  >
+                </div>
+              </div>
+
+              <div class="floating-label-group">
+                <input
+                  type="tel"
+                  id="c_phone"
+                  class="premium-input"
+                  placeholder="e.g. +1 (555) 000-0000"
+                />
+                <label for="c_phone">Mobile Number</label>
+              </div>
+
+              <div class="floating-label-group">
+                <textarea
+                  id="c_message"
+                  class="premium-input"
+                  rows="4"
+                  placeholder="Hi, I would like to speak with an agent about selling my home..."
+                ></textarea>
+                <label for="c_message">Message</label>
+              </div>
+
+              <div class="form-check-group text-start">
+                <input type="checkbox" id="contactConsent" />
+                <label for="contactConsent"
+                  >Yes, I would like more information from Raya Homes. Please
+                  use and/or share my information with a Raya Homes affiliated
+                  agent to contact me about my real estate needs.</label
+                >
+              </div>
+
+              <button type="submit" class="btn-primary btn-block">
+                Contact Agent <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Agent Contact Modal -->
+      <div id="agentContactModal" class="modal-overlay">
+        <div class="modal-container">
+          <div class="modal-header">
+            <h3 id="modalAgentName">Contact Agent</h3>
+            <button class="modal-close" onclick="closeAgentContactModal()">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div class="agent-contact-details">
+              <p id="modalAgentEmail"></p>
+              <p id="modalAgentPhone"></p>
+            </div>
+            <form class="modal-contact-form">
+              <div class="floating-label-group">
+                <input
+                  type="text"
+                  id="modal_name"
+                  class="premium-input"
+                  placeholder="e.g. John Doe"
+                  required
+                />
+                <label for="modal_name"
+                  >Your Name <span class="required">*</span></label
+                >
+              </div>
+
+              <div class="floating-label-group">
+                <input
+                  type="email"
+                  id="modal_email"
+                  class="premium-input"
+                  placeholder="e.g. john@example.com"
+                  required
+                />
+                <label for="modal_email"
+                  >Your Email <span class="required">*</span></label
+                >
+              </div>
+
+              <div class="floating-label-group">
+                <input
+                  type="tel"
+                  id="modal_phone"
+                  class="premium-input"
+                  placeholder="e.g. +1 (555) 000-0000"
+                />
+                <label for="modal_phone">Your Phone</label>
+              </div>
+
+              <div class="floating-label-group">
+                <textarea
+                  id="modal_message"
+                  class="premium-input"
+                  rows="4"
+                  placeholder="I'm interested in discussing..."
+                ></textarea>
+                <label for="modal_message">Message</label>
+              </div>
+
+              <button type="submit" class="btn-primary btn-block">
+                Send Message <i class="fa-solid fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <!-- Scripts -->
+    <script src="js/load-components.js"></script>
+    <script src="js/sell.js"></script>
+    <script src="js/valuation.js"></script>
+    <script src="js/agent-modal.js"></script>
+  </body>
+</html>
