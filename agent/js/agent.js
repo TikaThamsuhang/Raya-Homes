@@ -41,13 +41,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 3. Populate Agent Details
   setText("agentName", agent.name);
-  setText("agentNameSmall", agent.name); // In listings header
+  setText("agentNameSmall", agent.name);
   setText("agentTitle", agent.title);
   setText("agentOfficeLink", agent.office);
   setText("agentLicense", agent.license);
-  setText("agentBio", agent.bio); // Bio might be HTML safe? existing data is plain text.
+  setText("agentBio", agent.bio); 
 
-  // Stats (Bottom bar)
+  // Stats 
   if (agent.stats) {
     setText("statSold", agent.stats.sold);
     setText("statActive", agent.stats.active);
@@ -66,14 +66,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Image
   const imgEl = document.getElementById("agentImage");
   if (imgEl) {
-    imgEl.src = fixPath(agent.photo) || "../imgs/placeholder-agent.jpg";
+    imgEl.src = fixPath(agent.photo) || "../imgs/no-image.avif";
     imgEl.alt = agent.name;
     imgEl.onerror = function () {
       this.src = "../imgs/no-image.avif";
     };
   }
 
-  // Socials (Vertical List with Labels)
+  // Socials 
   const socialsContainer = document.getElementById("agentSocials");
   if (socialsContainer && agent.socialLinks) {
     let socialHtml = "";

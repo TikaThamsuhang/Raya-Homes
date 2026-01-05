@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
         // Set active link based on current page
         const currentPage =
           window.location.pathname.split("/").pop() || "index.html";
-        const navLinks = headerPlaceholder.querySelectorAll(".nav-list a");
+        const navLinks = headerPlaceholder.querySelectorAll(
+          ".nav-list a, .mobile-nav-list a"
+        );
 
         navLinks.forEach((link) => {
           const linkPage = link.getAttribute("href");
