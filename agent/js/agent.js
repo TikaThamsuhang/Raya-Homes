@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div style="text-align:center; padding: 10rem 2rem; font-family: 'Outfit', sans-serif;">
                 <h1 style="font-size: 2.5rem; color: #333;">Agent Not Found</h1>
                 <p style="color: #666; margin: 1rem 0;">We couldn't find the agent you're looking for.</p>
-                <a href="../index.html" style="color: #3e2b26; text-decoration: none; font-weight: 600;">Return to Home</a>
+                <a href="../index.html" style="color: #3e2b26; text-decoration: underline; font-weight: 600;">Return to Home</a>
             </div>`;
     return;
   }

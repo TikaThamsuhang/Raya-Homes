@@ -360,7 +360,7 @@ document.addEventListener("DOMContentLoaded", () => {
     // Open Modal
     saveSearchBtn.addEventListener("click", (e) => {
       e.preventDefault();
-      searchNameInput.value = "address and price entered"; // Reset/Pre-fill
+      searchNameInput.value = "Manhattan, NY, 150k-300k"; // Reset/Pre-fill
       saveSearchOverlay.classList.add("show");
       document.body.style.overflow = "hidden"; // Prevent scroll
     });
