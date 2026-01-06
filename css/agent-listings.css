@@ -1,0 +1,534 @@
+/* Agent Listing Page Styles */
+
+.listings-hero {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+}
+
+.page-title {
+}
+
+/* Filter Bar - Premium Pill Design */
+.filter-bar-container {
+    margin-bottom: 1.7rem;
+}
+
+.filter-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    background: transparent;
+}
+
+/* Search Wrapper (Location & Name) */
+.filter-search-wrapper {
+    flex: 2;
+    min-width: 280px;
+    position: relative;
+}
+
+.search-input-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 0;
+}
+
+.search-input-wrapper input {
+    background-color: white;
+    width: 100%;
+    padding: 0.8rem 3rem 0.8rem 1.5rem; /* Default padding */
+    border-radius: 50px;
+    border: 1px solid transparent;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-family: var(--font-primary);
+    font-size: 1rem;
+    color: #333;
+    outline: none;
+    transition: all 0.2s;
+}
+
+/* Padding override for Name input with left icon */
+.search-input-wrapper:has(.input-icon-left) input {
+    padding-left: 3rem; /* Make room for icon */
+}
+
+.input-icon-left {
+    position: absolute;
+    left: 1.2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #999;
+    pointer-events: none;
+}
+
+
+.search-input-wrapper input:focus {
+    border-color: #A05E46; /* Primary Color */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.search-icon-btn {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #A05E46; /* Primary Color */
+    color: white;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.search-icon-btn:hover {
+    background: #8a4f3b;
+}
+
+.find-agent-btn, .save-search-btn {
+    border-radius: 50px;
+    padding: 0.8rem 1.5rem;
+    margin-left: auto;
+    white-space: nowrap;
+    gap: 0.5rem;
+}
+
+.find-agent-btn i, .save-search-btn i {
+    font-size: .9rem;
+}
+.find-agent-btn{
+    background-color: var(--color-primary);
+    border: none;
+    margin-right: 3rem;
+}
+.find-agent-btn:hover{
+    background-color: var(--color-primary-light);
+}
+/* Dropdown Suggestions */
+.search-suggestions {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 0;
+    width: 100%;
+    background: white;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    list-style: none;
+    padding: 0.5rem 0;
+    margin: 0;
+    z-index: 100;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.2s ease;
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.search-suggestions.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.search-suggestions li {
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    transition: background 0.1s;
+    font-size: 0.95rem;
+    color: #444;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.search-suggestions li i {
+    color: #999;
+    font-size: 0.9rem;
+}
+
+.search-suggestions li:hover {
+    background: #f9f9f9;
+    color: #A05E46;
+}
+
+.search-suggestions li:hover i {
+    color: #A05E46;
+}
+
+/* Results Grid */
+.results-header {
+    margin-bottom: 2rem;
+    border-bottom: 1px solid #d0d0d0;
+    padding-bottom: .6rem;
+}
+
+.results-count {
+    font-size: 1.1rem;
+    color: #666;
+    font-weight: 500;
+}
+
+/* Agent Listings Grid */
+/* Agent Listings Grid */
+.agent-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Force 3 columns */
+    gap: 2rem;
+}
+
+/* Responsive Grid */
+@media (max-width: 1100px) {
+    .agent-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 700px) {
+    .agent-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* =========================================
+   AGENT CARD STYLES (Ported from sell.css)
+   ========================================= */
+
+.agent-card-static {
+    background: white; /* Ensure bg is set if glass-panel isn't enough */
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribute space evenly */
+    height: 100%; /* Fill grid cell height */
+    gap: 1.5rem;
+    border-radius: 24px; /* Matched radius */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Glass panel effect handled by global .glass-panel class if present */
+}
+
+.agent-card-static:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05); /* Global Shadow-lg equivalent */
+}
+
+/* Header: Image & Info */
+.agent-card-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.agent-image-wrapper {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid white;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    flex-shrink: 0;
+}
+
+.agent-image-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Fix Flex Overflow: Allow this container to shrink */
+.agent-info {
+    min-width: 0; 
+    flex: 1; 
+}
+
+.agent-info h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+    color: #3C2328; /* Primary */
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.agent-title {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Agent Logo Badge */
+.agent-logo-badge {
+    display: none;
+    margin-left: auto;
+    width: 55px;
+    height: 50px;
+    opacity: 0.8;
+    flex-shrink: 0; /* Prevent squishing */
+}
+
+.agent-logo-badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+/* Contact Info in Header */
+.agent-contact-info {
+    margin-top: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.contact-row {
+    font-size: 0.85rem;
+    color: #555;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    /* Ensure long emails wrap */
+    overflow-wrap: break-word;
+    word-break: break-word; 
+    line-height: 1.2;
+}
+
+.contact-row i {
+    color: #AE583D; /* Secondary */
+    font-size: 0.9rem;
+    width: 16px; 
+    text-align: center;
+    flex-shrink: 0;
+}
+
+/* Stats Row */
+.agent-stats-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.5);
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.stat-item {
+    text-align: center;
+    flex: 1;
+}
+
+.stat-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #3C2328; /* Primary */
+    font-family: var(--font-heading, serif);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888;
+    margin-top: 0.2rem;
+}
+
+.stat-separator {
+    width: 1px;
+    height: 24px;
+    background-color: #cdcdcd; /* Border color */
+    opacity: 0.5;
+}
+
+/* Actions */
+.agent-actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-top: auto;
+    height: 48px; /* Slightly taller for buttons */
+}
+
+.agent-actions button {
+    font-size: 0.95rem;
+    border-radius: 50px !important;
+}
+
+.agent-actions .btn-primary {
+    width: 100%;
+    background: #3C2328;
+    color: white;
+    border: none;
+}
+
+.agent-actions .btn-outline {
+    width: 100%;
+    background: white;
+    border: 1px solid #e0e0e0;
+    color: #333;
+}
+
+/* Responsive Tweaks */
+@media (max-width: 480px) {
+    .agent-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        position: relative;
+    }
+
+    .agent-logo-badge {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin: 0;
+    }
+    
+    .agent-actions {
+        grid-template-columns: 1fr;
+        height: auto;
+        gap: 0.8rem;
+    }
+}
+
+
+/* =========================================
+   Toast Notification 
+   ========================================= */
+.toast-notification {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%) translateY(100px);
+    background: #333;
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    opacity: 0;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    z-index: 2000;
+}
+
+.toast-notification.show {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+}
+
+.toast-notification i {
+    color: #4CAF50; /* Success Green */
+    font-size: 1.2rem;
+}
+
+/* =========================================
+   Modal / Overlay Styles
+   ========================================= */
+.contact-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.contact-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.contact-modal {
+    width: 90%;
+    max-width: 500px;
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.contact-overlay.show .contact-modal {
+    transform: scale(1);
+}
+
+.contact-card {
+    background: white;
+    border-radius: 24px;
+    padding: 2.5rem;
+    position: relative;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+}
+
+.input-rounded {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 1rem;
+    background: #f9f9f9;
+    transition: all 0.2s;
+    outline: none;
+}
+
+.input-rounded:focus {
+    background: white;
+    border-color: #A05E46;
+    box-shadow: 0 0 0 4px rgba(160, 94, 70, 0.1);
+}
+
+.floating-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+}
+
+.floating-label {
+    position: absolute;
+    left: 1.25rem;
+    top: 1rem;
+    pointer-events: none;
+    transition: 0.2s ease all;
+    color: #999;
+}
+
+.input-rounded:focus ~ .floating-label,
+.input-rounded:not(:placeholder-shown) ~ .floating-label {
+    top: -0.6rem;
+    left: 1rem;
+    font-size: 0.75rem;
+    background: white;
+    padding: 0 0.4rem;
+    color: #A05E46;
+    font-weight: 600;
+}
+
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .filter-bar {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .filter-search-wrapper,
+    #saveSearchBtn {
+        width: 100%;
+        margin: 0 !important;
+    }
+}

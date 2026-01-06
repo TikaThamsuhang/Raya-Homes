@@ -1,0 +1,245 @@
+/* Find Agent Page Specific Styles */
+
+/* --- Agent Grid Section (Active) --- */
+.agent-grid-section {
+    padding: 4rem 0 6rem 0;
+    margin-top: 2rem;
+    background-color: #f9f9f9;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.section-subtitle {
+    color: #666;
+    margin-bottom: 3rem;
+    font-size: 1rem;
+}
+
+.agent-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.agent-card-mini {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s, box-shadow 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+
+.agent-card-mini:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+}
+
+.agent-card-img-wrapper {
+    width: 100%;
+    height: 300px;
+    background-color: #eee;
+    position: relative;
+}
+
+.agent-card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+}
+
+.agent-card-body {
+    padding: 1.5rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.agent-card-name {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin-bottom: 0.25rem;
+}
+
+.agent-card-title {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.agent-card-info {
+    margin-top: auto;
+    padding-top: 1rem;
+    border-top: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.agent-link {
+    color: #A05E46;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.agent-link:hover {
+    text-decoration: underline;
+}
+
+/* --- Dual Search Form (Active) --- */
+.hero-search-container {
+    background: transparent;
+}
+
+.app-search-bar {
+    background: white;
+    border-radius: 50px;
+    padding: 0.5rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    position: relative;
+    z-index: 20;
+}
+
+.dual-search-form {
+    display: flex;
+    width: 100%;
+    align-items: center;
+}
+
+.search-input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 0 1.5rem;
+    justify-content: center;
+}
+
+.search-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 2px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.search-input-group input {
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: #333;
+    width: 100%;
+    padding: 0;
+    background: transparent;
+}
+
+.search-input-group input::placeholder {
+    color: #999;
+}
+
+.divider-vertical {
+    width: 1px;
+    height: 40px;
+    background-color: #ddd;
+}
+
+.btn-search-circle {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: #A05E46;
+    color: white;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    flex-shrink: 0;
+    margin-right: 4px;
+}
+
+.btn-search-circle:hover {
+    background-color: #8a4d36;
+    transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .app-search-bar {
+        border-radius: 20px;
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .dual-search-form {
+        flex-direction: column; gap: 1rem;
+    }
+    .search-input-group {
+        width: 100%; padding: 0.5rem 0; border-bottom: 1px solid #eee; text-align: center;
+    }
+    .search-input-group input { text-align: center; }
+    .divider-vertical { display: none; }
+    .btn-search-circle { width: 100%; border-radius: 12px; margin-right: 0; margin-top: 0.5rem; }
+}
+
+
+
+.agent-directory-section {
+    /* background-color: #f2f0eb;
+    padding: 4rem 0 6rem 0;
+    margin-top: 2rem; */
+}
+.directory-header {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2.2rem;
+    color: #3e2b26;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+.directory-description {
+    font-size: 0.95rem;
+    color: #555;
+    margin-bottom: 3rem;
+    font-weight: 500;
+}
+.directory-subheader {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #000;
+    margin-bottom: 1.5rem;
+}
+.state-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+.state-column {
+    display: flex; flex-direction: column; gap: 0.8rem;
+}
+.directory-link {
+    color: #A05E46; text-decoration: underline; font-size: 0.95rem; font-weight: 500;
+    transition: color 0.2s; width: fit-content;
+}
+.directory-link:hover { color: #3e2b26; text-decoration: none; }
+.alpha-nav {
+    display: flex; flex-wrap: wrap; gap: 1rem; font-size: 0.85rem; color: #666; margin-bottom: 2rem; align-items: center;
+}
+.alpha-nav span { font-weight: 600; color: #333; margin-right: 0.5rem; }
+.alpha-nav a { color: #A05E46; text-decoration: none; font-weight: 500; }

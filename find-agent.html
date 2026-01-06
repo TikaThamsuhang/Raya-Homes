@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find an Agent</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/find-agent.css" />
+    <!-- FontAwesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="app-container" id="header-placeholder"></div>
+
+    <!-- Hero Section -->
+    <section class="app-container">
+      <div class="hero-card">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+          <h1 class="animate-slide-up">Find The<br />Right Agents</h1>
+          <p
+            class="hero-subtitle animate-slide-up"
+            style="animation-delay: 0.1s"
+          >
+            Find the right agent to help you find your dream home.
+          </p>
+
+          <!-- Search Container -->
+          <div
+            class="hero-search-container animate-slide-up"
+            style="animation-delay: 0.2s"
+          >
+            <!-- Tabs -->
+            <div class="search-tabs">
+              <button class="tab-btn active" data-tab="location">
+                Location
+              </button>
+              <button class="tab-btn" data-tab="agent">Agent</button>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="search-wrapper-relative">
+              <form class="single-search-form">
+                <div class="search-input-wrapper">
+                  <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="City, Zip, Address, Property Name"
+                    autocomplete="off"
+                  />
+                </div>
+                <button type="submit" class="btn-search-pill">
+                  Search <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </form>
+
+              <!-- Suggestion Dropdown -->
+              <div class="search-suggestions" id="searchSuggestions">
+                <div class="suggestion-group">
+                  <h6>Popular Locations</h6>
+                  <ul>
+                    <li>
+                      <i class="fa-solid fa-location-dot"></i> Beverly Hills, CA
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-location-dot"></i> New York, NY
+                    </li>
+                    <li><i class="fa-solid fa-location-dot"></i> Miami, FL</li>
+                  </ul>
+                </div>
+                <div class="suggestion-group">
+                  <h6>Recent Searches</h6>
+                  <ul>
+                    <li>
+                      <i class="fa-solid fa-clock-rotate-left"></i> Modern Villa
+                      with Pool
+                    </li>
+                    <li>
+                      <i class="fa-solid fa-clock-rotate-left"></i> Downtown
+                      Apartment
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Agent Directory Section -->
+    <main>
+      <section class="main-container agent-directory-section">
+        <div class="app-container">
+          <h2 class="directory-header">Real Estate Agents</h2>
+          <p class="directory-description">
+            Find Raya Homes affiliated real estate agents in
+            <strong>the United States</strong>.
+          </p>
+
+          <h3 class="directory-subheader">United States Real Estate Agents</h3>
+
+          <div class="state-grid">
+            <div class="state-column">
+              <a
+                href="agent-listings.html?search=Alabama"
+                class="directory-link"
+                >Alabama Real Estate Agents</a
+              >
+              <a href="agent-listings.html?search=Alaska" class="directory-link"
+                >Alaska Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Arizona"
+                class="directory-link"
+                >Arizona Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Arkansas"
+                class="directory-link"
+                >Arkansas Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=California"
+                class="directory-link"
+                >California Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Colorado"
+                class="directory-link"
+                >Colorado Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Connecticut"
+                class="directory-link"
+                >Connecticut Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Delaware"
+                class="directory-link"
+                >Delaware Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=District%20of%20Columbia"
+                class="directory-link"
+              >
+                District of Columbia Real Estate Agents
+              </a>
+              <a
+                href="agent-listings.html?search=Florida"
+                class="directory-link"
+                >Florida Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Georgia"
+                class="directory-link"
+                >Georgia Real Estate Agents</a
+              >
+              <a href="agent-listings.html?search=Hawaii" class="directory-link"
+                >Hawaii Real Estate Agents</a
+              >
+              <a href="agent-listings.html?search=Idaho" class="directory-link"
+                >Idaho Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Illinois"
+                class="directory-link"
+                >Illinois Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Indiana"
+                class="directory-link"
+                >Indiana Real Estate Agents</a
+              >
+              <a href="agent-listings.html?search=Iowa" class="directory-link"
+                >Iowa Real Estate Agents</a
+              >
+              <a href="agent-listings.html?search=Kansas" class="directory-link"
+                >Kansas Real Estate Agents</a
+              >
+            </div>
+
+            <div class="state-column">
+              <a
+                href="agent-listings.html?search=Kentucky"
+                class="directory-link"
+                >Kentucky Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Louisiana"
+                class="directory-link"
+                >Louisiana Real Estate Agents</a
+              >
+              <a href="agent-listings.html?search=Maine" class="directory-link"
+                >Maine Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Maryland"
+                class="directory-link"
+                >Maryland Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Massachusetts"
+                class="directory-link"
+              >
+                Massachusetts Real Estate Agents
+              </a>
+              <a
+                href="agent-listings.html?search=Michigan"
+                class="directory-link"
+                >Michigan Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Minnesota"
+                class="directory-link"
+                >Minnesota Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Mississippi"
+                class="directory-link"
+                >Mississippi Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Missouri"
+                class="directory-link"
+                >Missouri Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Montana"
+                class="directory-link"
+                >Montana Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Nebraska"
+                class="directory-link"
+                >Nebraska Real Estate Agents</a
+              >
+              <a href="agent-listings.html?search=Nevada" class="directory-link"
+                >Nevada Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=New%20Hampshire"
+                class="directory-link"
+              >
+                New Hampshire Real Estate Agents
+              </a>
+              <a
+                href="agent-listings.html?search=New%20Jersey"
+                class="directory-link"
+              >
+                New Jersey Real Estate Agents
+              </a>
+              <a
+                href="agent-listings.html?search=New%20Mexico"
+                class="directory-link"
+                >New Mexico Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=New%20York"
+                class="directory-link"
+                >New York Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=North%20Carolina"
+                class="directory-link"
+              >
+                North Carolina Real Estate Agents
+              </a>
+            </div>
+
+            <div class="state-column">
+              <a
+                href="agent-listings.html?search=North%20Dakota"
+                class="directory-link"
+              >
+                North Dakota Real Estate Agents
+              </a>
+              <a href="agent-listings.html?search=Ohio" class="directory-link"
+                >Ohio Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Oklahoma"
+                class="directory-link"
+                >Oklahoma Real Estate Agents</a
+              >
+              <a href="agent-listings.html?search=Oregon" class="directory-link"
+                >Oregon Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Pennsylvania"
+                class="directory-link"
+              >
+                Pennsylvania Real Estate Agents
+              </a>
+              <a
+                href="agent-listings.html?search=Rhode%20Island"
+                class="directory-link"
+              >
+                Rhode Island Real Estate Agents
+              </a>
+              <a
+                href="agent-listings.html?search=South%20Carolina"
+                class="directory-link"
+              >
+                South Carolina Real Estate Agents
+              </a>
+              <a
+                href="agent-listings.html?search=South%20Dakota"
+                class="directory-link"
+              >
+                South Dakota Real Estate Agents
+              </a>
+              <a
+                href="agent-listings.html?search=Tennessee"
+                class="directory-link"
+              >
+                Tennessee Real Estate Agents
+              </a>
+              <a href="agent-listings.html?search=Texas" class="directory-link"
+                >Texas Real Estate Agents</a
+              >
+              <a href="agent-listings.html?search=Utah" class="directory-link"
+                >Utah Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Vermont"
+                class="directory-link"
+                >Vermont Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Virginia"
+                class="directory-link"
+                >Virginia Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Washington"
+                class="directory-link"
+                >Washington Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=West%20Virginia"
+                class="directory-link"
+              >
+                West Virginia Real Estate Agents
+              </a>
+              <a
+                href="agent-listings.html?search=Wisconsin"
+                class="directory-link"
+                >Wisconsin Real Estate Agents</a
+              >
+              <a
+                href="agent-listings.html?search=Wyoming"
+                class="directory-link"
+                >Wyoming Real Estate Agents</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="js/load-components.js"></script>
+    <script src="agent/js/agents-data.js"></script>
+    <script src="js/find-agent.js"></script>
+  </body>
+</html>

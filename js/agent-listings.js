@@ -1,0 +1,211 @@
+document.addEventListener("DOMContentLoaded", () => {
+  // 1. Data Loading
+  // Wait for agentsData to be available (loaded via script)
+  const agents = window.agentsData || [];
+  const agentGrid = document.getElementById("staticAgentGrid");
+  const resultsCount = document.getElementById("resultsCount");
+
+  // 2. Render All Agents Function
+  const renderAgents = () => {
+    if (!agentGrid) return;
+    agentGrid.innerHTML = "";
+
+    agents.forEach((agent, index) => {
+      const card = document.createElement("div");
+      card.className = "agent-card-static glass-panel animate-slide-up";
+      card.style.animationDelay = `${0.1 + index * 0.1}s`; // Stagger animation
+
+      // Safely access stats or default
+      const sold = agent.stats?.sold || "-";
+      const active = agent.stats?.active || "-";
+      const exp = agent.stats?.experience || "5+ Years";
+
+      card.innerHTML = `
+            <div class="agent-card-header">
+              <div class="agent-image-wrapper">
+                <img src="agent/${agent.photo}" alt="${agent.name}" onerror="this.src='agent/imgs/no-image.avif'" />
+              </div>
+              <div class="agent-info">
+                <h3>${agent.name}</h3>
+                <p class="agent-title">${agent.title}</p>
+                <div class="agent-contact-info">
+                  <div class="contact-row">
+                    <i class="fa-solid fa-phone"></i> ${agent.phone}
+                  </div>
+                  <div class="contact-row">
+                    <i class="fa-solid fa-envelope"></i>
+                    ${agent.email}
+                  </div>
+                </div>
+              </div>
+              <div class="agent-logo-badge">
+                <img src="imgs/logo-no-background.png" alt="Raya Homes" />
+              </div>
+            </div>
+
+            <div class="agent-stats-row">
+              <div class="stat-item">
+                <span class="stat-value">${sold}</span>
+                <span class="stat-label">Sold</span>
+              </div>
+              <div class="stat-separator"></div>
+              <div class="stat-item">
+                <span class="stat-value">${active}</span>
+                <span class="stat-label">Active</span>
+              </div>
+              <div class="stat-separator"></div>
+              <div class="stat-item">
+                <span class="stat-value">${exp}</span>
+                <span class="stat-label">Experience</span>
+              </div>
+            </div>
+
+            <div class="agent-actions">
+              <button
+                class="btn btn-primary btn-block"
+                onclick="openAgentContactModal('${agent.name}', '${agent.email}', '${agent.phone}')"
+              >
+                Contact Agent
+              </button>
+              <button
+                class="btn btn-outline btn-block"
+                onclick="window.location.href='agent/index.html?id=${agent.id}'"
+              >
+                View Profile
+              </button>
+            </div>
+         `;
+      agentGrid.appendChild(card);
+    });
+
+    if (resultsCount)
+      resultsCount.textContent = `${agents.length} Agents found`;
+  };
+
+  // Initial Render
+  renderAgents();
+
+  // 3. Dropdown Logic
+  const setupDropdown = (inputId, listId, dataList, iconClass) => {
+    const input = document.getElementById(inputId);
+    const list = document.getElementById(listId);
+
+    if (!input || !list) return;
+
+    // Populate List
+    list.innerHTML = "";
+    dataList.forEach((item) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<i class="${iconClass}"></i> ${item}`;
+      li.addEventListener("mousedown", (e) => {
+        // mousedown fires before blur
+        e.preventDefault();
+        input.value = item;
+        list.classList.remove("show");
+      });
+      list.appendChild(li);
+    });
+
+    // Events
+    input.addEventListener("focus", () => {
+      if (list.children.length > 0) list.classList.add("show");
+    });
+
+    input.addEventListener("blur", () => {
+      setTimeout(() => list.classList.remove("show"), 200);
+    });
+
+    // Optional: Filter dropdown as you type (visual only, doesn't affect grid)
+    input.addEventListener("input", () => {
+      const query = input.value.toLowerCase();
+      Array.from(list.children).forEach((li) => {
+        const text = li.textContent.toLowerCase();
+        li.style.display = text.includes(query) ? "flex" : "none";
+      });
+      list.classList.add("show");
+    });
+  };
+
+  // Extract Data for Dropdowns
+  // Cities (Mocking some if data is limited, or extracting from addresses if available)
+  // agentsData doesn't strictly have "City" field, but let's mock common ones for the UI + any inferred
+  const cities = [
+    "New York, NY",
+    "Miami, FL",
+    "Los Angeles, CA",
+    "Chicago, IL",
+    "Houston, TX",
+    "Phoenix, AZ",
+  ];
+  const agentNames = agents.map((a) => a.name);
+
+  setupDropdown(
+    "locInput",
+    "locSuggestions",
+    cities,
+    "fa-solid fa-location-dot"
+  );
+  setupDropdown("nameInput", "nameSuggestions", agentNames, "fa-solid fa-user");
+
+  // 4. Save Search Modal Logic (Kept from previous)
+  const saveSearchBtn = document.getElementById("saveSearchBtn");
+  const saveSearchOverlay = document.getElementById("saveSearchOverlay");
+  const cancelSaveSearchBtn = document.getElementById("cancelSaveSearchBtn");
+  const confirmSaveSearchBtn = document.getElementById("confirmSaveSearchBtn");
+  const searchNameInput = document.getElementById("searchNameInput");
+  const saveToast = document.getElementById("saveToast");
+  const toastMessage = document.getElementById("toastMessage");
+
+  const showToast = (message) => {
+    if (saveToast && toastMessage) {
+      toastMessage.textContent = message;
+      saveToast.classList.add("show");
+      setTimeout(() => {
+        saveToast.classList.remove("show");
+      }, 3000);
+    }
+  };
+
+  if (saveSearchBtn && saveSearchOverlay) {
+    saveSearchBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const locInput = document.getElementById("locInput");
+      const nameInput = document.getElementById("nameInput");
+
+      const locationVal = locInput ? locInput.value : "";
+      const agentVal = nameInput ? nameInput.value : "";
+      const autoName = locationVal
+        ? `Agents in ${locationVal}`
+        : agentVal
+        ? `Search: ${agentVal}`
+        : "All Agents Search";
+
+      if (searchNameInput) searchNameInput.value = autoName;
+      saveSearchOverlay.classList.add("show");
+      document.body.style.overflow = "hidden";
+    });
+
+    const closeSaveSearch = () => {
+      saveSearchOverlay.classList.remove("show");
+      document.body.style.overflow = "";
+    };
+
+    if (cancelSaveSearchBtn)
+      cancelSaveSearchBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        closeSaveSearch();
+      });
+    if (confirmSaveSearchBtn)
+      confirmSaveSearchBtn.addEventListener("click", (e) => {
+        e.preventDefault();
+        saveSearchBtn.innerHTML = '<i class="fa-solid fa-heart"></i> Saved';
+        saveSearchBtn.classList.remove("btn-secondary");
+        saveSearchBtn.classList.add("btn-primary");
+        showToast("Search saved successfully!");
+        closeSaveSearch();
+      });
+    saveSearchOverlay.addEventListener("click", (e) => {
+      if (e.target === saveSearchOverlay) closeSaveSearch();
+    });
+  }
+});

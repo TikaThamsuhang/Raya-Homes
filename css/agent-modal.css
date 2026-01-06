@@ -100,6 +100,55 @@
     margin-bottom: 1.5rem;
 }
 
+/* =========================================
+   FLOATING LABEL INPUTS (Ported for Modal)
+   ========================================= */
+.floating-label-group {
+    position: relative;
+}
+
+.premium-input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    background: #ffffff;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px;
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    transition: all 0.2s;
+    font-family: var(--font-primary);
+}
+
+.premium-input:focus {
+    border-color: var(--color-primary);
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(174, 88, 61, 0.1);
+}
+
+.premium-input::placeholder {
+    color: #ccc;
+    font-weight: 300;
+}
+
+/* Label Styling: Always Floating */
+.floating-label-group label {
+    position: absolute;
+    top: -10px;
+    left: 15px;
+    background: #ffffff;
+    padding: 0 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    pointer-events: none;
+    transition: all 0.2s;
+    line-height: 1;
+}
+
+.required {
+    color: #dc3545;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .modal-container {
