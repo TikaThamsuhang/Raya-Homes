@@ -8,12 +8,13 @@ document.addEventListener("DOMContentLoaded", () => {
     ? window.agentsData.find((a) => a.id === agentId)
     : window.agentsData[0];
 
-  // Helper to fix paths (since we are deeper in the folder structure)
+  // Helper to fix paths. For a standalone subdomain, we use local paths.
   const fixPath = (path) => {
     if (!path) return "";
     if (path.startsWith("http")) return path; // External
-    if (path.startsWith("../")) return path; // Already fixed
-    return `../${path}`;
+    // If it's a local image path like "imgs/...", keep it as is for subdomain root
+    if (path.startsWith("imgs/")) return path;
+    return path;
   };
 
   // Error Handling: Agent Not Found
@@ -45,9 +46,9 @@ document.addEventListener("DOMContentLoaded", () => {
   setText("agentTitle", agent.title);
   setText("agentOfficeLink", agent.office);
   setText("agentLicense", agent.license);
-  setText("agentBio", agent.bio); 
+  setText("agentBio", agent.bio);
 
-  // Stats 
+  // Stats
   if (agent.stats) {
     setText("statSold", agent.stats.sold);
     setText("statActive", agent.stats.active);
@@ -66,14 +67,14 @@ document.addEventListener("DOMContentLoaded", () => {
   // Image
   const imgEl = document.getElementById("agentImage");
   if (imgEl) {
-    imgEl.src = fixPath(agent.photo) || "../imgs/no-image.avif";
+    imgEl.src = fixPath(agent.photo) || "imgs/no-image.avif";
     imgEl.alt = agent.name;
     imgEl.onerror = function () {
-      this.src = "../imgs/no-image.avif";
+      this.src = "imgs/no-image.avif";
     };
   }
 
-  // Socials 
+  // Socials
   const socialsContainer = document.getElementById("agentSocials");
   if (socialsContainer && agent.socialLinks) {
     let socialHtml = "";
@@ -117,18 +118,8 @@ document.addEventListener("DOMContentLoaded", () => {
     if (agentProperties.length > 0) {
       // Adjust image paths for "agent/" directory context
       const finalPropeties = agentProperties.map((prop) => {
-        const fix = (path) =>
-          path && path.startsWith("imgs/") ? "../" + path : path;
-
-        return {
-          ...prop,
-          image: fix(prop.image),
-          images: prop.images
-            ? prop.images.map(fix)
-            : prop.image
-            ? [fix(prop.image)]
-            : [],
-        };
+        // No need to prefix ../ if we have local images
+        return prop;
       });
 
       listingsGrid.innerHTML = finalPropeties
@@ -202,7 +193,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const images =
       listing.images && listing.images.length
         ? listing.images
-        : ["../imgs/no-image.avif"];
+        : ["imgs/no-image.avif"];
 
     // Create slides HTML
     const slidesHtml = images

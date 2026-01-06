@@ -27,7 +27,7 @@ const agentsData = [
     bio: "Michael Chang has over 10 years of experience in the Miami luxury condo market. Specializing in high-end penthouses and waterfront properties, Michael is dedicated to finding the perfect view for his clients. With a background in architecture, he offers unique insights into the potential of every property. Whether you are looking for a vacation home or a permanent residence, Michael's expertise ensures a smooth and successful transaction. He is fluent in English, Mandarin, and Spanish.",
     phone: "+1 (305) 555-0888",
     email: "michael.chang@rayahomes.com",
-    office: "Raya Homes Miami Beach",
+    office: "Raya Homes",
     license: "SL9988776",
     photo: "imgs/Agents/agent-3.avif",
     socialLinks: {
