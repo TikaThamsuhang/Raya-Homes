@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Safely access stats or default
       const sold = agent.stats?.sold || "-";
       const active = agent.stats?.active || "-";
-      const exp = agent.stats?.experience || "5+ Years";
+      const exp = agent.stats?.experience || "-"; 
 
       card.innerHTML = `
             <div class="agent-card-header">

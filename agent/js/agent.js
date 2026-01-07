@@ -3,6 +3,21 @@ document.addEventListener("DOMContentLoaded", () => {
   const urlParams = new URLSearchParams(window.location.search);
   const agentId = urlParams.get("id");
 
+  // DYNAMIC BACK BUTTON LOGIC
+  const backLink = document.querySelector(".back-link");
+  if (backLink) {
+    const referrer = document.referrer;
+    // Check if user came from home-valuation page
+    if (referrer && referrer.includes("home-valuation.html")) {
+      backLink.href = "../home-valuation.html";
+      backLink.querySelector("span").textContent = "Back To Valuation";
+    } else {
+      // Default to Agent Listings
+      backLink.href = "../agent-listings.html";
+      backLink.querySelector("span").textContent = "Back To Agent List";
+    }
+  }
+
   // Default to first agent if no ID provided for demo purposes, or handle error
   const agent = agentId
     ? window.agentsData.find((a) => a.id === agentId)

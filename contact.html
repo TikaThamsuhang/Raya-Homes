@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - Raya Homes</title>
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+
+    <!-- FontAwesome for Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="app-container" id="header-placeholder"></div>
+      <!-- Hero Section -->
+      <section class="app-container">
+        <div class="hero-card contact-hero-height">
+          <div class="hero-overlay"></div>
+          <div class="hero-content centered-hero">
+            <h1 class="animate-slide-up">Contact Us</h1>
+            <p
+              class="hero-subtitle animate-slide-up"
+              style="animation-delay: 0.1s"
+            >
+              We'd love to hear from you. Here's how you can reach us.
+            </p>
+          </div>
+        </div>
+      </section>
+    <main>
+
+
+      <!-- Contact Section (Overlapping Card) -->
+      <div class="contact-section-wrapper app-container">
+        <div
+          class="contact-main-card animate-slide-up"
+          style="animation-delay: 0.2s"
+        >
+          <div class="contact-grid">
+            <!-- Left Column: Info -->
+            <div class="contact-info-col">
+              <h2 class="section-title">Get in touch</h2>
+              <p class="section-desc">
+                Have a question or want to learn more about our services? We'd love to hear from
+                you.
+              </p>
+
+              <div class="contact-details-list">
+                <div class="detail-row">
+                  <div class="icon-box">
+                    <i class="fa-solid fa-location-dot"></i>
+                  </div>
+                  <div>
+                    <h3>Visit Us</h3>
+                    <p>123 Luxury Lane, Beverly Hills, CA 90210</p>
+                  </div>
+                </div>
+
+                <div class="detail-row">
+                  <div class="icon-box">
+                    <i class="fa-solid fa-envelope"></i>
+                  </div>
+                  <div>
+                    <h3>Email Us</h3>
+                    <a href="mailto:hello@rayahomes.com">hello@rayahomes.com</a>
+                  </div>
+                </div>
+
+                <div class="detail-row">
+                  <div class="icon-box">
+                    <i class="fa-solid fa-phone"></i>
+                  </div>
+                  <div>
+                    <h3>Call Us</h3>
+                    <a href="tel:+13105550123">+1 (310) 555-0123</a>
+                  </div>
+                </div>
+              </div>
+
+              <div class="social-links-row">
+                <a href="#" class="social-btn"
+                  ><i class="fa-brands fa-instagram"></i
+                ></a>
+                <a href="#" class="social-btn"
+                  ><i class="fa-brands fa-linkedin-in"></i
+                ></a>
+                <a href="#" class="social-btn"
+                  ><i class="fa-brands fa-twitter"></i
+                ></a>
+              </div>
+            </div>
+
+            <!-- Right Column: Form -->
+            <div class="contact-form-col">
+              <form
+                class="contact-form"
+                onsubmit="event.preventDefault(); alert('Message Sent!');"
+              >
+                <!-- <h2>Send a Message</h2> -->
+
+                <div class="half-width-group">
+                  <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      placeholder="John Doe"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input
+                      type="email"
+                      id="email"
+                      placeholder="john@example.com"
+                      required
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="phone">Phone Number (Optional)</label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    placeholder="+1 (555) 000-0000"
+                  />
+                </div>
+
+                <div class="form-group">
+                  <label for="message">Message</label>
+                  <textarea
+                    id="message"
+                    rows="6"
+                    placeholder="How can we help you?"
+                    required
+                  ></textarea>
+                </div>
+
+                <button type="submit" class="btn-primary-block">
+                  Send Message <i class="fa-solid fa-paper-plane"></i>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script src="js/load-components.js"></script>
+  </body>
+</html>
