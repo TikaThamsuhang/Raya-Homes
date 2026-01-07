@@ -1,0 +1,275 @@
+/* team-hero-card reuses contact hero base but can be distinct */
+.team-hero-card {
+  height: 50vh;
+  min-height: 400px;
+  background-image: url('../imgs/team-hero-background.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: var(--radius-xl);
+  position: relative;
+  overflow: hidden;
+  margin-top: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.hero-content h1,
+.hero-content p{
+    text-align: center;
+    color: white;
+}
+
+.team-story-section {
+    max-width: 800px;
+    margin: 0 auto 4rem auto;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 1.2rem;
+}
+
+.section-desc {
+    font-size: 1.15rem;
+    color: var(--color-text-body);
+}
+
+.subsection-title {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    border-bottom: 1px solid var(--color-border);
+    padding-bottom: 1rem;
+    margin-bottom: 3rem;
+    color: var(--color-text-dark);
+}
+
+.team-grid-section {
+    margin: 0 auto 4rem auto;
+}
+
+/* Grid Layouts */
+.team-grid {
+    display: grid;
+    gap: 2.5rem;
+}
+
+/* Leadership Grid - stacked single col */
+.leadership-grid {
+    grid-template-columns: 1fr;
+    margin: 0 auto 5rem auto;
+    gap: 4rem;
+}
+
+/* Standard Grid - restored */
+.standard-grid {
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 2rem;
+}
+
+.team-img-wrapper{
+    overflow: hidden;
+}
+
+.team-img-wrapper img{
+    width: 100%;
+    height: 100%;
+    object-position: center;
+    object-fit: cover;
+}
+
+.team-img-wrapper.leadership {
+    height: 150px;
+}
+
+.team-img-wrapper.standard {
+    height: 350px;
+}
+
+/* Horizontal Card Styling for Leadership */
+.team-card.large {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    min-height: 400px; /* Ensure substantial height */
+}
+
+/* Alternate direction for even cards */
+.team-card.large:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+.team-card.large .team-img-wrapper {
+    width: 45%; 
+    min-height: 400px;
+    aspect-ratio: auto; 
+}
+
+.team-card.large .team-info {
+    width: 55%;
+    padding: 3rem 4rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.team-card.large h4 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-heading);
+}
+
+.team-card.large .team-role {
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.team-card.large .team-bio {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+    -webkit-line-clamp: unset; /* Show full bio */
+}
+
+.team-card.large .team-socials {
+    justify-content: flex-start;
+}
+
+.team-card.large:nth-child(even) .team-info {
+    text-align: right; 
+    align-items: flex-end; /* Align flex items to right */
+}
+
+.team-card.large:nth-child(even) .team-socials {
+    justify-content: flex-end;
+}
+
+.team-card .team-info{
+    padding: 2rem 0;
+}
+
+
+.team-role {
+    display: block;
+    font-size: 0.9rem;
+    color: var(--color-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: .9rem;
+}
+
+.team-bio {
+    font-size: 1rem;
+    color: var(--color-text-body);
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.team-socials {
+    display: flex;
+    gap: 1rem;
+    margin-top: auto;
+}
+
+.team-card:not(.large) .team-socials {
+    justify-content: center;
+}
+
+.team-socials a {
+    
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.team-socials a:hover {
+    color: var(--color-primary);
+}
+
+
+.team-contact-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: auto;
+}
+
+.team-contact-list a{
+    display: flex;
+    align-items: center;
+    gap: .5rem;
+}
+
+.team-contact-list a i{
+    font-size: .9rem;
+}
+
+
+/* CTA */
+.cta-inner {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    padding: 6rem 2rem;
+    border-radius: 24px;
+    color: white;
+    box-shadow: var(--shadow-lg);
+}
+
+.cta-inner h2 {
+    color: white;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.cta-inner p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Responisve */
+@media (max-width: 900px) {
+    .team-card.large {
+        flex-direction: column !important; /* Force stack */
+        min-height: auto;
+    }
+
+    .team-card.large .team-img-wrapper,
+    .team-card.large .team-info {
+        width: 100%;
+    }
+
+    .team-card.large .team-img-wrapper {
+        min-height: 300px;
+        height: 300px;
+    }
+
+    .team-card.large .team-info {
+        padding: 2rem;
+        text-align: center !important;
+        align-items: center !important;
+    }
+
+    .team-card.large .team-socials,
+    .team-card.large:nth-child(even) .team-socials {
+        justify-content: center;
+    }
+}
