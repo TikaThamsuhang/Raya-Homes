@@ -80,11 +80,6 @@
           <button class="btn btn-secondary find-agent-btn" id="findAgentBtn">
             <i class="fa-solid fa-magnifying-glass"></i> Find Agent
           </button>
-
-          <!-- Save Search Button -->
-          <button class="btn btn-secondary save-search-btn" id="saveSearchBtn">
-            <i class="fa-regular fa-heart"></i> Save Search
-          </button>
         </div>
       </div>
 
@@ -101,56 +96,6 @@
         </div>
       </section>
     </main>
-
-    <!-- Toast Notification -->
-    <div class="toast-notification" id="saveToast">
-      <i class="fa-solid fa-circle-check"></i>
-      <span id="toastMessage">Search saved successfully!</span>
-    </div>
-
-    <!-- Save Search Modal -->
-    <div class="contact-overlay" id="saveSearchOverlay">
-      <div class="contact-modal" style="max-width: 400px">
-        <div class="contact-card glass-panel" style="padding: 2rem">
-          <h3 class="card-title text-center" style="margin-bottom: 1.5rem">
-            Name your search
-          </h3>
-
-          <div class="form-group floating-group">
-            <input
-              type="text"
-              id="searchNameInput"
-              class="input-rounded"
-              placeholder=" "
-              value="Agent Search"
-            />
-            <label for="searchNameInput" class="floating-label"
-              >Search Name</label
-            >
-          </div>
-
-          <div
-            class="d-flex gap-md mt-2"
-            style="display: flex; gap: 1rem; margin-top: 1rem"
-          >
-            <button
-              class="btn btn-outline btn-block"
-              id="cancelSaveSearchBtn"
-              style="border-radius: 12px; flex: 1"
-            >
-              Cancel
-            </button>
-            <button
-              class="btn btn-primary btn-block"
-              id="confirmSaveSearchBtn"
-              style="border-radius: 12px; flex: 1"
-            >
-              Save
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <!-- Agent Contact Modal -->
     <div id="agentContactModal" class="modal-overlay">

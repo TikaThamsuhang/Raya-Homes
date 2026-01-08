@@ -127,14 +127,4 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
   }
-
-  // Mobile Save Search Button
-  const mobileSaveSearchBtn = document.getElementById("mobileSaveSearchBtn");
-  const desktopSaveSearchBtn = document.getElementById("saveSearchBtn");
-
-  if (mobileSaveSearchBtn && desktopSaveSearchBtn) {
-    mobileSaveSearchBtn.addEventListener("click", () => {
-      desktopSaveSearchBtn.click(); // Trigger desktop button logic
-    });
-  }
 });

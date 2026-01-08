@@ -13,8 +13,75 @@ document.addEventListener("DOMContentLoaded", () => {
       searchInput.value = decodeURIComponent(searchQuery);
     }
 
-    // Show on focus
+    // Recent Searches Logic (Local Storage)
+    const RECENT_SEARCHES_KEY = "raya_recent_searches";
+    const MAX_RECENT_SEARCHES = 3;
+
+    function getRecentSearches() {
+      const searches = localStorage.getItem(RECENT_SEARCHES_KEY);
+      return searches ? JSON.parse(searches) : [];
+    }
+
+    function saveRecentSearch(term) {
+      if (!term) return;
+      let searches = getRecentSearches();
+      // Remove duplicates
+      searches = searches.filter((s) => s.toLowerCase() !== term.toLowerCase());
+      // Add new to top
+      searches.unshift(term);
+      // Limit to max
+      if (searches.length > MAX_RECENT_SEARCHES) {
+        searches.pop();
+      }
+      localStorage.setItem(RECENT_SEARCHES_KEY, JSON.stringify(searches));
+      renderRecentSearches();
+    }
+
+    function renderRecentSearches() {
+      // Find the recent searches group - assuming it's the second group or identified by h6 text
+      const groups = searchSuggestions.querySelectorAll(".suggestion-group");
+      let recentGroup = null;
+
+      groups.forEach((group) => {
+        const h6 = group.querySelector("h6");
+        if (h6 && h6.textContent.trim() === "Recent Searches") {
+          recentGroup = group;
+        }
+      });
+
+      if (!recentGroup) return; // Should exist in HTML
+
+      const ul = recentGroup.querySelector("ul");
+      ul.innerHTML = "";
+
+      const searches = getRecentSearches();
+
+      if (searches.length === 0) {
+        recentGroup.style.display = "none";
+        return;
+      }
+
+      recentGroup.style.display = "block";
+
+      searches.forEach((term) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> ${term}`;
+        li.addEventListener("click", () => {
+          searchInput.value = term;
+          searchSuggestions.classList.remove("show");
+          // Optionally trigger search logic here
+          console.log("Searching for:", term);
+        });
+        ul.appendChild(li);
+      });
+    }
+
+    // Initial Render
+    renderRecentSearches();
+
+    // Show on focus (and re-render to capture updates)
     searchInput.addEventListener("focus", () => {
+      renderRecentSearches();
       searchSuggestions.classList.add("show");
     });
 
@@ -28,15 +95,37 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Handle suggestion clicks
-    const suggestionItems = searchSuggestions.querySelectorAll("li");
-    suggestionItems.forEach((item) => {
-      item.addEventListener("click", () => {
-        const text = item.textContent.trim().replace(/\s+/g, " ");
-        searchInput.value = text;
-        searchSuggestions.classList.remove("show");
+    // Capture Search Execution
+    // 1. Click on icon
+    const searchBtn = document.querySelector(".search-icon-btn");
+    if (searchBtn) {
+      searchBtn.addEventListener("click", () => {
+        saveRecentSearch(searchInput.value.trim());
       });
+    }
+
+    // 2. Enter key
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        saveRecentSearch(searchInput.value.trim());
+      }
     });
+
+    // Handle suggestion clicks (Popular Locations)
+    const popularGroup = searchSuggestions.querySelector(
+      ".suggestion-group:first-child"
+    );
+    if (popularGroup) {
+      const popItems = popularGroup.querySelectorAll("li");
+      popItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          const text = item.textContent.trim();
+          searchInput.value = text;
+          saveRecentSearch(text); // Also save popular clicks as recent
+          searchSuggestions.classList.remove("show");
+        });
+      });
+    }
   }
 
   // Generic Dropdown Logic
@@ -345,75 +434,6 @@ document.addEventListener("DOMContentLoaded", () => {
       console.log("Form submitted");
       // Close overlay after submission
       closeOverlay();
-    });
-  }
-
-  // Save Search Modal Logic
-  const saveSearchBtn = document.getElementById("saveSearchBtn");
-  const saveSearchOverlay = document.getElementById("saveSearchOverlay");
-  const cancelSaveSearchBtn = document.getElementById("cancelSaveSearchBtn");
-  const confirmSaveSearchBtn = document.getElementById("confirmSaveSearchBtn");
-  const searchNameInput = document.getElementById("searchNameInput");
-  let isFirstSave = true;
-
-  if (saveSearchBtn && saveSearchOverlay) {
-    // Open Modal
-    saveSearchBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      searchNameInput.value = "Manhattan, NY, 150k-300k"; // Reset/Pre-fill
-      saveSearchOverlay.classList.add("show");
-      document.body.style.overflow = "hidden"; // Prevent scroll
-    });
-
-    // Close Modal Function
-    const closeSaveSearch = () => {
-      saveSearchOverlay.classList.remove("show");
-      document.body.style.overflow = ""; // Restore scroll
-    };
-
-    // Cancel Button
-    if (cancelSaveSearchBtn) {
-      cancelSaveSearchBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        closeSaveSearch();
-      });
-    }
-
-    // Toast Logic
-    const saveToast = document.getElementById("saveToast");
-    const toastMessage = document.getElementById("toastMessage");
-
-    const showToast = (message) => {
-      if (saveToast && toastMessage) {
-        toastMessage.textContent = message;
-        saveToast.classList.add("show");
-        setTimeout(() => {
-          saveToast.classList.remove("show");
-        }, 3000);
-      }
-    };
-
-    // Confirm Save
-    if (confirmSaveSearchBtn) {
-      confirmSaveSearchBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-
-        if (isFirstSave) {
-          showToast("Search saved successfully!");
-          isFirstSave = false;
-        } else {
-          showToast("Search updated!");
-        }
-
-        closeSaveSearch();
-      });
-    }
-
-    // Close on Backdrop Click
-    saveSearchOverlay.addEventListener("click", (e) => {
-      if (e.target === saveSearchOverlay) {
-        closeSaveSearch();
-      }
     });
   }
 });

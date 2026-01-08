@@ -1,631 +1,827 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Property Details - Raya Homes</title>
-    
-    <!-- CSS Imports -->
-    <link rel="stylesheet" href="css/global.css">
-    <link rel="stylesheet" href="css/property.css">
-    <link rel="stylesheet" href="css/property-detail.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-</head>
-<body>
 
+    <!-- CSS Imports -->
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/property.css" />
+    <link rel="stylesheet" href="css/property-detail.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <!-- =========================================
          HEADER (Minimal - Detail Page Specific)
          ========================================= -->
     <header class="detail-header">
-        <div class="app-container d-flex align-center justify-between">
-            <!-- Left: Back Button -->
-            <a href="property.html" class="back-link">
-                <i class="fa-solid fa-arrow-left"></i> <span>Back To Search</span>
-            </a>
+      <div class="app-container d-flex align-center justify-between">
+        <!-- Left: Back Button -->
+        <a href="property.html" class="back-link">
+          <i class="fa-solid fa-arrow-left"></i> <span>Back To Search</span>
+        </a>
 
-            <!-- Center: Logo -->
-             <a href="index.html">
-            <div class="logo">
-                <img src="imgs/logo-no-background.png" alt="Raya Homes" class="logo-img">
-            </div>
-            </a>
-            
+        <!-- Center: Logo -->
+        <a href="index.html">
+          <div class="logo">
+            <img
+              src="imgs/logo-no-background.png"
+              alt="Raya Homes"
+              class="logo-img"
+            />
+          </div>
+        </a>
 
-            <!-- Right: Action Buttons -->
-            <div class="header-actions d-flex align-center gap-sm">
-                <button class="btn-icon circle-btn" aria-label="Save Property">
-                    <i class="fa-regular fa-heart"></i>
-                </button>
-                <button class="btn-icon circle-btn" aria-label="Share Property">
-                    <i class="fa-regular fa-share-from-square"></i>
-                </button>
-            </div>
+        <!-- Right: Action Buttons -->
+        <div class="header-actions d-flex align-center gap-sm">
+          <button class="btn-icon circle-btn" aria-label="Share Property">
+            <i class="fa-regular fa-share-from-square"></i>
+          </button>
         </div>
+      </div>
     </header>
 
     <main>
-        <!-- =========================================
+      <!-- =========================================
              HERO SECTION (Bento Grid Gallery)
              ========================================= -->
-        <section class="gallery-section mt-2">
-            <div class="app-container">
-                <div class="gallery-grid">
-                    
-                    <!-- Left: Main Large Image -->
-                    <div class="gallery-main relative">
-                        <img src="imgs/Single/img-1.png" alt="Property Main View" class="img-cover">
-                        
-                        <!-- Floating Navigation arrows -->
-                        <button class="nav-arrow nav-prev" id="heroPrevBtn"><i class="fa-solid fa-chevron-left"></i></button>
-                        <button class="nav-arrow nav-next" id="heroNextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+      <section class="gallery-section mt-2">
+        <div class="app-container">
+          <div class="gallery-grid">
+            <!-- Left: Main Large Image -->
+            <div class="gallery-main relative">
+              <img
+                src="imgs/Single/img-1.png"
+                alt="Property Main View"
+                class="img-cover"
+              />
 
-                        <!-- Hero Counter -->
-                        <div class="hero-counter">
-                            <span id="heroCurrentIndex">1</span>/<span id="heroTotalCount">12</span>
-                        </div>
+              <!-- Floating Navigation arrows -->
+              <button class="nav-arrow nav-prev" id="heroPrevBtn">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button class="nav-arrow nav-next" id="heroNextBtn">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
 
-                        <!-- Floating "See All" Button -->
-                        <button class="btn-see-all glass-panel">
-                            See all 12 photos
-                        </button>
-                    </div>
+              <!-- Hero Counter -->
+              <div class="hero-counter">
+                <span id="heroCurrentIndex">1</span>/<span id="heroTotalCount"
+                  >12</span
+                >
+              </div>
 
-                    <!-- Right: Thumbnails Stack -->
-                    <div class="gallery-thumbnails">
-                        <div class="thumb-item">
-                            <img src="imgs/Single/img-bed-1.png" alt="Bedroom" class="img-cover">
-                        </div>
-                        <div class="thumb-item">
-                            <img src="imgs/Single/img-wash-1.png" alt="Bathroom" class="img-cover">
-                        </div>
-                        <div class="thumb-item">
-                            <img src="imgs/Single/img-kitchen-1.png" alt="Kitchen" class="img-cover">
-                        </div>
-                    </div>
-
-                </div>
+              <!-- Floating "See All" Button -->
+              <button class="btn-see-all glass-panel">See all 12 photos</button>
             </div>
-        </section>
 
-        <!-- Placeholder for future content -->
-        <!-- =========================================
+            <!-- Right: Thumbnails Stack -->
+            <div class="gallery-thumbnails">
+              <div class="thumb-item">
+                <img
+                  src="imgs/Single/img-bed-1.png"
+                  alt="Bedroom"
+                  class="img-cover"
+                />
+              </div>
+              <div class="thumb-item">
+                <img
+                  src="imgs/Single/img-wash-1.png"
+                  alt="Bathroom"
+                  class="img-cover"
+                />
+              </div>
+              <div class="thumb-item">
+                <img
+                  src="imgs/Single/img-kitchen-1.png"
+                  alt="Kitchen"
+                  class="img-cover"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Placeholder for future content -->
+      <!-- =========================================
              PROPERTY CONTENT (Split Layout)
              ========================================= -->
-        <section class="main-container property-content mt-2 mb-3">
-            <div class="content-grid">
-                
-                <!-- LEFT COLUMN: Main Details -->
-                <div class="details-column">
-                    
-                    <!-- Header Stats -->
-                    <div class="property-header mb-2">
-                        <div class="d-flex align-center gap-sm mb-1">
-                            <h1 class="property-price">$539,900</h1>
-                            <!-- Updated Badge -->
-                            <span class="status-tag coming-soon">Coming Soon <i class="fa-solid fa-clock"></i></span>
-                        </div>
-                        
-                        <div class="property-specs d-flex align-center gap-md">
-                            <div class="spec-item">
-                                <strong>4</strong> <span>Beds</span>
-                            </div>
-                            <div class="separator"></div>
-                            <div class="spec-item">
-                                <strong>2</strong> <span>Baths</span>
-                            </div>
-                            <div class="separator"></div>
-                            <div class="spec-item">
-                                <strong>1,800</strong> <span>Sq Ft</span>
-                            </div>
-                            <div class="separator"></div>
-                            <div class="spec-item">
-                                <span>Single Family</span>
-                            </div>
-                        </div>
+      <section class="main-container property-content mt-2 mb-3">
+        <div class="content-grid">
+          <!-- LEFT COLUMN: Main Details -->
+          <div class="details-column">
+            <!-- Header Stats -->
+            <div class="property-header mb-2">
+              <div class="d-flex align-center gap-sm mb-1">
+                <h1 class="property-price">$539,900</h1>
+                <!-- Updated Badge -->
+                <span class="status-tag coming-soon"
+                  >Coming Soon <i class="fa-solid fa-clock"></i
+                ></span>
+              </div>
 
-                        <p class="property-address mt-1">
-                            97 Schnoor Road, Killingworth, CT 06419
-                        </p>
-                    </div>
+              <div class="property-specs d-flex align-center gap-md">
+                <div class="spec-item">
+                  <strong>4</strong> <span>Beds</span>
+                </div>
+                <div class="separator"></div>
+                <div class="spec-item">
+                  <strong>2</strong> <span>Baths</span>
+                </div>
+                <div class="separator"></div>
+                <div class="spec-item">
+                  <strong>1,800</strong> <span>Sq Ft</span>
+                </div>
+                <div class="separator"></div>
+                <div class="spec-item">
+                  <span>Single Family</span>
+                </div>
+              </div>
 
-                    <div class="divider"></div>
+              <p class="property-address mt-1">
+                97 Schnoor Road, Killingworth, CT 06419
+              </p>
+            </div>
 
-                    <!-- Agent & Map Strip -->
-                    <div class="agent-map-strip d-flex justify-between align-center mb-2">
-                        <div class="agent-mini-info">
-                            <p class="text-sm">Listed by <a href="#" class="text-primary font-weight-bold">Romina D'Angelo (860) 555-0123</a></p>
-                            <p class="text-sm">Raya Homes Realty • (860) 555-0123</p>
-                            <p class="text-sm">Source: CT</p>
-                            <div class="mls-info mt-1">
-                                <span class="badge-outline">MLS# 24146371</span>
-                                <span class="text-xs text-muted ml-1">Updated: Jan 1, 2026</span>
-                            </div>
-                        </div>
-                        <div class="mini-map-preview">
-                            <!-- Placeholder Map Image or Frame -->
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.9873196845946!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus" 
-                                width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy">
-                            </iframe>
-                            <!-- <div class="map-overlay">
+            <div class="divider"></div>
+
+            <!-- Agent & Map Strip -->
+            <div
+              class="agent-map-strip d-flex justify-between align-center mb-2"
+            >
+              <div class="agent-mini-info">
+                <p class="text-sm">
+                  Listed by
+                  <a href="#" class="text-primary font-weight-bold"
+                    >Romina D'Angelo (860) 555-0123</a
+                  >
+                </p>
+                <p class="text-sm">Raya Homes Realty • (860) 555-0123</p>
+                <p class="text-sm">Source: CT</p>
+                <div class="mls-info mt-1">
+                  <span class="badge-outline">MLS# 24146371</span>
+                  <span class="text-xs text-muted ml-1"
+                    >Updated: Jan 1, 2026</span
+                  >
+                </div>
+              </div>
+              <div class="mini-map-preview">
+                <!-- Placeholder Map Image or Frame -->
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.9873196845946!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style="border: 0"
+                  allowfullscreen=""
+                  loading="lazy"
+                >
+                </iframe>
+                <!-- <div class="map-overlay">
                                 <i class="fa-solid fa-map-pin"></i> View Map
                             </div> -->
-                        </div>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <!-- Description -->
-                    <div class="about-home mb-3">
-                        <h3 class="section-title">About This Home</h3>
-                        <h4 class="property-subtitle text-muted">97 Schnoor Road</h4>
-                        
-                        <div class="description-text mt-1" id="descriptionContainer">
-                            <p>Beautifully updated 1,800 sq. ft. four-bedroom Colonial set on a private 3.3-acre lot with an oversized two-car garage. This move-in-ready home features an eat-in kitchen with cherry cabinetry, granite countertops, tile flooring, and new appliances, opening to a comfortable sitting area with a fireplace. Recent improvements include new hardwood floors, updated bathrooms, and a modern heating system.</p>
-                            <p>The outdoor space is a private oasis with a stone patio, mature trees, and plenty of room for a pool. Located in a quiet cul-de-sac neighborhood, just minutes from town center and schools.</p>
-                            <p>Additional features include a finished basement with potential for a home office or gym, a newer roof (2020), and a generator hookup. The property is conveniently situated near major highways for easy commuting, while still offering the tranquility of a countryside setting. Don't miss the opportunity to own this well-maintained home in a sought-after community.</p>
-                        </div>
-                        
-                        <a href="#" class="read-more-link">Continue Reading <i class="fa-solid fa-chevron-down"></i></a>
-                    </div>
-
-                    <div class="divider"></div>
-
-                    <!-- Facts Placeholder -->
-                    <!-- Rich Property Details Section -->
-                    <div class="property-details-section mt-3">
-                        
-                        <!-- 1. Home Facts -->
-                        <div class="details-block mb-3">
-                            <h3 class="section-title mb-2">Home Facts</h3>
-                            <div class="facts-grid-cols">
-                                <div class="fact-item">
-                                    <div class="fact-icon-box">
-                                        <i class="fa-solid fa-house-chimney"></i>
-                                    </div>
-                                    <div class="fact-text">
-                                        <span class="fact-label">Property Type</span>
-                                        <span class="fact-value">Single Family</span>
-                                    </div>
-                                </div>
-                                <div class="fact-item">
-                                    <div class="fact-icon-box">
-                                        <i class="fa-solid fa-calendar-days"></i>
-                                    </div>
-                                    <div class="fact-text">
-                                        <span class="fact-label">Year Built</span>
-                                        <span class="fact-value">1985</span>
-                                    </div>
-                                </div>
-                                <div class="fact-item">
-                                    <div class="fact-icon-box">
-                                        <i class="fa-solid fa-temperature-arrow-up"></i>
-                                    </div>
-                                    <div class="fact-text">
-                                        <span class="fact-label">Heating</span>
-                                        <span class="fact-value">Oil, Baseboard</span>
-                                    </div>
-                                </div>
-                                <div class="fact-item">
-                                    <div class="fact-icon-box">
-                                        <i class="fa-solid fa-snowflake"></i>
-                                    </div>
-                                    <div class="fact-text">
-                                        <span class="fact-label">Cooling</span>
-                                        <span class="fact-value">Central Air</span>
-                                    </div>
-                                </div>
-                                <div class="fact-item">
-                                    <div class="fact-icon-box">
-                                        <i class="fa-solid fa-warehouse"></i>
-                                    </div>
-                                    <div class="fact-text">
-                                        <span class="fact-label">Garage</span>
-                                        <span class="fact-value">2 Cars, Detached</span>
-                                    </div>
-                                </div>
-                                <div class="fact-item">
-                                    <div class="fact-icon-box">
-                                        <i class="fa-solid fa-ruler-combined"></i>
-                                    </div>
-                                    <div class="fact-text">
-                                        <span class="fact-label">Lot Size</span>
-                                        <span class="fact-value">3.30 Acres</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="divider"></div>
-
-                        <!-- 2. Rooms & Interior -->
-                        <div class="details-block mb-3">
-                            <div class="d-flex align-center gap-sm mb-2">
-                                <i class="fa-solid fa-bed text-primary font-size-lg"></i>
-                                <h3 class="section-title mb-0">Rooms & Interior</h3>
-                            </div>
-                            
-                            <div class="interior-grid">
-                                <div class="interior-col">
-                                    <h4 class="subsection-title">Bedrooms</h4>
-                                    <ul class="detail-list">
-                                        <li>Total Bedrooms: <strong>4</strong></li>
-                                        <li>Master Bedroom: <strong>Main Level, 16x14</strong></li>
-                                        <li>Bedroom 2: <strong>Upper Level, 12x12</strong></li>
-                                    </ul>
-                                </div>
-                                <div class="interior-col">
-                                    <h4 class="subsection-title">Bathrooms</h4>
-                                    <ul class="detail-list">
-                                        <li>Total Bathrooms: <strong>2</strong></li>
-                                        <li>Full Bathrooms: <strong>2</strong></li>
-                                        <li>Half Bathrooms: <strong>0</strong></li>
-                                    </ul>
-                                </div>
-                                <div class="interior-col">
-                                    <h4 class="subsection-title">Interior Stats</h4>
-                                    <ul class="detail-list">
-                                        <li>Living Area: <strong>1,800 Sq. Ft.</strong></li>
-                                        <li>Basement: <strong>Full, Unfinished</strong></li>
-                                        <li>Fireplaces: <strong>1 (Wood Burning)</strong></li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="divider"></div>
-
-                        <!-- 3. Price & Financials -->
-                        <!-- 3. Structure -->
-                        <div class="details-block mb-3">
-                            <div class="d-flex align-center gap-sm mb-2">
-                                <i class="fa-solid fa-hotel text-primary font-size-lg"></i>
-                                <h3 class="section-title mb-0">Structure</h3>
-                            </div>
-                            <div class="list-block-container">
-                                <!-- <h4 class="subsection-title">Structure</h4> -->
-                                <ul class="simple-data-list">
-                                    <li><span class="label">Architectural Style:</span> <span class="val">Colonial</span></li>
-                                    <li><span class="label">Building Area:</span> <span class="val">1,800 Sq. Ft.</span></li>
-                                    <li><span class="label">Year Built:</span> <span class="val">1973</span></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="divider"></div>
-
-                        <!-- 4. Lot -->
-                        <div class="details-block mb-3">
-                            <div class="d-flex align-center gap-sm mb-2">
-                                <i class="fa-solid fa-tree text-primary font-size-lg"></i>
-                                <h3 class="section-title mb-0">Lot</h3>
-                            </div>
-                            <div class="list-block-container">
-                                <ul class="simple-data-list">
-                                    <li><span class="label">Lot Size (Sq. Ft):</span> <span class="val">143,748</span></li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        <div class="divider"></div>
-
-                        <!-- 5. Finances & Disclosures -->
-                        <div class="details-block">
-                             <div class="d-flex align-center gap-sm mb-2">
-                                <i class="fa-solid fa-file-invoice-dollar text-primary font-size-lg"></i>
-                                <h3 class="section-title mb-0">Finances & Disclosures</h3>
-                            </div>
-                            
-                            <div class="list-block-container">
-                                <!-- <h4 class="subsection-title">Finances</h4> -->
-                                <ul class="simple-data-list">
-                                    <li><span class="label">Price:</span> <span class="val font-weight-bold">$539,900</span></li>
-                                    <li><span class="label">Price per Sq. Ft:</span> <span class="val">$299 per Sq. Ft.</span></li>
-                                </ul>
-                            </div>
-
-                             <!-- MLS Metadata (Restored) -->
-                             <div class="mls-metadata-box mt-2">
-                                <div class="meta-row">
-                                    <span>MLS #: <strong>24146371</strong></span>
-                                    <span>Added: <strong>15 hours ago</strong></span>
-                                </div>
-                             </div>
-                        </div>
-
-                        <div class="divider"></div>
-
-                        <!-- 6. Listing Agents -->
-                        <div class="details-block mb-3">
-                            <h3 class="section-title mb-1">Listing Agents</h3>
-                            <p class="text-muted text-sm mb-2">for 97 Schnoor Road</p>
-                            
-                            <div class="agent-card-horizontal">
-                                <div class="agent-photo">
-                                    <!-- Using a placeholder for now as no local agent image exists -->
-                                    <img src="imgs/Agents/agent-1.jpg" alt="Romina D'Angelo" class="img-cover">
-                                </div>
-                                <div class="agent-details">
-                                    <div class="agent-logo mb-1">
-                                        <img src="imgs/logo-no-background.png" alt="Raya Homes Realty">
-                                    </div>
-                                    <h4 class="agent-name mb-1">Romina D'Angelo</h4>
-                                    <div class="agent-contact-row">
-                                        <i class="fa-solid fa-phone"></i>
-                                        <span>(860) 555-0123</span>
-                                    </div>
-                                    <div class="agent-contact-row">
-                                        <i class="fa-regular fa-envelope"></i>
-                                        <a href="#">Romina.DAngelo@rayahomes.com</a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- 7. Disclaimer -->
-                        <div class="disclaimer-section mt-3">
-                            <p class="source-label">Source: CT</p>
-                            <p class="legal-text">
-                                The data relating to real estate for sale on this website appears in part through the SMARTMLS Internet Data Exchange program, a voluntary cooperative exchange of property listing data between licensed real estate brokerage firms, and is provided by SMARTMLS through a licensing agreement. Listing information is from various brokers who participate in the SMARTMLS IDX program and not all listings may be visible on the site. The property information being provided on or through the website is for the personal, non-commercial use of consumers and such information may not be used for any purpose other than to identify prospective properties consumers may be interested in purchasing. Some properties which appear for sale on the website may no longer be available because they are for instance, under contract, sold or are no longer being offered for sale. Property information displayed is deemed reliable but is not guaranteed. Copyright 2026 SmartMLS, Inc.
-                            </p>
-                        </div>
-
-                    </div>
-
-                </div>
-
-                <!-- RIGHT COLUMN: Sticky Side Bar -->
-                <div class="sidebar-column">
-                    <div class="sidebar-wrapper">
-                    <div class="contact-card sticky-card glass-panel">
-                        <h3 class="card-title">Contact an Agent</h3>
-                        <form class="contact-form mt-2">
-                            <div class="form-group floating-group">
-                                <input type="text" id="contactName" class="input-rounded" placeholder=" ">
-                                <label for="contactName" class="floating-label">Full Name (Required)</label>
-                            </div>
-                            <div class="form-group floating-group">
-                                <input type="email" id="contactEmail" class="input-rounded" placeholder=" ">
-                                <label for="contactEmail" class="floating-label">Email Address (Required)</label>
-                            </div>
-                            <div class="form-group floating-group">
-                                <input type="tel" id="contactMobile" class="input-rounded" placeholder=" ">
-                                <label for="contactMobile" class="floating-label">Mobile Number</label>
-                            </div>
-                            <div class="form-group floating-group">
-                                    <input type="text" id="tourDate" class="input-rounded" placeholder=" " onfocus="(this.type='date')" onblur="(this.type='text')">
-                                    <label for="tourDate" class="floating-label">Preferred Tour Date</label>
-                                    <i class="fa-regular fa-calendar icon-trailing"></i>
-                            </div>
-                            <div class="form-group floating-group">
-                                <textarea id="contactMsg" rows="4" class="input-rounded" placeholder=" ">Hi, I would like to know more about 97 Schnoor Road</textarea>
-                                <label for="contactMsg" class="floating-label">Message</label>
-                            </div>
-                            <button type="submit" class="btn btn-primary btn-block btn-lg">Contact Agent</button>
-                            <p class="disclaimer-text mt-1 text-center">
-                                By clicking Contact, you agree to our Terms of Use and Privacy Policy.
-                            </p>
-                        </form>
-                    </div>
-                    </div>
-                </div>
-
+              </div>
             </div>
-            
 
-            <div class="divider mt-4 mb-4"></div>
+            <div class="divider"></div>
 
-            <!-- New Listings Carousel Section -->
-            <div class="new-listings-section mb-5">
-                <div class="d-flex justify-between align-center mb-2">
-                    <div>
-                        <h3 class="section-title mb-0">New Listings</h3>
-                        <p class="text-muted text-sm" style="margin-top: 0.2rem;">near 97 Schnoor Road</p>
-                    </div>
-                    <div class="carousel-nav-buttons">
-                        <button id="nl-prev" class="nav-btn-circle disabled"><i class="fa-solid fa-chevron-left"></i></button>
-                        <button id="nl-next" class="nav-btn-circle"><i class="fa-solid fa-chevron-right"></i></button>
-                    </div>
-                </div>
+            <!-- Description -->
+            <div class="about-home mb-3">
+              <h3 class="section-title">About This Home</h3>
+              <h4 class="property-subtitle text-muted">97 Schnoor Road</h4>
 
-                <div class="listings-carousel-wrapper">
-                    <div class="listings-carousel-track" id="newListingsTrack">
-                        
-                        <!-- Card 1 -->
-                        <div class="listing-card carousel-card">
-                            <div class="card-image-wrapper">
-                                <div class="image-slider">
-                                    <img src="imgs/Properties/prop-1.png" alt="Luxury Home" class="active">
-                                    <img src="imgs/Properties/prop-2.png" alt="Luxury Home">
-                                    <img src="imgs/Properties/prop-3.png" alt="Luxury Home">
-                                </div>
-                                <button class="slider-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
-                                <button class="slider-btn next"><i class="fa-solid fa-chevron-right"></i></button>
-                                <div class="slider-counter">1/3</div>
-                                <span class="status-tag for-sale">For Sale <i class="fa-solid fa-circle-check"></i></span>
-                                <button class="fav-icon">
-                                    <i class="fa-regular fa-heart"></i>
-                                </button>
-                            </div>
-                            <div class="card-content">
-                                <div class="d-flex justify-between align-center mb-1">
-                                    <h3 class="card-price">$890,000</h3>
-                                </div>
-                                <div class="card-specs">4 Beds &nbsp; 3 Baths &nbsp; 2,350 Sq. Ft.</div>
-                                <div class="card-address">722 Denburn Place, Raleigh, NC</div>
-                                <div class="d-flex justify-between align-center">
-                                    <a href="#" class="email-agent-btn">Contact Agent</a>
-                                </div>
-                            </div>
-                        </div>
+              <div class="description-text mt-1" id="descriptionContainer">
+                <p>
+                  Beautifully updated 1,800 sq. ft. four-bedroom Colonial set on
+                  a private 3.3-acre lot with an oversized two-car garage. This
+                  move-in-ready home features an eat-in kitchen with cherry
+                  cabinetry, granite countertops, tile flooring, and new
+                  appliances, opening to a comfortable sitting area with a
+                  fireplace. Recent improvements include new hardwood floors,
+                  updated bathrooms, and a modern heating system.
+                </p>
+                <p>
+                  The outdoor space is a private oasis with a stone patio,
+                  mature trees, and plenty of room for a pool. Located in a
+                  quiet cul-de-sac neighborhood, just minutes from town center
+                  and schools.
+                </p>
+                <p>
+                  Additional features include a finished basement with potential
+                  for a home office or gym, a newer roof (2020), and a generator
+                  hookup. The property is conveniently situated near major
+                  highways for easy commuting, while still offering the
+                  tranquility of a countryside setting. Don't miss the
+                  opportunity to own this well-maintained home in a sought-after
+                  community.
+                </p>
+              </div>
 
-                        <!-- Card 2 -->
-                        <div class="listing-card carousel-card">
-                            <div class="card-image-wrapper">
-                                <div class="image-slider">
-                                    <img src="imgs/Properties/prop-2.png" alt="Modern Home" class="active">
-                                    <img src="imgs/Properties/prop-3.png" alt="Modern Home">
-                                    <img src="imgs/Properties/prop-1.png" alt="Modern Home">
-                                </div>
-                                <button class="slider-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
-                                <button class="slider-btn next"><i class="fa-solid fa-chevron-right"></i></button>
-                                <div class="slider-counter">1/3</div>
-                                <span class="status-tag coming-soon">Coming Soon <i class="fa-solid fa-clock"></i></span>
-                                <button class="fav-icon">
-                                    <i class="fa-regular fa-heart"></i>
-                                </button>
-                            </div>
-                            <div class="card-content">
-                                <div class="d-flex justify-between align-center mb-1">
-                                    <h3 class="card-price">$650,000</h3>
-                                </div>
-                                <div class="card-specs">3 Beds &nbsp; 2 Baths &nbsp; 1,800 Sq. Ft.</div>
-                                <div class="card-address">45 Park Avenue, Raleigh, NC</div>
-                                <div class="d-flex justify-between align-center">
-                                    <a href="#" class="email-agent-btn">Contact Agent</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="listing-card carousel-card">
-                            <div class="card-image-wrapper">
-                                <div class="image-slider">
-                                     <img src="imgs/Properties/prop-3.png" alt="Villa" class="active">
-                                     <img src="imgs/Properties/prop-1.png" alt="Villa">
-                                     <img src="imgs/Properties/prop-2.png" alt="Villa">
-                                </div>
-                                <button class="slider-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
-                                <button class="slider-btn next"><i class="fa-solid fa-chevron-right"></i></button>
-                                <div class="slider-counter">1/3</div>
-                                <span class="status-tag for-sale">For Sale <i class="fa-solid fa-circle-check"></i></span>
-                                <button class="fav-icon">
-                                    <i class="fa-regular fa-heart"></i>
-                                </button>
-                            </div>
-                            <div class="card-content">
-                                <div class="d-flex justify-between align-center mb-1">
-                                    <h3 class="card-price">$1,200,000</h3>
-                                </div>
-                                <div class="card-specs">5 Beds &nbsp; 4 Baths &nbsp; 3,200 Sq. Ft.</div>
-                                <div class="card-address">88 Estate Dr, Raleigh, NC</div>
-                                <div class="d-flex justify-between align-center">
-                                    <a href="#" class="email-agent-btn">Contact Agent</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Card 4 -->
-                        <div class="listing-card carousel-card">
-                            <div class="card-image-wrapper">
-                                <div class="image-slider">
-                                    <img src="imgs/Properties/prop-1.png" alt="Mansion" class="active">
-                                    <img src="imgs/Properties/prop-3.png" alt="Mansion">
-                                </div>
-                                <button class="slider-btn prev"><i class="fa-solid fa-chevron-left"></i></button>
-                                <button class="slider-btn next"><i class="fa-solid fa-chevron-right"></i></button>
-                                <div class="slider-counter">1/2</div>
-                                <span class="status-tag sold">Sold <i class="fa-solid fa-lock"></i></span>
-                                <button class="fav-icon">
-                                    <i class="fa-regular fa-heart"></i>
-                                </button>
-                            </div>
-                            <div class="card-content">
-                                <div class="d-flex justify-between align-center mb-1">
-                                    <h3 class="card-price">$1,550,000</h3>
-                                </div>
-                                <div class="card-specs">6 Beds &nbsp; 5 Baths &nbsp; 4,000 Sq. Ft.</div>
-                                <div class="card-address">12 Hilltop Rd, Raleigh, NC</div>
-                                <div class="d-flex justify-between align-center">
-                                    <a href="#" class="email-agent-btn">Contact Agent</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+              <a href="#" class="read-more-link"
+                >Continue Reading <i class="fa-solid fa-chevron-down"></i
+              ></a>
             </div>
-        </section>
 
+            <div class="divider"></div>
+
+            <!-- Facts Placeholder -->
+            <!-- Rich Property Details Section -->
+            <div class="property-details-section mt-3">
+              <!-- 1. Home Facts -->
+              <div class="details-block mb-3">
+                <h3 class="section-title mb-2">Home Facts</h3>
+                <div class="facts-grid-cols">
+                  <div class="fact-item">
+                    <div class="fact-icon-box">
+                      <i class="fa-solid fa-house-chimney"></i>
+                    </div>
+                    <div class="fact-text">
+                      <span class="fact-label">Property Type</span>
+                      <span class="fact-value">Single Family</span>
+                    </div>
+                  </div>
+                  <div class="fact-item">
+                    <div class="fact-icon-box">
+                      <i class="fa-solid fa-calendar-days"></i>
+                    </div>
+                    <div class="fact-text">
+                      <span class="fact-label">Year Built</span>
+                      <span class="fact-value">1985</span>
+                    </div>
+                  </div>
+                  <div class="fact-item">
+                    <div class="fact-icon-box">
+                      <i class="fa-solid fa-temperature-arrow-up"></i>
+                    </div>
+                    <div class="fact-text">
+                      <span class="fact-label">Heating</span>
+                      <span class="fact-value">Oil, Baseboard</span>
+                    </div>
+                  </div>
+                  <div class="fact-item">
+                    <div class="fact-icon-box">
+                      <i class="fa-solid fa-snowflake"></i>
+                    </div>
+                    <div class="fact-text">
+                      <span class="fact-label">Cooling</span>
+                      <span class="fact-value">Central Air</span>
+                    </div>
+                  </div>
+                  <div class="fact-item">
+                    <div class="fact-icon-box">
+                      <i class="fa-solid fa-warehouse"></i>
+                    </div>
+                    <div class="fact-text">
+                      <span class="fact-label">Garage</span>
+                      <span class="fact-value">2 Cars, Detached</span>
+                    </div>
+                  </div>
+                  <div class="fact-item">
+                    <div class="fact-icon-box">
+                      <i class="fa-solid fa-ruler-combined"></i>
+                    </div>
+                    <div class="fact-text">
+                      <span class="fact-label">Lot Size</span>
+                      <span class="fact-value">3.30 Acres</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <!-- 2. Rooms & Interior -->
+              <div class="details-block mb-3">
+                <div class="d-flex align-center gap-sm mb-2">
+                  <i class="fa-solid fa-bed text-primary font-size-lg"></i>
+                  <h3 class="section-title mb-0">Rooms & Interior</h3>
+                </div>
+
+                <div class="interior-grid">
+                  <div class="interior-col">
+                    <h4 class="subsection-title">Bedrooms</h4>
+                    <ul class="detail-list">
+                      <li>Total Bedrooms: <strong>4</strong></li>
+                      <li>
+                        Master Bedroom: <strong>Main Level, 16x14</strong>
+                      </li>
+                      <li>Bedroom 2: <strong>Upper Level, 12x12</strong></li>
+                    </ul>
+                  </div>
+                  <div class="interior-col">
+                    <h4 class="subsection-title">Bathrooms</h4>
+                    <ul class="detail-list">
+                      <li>Total Bathrooms: <strong>2</strong></li>
+                      <li>Full Bathrooms: <strong>2</strong></li>
+                      <li>Half Bathrooms: <strong>0</strong></li>
+                    </ul>
+                  </div>
+                  <div class="interior-col">
+                    <h4 class="subsection-title">Interior Stats</h4>
+                    <ul class="detail-list">
+                      <li>Living Area: <strong>1,800 Sq. Ft.</strong></li>
+                      <li>Basement: <strong>Full, Unfinished</strong></li>
+                      <li>Fireplaces: <strong>1 (Wood Burning)</strong></li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <!-- 3. Price & Financials -->
+              <!-- 3. Structure -->
+              <div class="details-block mb-3">
+                <div class="d-flex align-center gap-sm mb-2">
+                  <i class="fa-solid fa-hotel text-primary font-size-lg"></i>
+                  <h3 class="section-title mb-0">Structure</h3>
+                </div>
+                <div class="list-block-container">
+                  <!-- <h4 class="subsection-title">Structure</h4> -->
+                  <ul class="simple-data-list">
+                    <li>
+                      <span class="label">Architectural Style:</span>
+                      <span class="val">Colonial</span>
+                    </li>
+                    <li>
+                      <span class="label">Building Area:</span>
+                      <span class="val">1,800 Sq. Ft.</span>
+                    </li>
+                    <li>
+                      <span class="label">Year Built:</span>
+                      <span class="val">1973</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <!-- 4. Lot -->
+              <div class="details-block mb-3">
+                <div class="d-flex align-center gap-sm mb-2">
+                  <i class="fa-solid fa-tree text-primary font-size-lg"></i>
+                  <h3 class="section-title mb-0">Lot</h3>
+                </div>
+                <div class="list-block-container">
+                  <ul class="simple-data-list">
+                    <li>
+                      <span class="label">Lot Size (Sq. Ft):</span>
+                      <span class="val">143,748</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <!-- 5. Finances & Disclosures -->
+              <div class="details-block">
+                <div class="d-flex align-center gap-sm mb-2">
+                  <i
+                    class="fa-solid fa-file-invoice-dollar text-primary font-size-lg"
+                  ></i>
+                  <h3 class="section-title mb-0">Finances & Disclosures</h3>
+                </div>
+
+                <div class="list-block-container">
+                  <!-- <h4 class="subsection-title">Finances</h4> -->
+                  <ul class="simple-data-list">
+                    <li>
+                      <span class="label">Price:</span>
+                      <span class="val font-weight-bold">$539,900</span>
+                    </li>
+                    <li>
+                      <span class="label">Price per Sq. Ft:</span>
+                      <span class="val">$299 per Sq. Ft.</span>
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- MLS Metadata (Restored) -->
+                <div class="mls-metadata-box mt-2">
+                  <div class="meta-row">
+                    <span>MLS #: <strong>24146371</strong></span>
+                    <span>Added: <strong>15 hours ago</strong></span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <!-- 6. Listing Agents -->
+              <div class="details-block mb-3">
+                <h3 class="section-title mb-1">Listing Agents</h3>
+                <p class="text-muted text-sm mb-2">for 97 Schnoor Road</p>
+
+                <div class="agent-card-horizontal">
+                  <div class="agent-photo">
+                    <!-- Using a placeholder for now as no local agent image exists -->
+                    <img
+                      src="imgs/Agents/agent-1.jpg"
+                      alt="Romina D'Angelo"
+                      class="img-cover"
+                    />
+                  </div>
+                  <div class="agent-details">
+                    <div class="agent-logo mb-1">
+                      <img
+                        src="imgs/logo-no-background.png"
+                        alt="Raya Homes Realty"
+                      />
+                    </div>
+                    <h4 class="agent-name mb-1">Romina D'Angelo</h4>
+                    <div class="agent-contact-row">
+                      <i class="fa-solid fa-phone"></i>
+                      <span>(860) 555-0123</span>
+                    </div>
+                    <div class="agent-contact-row">
+                      <i class="fa-regular fa-envelope"></i>
+                      <a href="#">Romina.DAngelo@rayahomes.com</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 7. Disclaimer -->
+              <div class="disclaimer-section mt-3">
+                <p class="source-label">Source: CT</p>
+                <p class="legal-text">
+                  The data relating to real estate for sale on this website
+                  appears in part through the SMARTMLS Internet Data Exchange
+                  program, a voluntary cooperative exchange of property listing
+                  data between licensed real estate brokerage firms, and is
+                  provided by SMARTMLS through a licensing agreement. Listing
+                  information is from various brokers who participate in the
+                  SMARTMLS IDX program and not all listings may be visible on
+                  the site. The property information being provided on or
+                  through the website is for the personal, non-commercial use of
+                  consumers and such information may not be used for any purpose
+                  other than to identify prospective properties consumers may be
+                  interested in purchasing. Some properties which appear for
+                  sale on the website may no longer be available because they
+                  are for instance, under contract, sold or are no longer being
+                  offered for sale. Property information displayed is deemed
+                  reliable but is not guaranteed. Copyright 2026 SmartMLS, Inc.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN: Sticky Side Bar -->
+          <div class="sidebar-column">
+            <div class="sidebar-wrapper">
+              <div class="contact-card sticky-card glass-panel">
+                <h3 class="card-title">Contact an Agent</h3>
+                <form class="contact-form mt-2">
+                  <div class="form-group floating-group">
+                    <input
+                      type="text"
+                      id="contactName"
+                      class="input-rounded"
+                      placeholder=" "
+                    />
+                    <label for="contactName" class="floating-label"
+                      >Full Name (Required)</label
+                    >
+                  </div>
+                  <div class="form-group floating-group">
+                    <input
+                      type="email"
+                      id="contactEmail"
+                      class="input-rounded"
+                      placeholder=" "
+                    />
+                    <label for="contactEmail" class="floating-label"
+                      >Email Address (Required)</label
+                    >
+                  </div>
+                  <div class="form-group floating-group">
+                    <input
+                      type="tel"
+                      id="contactMobile"
+                      class="input-rounded"
+                      placeholder=" "
+                    />
+                    <label for="contactMobile" class="floating-label"
+                      >Mobile Number</label
+                    >
+                  </div>
+                  <div class="form-group floating-group">
+                    <input
+                      type="text"
+                      id="tourDate"
+                      class="input-rounded"
+                      placeholder=" "
+                      onfocus="(this.type='date')"
+                      onblur="(this.type='text')"
+                    />
+                    <label for="tourDate" class="floating-label"
+                      >Preferred Tour Date</label
+                    >
+                    <i class="fa-regular fa-calendar icon-trailing"></i>
+                  </div>
+                  <div class="form-group floating-group">
+                    <textarea
+                      id="contactMsg"
+                      rows="4"
+                      class="input-rounded"
+                      placeholder=" "
+                    >
+Hi, I would like to know more about 97 Schnoor Road</textarea
+                    >
+                    <label for="contactMsg" class="floating-label"
+                      >Message</label
+                    >
+                  </div>
+                  <button
+                    type="submit"
+                    class="btn btn-primary btn-block btn-lg"
+                  >
+                    Contact Agent
+                  </button>
+                  <p class="disclaimer-text mt-1 text-center">
+                    By clicking Contact, you agree to our Terms of Use and
+                    Privacy Policy.
+                  </p>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider mt-4 mb-4"></div>
+
+        <!-- New Listings Carousel Section -->
+        <div class="new-listings-section mb-5">
+          <div class="d-flex justify-between align-center mb-2">
+            <div>
+              <h3 class="section-title mb-0">New Listings</h3>
+              <p class="text-muted text-sm" style="margin-top: 0.2rem">
+                near 97 Schnoor Road
+              </p>
+            </div>
+            <div class="carousel-nav-buttons">
+              <button id="nl-prev" class="nav-btn-circle disabled">
+                <i class="fa-solid fa-chevron-left"></i>
+              </button>
+              <button id="nl-next" class="nav-btn-circle">
+                <i class="fa-solid fa-chevron-right"></i>
+              </button>
+            </div>
+          </div>
+
+          <div class="listings-carousel-wrapper">
+            <div class="listings-carousel-track" id="newListingsTrack">
+              <!-- Card 1 -->
+              <div class="listing-card carousel-card">
+                <div class="card-image-wrapper">
+                  <div class="image-slider">
+                    <img
+                      src="imgs/Properties/prop-1.png"
+                      alt="Luxury Home"
+                      class="active"
+                    />
+                    <img src="imgs/Properties/prop-2.png" alt="Luxury Home" />
+                    <img src="imgs/Properties/prop-3.png" alt="Luxury Home" />
+                  </div>
+                  <button class="slider-btn prev">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button>
+                  <button class="slider-btn next">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                  <div class="slider-counter">1/3</div>
+                  <span class="status-tag for-sale"
+                    >For Sale <i class="fa-solid fa-circle-check"></i
+                  ></span>
+                </div>
+                <div class="card-content">
+                  <div class="d-flex justify-between align-center mb-1">
+                    <h3 class="card-price">$890,000</h3>
+                  </div>
+                  <div class="card-specs">
+                    4 Beds &nbsp; 3 Baths &nbsp; 2,350 Sq. Ft.
+                  </div>
+                  <div class="card-address">722 Denburn Place, Raleigh, NC</div>
+                  <div class="d-flex justify-between align-center">
+                    <a href="#" class="email-agent-btn">Contact Agent</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="listing-card carousel-card">
+                <div class="card-image-wrapper">
+                  <div class="image-slider">
+                    <img
+                      src="imgs/Properties/prop-2.png"
+                      alt="Modern Home"
+                      class="active"
+                    />
+                    <img src="imgs/Properties/prop-3.png" alt="Modern Home" />
+                    <img src="imgs/Properties/prop-1.png" alt="Modern Home" />
+                  </div>
+                  <button class="slider-btn prev">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button>
+                  <button class="slider-btn next">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                  <div class="slider-counter">1/3</div>
+                  <span class="status-tag coming-soon"
+                    >Coming Soon <i class="fa-solid fa-clock"></i
+                  ></span>
+                </div>
+                <div class="card-content">
+                  <div class="d-flex justify-between align-center mb-1">
+                    <h3 class="card-price">$650,000</h3>
+                  </div>
+                  <div class="card-specs">
+                    3 Beds &nbsp; 2 Baths &nbsp; 1,800 Sq. Ft.
+                  </div>
+                  <div class="card-address">45 Park Avenue, Raleigh, NC</div>
+                  <div class="d-flex justify-between align-center">
+                    <a href="#" class="email-agent-btn">Contact Agent</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="listing-card carousel-card">
+                <div class="card-image-wrapper">
+                  <div class="image-slider">
+                    <img
+                      src="imgs/Properties/prop-3.png"
+                      alt="Villa"
+                      class="active"
+                    />
+                    <img src="imgs/Properties/prop-1.png" alt="Villa" />
+                    <img src="imgs/Properties/prop-2.png" alt="Villa" />
+                  </div>
+                  <button class="slider-btn prev">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button>
+                  <button class="slider-btn next">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                  <div class="slider-counter">1/3</div>
+                  <span class="status-tag for-sale"
+                    >For Sale <i class="fa-solid fa-circle-check"></i
+                  ></span>
+                </div>
+                <div class="card-content">
+                  <div class="d-flex justify-between align-center mb-1">
+                    <h3 class="card-price">$1,200,000</h3>
+                  </div>
+                  <div class="card-specs">
+                    5 Beds &nbsp; 4 Baths &nbsp; 3,200 Sq. Ft.
+                  </div>
+                  <div class="card-address">88 Estate Dr, Raleigh, NC</div>
+                  <div class="d-flex justify-between align-center">
+                    <a href="#" class="email-agent-btn">Contact Agent</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Card 4 -->
+              <div class="listing-card carousel-card">
+                <div class="card-image-wrapper">
+                  <div class="image-slider">
+                    <img
+                      src="imgs/Properties/prop-1.png"
+                      alt="Mansion"
+                      class="active"
+                    />
+                    <img src="imgs/Properties/prop-3.png" alt="Mansion" />
+                  </div>
+                  <button class="slider-btn prev">
+                    <i class="fa-solid fa-chevron-left"></i>
+                  </button>
+                  <button class="slider-btn next">
+                    <i class="fa-solid fa-chevron-right"></i>
+                  </button>
+                  <div class="slider-counter">1/2</div>
+                  <span class="status-tag sold"
+                    >Sold <i class="fa-solid fa-lock"></i
+                  ></span>
+                </div>
+                <div class="card-content">
+                  <div class="d-flex justify-between align-center mb-1">
+                    <h3 class="card-price">$1,550,000</h3>
+                  </div>
+                  <div class="card-specs">
+                    6 Beds &nbsp; 5 Baths &nbsp; 4,000 Sq. Ft.
+                  </div>
+                  <div class="card-address">12 Hilltop Rd, Raleigh, NC</div>
+                  <div class="d-flex justify-between align-center">
+                    <a href="#" class="email-agent-btn">Contact Agent</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <!-- =========================================
          GALLERY OVERLAY MODAL
          ========================================= -->
     <div id="gallery-overlay" class="gallery-overlay">
-        <!-- Backdrop Blur Layer -->
-        <div class="gallery-backdrop"></div>
-        
-        <div class="gallery-modal">
-            <!-- Header: Tabs & Actions -->
-            <div class="gallery-header">
-                <div class="gallery-tabs">
-                    <button class="tab-btn active" data-tab="photos">Photos</button>
-                    <button class="tab-btn" data-tab="map">Map</button>
-                </div>
-                
-                <h3 class="gallery-title">97 Schnoor Road, Madagan</h3>
-                
-                <div class="gallery-actions">
-                    <button class="action-btn share-btn">
-                        <i class="fa-solid fa-share-nodes"></i> Share
-                    </button>
-                    <button class="action-btn close-btn" id="closeGalleryBtn">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-            </div>
+      <!-- Backdrop Blur Layer -->
+      <div class="gallery-backdrop"></div>
 
-            <!-- Main Content Area -->
-            <div class="gallery-content">
-                <!-- Large Image Viewer -->
-                <div class="main-viewer relative" id="photoView">
-                    <img src="imgs/Single/img-1.png" alt="Property View" id="galleryMainImage" class="img-contain">
-                    
-                    <!-- Navigation Arrows -->
-                    <button class="gallery-nav prev" id="galleryPrevBtn">
-                        <i class="fa-solid fa-chevron-left"></i>
-                    </button>
-                    <button class="gallery-nav next" id="galleryNextBtn">
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </button>
-                </div>
+      <div class="gallery-modal">
+        <!-- Header: Tabs & Actions -->
+        <div class="gallery-header">
+          <div class="gallery-tabs">
+            <button class="tab-btn active" data-tab="photos">Photos</button>
+            <button class="tab-btn" data-tab="map">Map</button>
+          </div>
 
-                <!-- Map Viewer (Hidden by default) -->
-                <div class="map-viewer hidden" id="mapView">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.063683515569!2d-122.41941548468196!3d37.7749292797596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sTwitter+HQ!5e0!3m2!1sen!2sus!4v1533023456789" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-            </div>
+          <h3 class="gallery-title">97 Schnoor Road, Madagan</h3>
 
-            <!-- Footer: Thumbnails -->
-            <div class="gallery-footer">
-                <div class="gallery-counter">
-                    <span id="currentImageIndex">1</span> of <span id="totalImages">12</span>
-                </div>
-                
-                <div class="thumbnail-strip-wrapper">
-                    <button class="strip-nav prev"><i class="fa-solid fa-chevron-left"></i></button>
-                    <div class="thumbnail-strip" id="thumbnailStrip">
-                        <!-- Thumbnails injected via JS -->
-                        <div class="thumb active"><img src="imgs/Single/img-1.png"></div>
-                        <div class="thumb"><img src="imgs/Single/img-bed-1.png"></div>
-                        <div class="thumb"><img src="imgs/Single/img-wash-1.png"></div>
-                        <div class="thumb"><img src="imgs/Single/img-kitchen-1.png"></div>
-                        <!-- More implementation placeholder -->
-                    </div>
-                    <button class="strip-nav next"><i class="fa-solid fa-chevron-right"></i></button>
-                </div>
-            </div>
+          <div class="gallery-actions">
+            <button class="action-btn share-btn">
+              <i class="fa-solid fa-share-nodes"></i> Share
+            </button>
+            <button class="action-btn close-btn" id="closeGalleryBtn">
+              <i class="fa-solid fa-xmark"></i>
+            </button>
+          </div>
         </div>
+
+        <!-- Main Content Area -->
+        <div class="gallery-content">
+          <!-- Large Image Viewer -->
+          <div class="main-viewer relative" id="photoView">
+            <img
+              src="imgs/Single/img-1.png"
+              alt="Property View"
+              id="galleryMainImage"
+              class="img-contain"
+            />
+
+            <!-- Navigation Arrows -->
+            <button class="gallery-nav prev" id="galleryPrevBtn">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <button class="gallery-nav next" id="galleryNextBtn">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+
+          <!-- Map Viewer (Hidden by default) -->
+          <div class="map-viewer hidden" id="mapView">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.063683515569!2d-122.41941548468196!3d37.7749292797596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sTwitter+HQ!5e0!3m2!1sen!2sus!4v1533023456789"
+              width="100%"
+              height="100%"
+              style="border: 0"
+              allowfullscreen=""
+              loading="lazy"
+            >
+            </iframe>
+          </div>
+        </div>
+
+        <!-- Footer: Thumbnails -->
+        <div class="gallery-footer">
+          <div class="gallery-counter">
+            <span id="currentImageIndex">1</span> of
+            <span id="totalImages">12</span>
+          </div>
+
+          <div class="thumbnail-strip-wrapper">
+            <button class="strip-nav prev">
+              <i class="fa-solid fa-chevron-left"></i>
+            </button>
+            <div class="thumbnail-strip" id="thumbnailStrip">
+              <!-- Thumbnails injected via JS -->
+              <div class="thumb active">
+                <img src="imgs/Single/img-1.png" />
+              </div>
+              <div class="thumb"><img src="imgs/Single/img-bed-1.png" /></div>
+              <div class="thumb"><img src="imgs/Single/img-wash-1.png" /></div>
+              <div class="thumb">
+                <img src="imgs/Single/img-kitchen-1.png" />
+              </div>
+              <!-- More implementation placeholder -->
+            </div>
+            <button class="strip-nav next">
+              <i class="fa-solid fa-chevron-right"></i>
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- Detail Page Script -->
     <script src="js/property-detail.js"></script>
-</body>
+  </body>
 </html>

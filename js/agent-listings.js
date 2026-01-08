@@ -18,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Safely access stats or default
       const sold = agent.stats?.sold || "-";
       const active = agent.stats?.active || "-";
-      const exp = agent.stats?.experience || "-"; 
+      const exp = agent.stats?.experience || "-";
 
       card.innerHTML = `
             <div class="agent-card-header">
@@ -146,66 +146,4 @@ document.addEventListener("DOMContentLoaded", () => {
     "fa-solid fa-location-dot"
   );
   setupDropdown("nameInput", "nameSuggestions", agentNames, "fa-solid fa-user");
-
-  // 4. Save Search Modal Logic (Kept from previous)
-  const saveSearchBtn = document.getElementById("saveSearchBtn");
-  const saveSearchOverlay = document.getElementById("saveSearchOverlay");
-  const cancelSaveSearchBtn = document.getElementById("cancelSaveSearchBtn");
-  const confirmSaveSearchBtn = document.getElementById("confirmSaveSearchBtn");
-  const searchNameInput = document.getElementById("searchNameInput");
-  const saveToast = document.getElementById("saveToast");
-  const toastMessage = document.getElementById("toastMessage");
-
-  const showToast = (message) => {
-    if (saveToast && toastMessage) {
-      toastMessage.textContent = message;
-      saveToast.classList.add("show");
-      setTimeout(() => {
-        saveToast.classList.remove("show");
-      }, 3000);
-    }
-  };
-
-  if (saveSearchBtn && saveSearchOverlay) {
-    saveSearchBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const locInput = document.getElementById("locInput");
-      const nameInput = document.getElementById("nameInput");
-
-      const locationVal = locInput ? locInput.value : "";
-      const agentVal = nameInput ? nameInput.value : "";
-      const autoName = locationVal
-        ? `Agents in ${locationVal}`
-        : agentVal
-        ? `Search: ${agentVal}`
-        : "All Agents Search";
-
-      if (searchNameInput) searchNameInput.value = autoName;
-      saveSearchOverlay.classList.add("show");
-      document.body.style.overflow = "hidden";
-    });
-
-    const closeSaveSearch = () => {
-      saveSearchOverlay.classList.remove("show");
-      document.body.style.overflow = "";
-    };
-
-    if (cancelSaveSearchBtn)
-      cancelSaveSearchBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        closeSaveSearch();
-      });
-    if (confirmSaveSearchBtn)
-      confirmSaveSearchBtn.addEventListener("click", (e) => {
-        e.preventDefault();
-        saveSearchBtn.innerHTML = '<i class="fa-solid fa-heart"></i> Saved';
-        saveSearchBtn.classList.remove("btn-secondary");
-        saveSearchBtn.classList.add("btn-primary");
-        showToast("Search saved successfully!");
-        closeSaveSearch();
-      });
-    saveSearchOverlay.addEventListener("click", (e) => {
-      if (e.target === saveSearchOverlay) closeSaveSearch();
-    });
-  }
 });

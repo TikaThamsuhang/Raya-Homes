@@ -36,10 +36,73 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+  // --- Recent Searches Logic (Local Storage) ---
+  const RECENT_SEARCHES_KEY = "raya_recent_searches";
+  const MAX_RECENT_SEARCHES = 3;
+
+  function getRecentSearches() {
+    const searches = localStorage.getItem(RECENT_SEARCHES_KEY);
+    return searches ? JSON.parse(searches) : [];
+  }
+
+  function saveRecentSearch(term) {
+    if (!term) return;
+    let searches = getRecentSearches();
+    searches = searches.filter((s) => s.toLowerCase() !== term.toLowerCase());
+    searches.unshift(term);
+    if (searches.length > MAX_RECENT_SEARCHES) searches.pop();
+    localStorage.setItem(RECENT_SEARCHES_KEY, JSON.stringify(searches));
+    renderRecentSearches();
+  }
+
+  function renderRecentSearches() {
+    const groups = searchSuggestions.querySelectorAll(".suggestion-group");
+    let recentGroup = null;
+    groups.forEach((group) => {
+      const h6 = group.querySelector("h6");
+      if (h6 && h6.textContent.trim() === "Recent Searches") {
+        recentGroup = group;
+      }
+    });
+
+    if (!recentGroup) return;
+
+    const ul = recentGroup.querySelector("ul");
+    ul.innerHTML = "";
+    const searches = getRecentSearches();
+
+    if (searches.length === 0) {
+      recentGroup.style.display = "none";
+      return;
+    }
+
+    recentGroup.style.display = "block";
+    searches.forEach((term) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> ${term}`;
+      li.addEventListener("click", () => {
+        searchInput.value = term;
+        searchSuggestions.classList.remove("show");
+        saveRecentSearch(term); // Refresh interaction
+        // Trigger generic search behavior if needed, or just let form submit handle it if user presses enter
+      });
+      ul.appendChild(li);
+    });
+  }
+
+  // Initial Render & Focus
+  renderRecentSearches();
+  searchInput.addEventListener("focus", () => {
+    renderRecentSearches();
+    searchSuggestions.classList.add("show");
+  });
+
   const suggestionItems = searchSuggestions.querySelectorAll("li");
   suggestionItems.forEach((item) => {
     item.addEventListener("click", () => {
-      searchInput.value = item.textContent.trim().replace(/\s+/g, " ");
+      const text = item.textContent.trim().replace(/\s+/g, " ");
+      searchInput.value = text;
+      saveRecentSearch(text); // Save clicked suggestion as recent
       searchSuggestions.classList.remove("show");
     });
   });
@@ -49,6 +112,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const searchValue = searchInput.value.trim();
     if (searchValue) {
+      saveRecentSearch(searchValue); // Save on submit
       // Check which tab is active
       const activeTab = document.querySelector(".tab-btn.active");
       const mode = activeTab ? activeTab.dataset.tab : "buy";

@@ -778,8 +778,7 @@ html, body {
     }
     
     /* Hide Desktop Filter Pills */
-    .filter-dropdown-wrapper,
-    #saveSearchBtn {
+    .filter-dropdown-wrapper {
         display: none !important;
     }
     

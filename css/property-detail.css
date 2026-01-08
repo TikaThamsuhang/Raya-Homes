@@ -286,33 +286,6 @@ main {
     overflow: visible !important;
 }
 
-/* --- Save/Fav Icon --- */
-.fav-icon {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    width: 32px;
-    height: 32px;
-    background: rgba(255, 255, 255, 0.9);
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    z-index: 10;
-    color: var(--color-text-dark);
-    font-size: 1rem;
-    transition: all 0.2s;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-}
-
-.fav-icon:hover {
-    background: var(--color-primary);
-    color: var(--color-white); /* Red heart on hover */
-    transform: scale(1.1);
-}
-
 
 
 /* --- Left Column: Details --- */

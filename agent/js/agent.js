@@ -244,10 +244,6 @@ document.addEventListener("DOMContentLoaded", () => {
                 <!-- Pagination -->
                 <div class="slider-pagination">1/${images.length}</div>
 
-                <!-- Fav Icon -->
-                <button class="fav-icon-small">
-                  <i class="fa-regular fa-heart"></i>
-                </button>
               </div>
 
               <div class="content-container">

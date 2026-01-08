@@ -90,7 +90,7 @@
     background: #8a4f3b;
 }
 
-.find-agent-btn, .save-search-btn {
+.find-agent-btn {
     border-radius: 50px;
     padding: 0.8rem 1.5rem;
     margin-left: auto;
@@ -98,7 +98,11 @@
     gap: 0.5rem;
 }
 
-.find-agent-btn i, .save-search-btn i {
+.filter-bar .find-agent-btn:hover {
+  background: var(--color-primary-dark);
+}
+
+.find-agent-btn i {
     font-size: .9rem;
 }
 .find-agent-btn{
