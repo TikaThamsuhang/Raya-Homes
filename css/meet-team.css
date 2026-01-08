@@ -340,6 +340,15 @@
 
 /* Responsive CTA */
 @media (max-width: 768px) {
+    .cta-top-container{
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .cta-top-strip{
+        padding: 1.5rem 1rem;
+        text-align: center;
+    }
     .cta-top-strip .app-container {
         flex-direction: column;
         gap: 1.5rem;

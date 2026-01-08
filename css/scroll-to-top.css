@@ -1,0 +1,123 @@
+/* =========================================
+   SCROLL TO TOP BUTTON - Premium Design
+   ========================================= */
+.scroll-to-top {
+    position: fixed;
+    bottom: 2.5rem;
+    right: 2.5rem;
+    width: 55px;
+    height: 55px;
+    
+    /* Premium Glassmorphism Effect */
+    background: linear-gradient(135deg, rgba(60, 35, 40, 0.95) 0%, rgba(60, 35, 40, 0.85) 100%);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Elegant Border with Gradient */
+    border: 2px solid rgba(160, 94, 70, 0.4);
+    border-radius: 50%;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1000;
+    
+    /* Hide by default */
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(30px) scale(0.8);
+    
+    /* Smooth transitions */
+    transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+    
+    /* Premium shadow */
+    box-shadow: 
+        0 8px 32px rgba(60, 35, 40, 0.3),
+        0 2px 8px rgba(0, 0, 0, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Visible state */
+.scroll-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0) scale(1);
+}
+
+/* Hover effect - Elegant glow and lift */
+.scroll-to-top:hover {
+    background: linear-gradient(135deg, rgba(160, 94, 70, 0.95) 0%, rgba(160, 94, 70, 0.85) 100%);
+    border-color: rgba(160, 94, 70, 0.8);
+    transform: translateY(-8px) scale(1.05);
+    
+    /* Glowing shadow effect */
+    box-shadow: 
+        0 12px 40px rgba(160, 94, 70, 0.4),
+        0 4px 12px rgba(160, 94, 70, 0.3),
+        0 0 20px rgba(160, 94, 70, 0.2),
+        inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+/* Active/Click effect */
+.scroll-to-top:active {
+    transform: translateY(-4px) scale(0.98);
+    transition: all 0.1s ease;
+}
+
+/* Icon styling */
+.scroll-to-top i {
+    color: white;
+    font-size: 1.3rem;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+/* Icon animation on hover */
+.scroll-to-top:hover i {
+    transform: translateY(-4px);
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.3));
+}
+
+/* Subtle pulse animation when visible */
+@keyframes subtle-pulse {
+    0%, 100% {
+        box-shadow: 
+            0 8px 32px rgba(60, 35, 40, 0.3),
+            0 2px 8px rgba(0, 0, 0, 0.1),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow: 
+            0 8px 32px rgba(60, 35, 40, 0.4),
+            0 2px 8px rgba(0, 0, 0, 0.15),
+            inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    }
+}
+
+.scroll-to-top.visible {
+    animation: subtle-pulse 3s ease-in-out infinite;
+}
+
+.scroll-to-top:hover {
+    animation: none; /* Stop pulse on hover */
+}
+
+/* Mobile adjustments */
+@media (max-width: 768px) {
+    .scroll-to-top {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 52px;
+        height: 52px;
+    }
+    
+    .scroll-to-top i {
+        font-size: 1.1rem;
+    }
+    
+    /* Reduce hover lift on mobile */
+    .scroll-to-top:hover {
+        transform: translateY(-5px) scale(1.03);
+    }
+}

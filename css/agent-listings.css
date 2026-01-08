@@ -99,7 +99,7 @@
 }
 
 .filter-bar .find-agent-btn:hover {
-  background: var(--color-primary-dark);
+  background: var(--color-primary-light);
 }
 
 .find-agent-btn i {
