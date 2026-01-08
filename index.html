@@ -6,6 +6,7 @@
     <title>Raya Homes - Find Your Dream Home</title>
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/index.css" />
+    <link rel="stylesheet" href="css/sell-search-floating.css" />
     <!-- FontAwesome for Icons -->
     <link
       rel="stylesheet"
@@ -44,13 +45,17 @@
             <!-- Search Bar -->
             <div class="search-wrapper-relative">
               <form class="single-search-form">
-                <div class="search-input-wrapper">
+                <div class="search-input-wrapper floating-label-group">
                   <input
                     type="text"
                     id="searchInput"
-                    placeholder="City, Zip, Address, Property Name"
+                    class="search-input-field"
+                    placeholder=" "
                     autocomplete="off"
                   />
+                  <label for="searchInput" class="floating-label-search"
+                    >City, Zip, Address, Property Name</label
+                  >
                 </div>
                 <button type="submit" class="btn-search-pill">
                   Search <i class="fa-solid fa-magnifying-glass"></i>
@@ -177,7 +182,7 @@
       </section>
 
       <!-- Exclusive Portfolio Section (Explore Homes) -->
-      <section class="main-container exclusive-portfolio mt-5">
+      <section class="main-container exclusive-portfolio">
         <div class="portfolio-header">
           <h2>Explore Our Exclusive Portfolio</h2>
           <div class="header-right">
@@ -390,7 +395,7 @@
       </section>
 
       <!-- Agent Preview Section -->
-      <section class="main-container agent-preview-section mt-5 mb-5">
+      <section class="main-container agent-preview-section">
         <div class="agent-preview-card">
           <div class="agent-content-wrapper">
             <div class="agent-text">
@@ -435,7 +440,7 @@
 
       <!-- Seller Process Section -->
       <section class="main-container">
-        <div class="seller-process-section mt-5 mb-5">
+        <div class="seller-process-section">
           <div class="section-header-center">
             <h2>Simple Steps to Sell Your Home</h2>
             <p>

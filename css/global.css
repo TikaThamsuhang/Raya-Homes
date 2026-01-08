@@ -366,11 +366,14 @@ input:focus, select:focus, textarea:focus {
 .mt-1 { margin-top: var(--spacing-sm) !important; }
 .mt-2 { margin-top: var(--spacing-md) !important; }
 .mt-3 { margin-top: var(--spacing-lg) !important; }
-
+.mt-4 { margin-top: var(--spacing-xl) !important; }
+.mt-5 { margin-top: var(--spacing-xxl) !important; }
 
 .mb-1 { margin-bottom: var(--spacing-sm) !important; }
 .mb-2 { margin-bottom: var(--spacing-md) !important; }
 .mb-3 { margin-bottom: var(--spacing-lg) !important; }
+.mb-4 { margin-bottom: var(--spacing-xl) !important; }
+.mb-5 { margin-bottom: var(--spacing-xxl) !important; }
 
 
 /* Glassmorphism Card */

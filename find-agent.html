@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/find-agent.css" />
+    <link rel="stylesheet" href="css/sell-search-floating.css" />
     <!-- FontAwesome for Icons -->
     <link
       rel="stylesheet"
@@ -46,13 +47,17 @@
             <!-- Search Bar -->
             <div class="search-wrapper-relative">
               <form class="single-search-form">
-                <div class="search-input-wrapper">
+                <div class="search-input-wrapper floating-label-group">
                   <input
                     type="text"
                     id="searchInput"
-                    placeholder="City, Zip, Address, Property Name"
+                    class="search-input-field"
+                    placeholder=" "
                     autocomplete="off"
                   />
+                  <label for="searchInput" class="floating-label-search"
+                    >City, Zip, Address, Property Name</label
+                  >
                 </div>
                 <button type="submit" class="btn-search-pill">
                   Search <i class="fa-solid fa-magnifying-glass"></i>
@@ -61,7 +66,8 @@
 
               <!-- Suggestion Dropdown -->
               <div class="search-suggestions" id="searchSuggestions">
-                <div class="suggestion-group">
+                <!-- Location Suggestions -->
+                <div class="suggestion-group location-suggestions">
                   <h6>Popular Locations</h6>
                   <ul>
                     <li>
@@ -73,17 +79,24 @@
                     <li><i class="fa-solid fa-location-dot"></i> Miami, FL</li>
                   </ul>
                 </div>
+
+                <!-- Agent Suggestions -->
+                <div
+                  class="suggestion-group agent-suggestions"
+                  style="display: none"
+                >
+                  <h6>Featured Agents</h6>
+                  <ul>
+                    <li><i class="fa-solid fa-user"></i> Sarah Jenkins</li>
+                    <li><i class="fa-solid fa-user"></i> Michael Chang</li>
+                    <li><i class="fa-solid fa-user"></i> Emily Rodriguez</li>
+                  </ul>
+                </div>
+
                 <div class="suggestion-group">
                   <h6>Recent Searches</h6>
-                  <ul>
-                    <li>
-                      <i class="fa-solid fa-clock-rotate-left"></i> Modern Villa
-                      with Pool
-                    </li>
-                    <li>
-                      <i class="fa-solid fa-clock-rotate-left"></i> Downtown
-                      Apartment
-                    </li>
+                  <ul id="recentSearchesList">
+                    <!-- Will be populated by JavaScript -->
                   </ul>
                 </div>
               </div>

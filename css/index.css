@@ -96,7 +96,7 @@
 .single-search-form {
     background: var(--color-white);
     border-radius: 60px; /* Larger radius */
-    padding: 0.4rem; /* Minimal padding */
+    padding: 0.4rem;
     display: flex;
     align-items: center;
     box-shadow: 0 15px 40px rgba(0,0,0,0.2);
@@ -128,12 +128,12 @@
     color: white;
     border: none;
     border-radius: 50px;
-    padding: .8rem 2rem; /* Reduced padding */
+    padding: 0.9rem 2rem; /* Reduced padding */
     font-weight: 600;
     display: flex;
     align-items: center;
     gap: 0.8rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
     cursor: pointer;
     transition: all 0.2s;
 }
@@ -143,6 +143,22 @@
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
+
+/* Label Styling: Always Floating */
+.floating-label-group label {
+    position: absolute;
+    top: -3px;
+    left: 17px;
+    background: #ffffff;
+    padding: 0 6px;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--color-primary);
+    pointer-events: none;
+    transition: all 0.2s;
+    line-height: 1;
+}
+
 
 /* Suggestions Dropdown */
 .search-suggestions {

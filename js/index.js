@@ -4,11 +4,32 @@ document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("searchInput");
   const searchSuggestions = document.getElementById("searchSuggestions");
   const searchForm = document.querySelector(".single-search-form");
+  const searchLabel = document.querySelector(".floating-label-search");
 
-  const placeholders = {
-    buy: "City, Zip, Address, Property Name",
-    sell: "Enter your home address",
+  const tabConfig = {
+    buy: {
+      label: "City, Zip, Address, Property Name",
+      placeholders: [
+        "Beverly Hills, CA 90210",
+        "Luxury Penthouse in Manhattan",
+        "Miami Beach Oceanfront Villa",
+        "Modern Loft in Downtown LA",
+        "Malibu Beachfront Estate",
+      ],
+    },
+    sell: {
+      label: "Your Home Address",
+      placeholders: [
+        "123 Maple Street, Beverly Hills, CA 90210",
+        "456 Ocean Drive, Miami Beach, FL 33139",
+        "789 Park Avenue, New York, NY 10021",
+        "321 Sunset Boulevard, Los Angeles, CA 90028",
+        "654 Pine Street, San Francisco, CA 94102",
+      ],
+    },
   };
+
+  let currentMode = "buy";
 
   tabBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -16,10 +37,18 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.classList.add("active");
 
       const mode = btn.dataset.tab;
-      if (placeholders[mode]) {
-        searchInput.placeholder = placeholders[mode];
+      currentMode = mode;
+
+      // Update label text
+      if (searchLabel && tabConfig[mode]) {
+        searchLabel.textContent = tabConfig[mode].label;
       }
+
+      // Clear input
       searchInput.value = "";
+
+      // Restart typing animation with new placeholders
+      startTypingAnimation();
     });
   });
 
@@ -130,6 +159,90 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     }
   });
+
+  // Typing Animation for Placeholder (Index Page)
+  const typingInputHome = document.getElementById("searchInput");
+  let currentTermIndex = 0;
+  let currentCharIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 80;
+  let deletingSpeed = 40;
+  let pauseBeforeDelete = 2000;
+  let pauseBeforeType = 500;
+  let typingTimeout = null;
+
+  function typeEffect() {
+    // Don't type if input has focus or has value
+    if (
+      document.activeElement === typingInputHome ||
+      typingInputHome.value.trim() !== ""
+    ) {
+      typingTimeout = setTimeout(typeEffect, 1000);
+      return;
+    }
+
+    const searchTerms = tabConfig[currentMode].placeholders;
+    const currentTerm = searchTerms[currentTermIndex];
+
+    if (!isDeleting) {
+      // Typing
+      typingInputHome.setAttribute(
+        "placeholder",
+        currentTerm.substring(0, currentCharIndex + 1)
+      );
+      currentCharIndex++;
+
+      if (currentCharIndex === currentTerm.length) {
+        // Finished typing, pause then start deleting
+        isDeleting = true;
+        typingTimeout = setTimeout(typeEffect, pauseBeforeDelete);
+        return;
+      }
+    } else {
+      // Deleting
+      typingInputHome.setAttribute(
+        "placeholder",
+        currentTerm.substring(0, currentCharIndex - 1)
+      );
+      currentCharIndex--;
+
+      if (currentCharIndex === 0) {
+        // Finished deleting, move to next term
+        isDeleting = false;
+        currentTermIndex = (currentTermIndex + 1) % searchTerms.length;
+        typingTimeout = setTimeout(typeEffect, pauseBeforeType);
+        return;
+      }
+    }
+
+    typingTimeout = setTimeout(
+      typeEffect,
+      isDeleting ? deletingSpeed : typingSpeed
+    );
+  }
+
+  function startTypingAnimation() {
+    // Clear any existing timeout
+    if (typingTimeout) {
+      clearTimeout(typingTimeout);
+    }
+
+    // Reset animation state
+    currentTermIndex = 0;
+    currentCharIndex = 0;
+    isDeleting = false;
+
+    // Clear placeholder and start fresh
+    typingInputHome.setAttribute("placeholder", "");
+
+    // Start typing animation after a short delay
+    typingTimeout = setTimeout(typeEffect, 500);
+  }
+
+  // Start initial animation
+  if (typingInputHome) {
+    startTypingAnimation();
+  }
 
   // --- Featured Properties (Main Carousel) Logic ---
   const prevBtn = document.querySelector(".nav-arrow.prev");

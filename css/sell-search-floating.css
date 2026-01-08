@@ -1,0 +1,42 @@
+/* Floating Label for Search Input on Sell Page */
+.search-input-wrapper.floating-label-group {
+    position: relative;
+}
+
+.search-input-field {
+    width: 100%;
+    border: none;
+    background: transparent;
+    font-size: 1rem;
+    color: var(--color-text-dark);
+    padding: 1rem 0 0.5rem 0;
+    outline: none;
+}
+
+.search-input-field::placeholder {
+    color: #999;
+    opacity: 1;
+}
+
+.floating-label-search {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1rem;
+    color: var(--color-primary-light) !important;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    background: white;
+    padding: 0 4px;
+}
+
+/* Typing animation cursor effect */
+.search-input-field::placeholder {
+    animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.7; }
+}

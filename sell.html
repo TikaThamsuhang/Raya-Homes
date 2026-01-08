@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/global.css" />
     <link rel="stylesheet" href="css/index.css" />
     <link rel="stylesheet" href="css/sell.css" />
+    <link rel="stylesheet" href="css/sell-search-floating.css" />
 
     <!-- FontAwesome for Icons -->
     <link
@@ -40,14 +41,18 @@
               class="single-search-form"
               onsubmit="event.preventDefault(); const address = document.getElementById('searchInput').value; if(address) window.location.href='home-valuation.html?address=' + encodeURIComponent(address);"
             >
-              <div class="search-input-wrapper">
+              <div class="search-input-wrapper floating-label-group">
                 <input
                   type="text"
                   id="searchInput"
-                  placeholder="Enter your home address"
+                  class="search-input-field"
+                  placeholder=" "
                   autocomplete="off"
                   required
                 />
+                <label for="searchInput" class="floating-label-search"
+                  >Your Home Address</label
+                >
               </div>
               <button type="submit" class="btn-search-pill">
                 Get Started <i class="fa-solid fa-arrow-right"></i>
@@ -139,7 +144,7 @@
       </section>
 
       <!-- Agent Preview Section -->
-      <section class="main-container agent-preview-section mt-5 mb-5">
+      <section class="main-container agent-preview-section mb-5">
         <div class="agent-preview-card">
           <div class="agent-content-wrapper">
             <div class="agent-text">
