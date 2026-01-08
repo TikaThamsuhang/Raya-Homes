@@ -89,7 +89,8 @@
 }
 
 .team-img-wrapper.leadership {
-    height: 150px;
+    height: 100%; /* Restore full height */
+    min-height: 400px;
 }
 
 .team-img-wrapper.standard {
@@ -156,7 +157,7 @@
 }
 
 .team-card .team-info{
-    padding: 2rem 0;
+    padding: 2rem;
 }
 
 
@@ -219,33 +220,146 @@
 }
 
 
-/* CTA */
-.cta-inner {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80');
+/* Dual-Band CTA Section */
+.dual-cta-section {
+    margin-top: 6rem;
+    width: 100%;
+}
+
+/* 1. Top Strip */
+.cta-top-strip {
+    background-color: #1e1e1e; /* Dark almost black */
+    padding: 3rem 0;
+    color: white;
+}
+
+.cta-top-container {
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.cta-strip-title {
+    font-family: var(--font-heading);
+    font-size: 2.25rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin: 0;
+    color: var(--color-white);
+}
+
+.btn-outline-gold {
+    border: 1px solid var(--color-accent);
+    color: white;
+    padding: 0.8rem 2rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.btn-outline-gold:hover {
+    background: var(--color-accent);
+    color: var(--color-primary);
+}
+
+/* 2. Main Hero: Work With Us */
+.cta-hero-main {
+    position: relative;
+    height: 550px;
+    background-image: url('../imgs/team-hero-background.jpg'); /* Use a group photo here */
     background-size: cover;
-    background-position: center;
-    padding: 6rem 2rem;
-    border-radius: 24px;
+    background-position: center 20%;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.cta-hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.4); /* Darkens the image */
+}
+
+.cta-hero-content {
+    position: relative;
+    z-index: 2;
     color: white;
-    box-shadow: var(--shadow-lg);
+    max-width: 700px;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-.cta-inner h2 {
+.display-title {
+    font-family: var(--font-heading);
+    font-size: 3.5rem;
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+    color: var(--color-white);
+}
+
+.divider-gold {
+    width: 80px;
+    height: 1px;
+    background-color: rgba(255, 255, 255, 0.6);
+    margin: 0 auto 2rem auto;
+}
+
+.cta-quote {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 3rem;
+    opacity: 0.95;
+    color: var(--color-white);
+}
+
+.btn-solid-gold {
+    border: 2px solid var(--color-accent);
+    background: transparent;
     color: white;
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
 }
 
-.cta-inner p {
-    color: rgba(255, 255, 255, 0.9);
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
+.btn-solid-gold:hover {
+    background: var(--color-accent);
+    color: var(--color-primary);
+    box-shadow: 0 0 20px rgba(197, 168, 92, 0.4);
 }
 
-/* Responisve */
+/* Responsive CTA */
+@media (max-width: 768px) {
+    .cta-top-strip .app-container {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+
+    .cta-strip-title {
+        font-size: 1.5rem;
+    }
+
+    .display-title {
+        font-size: 2.5rem;
+    }
+    
+    .cta-hero-main {
+        height: 500px;
+    }
+}
+
+/* Response wrapper for team cards (was broken previously) */
 @media (max-width: 900px) {
     .team-card.large {
         flex-direction: column !important; /* Force stack */
