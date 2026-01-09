@@ -8,7 +8,6 @@
   border-radius: var(--radius-xl);
   position: relative;
   overflow: hidden;
-  margin-top: var(--spacing-lg);
   display: flex;
   align-items: center;
   justify-content: center;
