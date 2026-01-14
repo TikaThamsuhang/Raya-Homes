@@ -347,6 +347,7 @@ input:focus, select:focus, textarea:focus {
 .main-container{
     max-width: 1360px;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 
 /* Flexbox Helpers */
@@ -1016,4 +1017,5 @@ input:focus, select:focus, textarea:focus {
     max-width: 1440px; /* Limit max width for large screens */
     margin: 0 auto;
     position: relative;
+    padding: 0 1rem;
 }
