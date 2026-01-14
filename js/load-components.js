@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const headerPlaceholder = document.getElementById("header-placeholder");
   const footerPlaceholder = document.getElementById("footer-placeholder");
 
-  // Load Header
   if (headerPlaceholder) {
     fetch("components/header.html")
       .then((response) => {
@@ -12,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .then((data) => {
         headerPlaceholder.innerHTML = data;
 
-        // Set active link based on current page
         const currentPage =
           window.location.pathname.split("/").pop() || "index.html";
         const navLinks = headerPlaceholder.querySelectorAll(
@@ -26,7 +24,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         });
 
-        // Mobile Menu Logic
         const mobileMenuBtn =
           headerPlaceholder.querySelector(".mobile-menu-btn");
         const closeMenuBtn = headerPlaceholder.querySelector(".close-menu-btn");
@@ -52,7 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((error) => console.error("Error loading header:", error));
   }
 
-  // Load Footer
   if (footerPlaceholder) {
     fetch("components/footer.html")
       .then((response) => {

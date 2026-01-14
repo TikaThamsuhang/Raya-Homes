@@ -1,11 +1,8 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // 1. Data Loading
-  // Wait for agentsData to be available (loaded via script)
   const agents = window.agentsData || [];
   const agentGrid = document.getElementById("staticAgentGrid");
   const resultsCount = document.getElementById("resultsCount");
 
-  // 2. Render All Agents Function
   const renderAgents = () => {
     if (!agentGrid) return;
     agentGrid.innerHTML = "";
@@ -13,9 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
     agents.forEach((agent, index) => {
       const card = document.createElement("div");
       card.className = "agent-card-static glass-panel animate-slide-up";
-      card.style.animationDelay = `${0.1 + index * 0.1}s`; // Stagger animation
+      card.style.animationDelay = `${0.1 + index * 0.1}s`;
 
-      // Safely access stats or default
       const sold = agent.stats?.sold || "-";
       const active = agent.stats?.active || "-";
       const exp = agent.stats?.experience || "-";
@@ -82,23 +78,19 @@ document.addEventListener("DOMContentLoaded", () => {
       resultsCount.textContent = `${agents.length} Agents found`;
   };
 
-  // Initial Render
   renderAgents();
 
-  // 3. Dropdown Logic
   const setupDropdown = (inputId, listId, dataList, iconClass) => {
     const input = document.getElementById(inputId);
     const list = document.getElementById(listId);
 
     if (!input || !list) return;
 
-    // Populate List
     list.innerHTML = "";
     dataList.forEach((item) => {
       const li = document.createElement("li");
       li.innerHTML = `<i class="${iconClass}"></i> ${item}`;
       li.addEventListener("mousedown", (e) => {
-        // mousedown fires before blur
         e.preventDefault();
         input.value = item;
         list.classList.remove("show");
@@ -106,7 +98,6 @@ document.addEventListener("DOMContentLoaded", () => {
       list.appendChild(li);
     });
 
-    // Events
     input.addEventListener("focus", () => {
       if (list.children.length > 0) list.classList.add("show");
     });
@@ -115,7 +106,6 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => list.classList.remove("show"), 200);
     });
 
-    // Optional: Filter dropdown as you type (visual only, doesn't affect grid)
     input.addEventListener("input", () => {
       const query = input.value.toLowerCase();
       Array.from(list.children).forEach((li) => {
@@ -126,9 +116,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Extract Data for Dropdowns
-  // Cities (Mocking some if data is limited, or extracting from addresses if available)
-  // agentsData doesn't strictly have "City" field, but let's mock common ones for the UI + any inferred
   const cities = [
     "New York, NY",
     "Miami, FL",

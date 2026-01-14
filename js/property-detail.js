@@ -1,6 +1,4 @@
-// Property Detail Page Logic
 document.addEventListener("DOMContentLoaded", () => {
-  // Header Scroll Effect
   const header = document.querySelector(".detail-header");
 
   if (header) {
@@ -13,11 +11,10 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     window.addEventListener("scroll", handleScroll);
-    // Check immediately on load in case page is already scrolled
     handleScroll();
   }
 
-  // Description "Continue Reading" Toggle
+  // Description expand/collapse
   const readMoreBtn = document.querySelector(".read-more-link");
   const descContainer = document.getElementById("descriptionContainer");
 
@@ -36,10 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Image Slider Logic (Re-implemented for detail page if needed, or kept simple)
-  // Currently the detail page uses a grid, so no slider logic needed yet for the main view.
-
-  /* --- New Listings Carousel Logic --- */
+  // New listings carousel
   const track = document.getElementById("newListingsTrack");
   const prevBtn = document.getElementById("nl-prev");
   const nextBtn = document.getElementById("nl-next");
@@ -48,46 +42,32 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentIndex = 0;
 
     const updateCarousel = () => {
-      // Calculate width of one card + gap
-      // Calculate width of one card + actual gap dynamically
       const cards = track.querySelectorAll(".carousel-card");
       if (cards.length === 0) return;
 
       const card = cards[0];
       const cardWidth = card.offsetWidth;
 
-      // Dynamic stride calculation: Distance between first and second card start
-      // If only 1 card, fallback to cardWidth + 24 (or computed style)
       let moveAmount;
       if (cards.length > 1) {
         moveAmount = cards[1].offsetLeft - cards[0].offsetLeft;
       } else {
-        // Fallback if we can't measure distance
         const style = window.getComputedStyle(track);
         const gap = parseFloat(style.gap) || 24;
         moveAmount = cardWidth + gap;
       }
 
-      // Mobile tweak: ensure we don't drift if there are extra margins
-      // stride is reliable.
-
-      // Calculate max index
-      // Total cards
       const totalCards = track.children.length;
-      // Visible cards
       const containerWidth = track.parentElement.offsetWidth;
       const visibleCards = Math.floor(containerWidth / cardWidth);
       const maxIndex = totalCards - visibleCards;
 
-      // Clamp index
       if (currentIndex < 0) currentIndex = 0;
       if (currentIndex > maxIndex) currentIndex = maxIndex;
 
-      // Move
       const translateX = -(currentIndex * moveAmount);
       track.style.transform = `translateX(${translateX}px)`;
 
-      // Update buttons
       prevBtn.classList.toggle("disabled", currentIndex === 0);
       nextBtn.classList.toggle("disabled", currentIndex >= maxIndex);
     };
@@ -102,18 +82,14 @@ document.addEventListener("DOMContentLoaded", () => {
       updateCarousel();
     });
 
-    // Update on resize
     window.addEventListener("resize", () => {
-      // Reset or adjust
       updateCarousel();
     });
 
-    // Initial check
-    // Timeout to ensure rendering
     setTimeout(updateCarousel, 100);
   }
 
-  /* --- Internal Card Image Slider Logic (Copied from property.js) --- */
+  // Property card image sliders
   document.querySelectorAll(".listing-card").forEach((card) => {
     const images = card.querySelectorAll(".image-slider img");
     const counter = card.querySelector(".slider-counter");
@@ -124,21 +100,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const totalImages = images.length;
 
     if (totalImages > 0) {
-      // Update initial counter
       if (counter) counter.textContent = `1/${totalImages}`;
 
       const updateSlider = () => {
-        // Update images
         images.forEach((img, index) => {
           img.classList.toggle("active", index === currentIndex);
         });
-        // Update counter
         if (counter) counter.textContent = `${currentIndex + 1}/${totalImages}`;
       };
 
       if (nextBtn) {
         nextBtn.addEventListener("click", (e) => {
-          e.preventDefault(); // Prevent link nav if card is a link
+          e.preventDefault();
           e.stopPropagation();
           currentIndex = (currentIndex + 1) % totalImages;
           updateSlider();
@@ -156,23 +129,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
-  // Card Click Redirect Logic
+  // Card click navigation
   document.querySelectorAll(".listing-card").forEach((card) => {
     card.style.cursor = "pointer";
     card.addEventListener("click", (e) => {
-      // New Listings carousel cards only? Or all listing cards (since we reuse class)
-      // Ignore clicks on buttons or links (prev/next, fav, email agent)
       if (e.target.closest("button") || e.target.closest("a")) {
         return;
       }
-      // If already on detail page, dragging/clicking might just reload or do nothing
-      // But user might want to click to "go to that property".
-      // For demo purposes, reload or link to same page is fine.
       window.location.href = "property-detail.html";
     });
   });
 
-  // --- Gallery Data & Logic ---
+  // Gallery
   const galleryImages = [
     "imgs/Single/img-1.png",
     "imgs/Single/img-bed-1.png",
@@ -195,32 +163,27 @@ document.addEventListener("DOMContentLoaded", () => {
   const galleryCounterTotal = document.getElementById("totalImages");
   const thumbnailStrip = document.getElementById("thumbnailStrip");
 
-  // Initialize Total
   if (galleryCounterTotal)
     galleryCounterTotal.textContent = galleryImages.length;
 
-  // Open Gallery Function
   window.openGallery = (index = 0) => {
     currentGalleryIndex = index;
     updateGalleryUI();
     if (galleryOverlay) {
       galleryOverlay.classList.add("active");
-      document.body.style.overflow = "hidden"; // Lock scroll
+      document.body.style.overflow = "hidden";
     }
   };
 
-  // Close Gallery Function
   const closeGallery = () => {
     if (galleryOverlay) {
       galleryOverlay.classList.remove("active");
-      document.body.style.overflow = ""; // Restore to CSS control (important!)
+      document.body.style.overflow = "";
     }
   };
 
-  // Update UI (Image, Counter, Thumbnails)
   const updateGalleryUI = () => {
     if (galleryMainImage) {
-      // Add fade effect
       galleryMainImage.style.opacity = "0.5";
       setTimeout(() => {
         galleryMainImage.src = galleryImages[currentGalleryIndex];
@@ -231,12 +194,10 @@ document.addEventListener("DOMContentLoaded", () => {
     if (galleryCounterIndex)
       galleryCounterIndex.textContent = currentGalleryIndex + 1;
 
-    // Update Thumbnails
     renderThumbnails();
     scrollThumbnailIntoView();
   };
 
-  // Render Thumbnails
   const renderThumbnails = () => {
     if (!thumbnailStrip) return;
     thumbnailStrip.innerHTML = galleryImages
@@ -251,7 +212,6 @@ document.addEventListener("DOMContentLoaded", () => {
       .join("");
   };
 
-  // Scroll active thumbnail into view
   const scrollThumbnailIntoView = () => {
     if (!thumbnailStrip) return;
     const activeThumb = thumbnailStrip.children[currentGalleryIndex];
@@ -264,7 +224,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // Navigation Controls
   const showNextImage = () => {
     currentGalleryIndex = (currentGalleryIndex + 1) % galleryImages.length;
     updateGalleryUI();
@@ -276,7 +235,6 @@ document.addEventListener("DOMContentLoaded", () => {
     updateGalleryUI();
   };
 
-  // Event Listeners
   document
     .getElementById("galleryNextBtn")
     ?.addEventListener("click", showNextImage);
@@ -290,7 +248,6 @@ document.addEventListener("DOMContentLoaded", () => {
     .querySelector(".gallery-backdrop")
     ?.addEventListener("click", closeGallery);
 
-  // Keyboard Navigation
   document.addEventListener("keydown", (e) => {
     if (!galleryOverlay?.classList.contains("active")) return;
 
@@ -299,60 +256,49 @@ document.addEventListener("DOMContentLoaded", () => {
     if (e.key === "ArrowLeft") showPrevImage();
   });
 
-  // Wire up "See all photos" button
   document
     .querySelector(".btn-see-all")
     ?.addEventListener("click", () => openGallery(0));
 
-  // Wire up Main Grid Images
   document
     .querySelectorAll(".gallery-main img, .thumb-item img")
     .forEach((img, index) => {
       img.style.cursor = "pointer";
       img.addEventListener("click", () => {
-        // Map grid images to gallery index (simplified logic for demo)
-        // Main image is index 0, thumbnails follow
         let targetIndex = 0;
         if (img.closest(".gallery-thumbnails")) {
-          // Find index based on parent structure or just use simple math
-          // For this demo, we'll just check the standard order
           const thumbs = Array.from(
             document.querySelectorAll(".thumb-item img")
           );
-          targetIndex = thumbs.indexOf(img) + 1; // +1 because main image is 0
+          targetIndex = thumbs.indexOf(img) + 1;
         }
         openGallery(targetIndex);
       });
     });
 
-  // --- Map Toggle Logic ---
   const photoView = document.getElementById("photoView");
   const mapView = document.getElementById("mapView");
-  const galleryFooter = document.querySelector(".gallery-footer"); // Get footer
+  const galleryFooter = document.querySelector(".gallery-footer");
   const tabBtns = document.querySelectorAll(".tab-btn");
 
   tabBtns.forEach((btn) => {
     btn.addEventListener("click", () => {
-      // Update Tab UI
       tabBtns.forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
 
-      // Toggle View
       const tabName = btn.getAttribute("data-tab");
       if (tabName === "map") {
         photoView.classList.add("hidden");
         mapView.classList.remove("hidden");
-        if (galleryFooter) galleryFooter.style.display = "none"; // Hide footer
+        if (galleryFooter) galleryFooter.style.display = "none";
       } else {
         mapView.classList.add("hidden");
         photoView.classList.remove("hidden");
-        if (galleryFooter) galleryFooter.style.display = "flex"; // Show footer
+        if (galleryFooter) galleryFooter.style.display = "flex";
       }
     });
   });
 
-  // --- Hero Carousel Logic ---
-  // Make the hero image interactive (sync with same gallery images)
   const heroPrevBtn = document.getElementById("heroPrevBtn");
   const heroNextBtn = document.getElementById("heroNextBtn");
   const heroCounterIndex = document.getElementById("heroCurrentIndex");
@@ -375,7 +321,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (heroPrevBtn) {
     heroPrevBtn.addEventListener("click", (e) => {
-      e.stopPropagation(); // Don't trigger openGallery
+      e.stopPropagation();
       currentGalleryIndex =
         (currentGalleryIndex - 1 + galleryImages.length) % galleryImages.length;
       updateHeroUI();
@@ -390,14 +336,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Connect Hero Image Click to Open Gallery (Updated to sync index)
   if (heroImage) {
-    // Remove old listener if any (cleaner way is to assume fresh load)
-    // Since we replaced the listener above, we just ensure openGallery uses current index
     heroImage.addEventListener("click", () => {
       openGallery(currentGalleryIndex);
     });
   }
-
-  // --- End Gallery Logic ---
 });
