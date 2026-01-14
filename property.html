@@ -453,7 +453,312 @@
         </div>
 
         <div class="mobile-filter-content">
-          <!-- All filters will be cloned here via JavaScript -->
+          <!-- Property Type Section -->
+          <div class="filter-section">
+            <h3>Property Type</h3>
+            <div class="dropdown-content">
+              <label class="checkbox-item">
+                <input type="checkbox" name="type" value="house" />
+                <span class="checkmark"></span>
+                <span class="label-text"
+                  ><i class="fa-solid fa-house-chimney"></i> House</span
+                >
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="type" value="apartment" />
+                <span class="checkmark"></span>
+                <span class="label-text"
+                  ><i class="fa-solid fa-building"></i> Apartment</span
+                >
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="type" value="condo" />
+                <span class="checkmark"></span>
+                <span class="label-text"
+                  ><i class="fa-solid fa-city"></i> Condo</span
+                >
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="type" value="villa" />
+                <span class="checkmark"></span>
+                <span class="label-text"
+                  ><i class="fa-solid fa-umbrella-beach"></i> Villa</span
+                >
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="type" value="land" />
+                <span class="checkmark"></span>
+                <span class="label-text"
+                  ><i class="fa-solid fa-tree"></i> Land</span
+                >
+              </label>
+            </div>
+          </div>
+
+          <!-- Bedrooms Section -->
+          <div class="filter-section">
+            <h3>Bedrooms</h3>
+            <div class="dropdown-content">
+              <label class="checkbox-item">
+                <input type="checkbox" name="beds" value="any" />
+                <span class="checkmark"></span>
+                <span class="label-text">Any</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="beds" value="1" />
+                <span class="checkmark"></span>
+                <span class="label-text">1+ Bedroom</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="beds" value="2" />
+                <span class="checkmark"></span>
+                <span class="label-text">2+ Bedrooms</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="beds" value="3" />
+                <span class="checkmark"></span>
+                <span class="label-text">3+ Bedrooms</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="beds" value="4" />
+                <span class="checkmark"></span>
+                <span class="label-text">4+ Bedrooms</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="beds" value="5" />
+                <span class="checkmark"></span>
+                <span class="label-text">5+ Bedrooms</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Bathrooms Section -->
+          <div class="filter-section">
+            <h3>Bathrooms</h3>
+            <div class="dropdown-content">
+              <label class="checkbox-item">
+                <input type="checkbox" name="baths" value="any" />
+                <span class="checkmark"></span>
+                <span class="label-text">Any</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="baths" value="1" />
+                <span class="checkmark"></span>
+                <span class="label-text">1+ Bathroom</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="baths" value="2" />
+                <span class="checkmark"></span>
+                <span class="label-text">2+ Bathrooms</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="baths" value="3" />
+                <span class="checkmark"></span>
+                <span class="label-text">3+ Bathrooms</span>
+              </label>
+              <label class="checkbox-item">
+                <input type="checkbox" name="baths" value="4" />
+                <span class="checkmark"></span>
+                <span class="label-text">4+ Bathrooms</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Price Range Section -->
+          <div class="filter-section">
+            <h3>Price Range</h3>
+            <div class="price-inputs-container">
+              <div class="price-input-group">
+                <label>Minimum</label>
+                <input
+                  type="text"
+                  placeholder="No Min"
+                  id="minPriceInputMobile"
+                />
+                <ul
+                  class="price-suggestions-list"
+                  id="minPriceSuggestionsMobile"
+                >
+                  <li data-value="0">0</li>
+                  <li data-value="100000">$100,000</li>
+                  <li data-value="200000">$200,000</li>
+                  <li data-value="300000">$300,000</li>
+                  <li data-value="400000">$400,000</li>
+                  <li data-value="500000">$500,000</li>
+                  <li data-value="600000">$600,000</li>
+                </ul>
+              </div>
+              <div class="price-separator">-</div>
+              <div class="price-input-group">
+                <label>Maximum</label>
+                <input
+                  type="text"
+                  placeholder="No Max"
+                  id="maxPriceInputMobile"
+                />
+                <ul
+                  class="price-suggestions-list"
+                  id="maxPriceSuggestionsMobile"
+                >
+                  <li data-value="500000">$500,000</li>
+                  <li data-value="600000">$600,000</li>
+                  <li data-value="700000">$700,000</li>
+                  <li data-value="800000">$800,000</li>
+                  <li data-value="900000">$900,000</li>
+                  <li data-value="1000000">$1M</li>
+                  <li data-value="any">Any Price</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- More Filters Section -->
+          <div class="filter-section">
+            <h3>More Filters</h3>
+            <div class="more-filters-grid">
+              <!-- Column 1 -->
+              <div class="more-filter-column">
+                <div class="dropdown-section">
+                  <h6>Listing Status</h6>
+                  <div class="checkbox-grid">
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="status" value="for-sale" />
+                      <span class="checkmark"></span>
+                      <span class="label-text">For Sale</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="status" value="pending" />
+                      <span class="checkmark"></span>
+                      <span class="label-text">Pending</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="status" value="sold" />
+                      <span class="checkmark"></span>
+                      <span class="label-text">Sold</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="status" value="new" />
+                      <span class="checkmark"></span>
+                      <span class="label-text">New Construction</span>
+                    </label>
+                  </div>
+                </div>
+                <div class="dropdown-section">
+                  <h6>Listing Type</h6>
+                  <div class="checkbox-grid">
+                    <label class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        name="listing_type"
+                        value="agent"
+                      />
+                      <span class="checkmark"></span>
+                      <span class="label-text">Agent Listed</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        name="listing_type"
+                        value="owner"
+                      />
+                      <span class="checkmark"></span>
+                      <span class="label-text">By Owner</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        name="listing_type"
+                        value="foreclosure"
+                      />
+                      <span class="checkmark"></span>
+                      <span class="label-text">Foreclosure</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        name="listing_type"
+                        value="upcoming"
+                      />
+                      <span class="checkmark"></span>
+                      <span class="label-text">Coming Soon</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Column 2 -->
+              <div class="more-filter-column">
+                <div class="dropdown-section">
+                  <h6>Property Facts</h6>
+                  <div class="facts-input-grid">
+                    <div class="fact-group">
+                      <label>Square Feet</label>
+                      <div class="min-max-row">
+                        <input type="number" placeholder="Min" />
+                        <span>-</span>
+                        <input type="number" placeholder="Max" />
+                      </div>
+                    </div>
+                    <div class="fact-group">
+                      <label>Lot Size (sq ft)</label>
+                      <div class="min-max-row">
+                        <input type="number" placeholder="Min" />
+                        <span>-</span>
+                        <input type="number" placeholder="Max" />
+                      </div>
+                    </div>
+                    <div class="fact-group">
+                      <label>Year Built</label>
+                      <div class="min-max-row">
+                        <input type="number" placeholder="Min" />
+                        <span>-</span>
+                        <input type="number" placeholder="Max" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="dropdown-section">
+                  <h6>Other Amenities</h6>
+                  <div class="checkbox-grid two-col">
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="amenity" value="pool" />
+                      <span class="checkmark"></span>
+                      <span class="label-text">Pool</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="amenity" value="ac" />
+                      <span class="checkmark"></span>
+                      <span class="label-text">A/C</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input
+                        type="checkbox"
+                        name="amenity"
+                        value="waterfront"
+                      />
+                      <span class="checkmark"></span>
+                      <span class="label-text">Waterfront</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="amenity" value="garage" />
+                      <span class="checkmark"></span>
+                      <span class="label-text">Garage</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="amenity" value="basement" />
+                      <span class="checkmark"></span>
+                      <span class="label-text">Basement</span>
+                    </label>
+                    <label class="checkbox-item">
+                      <input type="checkbox" name="amenity" value="view" />
+                      <span class="checkmark"></span>
+                      <span class="label-text">View</span>
+                    </label>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
         <div class="mobile-filter-footer">
