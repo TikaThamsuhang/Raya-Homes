@@ -305,27 +305,40 @@
                   <div class="interior-col">
                     <h4 class="subsection-title">Bedrooms</h4>
                     <ul class="detail-list">
-                      <li>Total Bedrooms: <strong>4</strong></li>
                       <li>
-                        Master Bedroom: <strong>Main Level, 16x14</strong>
+                        Total Bedrooms: <strong id="prop-beds-detail">4</strong>
                       </li>
-                      <li>Bedroom 2: <strong>Upper Level, 12x12</strong></li>
                     </ul>
                   </div>
                   <div class="interior-col">
                     <h4 class="subsection-title">Bathrooms</h4>
                     <ul class="detail-list">
-                      <li>Total Bathrooms: <strong>2</strong></li>
-                      <li>Full Bathrooms: <strong>2</strong></li>
-                      <li>Half Bathrooms: <strong>0</strong></li>
+                      <li>
+                        Total Bathrooms:
+                        <strong id="prop-baths-total">2</strong>
+                      </li>
+                      <li>
+                        Full Bathrooms: <strong id="prop-baths-full">2</strong>
+                      </li>
+                      <li>
+                        Half Bathrooms: <strong id="prop-baths-half">0</strong>
+                      </li>
                     </ul>
                   </div>
                   <div class="interior-col">
                     <h4 class="subsection-title">Interior Stats</h4>
                     <ul class="detail-list">
-                      <li>Living Area: <strong>1,800 Sq. Ft.</strong></li>
-                      <li>Basement: <strong>Full, Unfinished</strong></li>
-                      <li>Fireplaces: <strong>1 (Wood Burning)</strong></li>
+                      <li>
+                        Living Area:
+                        <strong id="prop-living-area">1,800 Sq. Ft.</strong>
+                      </li>
+                      <li>
+                        Basement:
+                        <strong id="prop-basement">Full, Unfinished</strong>
+                      </li>
+                      <li>
+                        Fireplaces: <strong id="prop-fireplaces">1</strong>
+                      </li>
                     </ul>
                   </div>
                 </div>
@@ -344,16 +357,18 @@
                   <!-- <h4 class="subsection-title">Structure</h4> -->
                   <ul class="simple-data-list">
                     <li>
-                      <span class="label">Architectural Style:</span>
-                      <span class="val">Colonial</span>
-                    </li>
-                    <li>
                       <span class="label">Building Area:</span>
-                      <span class="val">1,800 Sq. Ft.</span>
+                      <span class="val" id="prop-build-area"
+                        >1,800 Sq. Ft.</span
+                      >
                     </li>
                     <li>
                       <span class="label">Year Built:</span>
-                      <span class="val">1973</span>
+                      <span class="val" id="prop-year-built">1973</span>
+                    </li>
+                    <li>
+                      <span class="label">Sub Type:</span>
+                      <span class="val" id="prop-sub-type">One Level</span>
                     </li>
                   </ul>
                 </div>
@@ -370,8 +385,40 @@
                 <div class="list-block-container">
                   <ul class="simple-data-list">
                     <li>
-                      <span class="label">Lot Size (Sq. Ft):</span>
-                      <span class="val">143,748</span>
+                      <span class="label">Lot Size:</span>
+                      <span class="val" id="prop-lot-size">3.30 Acres</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <!-- 5. Schools (New Section) -->
+              <div class="details-block mb-3">
+                <div class="d-flex align-center gap-sm mb-2">
+                  <i
+                    class="fa-solid fa-graduation-cap text-primary font-size-lg"
+                  ></i>
+                  <h3 class="section-title mb-0">Schools</h3>
+                </div>
+                <div class="list-block-container">
+                  <ul class="simple-data-list">
+                    <li>
+                      <span class="label">Elementary:</span>
+                      <span class="val" id="prop-school-elem"
+                        >Ledner, Labadie and Bartoletti</span
+                      >
+                    </li>
+                    <li>
+                      <span class="label">Middle:</span>
+                      <span class="val" id="prop-school-middle"
+                        >Leuschke Group</span
+                      >
+                    </li>
+                    <li>
+                      <span class="label">High:</span>
+                      <span class="val" id="prop-school-high">Yost-Hudson</span>
                     </li>
                   </ul>
                 </div>
@@ -389,15 +436,20 @@
                 </div>
 
                 <div class="list-block-container">
-                  <!-- <h4 class="subsection-title">Finances</h4> -->
                   <ul class="simple-data-list">
                     <li>
                       <span class="label">Price:</span>
-                      <span class="val font-weight-bold">$539,900</span>
+                      <span class="val font-weight-bold" id="prop-finance-price"
+                        >$539,900</span
+                      >
                     </li>
                     <li>
-                      <span class="label">Price per Sq. Ft:</span>
-                      <span class="val">$299 per Sq. Ft.</span>
+                      <span class="label">Tax Annual Amount:</span>
+                      <span class="val" id="prop-tax-amt">$534,942</span>
+                    </li>
+                    <li>
+                      <span class="label">Association Fee:</span>
+                      <span class="val" id="prop-hoa-fee">$131 (Annually)</span>
                     </li>
                   </ul>
                 </div>
@@ -405,8 +457,13 @@
                 <!-- MLS Metadata (Restored) -->
                 <div class="mls-metadata-box mt-2">
                   <div class="meta-row">
-                    <span>MLS #: <strong>24146371</strong></span>
-                    <span>Added: <strong>15 hours ago</strong></span>
+                    <span
+                      >MLS #: <strong id="prop-mls-id">24146371</strong></span
+                    >
+                    <span
+                      >Status:
+                      <strong id="prop-mls-status">Active</strong></span
+                    >
                   </div>
                 </div>
               </div>

@@ -1,0 +1,33 @@
+# Filter Data Mapping
+This file lists the filters from `property.html` and their corresponding data field names from the API response (`test.json`).
+
+## Filters (property.html)
+
+- **Search Location:** `City`, `PostalCode`, `StreetName`, `UnparsedAddress`
+- **Property Type:** `PropertyType` (e.g., "Business"), `PropertySubType` (e.g., "Single Family Residence")
+- **Bedrooms:** `BedroomsTotal`
+- **Bathrooms:** `BathroomsTotalInteger`
+- **Price:** `ListPrice`
+- **Listing Status:** `MlsStatus` (e.g., "Active")
+- **Listing Type:** `SpecialListingConditions` (e.g., "Standard", "REO")
+- **Square Feet:** `LivingArea`
+- **Lot Size:** `LotSizeAcres`
+- **Year Built:** `YearBuilt`
+
+## Amenities
+
+- **Pool:** `PoolPrivateYN`, `PoolFeatures` (List)
+- **A/C:** `CoolingYN`, `Cooling` (List)
+- **Waterfront:** `WaterfrontYN`
+- **Garage:** `GarageYN`, `GarageSpaces`
+- **Basement:** `Basement` (List)
+- **View:** `ViewYN`, `View` (List)
+
+## Property Details Page (Additional Data)
+
+- **Description:** `PublicRemarks`
+- **Photos:** `Media` (List of objects with `MediaURL`)
+- **Heating:** `Heating` (List)
+- **Tax Annual Amount:** `TaxAnnualAmount`
+- **HOA Fee:** `AssociationFee2`
+- **Schools:** `ElementarySchool`, `MiddleOrJuniorSchool`, `HighSchool`

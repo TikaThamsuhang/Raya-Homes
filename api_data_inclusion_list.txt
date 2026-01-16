@@ -1,0 +1,76 @@
+# API Data Inclusion List for UI Refactor
+
+This document lists the data fields from the `test.txt` API response that are included in the `property.html` (Filters) and `property-detail.html` (Details) pages, as well as items explicitly removed due to missing data.
+
+## 1. Property Details Page (`property-detail.html`)
+
+### INCLUDED (Sections / Fields)
+- **Header / Meta:**
+  - `ListPrice`: Listing Price.
+  - `MlsStatus`: Property Status (e.g., Active).
+  - `StreetNumber`, `StreetName`, `City`, `StateOrProvince`, `PostalCodePlus4`: Full Address.
+  - `BedroomsTotal`: Number of Bedrooms.
+  - `BathroomsTotalInteger`: Number of Bathrooms.
+  - `LivingArea`: Square Footage.
+  - `PropertyType`: Type of Property (e.g., Business, Single Family).
+
+- **Media:**
+  - `Media` (Array): Images for Gallery/Carousels.
+  - `PhotosCount`: Total photo count.
+
+- **Description:**
+  - `PublicRemarks`: Main property description text.
+
+- **Home Facts:**
+  - `PropertyType`: (Repeated).
+  - `YearBuilt`: Year Built.
+  - `Heating`: Array of heating types.
+  - `Cooling`: Array of cooling types.
+  - `GarageSpaces` / `GarageYN`: Garage info.
+  - `LotSizeAcres`: Lot size in Acres.
+
+- **Structure:**
+  - `YearBuilt`: (Repeated).
+  - `LivingArea`: Building Area.
+  - `PropertySubType`: Sub-type (e.g., Single Family Residence).
+
+- **Schools (New Section):**
+  - `ElementarySchool`.
+  - `MiddleOrJuniorSchool`.
+  - `HighSchool`.
+
+- **Financials (New Section):**
+  - `TaxAnnualAmount`: Annual Tax.
+  - `AssociationFee2`: HOA Fee.
+  - `AssociationFee2Frequency`: HOA Frequency.
+
+- **Agent:**
+  - `ListAgentFullName`: Name.
+  - `ListOfficeName`: Brokerage/Office.
+  - `ListAgentPreferredPhone`: Contact Phone.
+  - `ListAgentEmail`: Email (if available).
+
+### REMOVED (Due to null/empty API data)
+- **Room Details:** Specific room dimensions (e.g., "Master Bedroom 16x14") removed because `RoomType` array is empty.
+- **Architectural Style:** Specific style field removed (unless mapped to `PropertySubType`) because `StructureType` is empty.
+- **Interior Stats breakdown:** Removed detailed basement/finish stats unless strictly matching `Basement` array text.
+- **Agent License Number:** Removed (`ListAgentStateLicense` is null).
+
+---
+
+## 2. Property Filters (`property.html`)
+
+### INCLUDED (Active Filters)
+- **Location:** City, Zip, Address search.
+- **Property Type:** (`PropertyType`).
+- **Bedrooms:** (`BedroomsTotal`).
+- **Bathrooms:** (`BathroomsTotalInteger`).
+- **Price:** (`ListPrice`).
+- **Square Feet:** (`LivingArea`).
+- **Lot Size:** (`LotSizeAcres` - *Label updated to Acres*).
+- **Year Built:** (`YearBuilt`).
+- **Amenities:** Pool, A/C, Waterfront, Garage, Basement, View.
+
+### REMOVED / HIDDEN
+- **Lot Size (Sq Ft):** Filter label changed or unit converted, as API uses Acres.
+- **Specific Amenities:** Any hardcoded amenities in "More Filters" that do not map to `AssociationAmenities`, `InteriorFeatures`, or the main boolean flags have been considered unsupported.
