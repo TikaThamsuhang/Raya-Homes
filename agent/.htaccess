@@ -1,0 +1,124 @@
+# Agent Subdomain .htaccess Configuration
+# This file supports PATH-BASED ROUTING deployment
+# Example: agents.teamraya.com/sarah-jenkins
+
+# Enable Rewrite Engine
+RewriteEngine On
+
+# Set base directory for rewrites
+RewriteBase /
+
+# ============================================================================
+# PATH-BASED ROUTING SUPPORT
+# ============================================================================
+# This configuration allows clean URLs for agents
+# Example: agents.teamraya.com/sarah-jenkins
+#
+# How it works:
+#   - Requests for /sarah-jenkins are rewritten to index.html?agent=sarah-jenkins
+#   - Requests for real files (css, js, images) are served normally
+#   - agent.js extracts the agent slug from the URL path or query param
+# ============================================================================
+
+# Force HTTPS (recommended for production)
+# Uncomment the following lines if you want to force HTTPS
+# RewriteCond %{HTTPS} off
+# RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Handle Agent Profile Routes (e.g. /sarah-jenkins)
+# If the request is NOT a file and NOT a directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+# Rewrite rule: Capture everything after domain and send to index.html as 'agent' param
+# We exclude 'index.html' explicitly to prevent loops if DirectoryIndex matches
+RewriteCond %{REQUEST_URI} !^/index.html$
+RewriteRule ^([^/]+)/?$ index.html?agent=$1 [L,QSA]
+
+# Redirect root to index.html (agent profile page)
+DirectoryIndex index.html
+
+# Prevent directory browsing
+Options -Indexes
+
+# Protect sensitive files
+<FilesMatch "\.(json|md|log|txt)$">
+    # Allow JSON files to be accessed (needed for agents-data.json)
+    <If "%{REQUEST_URI} =~ m#/js/agents-data\.json$#">
+        Require all granted
+    </If>
+    # Block other sensitive files
+    <Else>
+        Require all denied
+    </Else>
+</FilesMatch>
+
+# Enable CORS for JSON data (allows main domain to access agent data)
+<FilesMatch "\.json$">
+    Header set Access-Control-Allow-Origin "*"
+    Header set Access-Control-Allow-Methods "GET, OPTIONS"
+    Header set Access-Control-Allow-Headers "Content-Type"
+</FilesMatch>
+
+# Cache static assets for better performance
+<IfModule mod_expires.c>
+    ExpiresActive On
+    
+    # Images
+    ExpiresByType image/jpeg "access plus 1 year"
+    ExpiresByType image/jpg "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/gif "access plus 1 year"
+    ExpiresByType image/webp "access plus 1 year"
+    ExpiresByType image/avif "access plus 1 year"
+    ExpiresByType image/svg+xml "access plus 1 year"
+    
+    # CSS and JavaScript
+    ExpiresByType text/css "access plus 1 month"
+    ExpiresByType application/javascript "access plus 1 month"
+    ExpiresByType text/javascript "access plus 1 month"
+    
+    # JSON data (shorter cache for dynamic content)
+    ExpiresByType application/json "access plus 1 day"
+    
+    # Fonts
+    ExpiresByType font/woff "access plus 1 year"
+    ExpiresByType font/woff2 "access plus 1 year"
+    ExpiresByType application/font-woff "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+</IfModule>
+
+# Compress text files for faster loading
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html
+    AddOutputFilterByType DEFLATE text/css
+    AddOutputFilterByType DEFLATE text/javascript
+    AddOutputFilterByType DEFLATE application/javascript
+    AddOutputFilterByType DEFLATE application/json
+    AddOutputFilterByType DEFLATE image/svg+xml
+</IfModule>
+
+# Custom error pages (optional)
+# ErrorDocument 404 /404.html
+# ErrorDocument 500 /500.html
+
+# Security headers
+<IfModule mod_headers.c>
+    # Prevent clickjacking
+    Header set X-Frame-Options "SAMEORIGIN"
+    
+    # Prevent MIME type sniffing
+    Header set X-Content-Type-Options "nosniff"
+    
+    # Enable XSS protection
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Referrer policy
+    Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+# UTF-8 encoding
+AddDefaultCharset UTF-8
+AddCharset UTF-8 .html .css .js .json
+
+# Disable server signature
+ServerSignature Off

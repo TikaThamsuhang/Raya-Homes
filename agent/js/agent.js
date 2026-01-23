@@ -15,7 +15,31 @@ document.addEventListener("DOMContentLoaded", async () => {
     return;
   }
 
-  // 1. Get Agent ID from URL
+  // ============================================================================
+  // PATH-BASED ROUTING DETECTION (FOR DEPLOYMENT)
+  // ============================================================================
+  // AFTER DEPLOYMENT: Uncomment the code below to enable path-based support
+  // This allows URLs like: agents.teamraya.com/sarah-jenkins
+  //
+  // HOW IT WORKS:
+  // 1. Check if there is a path segment (e.g. "/sarah-jenkins") OR "agent" query param
+  // 2. Find agent by matching slug
+  // 3. Fallback to "id" param (legacy) or first agent
+  //
+  // UNCOMMENT THIS CODE AFTER DEPLOYMENT:
+  /*
+  const pathSlug = window.location.pathname.replace(/^\/|\/$/g, ''); // Extract "sarah-jenkins"
+  const paramSlug = urlParams.get("agent"); // Get ?agent=sarah-jenkins (from .htaccess rewrite)
+  const lookupSlug = pathSlug && pathSlug !== 'index.html' ? pathSlug : paramSlug;
+
+  let agentBySlug = null;
+  if (lookupSlug) {
+    agentBySlug = agentsData.find((a) => a.slug === lookupSlug);
+  }
+  */
+  // ============================================================================
+
+  // 1. Get Agent ID from URL (Current method - works for development)
   const urlParams = new URLSearchParams(window.location.search);
   const agentId = urlParams.get("id");
 
@@ -34,10 +58,24 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-  // Default to first agent if no ID provided for demo purposes, or handle error
+  // ============================================================================
+  // AGENT SELECTION LOGIC
+  // ============================================================================
+  // CURRENT (Development): Uses URL parameter ?id=agent-1
+  // AFTER DEPLOYMENT: Replace this with path-based logic
+  //
+  // REPLACE THIS CODE AFTER DEPLOYMENT:
   const agent = agentId
     ? agentsData.find((a) => a.id === agentId)
     : agentsData[0];
+
+  // WITH THIS CODE (uncomment after deployment):
+  /*
+  const agent = agentBySlug || // First priority: URL slug
+                (agentId ? agentsData.find((a) => a.id === agentId) : null) || // Second: URL param
+                agentsData[0]; // Fallback: first agent
+  */
+  // ============================================================================
 
   // Helper to fix paths. For a standalone subdomain, we use local paths.
   const fixPath = (path) => {
