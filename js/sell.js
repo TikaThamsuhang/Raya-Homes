@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Typing
         typingInput.setAttribute(
           "placeholder",
-          currentAddress.substring(0, currentCharIndex + 1)
+          currentAddress.substring(0, currentCharIndex + 1),
         );
         currentCharIndex++;
 
@@ -78,7 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
         // Deleting
         typingInput.setAttribute(
           "placeholder",
-          currentAddress.substring(0, currentCharIndex - 1)
+          currentAddress.substring(0, currentCharIndex - 1),
         );
         currentCharIndex--;
 
@@ -96,5 +96,80 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Start typing animation after a short delay
     setTimeout(typeEffect, 1000);
+  }
+  // --- Recent Searches Logic ---
+  const RECENT_SEARCHES_KEY = "raya_recent_searches";
+  const searchForm = document.querySelector(".single-search-form");
+
+  // Find the UL for recent searches (it's in the second suggestion group)
+  // The structure is: searchSuggestions -> div.suggestion-group (Popular) -> div.suggestion-group (Recent) -> ul
+  let recentSearchesList = null;
+  const suggestionGroups = searchSuggestions
+    ? searchSuggestions.querySelectorAll(".suggestion-group")
+    : [];
+  if (suggestionGroups.length >= 2) {
+    recentSearchesList = suggestionGroups[1].querySelector("ul");
+  }
+
+  const loadRecentSearches = () => {
+    if (!recentSearchesList) return;
+
+    const searches = JSON.parse(
+      localStorage.getItem(RECENT_SEARCHES_KEY) || "[]",
+    );
+    recentSearchesList.innerHTML = "";
+
+    if (searches.length === 0) {
+      const li = document.createElement("li");
+      li.textContent = "No recent searches";
+      li.style.color = "#999";
+      li.style.pointerEvents = "none";
+      recentSearchesList.appendChild(li);
+      return;
+    }
+
+    searches.forEach((term) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> ${term}`;
+      li.addEventListener("click", () => {
+        searchInput.value = term;
+      });
+      recentSearchesList.appendChild(li);
+    });
+  };
+
+  const saveRecentSearch = (term) => {
+    if (!term) return;
+    let searches = JSON.parse(
+      localStorage.getItem(RECENT_SEARCHES_KEY) || "[]",
+    );
+
+    // Remove if exists
+    searches = searches.filter((s) => s.toLowerCase() !== term.toLowerCase());
+
+    // Add to front
+    searches.unshift(term);
+
+    // Limit to 5
+    if (searches.length > 5) searches.length = 5;
+
+    localStorage.setItem(RECENT_SEARCHES_KEY, JSON.stringify(searches));
+  };
+
+  // Load on start
+  loadRecentSearches();
+
+  // Handle Form Submission (Relocated from inline HTML)
+  if (searchForm) {
+    searchForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const address = searchInput.value.trim();
+
+      if (address) {
+        saveRecentSearch(address);
+        window.location.href =
+          "home-valuation.html?address=" + encodeURIComponent(address);
+      }
+    });
   }
 });

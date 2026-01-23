@@ -19,12 +19,25 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   const agentGrid = document.getElementById("staticAgentGrid");
   const resultsCount = document.getElementById("resultsCount");
+  const nameInput = document.getElementById("nameInput");
+  const updateAgentSearchBtn = document.getElementById("updateAgentSearchBtn");
 
-  const renderAgents = () => {
+  const renderAgents = (filteredAgents) => {
     if (!agentGrid) return;
     agentGrid.innerHTML = "";
+    const listToRender = filteredAgents || agents;
 
-    agents.forEach((agent, index) => {
+    if (listToRender.length === 0) {
+      agentGrid.innerHTML = `
+            <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+                <i class="fa-solid fa-user-slash" style="font-size: 3rem; color: #ddd; margin-bottom: 1rem;"></i>
+                <p style="color: #666;">No agents found matching your search.</p>
+            </div>`;
+      if (resultsCount) resultsCount.textContent = "0 Agents found";
+      return;
+    }
+
+    listToRender.forEach((agent, index) => {
       const card = document.createElement("div");
       card.className = "agent-card-static glass-panel animate-slide-up";
       card.style.animationDelay = `${0.1 + index * 0.1}s`;
@@ -92,10 +105,49 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     if (resultsCount)
-      resultsCount.textContent = `${agents.length} Agents found`;
+      resultsCount.textContent = `${listToRender.length} Agents found`;
   };
 
-  renderAgents();
+  const filterAgents = (query) => {
+    if (!query) {
+      renderAgents(agents);
+      return;
+    }
+    const lowerQuery = query.toLowerCase();
+    const filtered = agents.filter((agent) =>
+      agent.name.toLowerCase().includes(lowerQuery),
+    );
+    renderAgents(filtered);
+  };
+
+  // Check URL params for search
+  const urlParams = new URLSearchParams(window.location.search);
+  const searchParam = urlParams.get("search"); // from find-agent.html
+  const agentParam = urlParams.get("agent"); // alternative
+
+  if (searchParam || agentParam) {
+    const query = searchParam || agentParam;
+    if (nameInput) nameInput.value = query;
+    filterAgents(query);
+  } else {
+    renderAgents();
+  }
+
+  // Event Listeners for Name Search
+  if (updateAgentSearchBtn && nameInput) {
+    updateAgentSearchBtn.addEventListener("click", () => {
+      filterAgents(nameInput.value);
+    });
+
+    nameInput.addEventListener("keyup", (e) => {
+      if (e.key === "Enter") {
+        filterAgents(nameInput.value);
+      } else {
+        // Optional: Real-time filtering
+        filterAgents(nameInput.value);
+      }
+    });
+  }
 
   const setupDropdown = (inputId, listId, dataList, iconClass) => {
     const input = document.getElementById(inputId);
@@ -111,6 +163,10 @@ document.addEventListener("DOMContentLoaded", async () => {
         e.preventDefault();
         input.value = item;
         list.classList.remove("show");
+        // Trigger filter immediately on selection
+        if (inputId === "nameInput") {
+          filterAgents(item);
+        }
       });
       list.appendChild(li);
     });

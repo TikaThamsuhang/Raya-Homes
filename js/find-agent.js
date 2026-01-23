@@ -1,10 +1,49 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   // --- Search Logic ---
   const tabBtns = document.querySelectorAll(".tab-btn");
   const searchInput = document.getElementById("searchInput");
   const searchSuggestions = document.getElementById("searchSuggestions");
   const searchForm = document.querySelector(".single-search-form");
   const searchLabel = document.querySelector(".floating-label-search");
+  const agentSuggestionsList = document.querySelector(".agent-suggestions ul");
+
+  // Fetch agents data
+  let agentsData = [];
+  try {
+    const response = await fetch("agent/js/agents-data.json");
+    agentsData = await response.json();
+  } catch (error) {
+    console.error("Error loading agents data:", error);
+  }
+
+  // Populate Agent Suggestions initially
+  const populateAgentSuggestions = (filterText = "") => {
+    if (!agentSuggestionsList) return;
+
+    agentSuggestionsList.innerHTML = "";
+    const filteredAgents = filterText
+      ? agentsData.filter((agent) =>
+          agent.name.toLowerCase().includes(filterText.toLowerCase()),
+        )
+      : agentsData.slice(0, 5); // Show first 5 by default
+
+    filteredAgents.forEach((agent) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<i class="fa-solid fa-user"></i> ${agent.name}`;
+      li.addEventListener("click", () => {
+        searchInput.value = agent.name;
+        searchSuggestions.classList.remove("show");
+      });
+      agentSuggestionsList.appendChild(li);
+    });
+
+    // Show/Hide section based on results
+    const agentSection = document.querySelector(".agent-suggestions");
+    if (agentSection) {
+      agentSection.style.display =
+        filteredAgents.length > 0 && currentMode === "agent" ? "block" : "none";
+    }
+  };
 
   const tabConfig = {
     location: {
@@ -19,13 +58,10 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     agent: {
       label: "Agent Name",
-      placeholders: [
-        "Sarah Jenkins",
-        "Michael Chang",
-        "Emily Rodriguez",
-        "David Thompson",
-        "Jessica Martinez",
-      ],
+      placeholders:
+        agentsData.length > 0
+          ? agentsData.slice(0, 5).map((a) => a.name)
+          : ["Sarah Jenkins", "Michael Chang", "Emily Rodriguez"],
     },
   };
 
@@ -46,7 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       // Toggle suggestion groups
       const locationSuggestions = document.querySelector(
-        ".location-suggestions"
+        ".location-suggestions",
       );
       const agentSuggestions = document.querySelector(".agent-suggestions");
 
@@ -56,6 +92,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else {
         locationSuggestions.style.display = "none";
         agentSuggestions.style.display = "block";
+        populateAgentSuggestions(searchInput.value);
       }
 
       // Clear input
@@ -68,6 +105,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
   searchInput.addEventListener("focus", () => {
     searchSuggestions.classList.add("show");
+    if (currentMode === "agent") {
+      populateAgentSuggestions(searchInput.value);
+    }
+  });
+
+  searchInput.addEventListener("input", () => {
+    searchSuggestions.classList.add("show");
+    if (currentMode === "agent") {
+      populateAgentSuggestions(searchInput.value);
+    }
   });
 
   document.addEventListener("click", (e) => {
@@ -87,24 +134,83 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // --- Recent Searches Logic ---
+  const RECENT_SEARCHES_KEY = "raya_recent_searches";
+  const recentSearchesList = document.getElementById("recentSearchesList");
+
+  const loadRecentSearches = () => {
+    if (!recentSearchesList) return;
+
+    const searches = JSON.parse(
+      localStorage.getItem(RECENT_SEARCHES_KEY) || "[]",
+    );
+    recentSearchesList.innerHTML = "";
+
+    if (searches.length === 0) {
+      const li = document.createElement("li");
+      li.textContent = "No recent searches";
+      li.style.color = "#999";
+      li.style.pointerEvents = "none";
+      recentSearchesList.appendChild(li);
+      return;
+    }
+
+    searches.forEach((term) => {
+      const li = document.createElement("li");
+      li.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> ${term}`;
+      li.addEventListener("click", () => {
+        searchInput.value = term;
+        // Trigger search or just fill input?
+        // Let's just fill for now to allow editing
+        // Optional: submit immediately
+        // searchForm.dispatchEvent(new Event('submit'));
+      });
+      recentSearchesList.appendChild(li);
+    });
+  };
+
+  const saveRecentSearch = (term) => {
+    if (!term) return;
+    let searches = JSON.parse(
+      localStorage.getItem(RECENT_SEARCHES_KEY) || "[]",
+    );
+
+    // Remove if exists to bubble to top
+    searches = searches.filter((s) => s.toLowerCase() !== term.toLowerCase());
+
+    // Add to front
+    searches.unshift(term);
+
+    // Limit to 5
+    if (searches.length > 5) searches.length = 5;
+
+    localStorage.setItem(RECENT_SEARCHES_KEY, JSON.stringify(searches));
+  };
+
+  // Load on start
+  loadRecentSearches();
+
   // Handle hero search form submission
   searchForm.addEventListener("submit", (e) => {
     e.preventDefault();
     const searchValue = searchInput.value.trim();
     if (searchValue) {
+      // Save to recent searches
+      saveRecentSearch(searchValue);
+
       // Check which tab is active
       const activeTab = document.querySelector(".tab-btn.active");
       const mode = activeTab ? activeTab.dataset.tab : "agent";
 
       if (mode === "agent") {
-        // Navigate to home valuation page
-        window.location.href = `agent-listings.html?address=${encodeURIComponent(
-          searchValue
-        )}`;
-      } else {
         // Navigate to AGENT LISTINGS page
         window.location.href = `agent-listings.html?search=${encodeURIComponent(
-          searchValue
+          searchValue,
+        )}`;
+      } else {
+        // Navigate to home valuation page (or property search)
+        window.location.href = `agent-listings.html?address=${encodeURIComponent(
+          searchValue,
         )}`;
       }
     }
@@ -131,6 +237,15 @@ document.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
+    // Refresh placeholders if data loaded late
+    if (
+      currentMode === "agent" &&
+      agentsData.length > 0 &&
+      tabConfig.agent.placeholders.length < 5
+    ) {
+      tabConfig.agent.placeholders = agentsData.slice(0, 5).map((a) => a.name);
+    }
+
     const searchTerms = tabConfig[currentMode].placeholders;
     const currentTerm = searchTerms[currentTermIndex];
 
@@ -138,7 +253,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Typing
       typingInputAgent.setAttribute(
         "placeholder",
-        currentTerm.substring(0, currentCharIndex + 1)
+        currentTerm.substring(0, currentCharIndex + 1),
       );
       currentCharIndex++;
 
@@ -152,7 +267,7 @@ document.addEventListener("DOMContentLoaded", () => {
       // Deleting
       typingInputAgent.setAttribute(
         "placeholder",
-        currentTerm.substring(0, currentCharIndex - 1)
+        currentTerm.substring(0, currentCharIndex - 1),
       );
       currentCharIndex--;
 
@@ -167,7 +282,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     typingTimeout = setTimeout(
       typeEffect,
-      isDeleting ? deletingSpeed : typingSpeed
+      isDeleting ? deletingSpeed : typingSpeed,
     );
   }
 
@@ -193,116 +308,4 @@ document.addEventListener("DOMContentLoaded", () => {
   if (typingInputAgent) {
     startTypingAnimation();
   }
-
-  /* ==========================================================================
-       FUTURE_USE_DIRECTORY_SECTION (Commented out logic)
-       ========================================================================== */
-  /*
-// --- Dynamic Directory Logic ---
-  const directoryLinks = document.querySelectorAll(".directory-link");
-  const directorySection = document.querySelector(".agent-directory-section");
-
-  // Mock City Data (for demo)
-  const cityMockData = [
-    "Andalusia, AL",
-    "Auburn-Opelika, AL",
-    "Bay Minette, AL",
-    "Cherokee, AL",
-    "Cottonwood, AL",
-    "Daphne, AL",
-    "Decatur, AL",
-    "Dothan, AL",
-    "Elba, AL",
-    "Enterprise, AL",
-    "Eufaula, AL",
-    "Fairhope, AL",
-    "Florence, AL",
-    "Foley, AL",
-    "Fort Mitchell, AL",
-    "Grand Bay, AL",
-    "Gulf Shores, AL",
-    "Guntersville, AL",
-    "Hartselle, AL",
-    "Helena, AL",
-    "Homewood, AL",
-    "Hoover, AL",
-    "Huntsville, AL",
-    "Jackson, AL",
-    "Jasper, AL",
-  ];
-
-  if (directorySection) {
-    directoryLinks.forEach((link) => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const fullStateText = link.textContent.trim();
-        // Extract state name (e.g., "Alabama Real Estate Agents" -> "Alabama")
-        const stateName = fullStateText.replace(" Real Estate Agents", "");
-
-        showCityView(stateName);
-      });
-    });
-  }
-
-  function showCityView(stateName) {
-    const container = directorySection.querySelector(".app-container");
-
-    // Update Description
-    const desc = container.querySelector(".directory-description");
-    if (desc)
-      desc.innerHTML = `Find Raya Homes affiliated real estate agents in <strong>${stateName}</strong>.`;
-
-    // Update Subheader
-    const subheader = container.querySelector(".directory-subheader");
-    if (subheader) {
-      subheader.textContent = `Real Estate Agents in Popular ${stateName} Cities`;
-
-      // Inject Alpha Nav after subheader
-      if (!container.querySelector(".alpha-nav")) {
-        const alphaNav = document.createElement("div");
-        alphaNav.className = "alpha-nav";
-        alphaNav.innerHTML = `
-                <span>Browse Cities by Letter</span>
-                ${"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                  .split("")
-                  .map((l) => `<a href="#">${l}</a>`)
-                  .join("")}
-              `;
-        subheader.insertAdjacentElement("afterend", alphaNav);
-      }
-    }
-
-    // Replace Grid Content
-    const grid = container.querySelector(".state-grid");
-    if (grid) {
-      grid.innerHTML = ""; // Clear States
-
-      // Create 3 columns for cities
-      // Distribute mock data
-      const itemsPerCol = Math.ceil(cityMockData.length / 3);
-
-      for (let i = 0; i < 3; i++) {
-        const col = document.createElement("div");
-        col.className = "state-column"; // Reuse class for layout
-
-        const start = i * itemsPerCol;
-        const end = start + itemsPerCol;
-        const colCities = cityMockData.slice(start, end);
-
-        colCities.forEach((city) => {
-          const a = document.createElement("a");
-          a.href = "#";
-          a.className = "directory-link city-link";
-          a.textContent = city;
-          col.appendChild(a);
-        });
-
-        grid.appendChild(col);
-      }
-    }
-
-    // Scroll to top of section
-    directorySection.scrollIntoView({ behavior: "smooth" });
-  }
-    */
 });

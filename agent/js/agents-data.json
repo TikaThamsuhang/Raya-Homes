@@ -124,5 +124,26 @@
       "active": 4,
       "experience": "7 Years"
     }
+  },
+  {
+    "id": "agent-7",
+    "slug": "tika-thamsuhang",
+    "name": "Tika Thamsuhang",
+    "title": "Penthouse Specialist",
+    "bio": "Tika Thamsuhang is dedicated to the ultra-luxury market. She focuses exclusively on penthouse and sky-home properties, offering discreet and professional service to elite clientele.",
+    "phone": "+1 (415) 555-0991",
+    "email": "tika.thamsuhang@rayahomes.com",
+    "office": "Raya Homes SF",
+    "license": "SL6677889",
+    "photo": "imgs/Agents/agent-3.avif",
+    "socialLinks": {
+      "linkedin": "#",
+      "instagram": "#"
+    },
+    "stats": {
+      "sold": 0,
+      "active": 0,
+      "experience": "1 Year"
+    }
   }
 ]
