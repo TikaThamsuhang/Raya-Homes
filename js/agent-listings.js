@@ -1,5 +1,22 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const agents = window.agentsData || [];
+document.addEventListener("DOMContentLoaded", async () => {
+  // Fetch agents data from JSON
+  let agents = [];
+  try {
+    const response = await fetch("agent/js/agents-data.json");
+    agents = await response.json();
+  } catch (error) {
+    console.error("Error loading agents data:", error);
+    const agentGrid = document.getElementById("staticAgentGrid");
+    if (agentGrid) {
+      agentGrid.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+          <i class="fa-solid fa-exclamation-triangle" style="font-size: 3rem; color: #f44336; margin-bottom: 1rem;"></i>
+          <p style="color: #666;">Unable to load agent data. Please try again later.</p>
+        </div>`;
+    }
+    return;
+  }
+
   const agentGrid = document.getElementById("staticAgentGrid");
   const resultsCount = document.getElementById("resultsCount");
 
@@ -130,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     "locInput",
     "locSuggestions",
     cities,
-    "fa-solid fa-location-dot"
+    "fa-solid fa-location-dot",
   );
   setupDropdown("nameInput", "nameSuggestions", agentNames, "fa-solid fa-user");
 });

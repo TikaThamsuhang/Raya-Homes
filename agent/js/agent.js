@@ -1,4 +1,20 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
+  // Fetch agents data from JSON
+  let agentsData = [];
+  try {
+    const response = await fetch("js/agents-data.json");
+    agentsData = await response.json();
+  } catch (error) {
+    console.error("Error loading agents data:", error);
+    document.body.innerHTML = `
+      <div style="text-align:center; padding: 10rem 2rem; font-family: 'Outfit', sans-serif;">
+        <h1 style="font-size: 2.5rem; color: #333;">Error Loading Agent Data</h1>
+        <p style="color: #666; margin: 1rem 0;">Unable to load agent information. Please try again later.</p>
+        <a href="../index.html" style="color: #3e2b26; text-decoration: underline; font-weight: 600;">Return to Home</a>
+      </div>`;
+    return;
+  }
+
   // 1. Get Agent ID from URL
   const urlParams = new URLSearchParams(window.location.search);
   const agentId = urlParams.get("id");
@@ -20,8 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Default to first agent if no ID provided for demo purposes, or handle error
   const agent = agentId
-    ? window.agentsData.find((a) => a.id === agentId)
-    : window.agentsData[0];
+    ? agentsData.find((a) => a.id === agentId)
+    : agentsData[0];
 
   // Helper to fix paths. For a standalone subdomain, we use local paths.
   const fixPath = (path) => {

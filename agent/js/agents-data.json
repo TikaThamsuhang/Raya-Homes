@@ -1,0 +1,122 @@
+[
+  {
+    "id": "agent-1",
+    "name": "Sarah Jenkins",
+    "title": "Senior Luxury Estate Agent",
+    "bio": "As an agent who's an expert in this local area, I bring a wealth of knowledge and expertise about buying and selling real estate here. It's not the same everywhere, so you need someone you can trust for up-to-date information. I am eager to serve you.",
+    "phone": "+1 (212) 555-0123",
+    "email": "sarah.jenkins@rayahomes.com",
+    "office": "Raya Homes",
+    "license": "SL3526976",
+    "photo": "imgs/Agents/agent-2.jpg",
+    "socialLinks": {
+      "linkedin": "#",
+      "instagram": "#"
+    },
+    "stats": {
+      "sold": 142,
+      "active": 12,
+      "experience": "15 Years"
+    }
+  },
+  {
+    "id": "agent-2",
+    "name": "Michael Chang",
+    "title": "Luxury Condo Specialist",
+    "bio": "Michael Chang has over 10 years of experience in the Miami luxury condo market. Specializing in high-end penthouses and waterfront properties, Michael is dedicated to finding the perfect view for his clients.",
+    "phone": "+1 (305) 555-0888",
+    "email": "michael.chang@rayahomes.com",
+    "office": "Raya Homes",
+    "license": "SL9988776",
+    "photo": "imgs/Agents/agent-3.avif",
+    "socialLinks": {
+      "linkedin": "#",
+      "instagram": "#"
+    },
+    "stats": {
+      "sold": 85,
+      "active": 5,
+      "experience": "10 Years"
+    }
+  },
+  {
+    "id": "agent-3",
+    "name": "Elena Rodriguez",
+    "title": "Waterfront Specialist",
+    "bio": "Elena Rodriguez brings a passion for coastal living to every transaction. With a focus on exclusive waterfront estates, she helps clients find their dream paradise in Miami's most sought-after neighborhoods.",
+    "phone": "+1 (305) 555-0456",
+    "email": "elena.rodriguez@rayahomes.com",
+    "office": "Raya Homes Miami",
+    "license": "SL8877665",
+    "photo": "imgs/Agents/agent-1.jpg",
+    "socialLinks": {
+      "linkedin": "#",
+      "instagram": "#"
+    },
+    "stats": {
+      "sold": 65,
+      "active": 8,
+      "experience": "8 Years"
+    }
+  },
+  {
+    "id": "agent-4",
+    "name": "James Wilson",
+    "title": "Commercial Real Estate Expert",
+    "bio": "James Wilson is your go-to expert for commercial investments. From office spaces to retail locations, James has the market insight and negotiation skills to maximize your ROI.",
+    "phone": "+1 (212) 555-0789",
+    "email": "james.wilson@rayahomes.com",
+    "office": "Raya Homes NY",
+    "license": "SL5544332",
+    "photo": "imgs/Agents/agent-3.avif",
+    "socialLinks": {
+      "linkedin": "#",
+      "instagram": "#"
+    },
+    "stats": {
+      "sold": 40,
+      "active": 3,
+      "experience": "12 Years"
+    }
+  },
+  {
+    "id": "agent-5",
+    "name": "Linda Parker",
+    "title": "Investment Portfolio Manager",
+    "bio": "Linda specialize in helping investors build and manage profitable real estate portfolios. Her data-driven approach ensures you make the smartest investment decisions.",
+    "phone": "+1 (310) 555-0112",
+    "email": "linda.parker@rayahomes.com",
+    "office": "Raya Homes",
+    "license": "SL2233445",
+    "photo": "imgs/Agents/agent-2.jpg",
+    "socialLinks": {
+      "linkedin": "#",
+      "instagram": "#"
+    },
+    "stats": {
+      "sold": 110,
+      "active": 15,
+      "experience": "18 Years"
+    }
+  },
+  {
+    "id": "agent-6",
+    "name": "Robert Chen",
+    "title": "Penthouse Specialist",
+    "bio": "Robert Chen is dedicated to the ultra-luxury market. He focuses exclusively on penthouse and sky-home properties, offering discreet and professional service to elite clientele.",
+    "phone": "+1 (415) 555-0991",
+    "email": "robert.chen@rayahomes.com",
+    "office": "Raya Homes SF",
+    "license": "SL6677889",
+    "photo": "imgs/Agents/agent-1.jpg",
+    "socialLinks": {
+      "linkedin": "#",
+      "instagram": "#"
+    },
+    "stats": {
+      "sold": 55,
+      "active": 4,
+      "experience": "7 Years"
+    }
+  }
+]
