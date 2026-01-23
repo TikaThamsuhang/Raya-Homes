@@ -202,18 +202,7 @@
     text-align: justify;
 }
 
-/* --- Listings Section --- */
-.agent-listings-section {
-    padding: 2rem 0;
-    border-top: 1px solid #c4c4c4;
-}
 
-.agent-listings-grid {
-    display: grid;
-    /* 3 Columns min, collapsing to 1 on small screens */
-    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr)); 
-    gap: 2rem;
-}
 
 /* --- Header Specifics (Copied from property-detail.css) --- */
 .detail-header {
@@ -489,14 +478,7 @@ textarea.input-modern:not(:placeholder-shown) ~ .floating-label {
     white-space: nowrap;
 }
 
-.img-slider-container{
- height: 300px;
-}
 
-#agentListingCount{
-    color: var(--color-text-dark);
-    font-weight: 600;
-}
 
 /* --- Responsive --- */
 
@@ -525,10 +507,7 @@ textarea.input-modern:not(:placeholder-shown) ~ .floating-label {
         border: 1px solid #eee;
     }
     
-    /* Adjust Listings Grid */
-    .agent-listings-grid {
-        grid-template-columns: 1fr 1fr; 
-    }
+
 }
 
 /* Mobile (max-width: 768px) */
@@ -680,11 +659,7 @@ textarea.input-modern:not(:placeholder-shown) ~ .floating-label {
         border: 1px solid #eee;
     }
 
-    /* Listings */
-    .agent-listings-grid {
-        grid-template-columns: 1fr; /* Single column listings */
-        gap: 2rem;
-    }
+
     
     /* Socials Styling Fix for Mobile */
     .agent-socials-vertical {

@@ -11,7 +11,6 @@ const agentsData = [
     photo: "imgs/Agents/agent-2.jpg",
     socialLinks: { linkedin: "#", instagram: "#" },
     stats: { sold: 142, active: 12, experience: "15 Years" },
-    listingIds: ["prop-1", "prop-2", "prop-3"],
   },
   {
     id: "agent-2",
@@ -25,7 +24,6 @@ const agentsData = [
     photo: "imgs/Agents/agent-3.avif",
     socialLinks: { linkedin: "#", instagram: "#" },
     stats: { sold: 85, active: 5, experience: "10 Years" },
-    listingIds: ["prop-4"],
   },
   {
     id: "agent-3",
@@ -39,7 +37,6 @@ const agentsData = [
     photo: "imgs/Agents/agent-1.jpg",
     socialLinks: { linkedin: "#", instagram: "#" },
     stats: { sold: 65, active: 8, experience: "8 Years" },
-    listingIds: [],
   },
   {
     id: "agent-4",
@@ -53,7 +50,6 @@ const agentsData = [
     photo: "imgs/Agents/agent-3.avif" /* Reusing Image */,
     socialLinks: { linkedin: "#", instagram: "#" },
     stats: { sold: 40, active: 3, experience: "12 Years" },
-    listingIds: [],
   },
   {
     id: "agent-5",
@@ -67,7 +63,6 @@ const agentsData = [
     photo: "imgs/Agents/agent-2.jpg" /* Reusing Image */,
     socialLinks: { linkedin: "#", instagram: "#" },
     stats: { sold: 110, active: 15, experience: "18 Years" },
-    listingIds: [],
   },
   {
     id: "agent-6",
@@ -81,7 +76,6 @@ const agentsData = [
     photo: "imgs/Agents/agent-1.jpg" /* Reusing Image */,
     socialLinks: { linkedin: "#", instagram: "#" },
     stats: { sold: 55, active: 4, experience: "7 Years" },
-    listingIds: [],
   },
 ];
 
