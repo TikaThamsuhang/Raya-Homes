@@ -484,6 +484,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   const thumbnailStrip  = document.getElementById("thumbnailStrip");
   const photoView       = document.getElementById("photoView");
   const mapView         = document.getElementById("mapView");
+  const videoView       = document.getElementById("videoView");
+  const galleryVideoTab = document.getElementById("galleryVideoTab");
+  const galleryVideoPlayer = document.getElementById("galleryVideoPlayer");
+
+  // Show/Hide Video Tab in Overlay
+  if (galleryVideoTab && galleryVideoPlayer) {
+    if (property.video) {
+        galleryVideoPlayer.src = property.video;
+        galleryVideoTab.style.display = "inline-block";
+    } else {
+        galleryVideoTab.style.display = "none";
+    }
+  }
 
   // Set the "Y" in "X of Y" in the overlay footer
   if (totalImagesEl) totalImagesEl.textContent = allPhotos.length;
@@ -533,6 +546,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     // Default to the Photos tab whenever the overlay opens
     if (photoView) photoView.classList.remove("hidden");
     if (mapView)   mapView.classList.add("hidden");
+    if (videoView) videoView.classList.add("hidden");
     document.querySelectorAll(".gallery-tabs .tab-btn").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.tab === "photos");
     });
@@ -545,6 +559,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   const closeGallery = () => {
     if (!galleryOverlay) return;
     galleryOverlay.classList.remove("active");
+    if (galleryVideoPlayer) galleryVideoPlayer.pause();
     document.body.style.overflow = "";
   };
 
@@ -624,6 +639,12 @@ document.addEventListener("DOMContentLoaded", async () => {
       // Show the correct content panel, hide the other
       if (photoView) photoView.classList.toggle("hidden", tab !== "photos");
       if (mapView)   mapView.classList.toggle("hidden",   tab !== "map");
+      if (videoView) videoView.classList.toggle("hidden", tab !== "video");
+
+      // Pause video if navigating away from video tab
+      if (tab !== "video" && galleryVideoPlayer) {
+          galleryVideoPlayer.pause();
+      }
     });
   });
 
