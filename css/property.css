@@ -64,7 +64,7 @@ html, body {
 }
 
 #propertySearchSuggestions {
-    max-height: 300px;
+    max-height: 310px;
     overflow-y: auto;
     width: 100%;
     /* Override index.css top if needed or ensure it matches */

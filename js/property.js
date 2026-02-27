@@ -1,88 +1,107 @@
 // Search Suggestions Logic
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const searchInput = document.getElementById("propertySearchInput");
-  const searchSuggestions = document.getElementById(
-    "propertySearchSuggestions",
-  );
+  const searchSuggestions = document.getElementById("propertySearchSuggestions");
 
   if (searchInput && searchSuggestions) {
-    // Read URL parameter and populate search input
+    // Read URL parameter and populate search input (if any)
     const urlParams = new URLSearchParams(window.location.search);
     const searchQuery = urlParams.get("search");
     if (searchQuery) {
       searchInput.value = decodeURIComponent(searchQuery);
     }
 
-    // Recent Searches Logic (Local Storage)
-    const RECENT_SEARCHES_KEY = "raya_recent_searches";
-    const MAX_RECENT_SEARCHES = 3;
-
-    function getRecentSearches() {
-      const searches = localStorage.getItem(RECENT_SEARCHES_KEY);
-      return searches ? JSON.parse(searches) : [];
-    }
-
-    function saveRecentSearch(term) {
-      if (!term) return;
-      let searches = getRecentSearches();
-      // Remove duplicates
-      searches = searches.filter((s) => s.toLowerCase() !== term.toLowerCase());
-      // Add new to top
-      searches.unshift(term);
-      // Limit to max
-      if (searches.length > MAX_RECENT_SEARCHES) {
-        searches.pop();
+    // Load property data for suggestions
+    let properties = [];
+    try {
+      const response = await fetch("js/properties-data.json");
+      if (response.ok) {
+        properties = await response.json();
       }
-      localStorage.setItem(RECENT_SEARCHES_KEY, JSON.stringify(searches));
-      renderRecentSearches();
+    } catch (err) {
+      console.error("Failed to load properties for search suggestions:", err);
     }
 
-    function renderRecentSearches() {
-      // Find the recent searches group - assuming it's the second group or identified by h6 text
-      const groups = searchSuggestions.querySelectorAll(".suggestion-group");
-      let recentGroup = null;
+    // Function to render dynamic suggestions
+    const renderSuggestions = (query) => {
+      searchSuggestions.innerHTML = ""; // clear current
+      
+      let matches = [];
+      let groupTitle = "";
 
-      groups.forEach((group) => {
-        const h6 = group.querySelector("h6");
-        if (h6 && h6.textContent.trim() === "Recent Searches") {
-          recentGroup = group;
+      if (!query) {
+        // If query is empty, show 3 popular/featured properties
+        let popular = properties.filter(p => p.featured === true);
+        if (popular.length < 3) {
+          popular = properties.slice(0, 3);
         }
-      });
+        matches = popular.slice(0, 3);
+        groupTitle = "Popular Properties";
+      } else {
+        // Show matching properties
+        const lowerQuery = query.toLowerCase();
+        matches = properties.filter(p => 
+          p.title.toLowerCase().includes(lowerQuery) ||
+          p.address.toLowerCase().includes(lowerQuery) ||
+          (p.location && p.location.toLowerCase().includes(lowerQuery))
+        );
+        groupTitle = "Matching Properties";
+      }
 
-      if (!recentGroup) return; // Should exist in HTML
-
-      const ul = recentGroup.querySelector("ul");
-      ul.innerHTML = "";
-
-      const searches = getRecentSearches();
-
-      if (searches.length === 0) {
-        recentGroup.style.display = "none";
+      if (matches.length === 0) {
+        if (query) {
+          searchSuggestions.innerHTML = `
+            <div class="suggestion-group">
+              <h6 style="color:red;">No properties found for "${query}"</h6>
+            </div>
+          `;
+          searchSuggestions.classList.add("show");
+        } else {
+          searchSuggestions.classList.remove("show");
+        }
         return;
       }
 
-      recentGroup.style.display = "block";
-
-      searches.forEach((term) => {
+      // Build the suggestion HTML
+      const groupDiv = document.createElement("div");
+      groupDiv.className = "suggestion-group";
+      groupDiv.innerHTML = `<h6>${groupTitle}</h6>`;
+      
+      const ul = document.createElement("ul");
+      matches.slice(0, 8).forEach(prop => { // limit to 8 suggestions if matching
         const li = document.createElement("li");
-        li.innerHTML = `<i class="fa-solid fa-clock-rotate-left"></i> ${term}`;
+        li.innerHTML = `
+          <div style="display: flex; align-items: center; gap: 10px; width: 100%;">
+            <img src="${prop.photos[0]}" alt="${prop.title}" style="width:40px; height:40px; object-fit:cover; border-radius:4px;">
+            <div style="display:flex; flex-direction:column; line-height:1.2;">
+              <span style="font-weight:600; color:var(--color-dark);">${prop.title}</span>
+              <span style="font-size:0.8rem; color:var(--text-muted);">${prop.location}</span>
+            </div>
+          </div>
+        `;
+        // Navigate on click
         li.addEventListener("click", () => {
-          searchInput.value = term;
-          searchSuggestions.classList.remove("show");
-          // Optionally trigger search logic here
-          console.log("Searching for:", term);
+          window.location.href = `property-detail.html?id=${prop.slug}`;
         });
+        li.style.cursor = "pointer";
         ul.appendChild(li);
       });
-    }
 
-    // Initial Render
-    renderRecentSearches();
-
-    // Show on focus (and re-render to capture updates)
-    searchInput.addEventListener("focus", () => {
-      renderRecentSearches();
+      groupDiv.appendChild(ul);
+      searchSuggestions.appendChild(groupDiv);
       searchSuggestions.classList.add("show");
+    };
+
+    // Listen for typing
+    searchInput.addEventListener("input", (e) => {
+      renderSuggestions(e.target.value.trim());
+    });
+
+    // Show suggestions again if focusing on input that already has text
+    searchInput.addEventListener("focus", (e) => {
+      if (e.target.value.trim()) {
+        renderSuggestions(e.target.value.trim());
+      }
     });
 
     // Hide on click outside
@@ -95,37 +114,33 @@ document.addEventListener("DOMContentLoaded", () => {
       }
     });
 
-    // Capture Search Execution
-    // 1. Click on icon
+    // Handle enter key to redirect to first result or just search page
+    searchInput.addEventListener("keypress", (e) => {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        const query = searchInput.value.trim().toLowerCase();
+        if (query) {
+          const match = properties.find(p => p.title.toLowerCase().includes(query) || p.address.toLowerCase().includes(query));
+          if (match) {
+            window.location.href = `property-detail.html?id=${match.slug}`;
+          }
+        }
+      }
+    });
+    
     const searchBtn = document.querySelector(".search-icon-btn");
     if (searchBtn) {
       searchBtn.addEventListener("click", () => {
-        saveRecentSearch(searchInput.value.trim());
+        const query = searchInput.value.trim().toLowerCase();
+        if (query) {
+          const match = properties.find(p => p.title.toLowerCase().includes(query) || p.address.toLowerCase().includes(query));
+          if (match) {
+            window.location.href = `property-detail.html?id=${match.slug}`;
+          }
+        }
       });
     }
 
-    // 2. Enter key
-    searchInput.addEventListener("keypress", (e) => {
-      if (e.key === "Enter") {
-        saveRecentSearch(searchInput.value.trim());
-      }
-    });
-
-    // Handle suggestion clicks (Popular Locations)
-    const popularGroup = searchSuggestions.querySelector(
-      ".suggestion-group:first-child",
-    );
-    if (popularGroup) {
-      const popItems = popularGroup.querySelectorAll("li");
-      popItems.forEach((item) => {
-        item.addEventListener("click", () => {
-          const text = item.textContent.trim();
-          searchInput.value = text;
-          saveRecentSearch(text); // Also save popular clicks as recent
-          searchSuggestions.classList.remove("show");
-        });
-      });
-    }
   }
 
   // Generic Dropdown Logic

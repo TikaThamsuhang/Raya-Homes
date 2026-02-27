@@ -362,6 +362,38 @@
 
               <div class="divider"></div>
 
+              <!-- 3a. Interior Area Details -->
+              <div class="details-block mb-3">
+                <div class="d-flex align-center gap-sm mb-2">
+                  <i class="fa-solid fa-vector-square text-primary font-size-lg"></i>
+                  <h3 class="section-title mb-0">Interior Area</h3>
+                </div>
+                <ul class="simple-data-list">
+                  <li><span class="label">Total Structure Area:</span><span class="val" id="prop-total-structure-area">—</span></li>
+                  <li><span class="label">Total Livable Area:</span><span class="val" id="prop-total-livable-area">—</span></li>
+                  <li><span class="label">Finished Above Ground:</span><span class="val" id="prop-finished-above">—</span></li>
+                  <li><span class="label">Finished Below Ground:</span><span class="val" id="prop-finished-below">—</span></li>
+                  <li><span class="label">Flooring:</span><span class="val" id="prop-flooring">—</span></li>
+                  <li><span class="label">Laundry:</span><span class="val" id="prop-laundry">—</span></li>
+                </ul>
+              </div>
+
+              <div class="divider"></div>
+
+              <!-- 3b. Appliances -->
+              <div class="details-block mb-3">
+                <div class="d-flex align-center gap-sm mb-2">
+                  <i class="fa-solid fa-blender text-primary font-size-lg"></i>
+                  <h3 class="section-title mb-0">Appliances & Features</h3>
+                </div>
+                <ul class="simple-data-list">
+                  <li><span class="label">Appliances Included:</span><span class="val" id="prop-appliances">—</span></li>
+                  <li><span class="label">Interior Features:</span><span class="val" id="prop-interior-features">—</span></li>
+                </ul>
+              </div>
+
+              <div class="divider"></div>
+
               <!-- 3. Price & Financials -->
               <!-- 3. Structure -->
               <div class="details-block mb-3">
@@ -374,9 +406,7 @@
                   <ul class="simple-data-list">
                     <li>
                       <span class="label">Building Area:</span>
-                      <span class="val" id="prop-build-area"
-                        >1,800 Sq. Ft.</span
-                      >
+                      <span class="val" id="prop-build-area">1,800 Sq. Ft.</span>
                     </li>
                     <li>
                       <span class="label">Year Built:</span>
@@ -404,8 +434,91 @@
                       <span class="label">Lot Size:</span>
                       <span class="val" id="prop-lot-size">3.30 Acres</span>
                     </li>
+                    <li>
+                      <span class="label">Lot Features:</span>
+                      <span class="val" id="prop-lot-features">—</span>
+                    </li>
+                    <li>
+                      <span class="label">Parcel Number:</span>
+                      <span class="val" id="prop-parcel-number">—</span>
+                    </li>
+                    <li>
+                      <span class="label">Zoning:</span>
+                      <span class="val" id="prop-zoning">—</span>
+                    </li>
+                    <li>
+                      <span class="label">Special Conditions:</span>
+                      <span class="val" id="prop-special-conditions">—</span>
+                    </li>
                   </ul>
                 </div>
+              </div>
+
+              <div class="divider"></div>
+
+              <!-- 4b. Parking -->
+              <div class="details-block mb-3">
+                <div class="d-flex align-center gap-sm mb-2">
+                  <i class="fa-solid fa-square-parking text-primary font-size-lg"></i>
+                  <h3 class="section-title mb-0">Parking</h3>
+                </div>
+                <ul class="simple-data-list">
+                  <li><span class="label">Total Spaces:</span><span class="val" id="prop-parking-spaces">—</span></li>
+                  <li><span class="label">Attached Garage Spaces:</span><span class="val" id="prop-garage-spaces">—</span></li>
+                  <li><span class="label">Parking Features:</span><span class="val" id="prop-parking-features">—</span></li>
+                </ul>
+              </div>
+
+              <div class="divider"></div>
+
+              <!-- 4c. Exterior & Property Features -->
+              <div class="details-block mb-3">
+                <div class="d-flex align-center gap-sm mb-2">
+                  <i class="fa-solid fa-house-chimney-window text-primary font-size-lg"></i>
+                  <h3 class="section-title mb-0">Exterior &amp; Property</h3>
+                </div>
+                <ul class="simple-data-list">
+                  <li><span class="label">Levels:</span><span class="val" id="prop-levels">—</span></li>
+                  <li><span class="label">Patio &amp; Porch:</span><span class="val" id="prop-patio">—</span></li>
+                  <li><span class="label">Exterior Features:</span><span class="val" id="prop-exterior-features">—</span></li>
+                  <li><span class="label">Pool Features:</span><span class="val" id="prop-pool-features">—</span></li>
+                  <li><span class="label">Fencing:</span><span class="val" id="prop-fencing">—</span></li>
+                  <li><span class="label">Has View:</span><span class="val" id="prop-has-view">—</span></li>
+                </ul>
+              </div>
+
+              <div class="divider"></div>
+
+              <!-- 4d. Construction Details -->
+              <div class="details-block mb-3">
+                <div class="d-flex align-center gap-sm mb-2">
+                  <i class="fa-solid fa-helmet-safety text-primary font-size-lg"></i>
+                  <h3 class="section-title mb-0">Construction</h3>
+                </div>
+                <ul class="simple-data-list">
+                  <li><span class="label">Home Type:</span><span class="val" id="prop-home-type">—</span></li>
+                  <li><span class="label">Architectural Style:</span><span class="val" id="prop-arch-style">—</span></li>
+                  <li><span class="label">Property Subtype:</span><span class="val" id="prop-prop-subtype">—</span></li>
+                  <li><span class="label">Materials:</span><span class="val" id="prop-materials">—</span></li>
+                  <li><span class="label">Foundation:</span><span class="val" id="prop-foundation">—</span></li>
+                  <li><span class="label">Roof:</span><span class="val" id="prop-roof">—</span></li>
+                  <li><span class="label">New Construction:</span><span class="val" id="prop-new-construction">—</span></li>
+                </ul>
+              </div>
+
+              <div class="divider"></div>
+
+              <!-- 4e. Utilities -->
+              <div class="details-block mb-3">
+                <div class="d-flex align-center gap-sm mb-2">
+                  <i class="fa-solid fa-bolt text-primary font-size-lg"></i>
+                  <h3 class="section-title mb-0">Utilities</h3>
+                </div>
+                <ul class="simple-data-list">
+                  <li><span class="label">Water:</span><span class="val" id="prop-utilities-water">—</span></li>
+                  <li><span class="label">Sewer:</span><span class="val" id="prop-utilities-sewer">—</span></li>
+                  <li><span class="label">Utilities for Property:</span><span class="val" id="prop-utilities-list">—</span></li>
+                </ul>
               </div>
 
               <div class="divider"></div>
@@ -467,6 +580,18 @@
                       <span class="label">Association Fee:</span>
                       <span class="val" id="prop-hoa-fee">$131 (Annually)</span>
                     </li>
+                    <li>
+                      <span class="label">HOA Services:</span>
+                      <span class="val" id="prop-hoa-services">—</span>
+                    </li>
+                    <li>
+                      <span class="label">Price per Sq. Ft.:</span>
+                      <span class="val" id="prop-price-sqft">—</span>
+                    </li>
+                    <li>
+                      <span class="label">Tax Assessed Value:</span>
+                      <span class="val" id="prop-tax-assessed">—</span>
+                    </li>
                   </ul>
                 </div>
 
@@ -488,13 +613,13 @@
 
               <!-- 6. Listing Agents -->
               <!-- Listing Agents section — all fields populated by JS -->
-              <div class="details-block mb-3">
+              <!-- <div class="details-block mb-3">
                 <h3 class="section-title mb-1">Listing Agents</h3>
-                <!-- Property title shown under heading, updated by JS -->
+                
                 <p class="text-muted text-sm mb-2" id="agentSectionAddress">for 97 Schnoor Road</p>
 
                 <div class="agent-card-horizontal">
-                  <!-- Agent photo, name, phone, email — all set by JS -->
+                  
                   <div class="agent-photo">
                     <img
                       src="imgs/Agents/agent-1.jpg"
@@ -521,7 +646,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
 
               <!-- 7. Disclaimer -->
               <div class="disclaimer-section mt-3">
@@ -825,7 +950,7 @@ Hi, I would like to know more about 97 Schnoor Road</textarea
             <button class="tab-btn" data-tab="map">Map</button>
           </div>
 
-          <h3 class="gallery-title">97 Schnoor Road, Madagan</h3>
+          <h3 class="gallery-title" id="galleryTitle">97 Schnoor Road, Madagan</h3>
 
           <div class="gallery-actions">
             <button class="action-btn share-btn">
@@ -860,6 +985,7 @@ Hi, I would like to know more about 97 Schnoor Road</textarea
           <!-- Map Viewer (Hidden by default) -->
           <div class="map-viewer hidden" id="mapView">
             <iframe
+              id="galleryMapIframe"
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.063683515569!2d-122.41941548468196!3d37.7749292797596!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085809c6c8f4459%3A0xb10ed6d9b5050fa5!2sTwitter+HQ!5e0!3m2!1sen!2sus!4v1533023456789"
               width="100%"
               height="100%"

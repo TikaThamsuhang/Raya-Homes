@@ -1,4 +1,4 @@
-/**
+﻿/**
  * property-detail.js
  * ============================================================
  * Drives property-detail.html — the individual property page.
@@ -180,6 +180,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   const miniMap = document.getElementById("miniMapIframe");
   if (miniMap && property.mapEmbed) miniMap.src = property.mapEmbed;
 
+  // Update the gallery overlay title with the full property address
+  const galleryTitle = document.getElementById("galleryTitle");
+  if (galleryTitle) galleryTitle.textContent = property.address;
+
+  // Update the gallery overlay Map tab iframe with this property's location
+  const galleryMapIframe = document.getElementById("galleryMapIframe");
+  if (galleryMapIframe && property.mapEmbed) galleryMapIframe.src = property.mapEmbed;
+
   // ============================================================
   // 9. "ABOUT THIS HOME" DESCRIPTION
   // Splits the description on double newlines to create paragraphs
@@ -215,6 +223,27 @@ document.addEventListener("DOMContentLoaded", async () => {
   setText("prop-fireplaces",   property.interior.fireplaces);
 
   // ============================================================
+  // 11b. INTERIOR AREA DETAILS
+  // ============================================================
+  if (property.interior) {
+    setText("prop-total-structure-area", property.interior.totalStructureArea);
+    setText("prop-total-livable-area",   property.interior.totalLivableArea);
+    setText("prop-finished-above",       property.interior.finishedAboveGround);
+    setText("prop-finished-below",       property.interior.finishedBelowGround);
+    setText("prop-flooring",             property.interior.flooring);
+    setText("prop-laundry",              property.interior.laundry);
+    // Appliances — join the array into a readable comma-separated string
+    if (property.interior.appliances && property.interior.appliances.length > 0) {
+      setText("prop-appliances", property.interior.appliances.join(", "));
+    }
+    // Interior Features — join the array into a readable comma-separated string
+    if (property.interior.features && property.interior.features.length > 0) {
+      setText("prop-interior-features", property.interior.features.join(", "));
+    }
+  }
+
+
+  // ============================================================
   // 12. STRUCTURE SECTION
   // ============================================================
   setText("prop-build-area", property.structure.buildArea);
@@ -225,6 +254,55 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 13. LOT SECTION
   // ============================================================
   setText("prop-lot-size", property.facts.lotSize);
+
+  // ============================================================
+  // 13b. ENRICHED LOT DETAILS
+  // ============================================================
+  if (property.lot) {
+    setText("prop-lot-features",       property.lot.features);
+    setText("prop-parcel-number",      property.lot.parcelNumber);
+    setText("prop-zoning",             property.lot.zoning);
+    setText("prop-special-conditions", property.lot.specialConditions);
+  }
+
+  // ============================================================
+  // 13c. PARKING
+  // ============================================================
+  if (property.exterior) {
+    setText("prop-parking-spaces",   property.exterior.parkingSpaces);
+    setText("prop-garage-spaces",    property.exterior.attachedGarageSpaces);
+    setText("prop-parking-features", property.exterior.parkingFeatures);
+    // Exterior & Property Features
+    setText("prop-levels",           property.exterior.levels);
+    setText("prop-patio",            property.exterior.patio);
+    setText("prop-exterior-features",property.exterior.exteriorFeatures);
+    setText("prop-pool-features",    property.exterior.poolFeatures);
+    setText("prop-fencing",          property.exterior.fencing);
+    setText("prop-has-view",         property.exterior.hasView ? "Yes" : "No");
+  }
+
+  // ============================================================
+  // 13d. CONSTRUCTION DETAILS
+  // ============================================================
+  if (property.structure) {
+    setText("prop-home-type",     property.structure.homeType);
+    setText("prop-arch-style",    property.structure.architecturalStyle);
+    setText("prop-prop-subtype",  property.structure.propertySubtype);
+    setText("prop-materials",     property.structure.materials);
+    setText("prop-foundation",    property.facts.foundation);
+    setText("prop-roof",          property.structure.roof || (property.exterior && property.exterior.roof));
+    setText("prop-new-construction", property.structure.newConstruction ? "Yes" : "No");
+  }
+
+  // ============================================================
+  // 13e. UTILITIES
+  // ============================================================
+  if (property.utilities) {
+    setText("prop-utilities-water", property.utilities.water);
+    setText("prop-utilities-sewer", property.utilities.sewer);
+    setText("prop-utilities-list",  property.utilities.utilities);
+  }
+
 
   // ============================================================
   // 14. SCHOOLS SECTION
@@ -239,6 +317,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   setText("prop-finance-price", formatPrice(property.financials.price));
   setText("prop-tax-amt",       formatPrice(property.financials.taxAnnual));
   setText("prop-hoa-fee",       property.financials.hoaFee);
+  // Additional financial details
+  if (property.financials.hoaServices) setText("prop-hoa-services",   property.financials.hoaServices);
+  if (property.pricePerSqft)           setText("prop-price-sqft",     "$" + property.pricePerSqft + "/sqft");
+  if (property.financials.taxAssessedValue)
+    setText("prop-tax-assessed", "$" + property.financials.taxAssessedValue.toLocaleString("en-US"));
+
   setText("prop-mls-id",        property.mls);
   setText("prop-mls-status",    property.mlsStatus);
 

@@ -705,7 +705,7 @@ main {
 
 /* --- Description Expand/Collapse --- */
 #descriptionContainer {
-    max-height: 120px; /* Adjust based on desired initial visibility */
+    max-height: 115px; /* Adjust based on desired initial visibility */
     overflow: hidden;
     position: relative;
     transition: max-height 0.5s ease;

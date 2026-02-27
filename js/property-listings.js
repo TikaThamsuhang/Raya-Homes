@@ -131,7 +131,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 Contact Agent
               </a>
               <!-- Navigate to the detail page, passing the property slug as ?id= -->
-              <a href="property-detail.html?id=${prop.slug}" class="view-detail-link" style="font-size:0.85rem; color:var(--color-primary); margin-left:auto; text-decoration:underline;">
+              <a href="property-detail.html?id=${prop.slug}" class="view-detail-link" style="font-size:0.9rem; color:var(--color-primary); margin-left:auto; text-decoration:underline;">
                 View Details
               </a>
             </div>
