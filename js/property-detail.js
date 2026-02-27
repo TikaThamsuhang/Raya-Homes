@@ -718,4 +718,14 @@ document.addEventListener("DOMContentLoaded", async () => {
       thumbnailStrip.scrollBy({ left: STRIP_SCROLL, behavior: "smooth" });
     });
   }
+
+  // ============================================================
+  // 22. HIDE LOADER & SHOW CONTENT
+  // ============================================================
+  const loader = document.getElementById("propertyLoader");
+  const content = document.getElementById("propertyContent");
+  if (loader && content) {
+    loader.style.display = "none";
+    content.style.display = "block";
+  }
 });

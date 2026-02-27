@@ -53,6 +53,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   };
 
   let currentSort = "newest"; // default sort
+  
+  // Pagination State
+  let currentPage = 1;
+  const itemsPerPage = 6;
+  let filteredProperties = [];
 
   // ============================================================
   // 4. HELPER — Format price as "$890,000"
@@ -142,10 +147,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       });
     }
 
-    // Update the results count shown in the listings header (e.g. "6 Homes found")
-    if (resultsCountEl) {
-      resultsCountEl.textContent = list.length;
-    }
+
 
     // Re-initialize the image sliders for the newly rendered cards
     // This calls the slider init from property.js which handles prev/next buttons
@@ -220,8 +222,97 @@ document.addEventListener("DOMContentLoaded", async () => {
         break;
     }
 
-    renderProperties(result);
+    filteredProperties = result;
+    currentPage = 1; // Reset to first page
+    renderCurrentPage();
   };
+
+  // ============================================================
+  // 7.5 PAGINATION LOGIC
+  // ============================================================
+  const renderCurrentPage = () => {
+    // Update total results count globally
+    if (resultsCountEl) {
+      resultsCountEl.textContent = filteredProperties.length;
+    }
+
+    const startIndex = (currentPage - 1) * itemsPerPage;
+    const endIndex = startIndex + itemsPerPage;
+    const paginatedList = filteredProperties.slice(startIndex, endIndex);
+    
+    renderProperties(paginatedList);
+    renderPagination();
+  };
+
+  const renderPagination = () => {
+    const totalItems = filteredProperties.length;
+    const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
+    
+    const paginationContainer = document.querySelector(".pagination-container");
+    const prevBtn = document.querySelector(".page-control.prev");
+    const nextBtn = document.querySelector(".page-control.next");
+    const pageInfo = document.querySelector(".page-info");
+    
+    if (!paginationContainer) return;
+    
+    if (totalItems <= itemsPerPage) {
+      paginationContainer.style.display = "none";
+    } else {
+      paginationContainer.style.display = "flex";
+      
+      if (pageInfo) pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+      
+      if (prevBtn) {
+        if (currentPage === 1) {
+          prevBtn.disabled = true;
+          prevBtn.style.opacity = "0.5";
+          prevBtn.style.cursor = "not-allowed";
+        } else {
+          prevBtn.disabled = false;
+          prevBtn.style.opacity = "1";
+          prevBtn.style.cursor = "pointer";
+        }
+      }
+      
+      if (nextBtn) {
+        if (currentPage === totalPages) {
+          nextBtn.disabled = true;
+          nextBtn.style.opacity = "0.5";
+          nextBtn.style.cursor = "not-allowed";
+        } else {
+          nextBtn.disabled = false;
+          nextBtn.style.opacity = "1";
+          nextBtn.style.cursor = "pointer";
+        }
+      }
+    }
+  };
+
+  // Wire up pagination buttons
+  const prevBtn = document.querySelector(".page-control.prev");
+  const nextBtn = document.querySelector(".page-control.next");
+  const listingsScrollTarget = document.querySelector(".listings-header");
+  
+  if (prevBtn) {
+    prevBtn.addEventListener("click", () => {
+      if (currentPage > 1) {
+        currentPage--;
+        renderCurrentPage();
+        if (listingsScrollTarget) listingsScrollTarget.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
+  
+  if (nextBtn) {
+    nextBtn.addEventListener("click", () => {
+      const totalPages = Math.ceil(filteredProperties.length / itemsPerPage);
+      if (currentPage < totalPages) {
+        currentPage++;
+        renderCurrentPage();
+        if (listingsScrollTarget) listingsScrollTarget.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  }
 
   // ============================================================
   // 8. WIRE UP FILTER UI — read checkbox states from the DOM

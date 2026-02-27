@@ -537,5 +537,131 @@
       "fireplaces": 3,
       "livingArea": "3,200 Sq. Ft."
     }
+  },
+  {
+    "id": "prop-7",
+    "slug": "estate-drive-raleigh",
+    "title": "88 Estate Drive",
+    "address": "88 Estate Dr, Raleigh, NC 27612",
+    "location": "Raleigh, NC",
+    "price": 1200000,
+    "status": "for-sale",
+    "type": "villa",
+    "beds": 5,
+    "baths": 4,
+    "bathsFull": 4,
+    "bathsHalf": 0,
+    "sqft": 3200,
+    "featured": true,
+    "photos": [
+      "imgs/Properties/prop-3.png",
+      "imgs/Properties/prop-1.png",
+      "imgs/Properties/prop-2.png"
+    ],
+    "description": "Magnificent 5-bedroom villa situated on a sprawling estate lot in prestigious North Raleigh. This luxury residence features soaring 12-foot ceilings, a grand foyer, gourmet kitchen with butler's pantry, home theater, and wine cellar. The resort-style backyard boasts a heated pool, outdoor kitchen, and manicured gardens.",
+    "agent": {
+      "name": "Sabitra Gyanwali",
+      "phone": "(919) 434-4455",
+      "email": "sabitra.gyanwali@teamraya.com",
+      "photo": "agent/imgs/Agents/agent-1.png"
+    },
+    "facts": {
+      "propertyType": "Villa",
+      "yearBuilt": 2018,
+      "heating": "Gas, Dual Zone",
+      "cooling": "Dual Zone Central Air",
+      "garage": "3 Cars, Attached",
+      "lotSize": "1.20 Acres"
+    },
+    "financials": {
+      "price": 1200000,
+      "taxAnnual": 12400,
+      "hoaFee": "$250 (Monthly)"
+    },
+    "schools": {
+      "elementary": "Leesville Road Elementary",
+      "middle": "Leesville Road Middle",
+      "high": "Leesville Road High School"
+    },
+    "structure": {
+      "buildArea": "3,200 Sq. Ft.",
+      "yearBuilt": 2018,
+      "subType": "Two Story"
+    },
+    "mls": "24101234",
+    "mlsStatus": "Active",
+    "source": "NC",
+    "listingDate": "2026-02-10",
+    "listedBy": "Sabitra Gyanwali",
+    "brokerage": "Raya Homes",
+    "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976373946229!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1689624538965!5m2!1sen!2sus",
+    "interior": {
+      "basement": "Full, Finished",
+      "fireplaces": 3,
+      "livingArea": "3,200 Sq. Ft."
+    }
+  },
+  {
+    "id": "prop-8",
+    "slug": "oakwood-drive-raleigh",
+    "title": "12 Oakwood Drive",
+    "address": "12 Oakwood Dr, Raleigh, NC 27607",
+    "location": "Raleigh, NC",
+    "price": 950000,
+    "status": "coming-soon",
+    "type": "house",
+    "beds": 4,
+    "baths": 3,
+    "bathsFull": 3,
+    "bathsHalf": 0,
+    "sqft": 2400,
+    "featured": true,
+    "photos": [
+      "imgs/Properties/prop-1.png",
+      "imgs/Properties/prop-2.png",
+      "imgs/Properties/prop-3.png"
+    ],
+    "description": "Charming 4-bedroom home in the highly sought-after Oakwood neighborhood. This beautifully updated residence features hardwood floors throughout, a gourmet kitchen with quartz countertops, and a spacious living area with fireplace. The private backyard oasis includes a large deck and mature landscaping.",
+    "agent": {
+      "name": "Lucy Muzhingi",
+      "phone": "(919) 434-4455",
+      "email": "lucyrudo@teamraya.com",
+      "photo": "agent/imgs/Agents/agent-2.png"
+    },
+    "facts": {
+      "propertyType": "Single Family",
+      "yearBuilt": 1995,
+      "heating": "Gas, Forced Air",
+      "cooling": "Central Air",
+      "garage": "2 Cars, Attached",
+      "lotSize": "0.40 Acres"
+    },
+    "financials": {
+      "price": 950000,
+      "taxAnnual": 9800,
+      "hoaFee": "None"
+    },
+    "schools": {
+      "elementary": "Lochaven Elementary",
+      "middle": "Lochaven Middle School",
+      "high": "Broughton High School"
+    },
+    "structure": {
+      "buildArea": "2,400 Sq. Ft.",
+      "yearBuilt": 1995,
+      "subType": "Two Story"
+    },
+    "mls": "24101235",
+    "mlsStatus": "Coming Soon",
+    "source": "NC",
+    "listingDate": "2026-02-15",
+    "listedBy": "Lucy Muzhingi",
+    "brokerage": "Raya Homes",
+    "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976373946229!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1689624538965!5m2!1sen!2sus",
+    "interior": {
+      "basement": "Full, Unfinished",
+      "fireplaces": 1,
+      "livingArea": "2,400 Sq. Ft."
+    }
   }
 ]
