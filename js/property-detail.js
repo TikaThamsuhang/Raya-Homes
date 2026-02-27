@@ -24,7 +24,6 @@
  */
 
 document.addEventListener("DOMContentLoaded", async () => {
-
   // ============================================================
   // 1. READ THE PROPERTY SLUG FROM THE URL
   // e.g. property-detail.html?id=schnoor-road-ct → slug = "schnoor-road-ct"
@@ -86,7 +85,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     const el = document.getElementById(id);
     if (el) {
       el.src = src;
-      el.onerror = () => { el.src = fallback; };
+      el.onerror = () => {
+        el.src = fallback;
+      };
     }
   };
 
@@ -127,7 +128,8 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (totalCountEl) totalCountEl.textContent = property.photos.length;
 
   const seeAllBtn = document.querySelector(".btn-see-all");
-  if (seeAllBtn) seeAllBtn.textContent = `See all ${property.photos.length} photos`;
+  if (seeAllBtn)
+    seeAllBtn.textContent = `See all ${property.photos.length} photos`;
 
   // ============================================================
   // 7. PRICE, STATUS BADGE, SPECS, ADDRESS
@@ -141,21 +143,37 @@ document.addEventListener("DOMContentLoaded", async () => {
   const statusBadge = document.getElementById("propertyStatusBadge");
   if (statusBadge) {
     const statusMap = {
-      "for-sale":    { text: "For Sale",    icon: "fa-circle-check",    cls: "for-sale" },
-      "coming-soon": { text: "Coming Soon", icon: "fa-clock",           cls: "coming-soon" },
-      "sold":        { text: "Sold",        icon: "fa-lock",            cls: "sold" },
-      "pending":     { text: "Pending",     icon: "fa-hourglass-half",  cls: "coming-soon" },
+      "for-sale": {
+        text: "For Sale",
+        icon: "fa-circle-check",
+        cls: "for-sale",
+      },
+      "coming-soon": {
+        text: "Coming Soon",
+        icon: "fa-clock",
+        cls: "coming-soon",
+      },
+      sold: { text: "Sold", icon: "fa-lock", cls: "sold" },
+      pending: {
+        text: "Pending",
+        icon: "fa-hourglass-half",
+        cls: "coming-soon",
+      },
     };
-    const s = statusMap[property.status] || { text: property.status, icon: "", cls: "" };
+    const s = statusMap[property.status] || {
+      text: property.status,
+      icon: "",
+      cls: "",
+    };
     statusBadge.className = `status-tag ${s.cls}`;
     statusBadge.innerHTML = `${s.text} <i class="fa-solid ${s.icon}"></i>`;
   }
 
   // Key specs row
-  setText("propBeds",  property.beds);
+  setText("propBeds", property.beds);
   setText("propBaths", property.baths);
-  setText("propSqft",  property.sqft.toLocaleString());
-  setText("propType",  property.facts.propertyType);
+  setText("propSqft", property.sqft.toLocaleString());
+  setText("propType", property.facts.propertyType);
 
   // Full address
   setText("propertyAddress", property.address);
@@ -164,11 +182,15 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 8. AGENT / LISTING INFO STRIP
   // ============================================================
   const listedByEl = document.getElementById("listedByName");
-  if (listedByEl) listedByEl.textContent = `${property.listedBy} ${property.agent.phone}`;
+  if (listedByEl)
+    listedByEl.textContent = `${property.listedBy} ${property.agent.phone}`;
 
-  setText("brokerageName", `${property.brokerage} \u2022 ${property.agent.phone}`);
-  setText("mlsSource",     `Source: ${property.source}`);
-  setText("mlsNumber",     `MLS# ${property.mls}`);
+  setText(
+    "brokerageName",
+    `${property.brokerage} \u2022 ${property.agent.phone}`,
+  );
+  setText("mlsSource", `Source: ${property.source}`);
+  setText("mlsNumber", `MLS# ${property.mls}`);
 
   const updatedEl = document.getElementById("listingUpdated");
   if (updatedEl && property.listingDate) {
@@ -186,7 +208,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // Update the gallery overlay Map tab iframe with this property's location
   const galleryMapIframe = document.getElementById("galleryMapIframe");
-  if (galleryMapIframe && property.mapEmbed) galleryMapIframe.src = property.mapEmbed;
+  if (galleryMapIframe && property.mapEmbed)
+    galleryMapIframe.src = property.mapEmbed;
 
   // ============================================================
   // 9. "ABOUT THIS HOME" DESCRIPTION
@@ -205,35 +228,38 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 10. HOME FACTS GRID
   // ============================================================
   setText("factPropertyType", property.facts.propertyType);
-  setText("factYearBuilt",    property.facts.yearBuilt);
-  setText("factHeating",      property.facts.heating);
-  setText("factCooling",      property.facts.cooling);
-  setText("factGarage",       property.facts.garage);
-  setText("factLotSize",      property.facts.lotSize);
+  setText("factYearBuilt", property.facts.yearBuilt);
+  setText("factHeating", property.facts.heating);
+  setText("factCooling", property.facts.cooling);
+  setText("factGarage", property.facts.garage);
+  setText("factLotSize", property.facts.lotSize);
 
   // ============================================================
   // 11. ROOMS & INTERIOR SECTION
   // ============================================================
-  setText("prop-beds-detail",  property.beds);
-  setText("prop-baths-total",  property.baths);
-  setText("prop-baths-full",   property.bathsFull);
-  setText("prop-baths-half",   property.bathsHalf);
-  setText("prop-living-area",  property.interior.livingArea);
-  setText("prop-basement",     property.interior.basement);
-  setText("prop-fireplaces",   property.interior.fireplaces);
+  setText("prop-beds-detail", property.beds);
+  setText("prop-baths-total", property.baths);
+  setText("prop-baths-full", property.bathsFull);
+  setText("prop-baths-half", property.bathsHalf);
+  setText("prop-living-area", property.interior.livingArea);
+  setText("prop-basement", property.interior.basement);
+  setText("prop-fireplaces", property.interior.fireplaces);
 
   // ============================================================
   // 11b. INTERIOR AREA DETAILS
   // ============================================================
   if (property.interior) {
     setText("prop-total-structure-area", property.interior.totalStructureArea);
-    setText("prop-total-livable-area",   property.interior.totalLivableArea);
-    setText("prop-finished-above",       property.interior.finishedAboveGround);
-    setText("prop-finished-below",       property.interior.finishedBelowGround);
-    setText("prop-flooring",             property.interior.flooring);
-    setText("prop-laundry",              property.interior.laundry);
+    setText("prop-total-livable-area", property.interior.totalLivableArea);
+    setText("prop-finished-above", property.interior.finishedAboveGround);
+    setText("prop-finished-below", property.interior.finishedBelowGround);
+    setText("prop-flooring", property.interior.flooring);
+    setText("prop-laundry", property.interior.laundry);
     // Appliances — join the array into a readable comma-separated string
-    if (property.interior.appliances && property.interior.appliances.length > 0) {
+    if (
+      property.interior.appliances &&
+      property.interior.appliances.length > 0
+    ) {
       setText("prop-appliances", property.interior.appliances.join(", "));
     }
     // Interior Features — join the array into a readable comma-separated string
@@ -242,13 +268,12 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
   }
 
-
   // ============================================================
   // 12. STRUCTURE SECTION
   // ============================================================
   setText("prop-build-area", property.structure.buildArea);
   setText("prop-year-built", property.structure.yearBuilt);
-  setText("prop-sub-type",   property.structure.subType);
+  setText("prop-sub-type", property.structure.subType);
 
   // ============================================================
   // 13. LOT SECTION
@@ -259,9 +284,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 13b. ENRICHED LOT DETAILS
   // ============================================================
   if (property.lot) {
-    setText("prop-lot-features",       property.lot.features);
-    setText("prop-parcel-number",      property.lot.parcelNumber);
-    setText("prop-zoning",             property.lot.zoning);
+    setText("prop-lot-features", property.lot.features);
+    setText("prop-parcel-number", property.lot.parcelNumber);
+    setText("prop-zoning", property.lot.zoning);
     setText("prop-special-conditions", property.lot.specialConditions);
   }
 
@@ -269,29 +294,35 @@ document.addEventListener("DOMContentLoaded", async () => {
   // 13c. PARKING
   // ============================================================
   if (property.exterior) {
-    setText("prop-parking-spaces",   property.exterior.parkingSpaces);
-    setText("prop-garage-spaces",    property.exterior.attachedGarageSpaces);
+    setText("prop-parking-spaces", property.exterior.parkingSpaces);
+    setText("prop-garage-spaces", property.exterior.attachedGarageSpaces);
     setText("prop-parking-features", property.exterior.parkingFeatures);
     // Exterior & Property Features
-    setText("prop-levels",           property.exterior.levels);
-    setText("prop-patio",            property.exterior.patio);
-    setText("prop-exterior-features",property.exterior.exteriorFeatures);
-    setText("prop-pool-features",    property.exterior.poolFeatures);
-    setText("prop-fencing",          property.exterior.fencing);
-    setText("prop-has-view",         property.exterior.hasView ? "Yes" : "No");
+    setText("prop-levels", property.exterior.levels);
+    setText("prop-patio", property.exterior.patio);
+    setText("prop-exterior-features", property.exterior.exteriorFeatures);
+    setText("prop-pool-features", property.exterior.poolFeatures);
+    setText("prop-fencing", property.exterior.fencing);
+    setText("prop-has-view", property.exterior.hasView ? "Yes" : "No");
   }
 
   // ============================================================
   // 13d. CONSTRUCTION DETAILS
   // ============================================================
   if (property.structure) {
-    setText("prop-home-type",     property.structure.homeType);
-    setText("prop-arch-style",    property.structure.architecturalStyle);
-    setText("prop-prop-subtype",  property.structure.propertySubtype);
-    setText("prop-materials",     property.structure.materials);
-    setText("prop-foundation",    property.facts.foundation);
-    setText("prop-roof",          property.structure.roof || (property.exterior && property.exterior.roof));
-    setText("prop-new-construction", property.structure.newConstruction ? "Yes" : "No");
+    setText("prop-home-type", property.structure.homeType);
+    setText("prop-arch-style", property.structure.architecturalStyle);
+    setText("prop-prop-subtype", property.structure.propertySubtype);
+    setText("prop-materials", property.structure.materials);
+    setText("prop-foundation", property.facts.foundation);
+    setText(
+      "prop-roof",
+      property.structure.roof || (property.exterior && property.exterior.roof),
+    );
+    setText(
+      "prop-new-construction",
+      property.structure.newConstruction ? "Yes" : "No",
+    );
   }
 
   // ============================================================
@@ -300,31 +331,35 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (property.utilities) {
     setText("prop-utilities-water", property.utilities.water);
     setText("prop-utilities-sewer", property.utilities.sewer);
-    setText("prop-utilities-list",  property.utilities.utilities);
+    setText("prop-utilities-list", property.utilities.utilities);
   }
-
 
   // ============================================================
   // 14. SCHOOLS SECTION
   // ============================================================
-  setText("prop-school-elem",   property.schools.elementary);
+  setText("prop-school-elem", property.schools.elementary);
   setText("prop-school-middle", property.schools.middle);
-  setText("prop-school-high",   property.schools.high);
+  setText("prop-school-high", property.schools.high);
 
   // ============================================================
   // 15. FINANCES & DISCLOSURES
   // ============================================================
   setText("prop-finance-price", formatPrice(property.financials.price));
-  setText("prop-tax-amt",       formatPrice(property.financials.taxAnnual));
-  setText("prop-hoa-fee",       property.financials.hoaFee);
+  setText("prop-tax-amt", formatPrice(property.financials.taxAnnual));
+  setText("prop-hoa-fee", property.financials.hoaFee);
   // Additional financial details
-  if (property.financials.hoaServices) setText("prop-hoa-services",   property.financials.hoaServices);
-  if (property.pricePerSqft)           setText("prop-price-sqft",     "$" + property.pricePerSqft + "/sqft");
+  if (property.financials.hoaServices)
+    setText("prop-hoa-services", property.financials.hoaServices);
+  if (property.pricePerSqft)
+    setText("prop-price-sqft", "$" + property.pricePerSqft + "/sqft");
   if (property.financials.taxAssessedValue)
-    setText("prop-tax-assessed", "$" + property.financials.taxAssessedValue.toLocaleString("en-US"));
+    setText(
+      "prop-tax-assessed",
+      "$" + property.financials.taxAssessedValue.toLocaleString("en-US"),
+    );
 
-  setText("prop-mls-id",        property.mls);
-  setText("prop-mls-status",    property.mlsStatus);
+  setText("prop-mls-id", property.mls);
+  setText("prop-mls-status", property.mlsStatus);
 
   // ============================================================
   // 16. LISTING AGENT CARD
@@ -333,7 +368,9 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (agentPhoto) {
     agentPhoto.src = property.agent.photo;
     agentPhoto.alt = property.agent.name;
-    agentPhoto.onerror = () => { agentPhoto.src = "imgs/Agents/placeholder.jpg"; };
+    agentPhoto.onerror = () => {
+      agentPhoto.src = "imgs/Agents/placeholder.jpg";
+    };
   }
   setText("listingAgentName", property.agent.name);
 
@@ -347,13 +384,14 @@ document.addEventListener("DOMContentLoaded", async () => {
   }
 
   setText("agentSectionAddress", property.title);
-  setText("nearAddressText",     property.title);
+  setText("nearAddressText", property.title);
 
   // ============================================================
   // 17. PRE-FILL CONTACT FORM
   // ============================================================
   const contactMsg = document.getElementById("contactMsg");
-  if (contactMsg) contactMsg.textContent = `Hi, I would like to know more about ${property.address}`;
+  if (contactMsg)
+    contactMsg.textContent = `Hi, I would like to know more about ${property.address}`;
 
   // ============================================================
   // 18. "NEW LISTINGS" CAROUSEL
@@ -371,15 +409,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 
       // Build photo slider HTML — first image gets "active" class
       const photosHtml = prop.photos
-        .map((src, i) => `<img src="${src}" alt="${prop.title}" ${i === 0 ? 'class="active"' : ""} />`)
+        .map(
+          (src, i) =>
+            `<img src="${src}" alt="${prop.title}" ${i === 0 ? 'class="active"' : ""} />`,
+        )
         .join("");
 
       // Status badge HTML
       const statusBadgeMap = {
-        "for-sale":    `<span class="status-tag for-sale">For Sale <i class="fa-solid fa-circle-check"></i></span>`,
+        "for-sale": `<span class="status-tag for-sale">For Sale <i class="fa-solid fa-circle-check"></i></span>`,
         "coming-soon": `<span class="status-tag coming-soon">Coming Soon <i class="fa-solid fa-clock"></i></span>`,
-        "sold":        `<span class="status-tag sold">Sold <i class="fa-solid fa-lock"></i></span>`,
-        "pending":     `<span class="status-tag coming-soon">Pending <i class="fa-solid fa-hourglass-half"></i></span>`,
+        sold: `<span class="status-tag sold">Sold <i class="fa-solid fa-lock"></i></span>`,
+        pending: `<span class="status-tag coming-soon">Pending <i class="fa-solid fa-hourglass-half"></i></span>`,
       };
 
       card.innerHTML = `
@@ -430,16 +471,16 @@ document.addEventListener("DOMContentLoaded", async () => {
   // WITHOUT opening the overlay.
   // heroIndex = which photo is currently shown in the hero slot
   // ============================================================
-  const allPhotos  = property.photos; // shorthand for the photos array
-  let heroIndex    = 0;               // tracks current hero image
+  const allPhotos = property.photos; // shorthand for the photos array
+  let heroIndex = 0; // tracks current hero image
 
-  const heroPrevBtn   = document.getElementById("heroPrevBtn");
-  const heroNextBtn   = document.getElementById("heroNextBtn");
+  const heroPrevBtn = document.getElementById("heroPrevBtn");
+  const heroNextBtn = document.getElementById("heroNextBtn");
   const heroCurrentEl = document.getElementById("heroCurrentIndex");
 
   // Swaps the hero image and updates the X/Y counter
   const updateHeroImage = () => {
-    if (mainHeroImg)  mainHeroImg.src = allPhotos[heroIndex] || "";
+    if (mainHeroImg) mainHeroImg.src = allPhotos[heroIndex] || "";
     if (heroCurrentEl) heroCurrentEl.textContent = heroIndex + 1;
   };
 
@@ -474,27 +515,27 @@ document.addEventListener("DOMContentLoaded", async () => {
   let overlayIndex = 0; // which photo is currently shown inside the overlay
 
   // --- DOM refs for the overlay ---
-  const galleryOverlay  = document.getElementById("gallery-overlay");
-  const overlayMainImg  = document.getElementById("galleryMainImage"); // large image inside overlay viewer
-  const galleryPrevBtn  = document.getElementById("galleryPrevBtn");
-  const galleryNextBtn  = document.getElementById("galleryNextBtn");
+  const galleryOverlay = document.getElementById("gallery-overlay");
+  const overlayMainImg = document.getElementById("galleryMainImage"); // large image inside overlay viewer
+  const galleryPrevBtn = document.getElementById("galleryPrevBtn");
+  const galleryNextBtn = document.getElementById("galleryNextBtn");
   const closeGalleryBtn = document.getElementById("closeGalleryBtn");
-  const currentIndexEl  = document.getElementById("currentImageIndex");
-  const totalImagesEl   = document.getElementById("totalImages");
-  const thumbnailStrip  = document.getElementById("thumbnailStrip");
-  const photoView       = document.getElementById("photoView");
-  const mapView         = document.getElementById("mapView");
-  const videoView       = document.getElementById("videoView");
+  const currentIndexEl = document.getElementById("currentImageIndex");
+  const totalImagesEl = document.getElementById("totalImages");
+  const thumbnailStrip = document.getElementById("thumbnailStrip");
+  const photoView = document.getElementById("photoView");
+  const mapView = document.getElementById("mapView");
+  const videoView = document.getElementById("videoView");
   const galleryVideoTab = document.getElementById("galleryVideoTab");
   const galleryVideoPlayer = document.getElementById("galleryVideoPlayer");
 
   // Show/Hide Video Tab in Overlay
   if (galleryVideoTab && galleryVideoPlayer) {
     if (property.video) {
-        galleryVideoPlayer.src = property.video;
-        galleryVideoTab.style.display = "inline-block";
+      galleryVideoPlayer.src = property.video;
+      galleryVideoTab.style.display = "inline-block";
     } else {
-        galleryVideoTab.style.display = "none";
+      galleryVideoTab.style.display = "none";
     }
   }
 
@@ -533,7 +574,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         t.classList.toggle("active", i === overlayIndex);
       });
       const activeThumb = thumbnailStrip.querySelector(".thumb.active");
-      if (activeThumb) activeThumb.scrollIntoView({ block: "nearest", inline: "center" });
+      if (activeThumb)
+        activeThumb.scrollIntoView({ block: "nearest", inline: "center" });
     }
   };
 
@@ -545,11 +587,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     updateOverlayView();
     // Default to the Photos tab whenever the overlay opens
     if (photoView) photoView.classList.remove("hidden");
-    if (mapView)   mapView.classList.add("hidden");
+    if (mapView) mapView.classList.add("hidden");
     if (videoView) videoView.classList.add("hidden");
     document.querySelectorAll(".gallery-tabs .tab-btn").forEach((btn) => {
       btn.classList.toggle("active", btn.dataset.tab === "photos");
     });
+    const galleryFooter = document.querySelector(".gallery-footer");
+    if (galleryFooter) galleryFooter.style.display = "block";
     // Show the overlay and prevent the page from scrolling behind it
     galleryOverlay.classList.add("active");
     document.body.style.overflow = "hidden";
@@ -592,7 +636,10 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Clicking the backdrop (outside the gallery modal panel) also closes it
   if (galleryOverlay) {
     galleryOverlay.addEventListener("click", (e) => {
-      if (e.target === galleryOverlay || e.target.classList.contains("gallery-backdrop")) {
+      if (
+        e.target === galleryOverlay ||
+        e.target.classList.contains("gallery-backdrop")
+      ) {
         closeGallery();
       }
     });
@@ -633,17 +680,24 @@ document.addEventListener("DOMContentLoaded", async () => {
   document.querySelectorAll(".gallery-tabs .tab-btn").forEach((btn) => {
     btn.addEventListener("click", () => {
       // Remove active from all tabs, set on clicked one
-      document.querySelectorAll(".gallery-tabs .tab-btn").forEach((b) => b.classList.remove("active"));
+      document
+        .querySelectorAll(".gallery-tabs .tab-btn")
+        .forEach((b) => b.classList.remove("active"));
       btn.classList.add("active");
       const tab = btn.dataset.tab; // "photos" or "map"
       // Show the correct content panel, hide the other
       if (photoView) photoView.classList.toggle("hidden", tab !== "photos");
-      if (mapView)   mapView.classList.toggle("hidden",   tab !== "map");
+      if (mapView) mapView.classList.toggle("hidden", tab !== "map");
       if (videoView) videoView.classList.toggle("hidden", tab !== "video");
+
+      // Hide footer if not on photos tab
+      const galleryFooter = document.querySelector(".gallery-footer");
+      if (galleryFooter)
+        galleryFooter.style.display = tab === "photos" ? "block" : "none";
 
       // Pause video if navigating away from video tab
       if (tab !== "video" && galleryVideoPlayer) {
-          galleryVideoPlayer.pause();
+        galleryVideoPlayer.pause();
       }
     });
   });
