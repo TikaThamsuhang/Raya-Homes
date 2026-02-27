@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Fetch agents data from JSON
   let agents = [];
   try {
-    const response = await fetch("agent/js/agents-data.json");
+    const response = await fetch("js/agents-data.json");
     agents = await response.json();
   } catch (error) {
     console.error("Error loading agents data:", error);
@@ -42,14 +42,10 @@ document.addEventListener("DOMContentLoaded", async () => {
       card.className = "agent-card-static glass-panel animate-slide-up";
       card.style.animationDelay = `${0.1 + index * 0.1}s`;
 
-      const sold = agent.stats?.sold || "-";
-      const active = agent.stats?.active || "-";
-      const exp = agent.stats?.experience || "-";
-
       card.innerHTML = `
             <div class="agent-card-header">
               <div class="agent-image-wrapper">
-                <img src="agent/${agent.photo}" alt="${agent.name}" onerror="this.src='agent/imgs/no-image.avif'" />
+                <img src="${agent.photo}" alt="${agent.name}" onerror="this.src='imgs/no-image.avif'" />
               </div>
               <div class="agent-info">
                 <h3>${agent.name}</h3>
@@ -69,22 +65,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               </div>
             </div>
 
-            <div class="agent-stats-row">
-              <div class="stat-item">
-                <span class="stat-value">${sold}</span>
-                <span class="stat-label">Sold</span>
-              </div>
-              <div class="stat-separator"></div>
-              <div class="stat-item">
-                <span class="stat-value">${active}</span>
-                <span class="stat-label">Active</span>
-              </div>
-              <div class="stat-separator"></div>
-              <div class="stat-item">
-                <span class="stat-value">${exp}</span>
-                <span class="stat-label">Experience</span>
-              </div>
-            </div>
+
 
             <div class="agent-actions">
               <button
@@ -95,7 +76,7 @@ document.addEventListener("DOMContentLoaded", async () => {
               </button>
               <button
                 class="btn btn-outline btn-block"
-                onclick="window.location.href='agent/index.html?id=${agent.id}'"
+                onclick="window.location.href='${agent.slug}'"
               >
                 View Profile
               </button>
@@ -108,19 +89,24 @@ document.addEventListener("DOMContentLoaded", async () => {
       resultsCount.textContent = `${listToRender.length} Agents found`;
   };
 
-  const filterAgents = (query) => {
-    if (!query) {
-      renderAgents(agents);
-      return;
-    }
-    const lowerQuery = query.toLowerCase();
-    const filtered = agents.filter((agent) =>
-      agent.name.toLowerCase().includes(lowerQuery),
-    );
+  // Ensure we get elements again to avoid closure issues if they were not ready
+  const getNameVal = () => document.getElementById("nameInput")?.value || "";
+  const getLocVal = () => document.getElementById("locInput")?.value || "";
+
+  const filterAgents = () => {
+    const nameQuery = getNameVal().toLowerCase();
+    const locQuery = getLocVal().toLowerCase();
+
+    const filtered = agents.filter((agent) => {
+      const nameMatch = agent.name.toLowerCase().includes(nameQuery);
+      const locMatch =
+        agent.location?.toLowerCase().includes(locQuery) || false;
+      return nameMatch && (locQuery === "" || locMatch);
+    });
     renderAgents(filtered);
   };
 
-  // Check URL params for search
+  // Check URL params for search (only name support for now via URL, location is manual)
   const urlParams = new URLSearchParams(window.location.search);
   const searchParam = urlParams.get("search"); // from find-agent.html
   const agentParam = urlParams.get("agent"); // alternative
@@ -128,51 +114,112 @@ document.addEventListener("DOMContentLoaded", async () => {
   if (searchParam || agentParam) {
     const query = searchParam || agentParam;
     if (nameInput) nameInput.value = query;
-    filterAgents(query);
+    filterAgents(); // Filter based on set value
   } else {
     renderAgents();
   }
 
+  // Clear Button Logic
+  const setupClearBtn = (inputId, btnId, filterFn) => {
+    const input = document.getElementById(inputId);
+    const btn = document.getElementById(btnId);
+
+    if (!input || !btn) return;
+
+    // Toggle visibility based on input
+    const toggleBtn = () => {
+      btn.style.display = input.value.trim().length > 0 ? "flex" : "none";
+    };
+
+    input.addEventListener("input", toggleBtn);
+    // Initial check
+    toggleBtn();
+
+    // Clear action
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      input.value = "";
+      toggleBtn();
+      input.focus();
+      if (filterFn) filterFn();
+    });
+  };
+
+  setupClearBtn("nameInput", "clearNameBtn", filterAgents);
+  setupClearBtn("locInput", "clearLocBtn", filterAgents);
+
   // Event Listeners for Name Search
   if (updateAgentSearchBtn && nameInput) {
     updateAgentSearchBtn.addEventListener("click", () => {
-      filterAgents(nameInput.value);
+      filterAgents();
     });
 
-    nameInput.addEventListener("keyup", (e) => {
-      if (e.key === "Enter") {
-        filterAgents(nameInput.value);
-      } else {
-        // Optional: Real-time filtering
-        filterAgents(nameInput.value);
-      }
+    nameInput.addEventListener("keyup", () => {
+      filterAgents();
     });
   }
 
-  const setupDropdown = (inputId, listId, dataList, iconClass) => {
+  // Event Listeners for Location Search
+  const locInput = document.getElementById("locInput");
+  if (locInput) {
+    locInput.addEventListener("keyup", () => {
+      filterAgents();
+    });
+    // Also trigger on change for dropdown selection if not covered by mousedown
+    locInput.addEventListener("change", () => {
+      filterAgents();
+    });
+  }
+
+  const setupDropdown = (
+    inputId,
+    listId,
+    dataList,
+    iconClass,
+    limit = Infinity,
+  ) => {
     const input = document.getElementById(inputId);
     const list = document.getElementById(listId);
 
     if (!input || !list) return;
 
+    // Flag to track if a selection was just made
+    let justSelected = false;
+
     list.innerHTML = "";
     dataList.forEach((item) => {
       const li = document.createElement("li");
       li.innerHTML = `<i class="${iconClass}"></i> ${item}`;
+      li.style.display = "none"; // Initially hide
       li.addEventListener("mousedown", (e) => {
         e.preventDefault();
+        justSelected = true;
         input.value = item;
         list.classList.remove("show");
         // Trigger filter immediately on selection
-        if (inputId === "nameInput") {
-          filterAgents(item);
-        }
+        filterAgents();
+        // Trigger input event to show clear button
+        input.dispatchEvent(new Event("input"));
       });
       list.appendChild(li);
     });
 
     input.addEventListener("focus", () => {
-      if (list.children.length > 0) list.classList.add("show");
+      if (list.children.length > 0) {
+        // Show all up to limit on focus if empty
+        if (input.value.trim() === "") {
+          let count = 0;
+          Array.from(list.children).forEach((li) => {
+            if (count < limit) {
+              li.style.display = "flex";
+              count++;
+            } else {
+              li.style.display = "none";
+            }
+          });
+          list.classList.add("show");
+        }
+      }
     });
 
     input.addEventListener("blur", () => {
@@ -180,23 +227,39 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
 
     input.addEventListener("input", () => {
+      // If a selection was just made, don't show the dropdown
+      if (justSelected) {
+        justSelected = false;
+        return;
+      }
+
       const query = input.value.toLowerCase();
+      let count = 0;
+      let hasVisibleItems = false;
+
       Array.from(list.children).forEach((li) => {
         const text = li.textContent.toLowerCase();
-        li.style.display = text.includes(query) ? "flex" : "none";
+        const match = text.includes(query);
+        if (match && count < limit) {
+          li.style.display = "flex";
+          count++;
+          hasVisibleItems = true;
+        } else {
+          li.style.display = "none";
+        }
       });
-      list.classList.add("show");
+
+      // Only show the dropdown if there are visible items
+      if (hasVisibleItems) {
+        list.classList.add("show");
+      } else {
+        list.classList.remove("show");
+      }
     });
   };
 
-  const cities = [
-    "New York, NY",
-    "Miami, FL",
-    "Los Angeles, CA",
-    "Chicago, IL",
-    "Houston, TX",
-    "Phoenix, AZ",
-  ];
+  // Get unique locations from agents
+  const cities = [...new Set(agents.map((a) => a.location))].filter(Boolean);
   const agentNames = agents.map((a) => a.name);
 
   setupDropdown(
@@ -204,6 +267,13 @@ document.addEventListener("DOMContentLoaded", async () => {
     "locSuggestions",
     cities,
     "fa-solid fa-location-dot",
+    4, // Limit to 4
   );
-  setupDropdown("nameInput", "nameSuggestions", agentNames, "fa-solid fa-user");
+  setupDropdown(
+    "nameInput",
+    "nameSuggestions",
+    agentNames,
+    "fa-solid fa-user",
+    4,
+  );
 });

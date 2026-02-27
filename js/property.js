@@ -2,7 +2,7 @@
 document.addEventListener("DOMContentLoaded", () => {
   const searchInput = document.getElementById("propertySearchInput");
   const searchSuggestions = document.getElementById(
-    "propertySearchSuggestions"
+    "propertySearchSuggestions",
   );
 
   if (searchInput && searchSuggestions) {
@@ -113,7 +113,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Handle suggestion clicks (Popular Locations)
     const popularGroup = searchSuggestions.querySelector(
-      ".suggestion-group:first-child"
+      ".suggestion-group:first-child",
     );
     if (popularGroup) {
       const popItems = popularGroup.querySelectorAll("li");
@@ -156,7 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
           e.stopPropagation();
           // Uncheck all checkboxes
           const checkboxes = dropdown.querySelectorAll(
-            'input[type="checkbox"]'
+            'input[type="checkbox"]',
           );
           checkboxes.forEach((cb) => (cb.checked = false));
           // Update label
@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
           // Update button text
           const checkedCount = Array.from(checkboxes).filter(
-            (cb) => cb.checked
+            (cb) => cb.checked,
           ).length;
           btn.innerHTML = labelTemplate(checkedCount);
         });
@@ -324,60 +324,78 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Image Slider Logic
-  document.querySelectorAll(".listing-card").forEach((card) => {
-    const images = card.querySelectorAll(".image-slider img");
-    const counter = card.querySelector(".slider-counter");
-    const prevBtn = card.querySelector(".slider-btn.prev");
-    const nextBtn = card.querySelector(".slider-btn.next");
+  // Image Slider & Card Click Redirect Logic (Exposed Globally)
+  window.initSliders = () => {
+    document
+      .querySelectorAll(".listing-card:not(.slider-initialized)")
+      .forEach((card) => {
+        card.classList.add("slider-initialized");
 
-    let currentIndex = 0;
-    const totalImages = images.length;
+        // --- Slider Logic ---
+        const images = card.querySelectorAll(".image-slider img");
+        const counter = card.querySelector(".slider-counter");
+        const prevBtn = card.querySelector(".slider-btn.prev");
+        const nextBtn = card.querySelector(".slider-btn.next");
 
-    if (totalImages > 0) {
-      // Update initial counter
-      if (counter) counter.textContent = `1/${totalImages}`;
+        let currentIndex = 0;
+        const totalImages = images.length;
 
-      const updateSlider = () => {
-        // Update images
-        images.forEach((img, index) => {
-          img.classList.toggle("active", index === currentIndex);
+        if (totalImages > 0) {
+          // Update initial counter
+          if (counter) counter.textContent = `1/${totalImages}`;
+
+          const updateSlider = () => {
+            // Update images
+            images.forEach((img, index) => {
+              img.classList.toggle("active", index === currentIndex);
+            });
+            // Update counter
+            if (counter)
+              counter.textContent = `${currentIndex + 1}/${totalImages}`;
+          };
+
+          if (nextBtn) {
+            nextBtn.addEventListener("click", (e) => {
+              e.preventDefault(); // Prevent link nav if card is a link
+              e.stopPropagation();
+              currentIndex = (currentIndex + 1) % totalImages;
+              updateSlider();
+            });
+          }
+
+          if (prevBtn) {
+            prevBtn.addEventListener("click", (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              currentIndex = (currentIndex - 1 + totalImages) % totalImages;
+              updateSlider();
+            });
+          }
+        }
+
+        // --- Card Click Redirect Logic ---
+        card.style.cursor = "pointer";
+        card.addEventListener("click", (e) => {
+          // Ignore clicks on buttons or links (prev/next, fav, email agent)
+          if (e.target.closest("button") || e.target.closest("a")) {
+            return;
+          }
+
+          // Try to find the view-detail link inside the card
+          const detailLink =
+            card.querySelector(".view-detail-link") ||
+            card.querySelector("a[href*='property-detail.html']");
+          if (detailLink) {
+            window.location.href = detailLink.getAttribute("href");
+          } else {
+            window.location.href = "property-detail.html";
+          }
         });
-        // Update counter
-        if (counter) counter.textContent = `${currentIndex + 1}/${totalImages}`;
-      };
+      });
+  };
 
-      if (nextBtn) {
-        nextBtn.addEventListener("click", (e) => {
-          e.preventDefault(); // Prevent link nav if card is a link
-          e.stopPropagation();
-          currentIndex = (currentIndex + 1) % totalImages;
-          updateSlider();
-        });
-      }
-
-      if (prevBtn) {
-        prevBtn.addEventListener("click", (e) => {
-          e.preventDefault();
-          e.stopPropagation();
-          currentIndex = (currentIndex - 1 + totalImages) % totalImages;
-          updateSlider();
-        });
-      }
-    }
-  });
-
-  // Card Click Redirect Logic
-  document.querySelectorAll(".listing-card").forEach((card) => {
-    card.style.cursor = "pointer";
-    card.addEventListener("click", (e) => {
-      // Ignore clicks on buttons or links (prev/next, fav, email agent)
-      if (e.target.closest("button") || e.target.closest("a")) {
-        return;
-      }
-      window.location.href = "property-detail.html";
-    });
-  });
+  // Run once on load for any hardcoded cards
+  window.initSliders();
 
   // Contact Form Overlay Logic
   const contactOverlay = document.getElementById("contactOverlay");

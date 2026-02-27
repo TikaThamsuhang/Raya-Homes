@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -54,9 +54,11 @@
           <div class="gallery-grid">
             <!-- Left: Main Large Image -->
             <div class="gallery-main relative">
+              <!-- Main hero gallery image — src set by property-detail.js -->
               <img
                 src="imgs/Single/img-1.png"
                 alt="Property Main View"
+                id="mainGalleryImg"
                 class="img-cover"
               />
 
@@ -81,10 +83,12 @@
 
             <!-- Right: Thumbnails Stack -->
             <div class="gallery-thumbnails">
+              <!-- Right side thumbnail images — src set by property-detail.js (photos[1], [2], [3]) -->
               <div class="thumb-item">
                 <img
                   src="imgs/Single/img-bed-1.png"
                   alt="Bedroom"
+                  id="galleryThumb1"
                   class="img-cover"
                 />
               </div>
@@ -92,6 +96,7 @@
                 <img
                   src="imgs/Single/img-wash-1.png"
                   alt="Bathroom"
+                  id="galleryThumb2"
                   class="img-cover"
                 />
               </div>
@@ -99,6 +104,7 @@
                 <img
                   src="imgs/Single/img-kitchen-1.png"
                   alt="Kitchen"
+                  id="galleryThumb3"
                   class="img-cover"
                 />
               </div>
@@ -114,36 +120,40 @@
       <section class="main-container property-content mt-2 mb-3">
         <div class="content-grid">
           <!-- LEFT COLUMN: Main Details -->
+           <div>
           <div class="details-column">
             <!-- Header Stats -->
             <div class="property-header mb-2">
+              <!-- Price — populated by JS -->
               <div class="d-flex align-center gap-sm mb-1">
-                <h1 class="property-price">$539,900</h1>
-                <!-- Updated Badge -->
-                <span class="status-tag coming-soon"
+                <h1 class="property-price" id="propertyPrice">$539,900</h1>
+                <!-- Status badge (For Sale / Coming Soon / Sold) - populated by JS -->
+                <span class="status-tag coming-soon" id="propertyStatusBadge"
                   >Coming Soon <i class="fa-solid fa-clock"></i
                 ></span>
               </div>
 
+              <!-- Key specs — populated by JS -->
               <div class="property-specs d-flex align-center gap-md">
                 <div class="spec-item">
-                  <strong>4</strong> <span>Beds</span>
+                  <strong id="propBeds">4</strong> <span>Beds</span>
                 </div>
                 <div class="separator"></div>
                 <div class="spec-item">
-                  <strong>2</strong> <span>Baths</span>
+                  <strong id="propBaths">2</strong> <span>Baths</span>
                 </div>
                 <div class="separator"></div>
                 <div class="spec-item">
-                  <strong>1,800</strong> <span>Sq Ft</span>
+                  <strong id="propSqft">1,800</strong> <span>Sq Ft</span>
                 </div>
                 <div class="separator"></div>
                 <div class="spec-item">
-                  <span>Single Family</span>
+                  <span id="propType">Single Family</span>
                 </div>
               </div>
 
-              <p class="property-address mt-1">
+              <!-- Full property address — populated by JS -->
+              <p class="property-address mt-1" id="propertyAddress">
                 97 Schnoor Road, Killingworth, CT 06419
               </p>
             </div>
@@ -154,25 +164,27 @@
             <div
               class="agent-map-strip d-flex justify-between align-center mb-2"
             >
+              <!-- Agent listing info strip — all spans populated by JS -->
               <div class="agent-mini-info">
                 <p class="text-sm">
                   Listed by
                   <a href="#" class="text-primary font-weight-bold"
-                    >Romina D'Angelo (860) 555-0123</a
+                    ><span id="listedByName">Romina D'Angelo (860) 555-0123</span></a
                   >
                 </p>
-                <p class="text-sm">Raya Homes Realty • (860) 555-0123</p>
-                <p class="text-sm">Source: CT</p>
+                <p class="text-sm" id="brokerageName">Raya Homes Realty • (860) 555-0123</p>
+                <p class="text-sm" id="mlsSource">Source: CT</p>
                 <div class="mls-info mt-1">
-                  <span class="badge-outline">MLS# 24146371</span>
-                  <span class="text-xs text-muted ml-1"
+                  <span class="badge-outline" id="mlsNumber">MLS# 24146371</span>
+                  <span class="text-xs text-muted ml-1" id="listingUpdated"
                     >Updated: Jan 1, 2026</span
                   >
                 </div>
               </div>
+              <!-- Mini map — src set by JS using property.mapEmbed -->
               <div class="mini-map-preview">
-                <!-- Placeholder Map Image or Frame -->
                 <iframe
+                  id="miniMapIframe"
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.9873196845946!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus"
                   width="100%"
                   height="100%"
@@ -181,6 +193,7 @@
                   loading="lazy"
                 >
                 </iframe>
+              </div>
                 <!-- <div class="map-overlay">
                                 <i class="fa-solid fa-map-pin"></i> View Map
                             </div> -->
@@ -190,9 +203,11 @@
             <div class="divider"></div>
 
             <!-- Description -->
+            <!-- Description section — content replaced by JS -->
             <div class="about-home mb-3">
               <h3 class="section-title">About This Home</h3>
-              <h4 class="property-subtitle text-muted">97 Schnoor Road</h4>
+              <!-- Property title/subtitle — set by JS -->
+              <h4 class="property-subtitle text-muted" id="aboutHomeSubtitle">97 Schnoor Road</h4>
 
               <div class="description-text mt-1" id="descriptionContainer">
                 <p>
@@ -234,6 +249,7 @@
               <!-- 1. Home Facts -->
               <div class="details-block mb-3">
                 <h3 class="section-title mb-2">Home Facts</h3>
+                <!-- Home Facts grid — each fact-value is populated by JS -->
                 <div class="facts-grid-cols">
                   <div class="fact-item">
                     <div class="fact-icon-box">
@@ -241,7 +257,7 @@
                     </div>
                     <div class="fact-text">
                       <span class="fact-label">Property Type</span>
-                      <span class="fact-value">Single Family</span>
+                      <span class="fact-value" id="factPropertyType">Single Family</span>
                     </div>
                   </div>
                   <div class="fact-item">
@@ -250,7 +266,7 @@
                     </div>
                     <div class="fact-text">
                       <span class="fact-label">Year Built</span>
-                      <span class="fact-value">1985</span>
+                      <span class="fact-value" id="factYearBuilt">1985</span>
                     </div>
                   </div>
                   <div class="fact-item">
@@ -259,7 +275,7 @@
                     </div>
                     <div class="fact-text">
                       <span class="fact-label">Heating</span>
-                      <span class="fact-value">Oil, Baseboard</span>
+                      <span class="fact-value" id="factHeating">Oil, Baseboard</span>
                     </div>
                   </div>
                   <div class="fact-item">
@@ -268,7 +284,7 @@
                     </div>
                     <div class="fact-text">
                       <span class="fact-label">Cooling</span>
-                      <span class="fact-value">Central Air</span>
+                      <span class="fact-value" id="factCooling">Central Air</span>
                     </div>
                   </div>
                   <div class="fact-item">
@@ -277,7 +293,7 @@
                     </div>
                     <div class="fact-text">
                       <span class="fact-label">Garage</span>
-                      <span class="fact-value">2 Cars, Detached</span>
+                      <span class="fact-value" id="factGarage">2 Cars, Detached</span>
                     </div>
                   </div>
                   <div class="fact-item">
@@ -286,7 +302,7 @@
                     </div>
                     <div class="fact-text">
                       <span class="fact-label">Lot Size</span>
-                      <span class="fact-value">3.30 Acres</span>
+                      <span class="fact-value" id="factLotSize">3.30 Acres</span>
                     </div>
                   </div>
                 </div>
@@ -471,16 +487,19 @@
               <div class="divider"></div>
 
               <!-- 6. Listing Agents -->
+              <!-- Listing Agents section — all fields populated by JS -->
               <div class="details-block mb-3">
                 <h3 class="section-title mb-1">Listing Agents</h3>
-                <p class="text-muted text-sm mb-2">for 97 Schnoor Road</p>
+                <!-- Property title shown under heading, updated by JS -->
+                <p class="text-muted text-sm mb-2" id="agentSectionAddress">for 97 Schnoor Road</p>
 
                 <div class="agent-card-horizontal">
+                  <!-- Agent photo, name, phone, email — all set by JS -->
                   <div class="agent-photo">
-                    <!-- Using a placeholder for now as no local agent image exists -->
                     <img
                       src="imgs/Agents/agent-1.jpg"
-                      alt="Romina D'Angelo"
+                      alt="Agent"
+                      id="listingAgentPhoto"
                       class="img-cover"
                     />
                   </div>
@@ -491,14 +510,14 @@
                         alt="Raya Homes Realty"
                       />
                     </div>
-                    <h4 class="agent-name mb-1">Romina D'Angelo</h4>
+                    <h4 class="agent-name mb-1" id="listingAgentName">Romina D'Angelo</h4>
                     <div class="agent-contact-row">
                       <i class="fa-solid fa-phone"></i>
-                      <span>(860) 555-0123</span>
+                      <span id="listingAgentPhone">(860) 555-0123</span>
                     </div>
                     <div class="agent-contact-row">
                       <i class="fa-regular fa-envelope"></i>
-                      <a href="#">Romina.DAngelo@rayahomes.com</a>
+                      <a href="#" id="listingAgentEmail">Romina.DAngelo@rayahomes.com</a>
                     </div>
                   </div>
                 </div>
@@ -527,9 +546,10 @@
                 </p>
               </div>
             </div>
-          </div>
+            </div>
 
-          <!-- RIGHT COLUMN: Sticky Side Bar -->
+
+                      <!-- RIGHT COLUMN: Sticky Side Bar -->
           <div class="sidebar-column">
             <div class="sidebar-wrapper">
               <div class="contact-card sticky-card glass-panel">
@@ -609,6 +629,9 @@ Hi, I would like to know more about 97 Schnoor Road</textarea
               </div>
             </div>
           </div>
+          </div>
+
+
         </div>
 
         <div class="divider"></div>
@@ -618,7 +641,8 @@ Hi, I would like to know more about 97 Schnoor Road</textarea
           <div class="d-flex justify-between align-center mb-2">
             <div>
               <h3 class="section-title mb-0">New Listings</h3>
-              <p class="text-muted text-sm" style="margin-top: 0.2rem">
+              <!-- "near <address>" text — set by JS -->
+              <p class="text-muted text-sm" style="margin-top: 0.2rem" id="nearAddressText">
                 near 97 Schnoor Road
               </p>
             </div>
@@ -878,7 +902,37 @@ Hi, I would like to know more about 97 Schnoor Road</textarea
       </div>
     </div>
 
-    <!-- Detail Page Script -->
+    <!-- Detail Page Scripts -->
+    <!-- load-components.js: loads shared header/footer components -->
+    <script src="js/load-components.js"></script>
+    <!-- property-detail.js: fetches properties-data.json and populates all page sections -->
     <script src="js/property-detail.js"></script>
+  
+    <script>
+      /**
+       * DESCRIPTION "CONTINUE READING" / "SHOW LESS" TOGGLE
+       * The description container is capped at max-height:120px by CSS.
+       * Clicking the link adds/removes the .expanded class which the CSS
+       * transitions to full height and back smoothly.
+       */
+      document.addEventListener("DOMContentLoaded", () => {
+        const readMoreLink   = document.querySelector(".read-more-link");
+        const descriptionBox = document.getElementById("descriptionContainer");
+
+        if (readMoreLink && descriptionBox) {
+          readMoreLink.addEventListener("click", (e) => {
+            e.preventDefault();
+            const isExpanded = descriptionBox.classList.contains("expanded");
+            if (isExpanded) {
+              descriptionBox.classList.remove("expanded");
+              readMoreLink.innerHTML = 'Continue Reading <i class="fa-solid fa-chevron-down"></i>';
+            } else {
+              descriptionBox.classList.add("expanded");
+              readMoreLink.innerHTML = 'Show Less <i class="fa-solid fa-chevron-up"></i>';
+            }
+          });
+        }
+      });
+    </script>
   </body>
 </html>

@@ -43,6 +43,7 @@
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
     --spacing-xl: 4rem;
+    --spacing-xxl: 6rem;
 
     --radius-sm: 4px;
     --radius-md: 8px;
@@ -346,6 +347,7 @@ input:focus, select:focus, textarea:focus {
 .main-container{
     max-width: 1360px;
     margin: 0 auto;
+    padding: 0 1rem;
 }
 
 /* Flexbox Helpers */
@@ -365,9 +367,15 @@ input:focus, select:focus, textarea:focus {
 .mt-1 { margin-top: var(--spacing-sm) !important; }
 .mt-2 { margin-top: var(--spacing-md) !important; }
 .mt-3 { margin-top: var(--spacing-lg) !important; }
+.mt-4 { margin-top: var(--spacing-xl) !important; }
+.mt-5 { margin-top: var(--spacing-xxl) !important; }
+
 .mb-1 { margin-bottom: var(--spacing-sm) !important; }
 .mb-2 { margin-bottom: var(--spacing-md) !important; }
 .mb-3 { margin-bottom: var(--spacing-lg) !important; }
+.mb-4 { margin-bottom: var(--spacing-xl) !important; }
+.mb-5 { margin-bottom: var(--spacing-xxl) !important; }
+
 
 /* Glassmorphism Card */
 .glass-panel {
@@ -455,8 +463,8 @@ input:focus, select:focus, textarea:focus {
 
 .btn-pill {
     border-radius: 50px;
-    padding: 0.75rem 1.75rem;
-    font-size: 0.9rem;
+    padding: 0.65rem 1.75rem;
+    font-size: 1rem;
     background: #3C2328;
     color: white;
 }
@@ -591,8 +599,92 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* =========================================
-   9. MEDIA QUERIES
+   10. SUCCESS POPUP MODAL
    ========================================= */
+.success-popup-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 2rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+    z-index: 2000;
+    text-align: center;
+    min-width: 320px;
+    opacity: 0;
+    animation: popupFadeIn 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    overflow: hidden; /* For progress bar */
+}
+
+@keyframes popupFadeIn {
+    from { opacity: 0; transform: translate(-50%, -40%) scale(0.9); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+@keyframes popupFadeOut {
+    to { opacity: 0; transform: translate(-50%, -40%) scale(0.9); }
+}
+
+.popup-checkmark-circle {
+    width: 60px;
+    height: 60px;
+    background: #4CAF50;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 1.8rem;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.popup-title {
+    font-size: 1.4rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.popup-desc {
+    color: #666;
+    margin-bottom: 1.5rem;
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+.popup-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #999;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.popup-close-btn:hover {
+    color: #333;
+}
+
+.popup-progress-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 4px;
+    background: #4CAF50;
+    width: 100%;
+    animation: progressShrink 3s linear forwards;
+}
+
+@keyframes progressShrink {
+    from { width: 100%; }
+    to { width: 0%; }
+}
 
 /* Tablet (768px - 1024px) */
 @media (max-width: 1024px) and (min-width: 768px) {
@@ -878,10 +970,136 @@ input:focus, select:focus, textarea:focus {
 }
 
 /* =========================================
+   FOOTER SECTION
+   ========================================= */
+.main-footer {
+    background: #3C2328;
+    color: white;
+    padding: 5rem 2rem 2rem 2rem;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 4rem;
+    margin-bottom: 4rem;
+    flex-wrap: wrap; /* Responsive wrapping */
+}
+
+.footer-col {
+    flex: 1;
+    min-width: 200px;
+}
+
+.brand-col {
+    flex: 2; /* Wider column for brand info */
+    max-width: 450px;
+}
+
+.footer-logo-box {
+    width: 100px;
+    margin-bottom: 1.5rem;
+}
+
+.footer-logo-box .logo-icon {
+    font-size: 1.5rem;
+    color: #3C2328; /* Use brand color for logo inside white box */
+}
+
+.footer-logo-box .logo-text {
+    font-family: var(--font-primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    line-height: 1;
+    color: #3C2328;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.footer-logo-box .logo-sub {
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    color: #666;
+}
+
+.footer-desc {
+    color: #ffffff;
+    font-size: 0.9rem;
+    line-height: 1.7;
+    opacity: 0.9;
+}
+
+.footer-col h4 {
+    color: #ffffff;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li{
+    margin-bottom: 0.8rem;
+}
+
+
+.footer-links a {
+    color: #ffffff;
+    text-decoration: underline;
+    font-size: 0.9rem;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+    text-underline-offset: 4px;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    text-decoration-color: rgba(255,255,255,0.5);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 1);
+    padding-top: 2rem;
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.7;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-bottom p {
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        gap: 3rem;
+    }
+    
+    .brand-col {
+        max-width: 100%;
+    }
+    .footer-logo-box {
+    width: 80px;
+    margin-bottom: 1.25rem;
+}
+}
+
+/* =========================================
    LAYOUT CONTAINER
    ========================================= */
 .app-container {
     max-width: 1440px; /* Limit max width for large screens */
     margin: 0 auto;
     position: relative;
+    padding: 0 1rem;
 }

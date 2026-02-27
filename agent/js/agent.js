@@ -18,29 +18,28 @@ document.addEventListener("DOMContentLoaded", async () => {
   // ============================================================================
   // PATH-BASED ROUTING DETECTION (FOR DEPLOYMENT)
   // ============================================================================
-  // AFTER DEPLOYMENT: Uncomment the code below to enable path-based support
-  // This allows URLs like: agents.teamraya.com/sarah-jenkins
+  // This allows URLs like: teamraya.com/lucy-muzhingi
   //
   // HOW IT WORKS:
-  // 1. Check if there is a path segment (e.g. "/sarah-jenkins") OR "agent" query param
+  // 1. Check if there is a path segment (e.g. "/lucy-muzhingi") OR "agent" query param
   // 2. Find agent by matching slug
   // 3. Fallback to "id" param (legacy) or first agent
-  //
-  // UNCOMMENT THIS CODE AFTER DEPLOYMENT:
-  /*
-  const pathSlug = window.location.pathname.replace(/^\/|\/$/g, ''); // Extract "sarah-jenkins"
-  const paramSlug = urlParams.get("agent"); // Get ?agent=sarah-jenkins (from .htaccess rewrite)
-  const lookupSlug = pathSlug && pathSlug !== 'index.html' ? pathSlug : paramSlug;
+
+  const pathSlug = window.location.pathname.replace(/^\/|\/$/g, ""); // Extract "lucy-muzhingi"
+  const urlParams = new URLSearchParams(window.location.search);
+  const paramSlug = urlParams.get("agent"); // Get ?agent=lucy-muzhingi (from .htaccess rewrite)
+  const lookupSlug =
+    pathSlug && pathSlug !== "index.html" && pathSlug !== "profile.html"
+      ? pathSlug
+      : paramSlug;
 
   let agentBySlug = null;
   if (lookupSlug) {
     agentBySlug = agentsData.find((a) => a.slug === lookupSlug);
   }
-  */
   // ============================================================================
 
-  // 1. Get Agent ID from URL (Current method - works for development)
-  const urlParams = new URLSearchParams(window.location.search);
+  // 1. Get Agent ID from URL (Legacy support for old links)
   const agentId = urlParams.get("id");
 
   // DYNAMIC BACK BUTTON LOGIC
@@ -53,7 +52,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       backLink.querySelector("span").textContent = "Back To Valuation";
     } else {
       // Default to Agent Listings
-      backLink.href = "../agent-listings.html";
+      backLink.href = "index.html";
       backLink.querySelector("span").textContent = "Back To Agent List";
     }
   }
@@ -61,20 +60,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   // ============================================================================
   // AGENT SELECTION LOGIC
   // ============================================================================
-  // CURRENT (Development): Uses URL parameter ?id=agent-1
-  // AFTER DEPLOYMENT: Replace this with path-based logic
-  //
-  // REPLACE THIS CODE AFTER DEPLOYMENT:
-  const agent = agentId
-    ? agentsData.find((a) => a.id === agentId)
-    : agentsData[0];
+  // Priority: URL slug > URL ID param > First agent
 
-  // WITH THIS CODE (uncomment after deployment):
-  /*
-  const agent = agentBySlug || // First priority: URL slug
-                (agentId ? agentsData.find((a) => a.id === agentId) : null) || // Second: URL param
-                agentsData[0]; // Fallback: first agent
-  */
+  const agent =
+    agentBySlug || // First priority: URL slug
+    (agentId ? agentsData.find((a) => a.id === agentId) : null) || // Second: URL param (legacy)
+    agentsData[0]; // Fallback: first agent
   // ============================================================================
 
   // Helper to fix paths. For a standalone subdomain, we use local paths.
@@ -117,13 +108,6 @@ document.addEventListener("DOMContentLoaded", async () => {
   setText("agentLicense", agent.license);
   setText("agentBio", agent.bio);
 
-  // Stats
-  if (agent.stats) {
-    setText("statSold", agent.stats.sold);
-    setText("statActive", agent.stats.active);
-    setText("statExperience", agent.stats.experience);
-  }
-
   // Contact Info
   setText("agentPhoneDisplay", agent.phone);
 
@@ -147,11 +131,11 @@ document.addEventListener("DOMContentLoaded", async () => {
   const socialsContainer = document.getElementById("agentSocials");
   if (socialsContainer && agent.socialLinks) {
     let socialHtml = "";
-    if (agent.socialLinks.linkedin) {
+    if (agent.socialLinks.facebook) {
       socialHtml += `
             <div class="social-link-row">
-                <a href="${agent.socialLinks.linkedin}" target="_blank">
-                    <i class="fa-brands fa-linkedin-in"></i> <span>Linkedin</span>
+                <a href="${agent.socialLinks.facebook}" target="_blank">
+                    <i class="fa-brands fa-facebook-f"></i> <span>Facebook</span>
                 </a>    
             </div>`;
     }
@@ -163,13 +147,21 @@ document.addEventListener("DOMContentLoaded", async () => {
                 </a>
             </div>`;
     }
-    // Fake website link if not present (design has "View Agent Website")
-    socialHtml += `
-        <div class="social-link-row">
-            <a href="#" target="_blank">
-                <i class="fa-solid fa-link"></i> <span>View Agent Website</span>
-            </a>
-        </div>`;
+    if (agent.socialLinks.linkedin) {
+      socialHtml += `
+            <div class="social-link-row">
+                <a href="${agent.socialLinks.linkedin}" target="_blank">
+                    <i class="fa-brands fa-linkedin-in"></i> <span>Linkedin</span>
+                </a>    
+            </div>`;
+    }
+
+    // socialHtml += `
+    //     <div class="social-link-row">
+    //         <a href="#" target="_blank">
+    //             <i class="fa-solid fa-link"></i> <span>View Agent Website</span>
+    //         </a>
+    //     </div>`;
 
     socialsContainer.innerHTML = socialHtml;
   }
@@ -196,17 +188,53 @@ document.addEventListener("DOMContentLoaded", async () => {
       btn.disabled = true;
 
       setTimeout(() => {
-        btn.innerText = "Message Sent";
-        btn.style.backgroundColor = "#4CAF50";
+        // Use Helper function for Popup
+        createSuccessPopup(formData.name);
 
-        setTimeout(() => {
-          btn.innerText = originalText;
-          btn.style.backgroundColor = "";
-          btn.disabled = false;
-          contactForm.reset();
-          alert(`Message sent to ${agent.name}!`);
-        }, 3000);
-      }, 1000);
+        // Reset Form
+        contactForm.reset();
+        btn.innerText = originalText;
+        btn.disabled = false;
+        btn.style.backgroundColor = "";
+      }, 1500);
+    });
+  }
+
+  // 7. Success Popup Helper
+  function createSuccessPopup(name) {
+    // Check if one exists and remove it
+    const existing = document.querySelector(".success-popup-modal");
+    if (existing) existing.remove();
+
+    const popup = document.createElement("div");
+    popup.className = "success-popup-modal";
+    popup.innerHTML = `
+        <button class="popup-close-btn"><i class="fa-solid fa-xmark"></i></button>
+        <div class="popup-checkmark-circle">
+            <i class="fa-solid fa-check"></i>
+        </div>
+        <h3 class="popup-title">Message Sent!</h3>
+        <p class="popup-desc">Thanks for reaching out, ${name || "Visitor"}.<br>I'll get back to you shortly.</p>
+        <div class="popup-progress-bar"></div>
+    `;
+
+    document.body.appendChild(popup);
+
+    // Auto Remove Logic
+    let removed = false;
+    const removePopup = () => {
+      if (removed) return;
+      removed = true;
+      popup.style.animation = "popupFadeOut 0.4s forwards";
+      setTimeout(() => popup.remove(), 400);
+    };
+
+    const timer = setTimeout(removePopup, 3000);
+
+    // Close Button Logic
+    popup.querySelector(".popup-close-btn").addEventListener("click", () => {
+      clearTimeout(timer);
+      removePopup();
     });
   }
 

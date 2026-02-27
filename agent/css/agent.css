@@ -33,7 +33,7 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: top;
+    /* object-position: top; */
 }
 
 .agent-socials-vertical {
@@ -684,4 +684,83 @@ textarea.input-modern:not(:placeholder-shown) ~ .floating-label {
     .sticky-contact-box {
         padding: 1.2rem;
     }
+}
+
+/* Success Message Overlay */
+.success-message-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: white; /* Cover form */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border-radius: inherit; /* Match container radius */
+    z-index: 10;
+    padding: 2rem;
+    border-radius: 16px;
+    animation: fadeIn 0.4s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Checkmark Animation */
+.success-checkmark-circle {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: #4CAF50; /* Success Green */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); opacity: 0; }
+    70% { transform: scale(1.1); }
+    100% { transform: scale(1); opacity: 1; }
+}
+
+.success-checkmark {
+    color: white;
+    font-size: 2.1rem;
+}
+
+.success-title {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.success-desc {
+    color: #666;
+    margin-bottom: 2rem;
+    line-height: 1.5;
+}
+
+.btn-success-action {
+    background: #3C2328;
+    color: white;
+    border: none;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-success-action:hover {
+    background: #5a353c;
 }

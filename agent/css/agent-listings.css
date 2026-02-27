@@ -205,12 +205,12 @@
 
 .agent-card-static {
     background: white; /* Ensure bg is set if glass-panel isn't enough */
-    padding: 2rem;
+    padding: 1.9rem;
     display: flex;
     flex-direction: column;
     justify-content: space-between; /* Distribute space evenly */
     height: 100%; /* Fill grid cell height */
-    gap: 1.5rem;
+    gap: 1.8rem;
     border-radius: 24px; /* Matched radius */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     /* Glass panel effect handled by global .glass-panel class if present */
@@ -313,45 +313,6 @@
     flex-shrink: 0;
 }
 
-/* Stats Row */
-.agent-stats-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(255, 255, 255, 0.5);
-    padding: 1rem;
-    border-radius: 8px;
-    border: 1px solid rgba(0, 0, 0, 0.03);
-}
-
-.stat-item {
-    text-align: center;
-    flex: 1;
-}
-
-.stat-value {
-    display: block;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #3C2328; /* Primary */
-    font-family: var(--font-heading, serif);
-}
-
-.stat-label {
-    display: block;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: #888;
-    margin-top: 0.2rem;
-}
-
-.stat-separator {
-    width: 1px;
-    height: 24px;
-    background-color: #cdcdcd; /* Border color */
-    opacity: 0.5;
-}
 
 /* Actions */
 .agent-actions {
@@ -359,11 +320,11 @@
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     margin-top: auto;
-    height: 48px; /* Slightly taller for buttons */
+    height: 45px; /* Slightly taller for buttons */
 }
 
 .agent-actions button {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
     border-radius: 50px !important;
 }
 
@@ -532,7 +493,39 @@
     
     .filter-search-wrapper,
     #saveSearchBtn {
-        width: 100%;
+    width: 100%;
         margin: 0 !important;
     }
+}
+
+/* Clear Button */
+.clear-btn {
+    position: absolute;
+    right: 50px; /* Left of the search button */
+    top: 50%;
+    transform: translateY(-50%);
+    background: transparent;
+    border: none;
+    color: #999;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    z-index: 10;
+}
+
+.clear-btn:hover {
+    color: #333;
+    background: rgba(0,0,0,0.05); /* Subtle hover bg */
+}
+
+/* Adjust padding to prevent overlap */
+.search-input-wrapper input {
+    padding-right: 5rem; /* Make room for both buttons */
 }

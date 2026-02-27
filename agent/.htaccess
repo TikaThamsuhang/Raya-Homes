@@ -1,26 +1,52 @@
-# 1. ENABLE URL REWRITING (Necessary for Custom URLs)
+# -------------------------------------------------------
+# ENABLE URL REWRITING
+# -------------------------------------------------------
+
 RewriteEngine On
 RewriteBase /
 
-# Route requests like "/sarah-jenkins" to "index.html?agent=sarah-jenkins"
-# This makes clean URLs work!
+# -------------------------------------------------------
+# REMOVE index.html FROM URL
+# Redirect https://teamraya.com/index.html → https://teamraya.com/
+# -------------------------------------------------------
+
+RewriteCond %{THE_REQUEST} \s/index\.html[\s?]
+RewriteRule ^index\.html$ / [R=301,L]
+
+
+# -------------------------------------------------------
+# CLEAN AGENT PROFILE URL
+# Example: /sarah-jenkins → profile.html?agent=sarah-jenkins
+# -------------------------------------------------------
+
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteCond %{REQUEST_URI} !^/index.html$
-RewriteRule ^([^/]+)/?$ index.html?agent=$1 [L,QSA]
+RewriteCond %{REQUEST_URI} !^/index\.html$
+RewriteRule ^([^/]+)/?$ profile.html?agent=$1 [L,QSA]
 
-# 2. DEFAULT PAGE
-# Tells server to load index.html when someone visits the main domain
+
+# -------------------------------------------------------
+# DEFAULT HOME PAGE
+# -------------------------------------------------------
+
 DirectoryIndex index.html
 
-# 3. ENABLE CORS FOR JSON (Necessary for Data Loading)
-# Allows the main website (www.teamraya.com) to fetch agents-data.json
-<FilesMatch "\.json$">
-    Header set Access-Control-Allow-Origin "*"
-    Header set Access-Control-Allow-Methods "GET, OPTIONS"
-    Header set Access-Control-Allow-Headers "Content-Type"
-</FilesMatch>
 
-# 4. BASIC SECURITY
-# Prevents people from seeing a list of all the files
+# -------------------------------------------------------
+# ENABLE CORS FOR JSON
+# -------------------------------------------------------
+
+<IfModule mod_headers.c>
+    <FilesMatch "\.json$">
+        Header set Access-Control-Allow-Origin "*"
+        Header set Access-Control-Allow-Methods "GET, OPTIONS"
+        Header set Access-Control-Allow-Headers "Content-Type"
+    </FilesMatch>
+</IfModule>
+
+
+# -------------------------------------------------------
+# BASIC SECURITY
+# -------------------------------------------------------
+
 Options -Indexes

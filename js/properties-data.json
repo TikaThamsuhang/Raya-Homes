@@ -1,0 +1,381 @@
+[
+  {
+    "id": "prop-1",
+    "slug": "schnoor-road-ct",
+    "title": "97 Schnoor Road",
+    "address": "97 Schnoor Road, Killingworth, CT 06419",
+    "location": "Killingworth, CT",
+    "price": 539900,
+    "status": "coming-soon",
+    "type": "house",
+    "beds": 4,
+    "baths": 2,
+    "bathsFull": 2,
+    "bathsHalf": 0,
+    "sqft": 1800,
+    "featured": true,
+    "photos": [
+      "imgs/Single/img-1.png",
+      "imgs/Single/img-bed-1.png",
+      "imgs/Single/img-wash-1.png",
+      "imgs/Single/img-kitchen-1.png"
+    ],
+    "description": "Beautifully updated 1,800 sq. ft. four-bedroom Colonial set on a private 3.3-acre lot with an oversized two-car garage. This move-in-ready home features an eat-in kitchen with cherry cabinetry, granite countertops, tile flooring, and new appliances, opening to a comfortable sitting area with a fireplace. Recent improvements include new hardwood floors, updated bathrooms, and a modern heating system.\n\nThe outdoor space is a private oasis with a stone patio, mature trees, and plenty of room for a pool. Located in a quiet cul-de-sac neighborhood, just minutes from town center and schools.\n\nAdditional features include a finished basement with potential for a home office or gym, a newer roof (2020), and a generator hookup. The property is conveniently situated near major highways for easy commuting, while still offering the tranquility of a countryside setting.",
+    "agent": {
+      "name": "Sabitra Gyanwali",
+      "phone": "(860) 555-0123",
+      "email": "sabitra.gyanwali@teamraya.com",
+      "photo": "agent/imgs/Agents/agent-1.png"
+    },
+    "facts": {
+      "propertyType": "Single Family",
+      "yearBuilt": 1985,
+      "heating": "Oil, Baseboard",
+      "cooling": "Central Air",
+      "garage": "2 Cars, Detached",
+      "lotSize": "3.30 Acres"
+    },
+    "financials": {
+      "price": 539900,
+      "taxAnnual": 534942,
+      "hoaFee": "$131 (Annually)"
+    },
+    "schools": {
+      "elementary": "Ledner, Labadie and Bartoletti",
+      "middle": "Leuschke Group",
+      "high": "Yost-Hudson"
+    },
+    "structure": {
+      "buildArea": "1,800 Sq. Ft.",
+      "yearBuilt": 1973,
+      "subType": "One Level"
+    },
+    "mls": "24146371",
+    "mlsStatus": "Active",
+    "source": "CT",
+    "listingDate": "2026-01-01",
+    "listedBy": "Sapitra Gyanwali",
+    "brokerage": "Raya Homes Realty",
+    "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.9873196845946!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes%20Square!5e0!3m2!1sen!2sus!4v1620000000000!5m2!1sen!2sus",
+    "interior": {
+      "basement": "Full, Unfinished",
+      "fireplaces": 1,
+      "livingArea": "1,800 Sq. Ft."
+    }
+  },
+  {
+    "id": "prop-2",
+    "slug": "denburn-place-raleigh",
+    "title": "722 Denburn Place",
+    "address": "722 Denburn Place, Raleigh, NC 27603",
+    "location": "Raleigh, NC",
+    "price": 890000,
+    "status": "for-sale",
+    "type": "house",
+    "beds": 4,
+    "baths": 3,
+    "bathsFull": 3,
+    "bathsHalf": 0,
+    "sqft": 2350,
+    "featured": false,
+    "photos": [
+      "imgs/Properties/prop-1.png",
+      "imgs/Properties/prop-2.png",
+      "imgs/Properties/prop-3.png"
+    ],
+    "description": "A stunning 4-bedroom, 3-bathroom residence in the heart of Raleigh. This newly renovated home boasts an open-concept living space with modern finishes, a chef's kitchen with stainless steel appliances, and a spacious primary suite with spa-like bathroom. The private backyard retreat features a covered patio perfect for outdoor entertaining.\n\nLocated in one of Raleigh's most sought-after neighborhoods with easy access to downtown, top-rated schools, and local amenities.",
+    "agent": {
+      "name": "Lucy Muzhingi",
+      "phone": "(603) 667-0915",
+      "email": "lucyrudo@teamraya.com",
+      "photo": "agent/imgs/Agents/agent-2.png"
+    },
+    "facts": {
+      "propertyType": "Single Family",
+      "yearBuilt": 2010,
+      "heating": "Gas, Forced Air",
+      "cooling": "Central Air",
+      "garage": "2 Cars, Attached",
+      "lotSize": "0.35 Acres"
+    },
+    "financials": {
+      "price": 890000,
+      "taxAnnual": 9200,
+      "hoaFee": "None"
+    },
+    "schools": {
+      "elementary": "Wilder Elementary",
+      "middle": "Martin Middle School",
+      "high": "Broughton High School"
+    },
+    "structure": {
+      "buildArea": "2,350 Sq. Ft.",
+      "yearBuilt": 2010,
+      "subType": "Two Story"
+    },
+    "mls": "24098231",
+    "mlsStatus": "Active",
+    "source": "NC",
+    "listingDate": "2026-01-15",
+    "listedBy": "Lucy Muzhingi",
+    "brokerage": "Raya Homes",
+    "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976373946229!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1689624538965!5m2!1sen!2sus",
+    "interior": {
+      "basement": "None",
+      "fireplaces": 1,
+      "livingArea": "2,350 Sq. Ft."
+    }
+  },
+  {
+    "id": "prop-3",
+    "slug": "willow-creek-manhattan",
+    "title": "892 Willow Creek",
+    "address": "892 Willow Creek, Manhattan, NY 10001",
+    "location": "Manhattan, NY",
+    "price": 1450000,
+    "status": "coming-soon",
+    "type": "condo",
+    "beds": 5,
+    "baths": 4,
+    "bathsFull": 3,
+    "bathsHalf": 1,
+    "sqft": 4200,
+    "featured": true,
+    "photos": [
+      "imgs/Properties/prop-3.png",
+      "imgs/Properties/prop-1.png",
+      "imgs/Properties/prop-2.png"
+    ],
+    "description": "Rare opportunity to own a sprawling 5-bedroom co-op in the premier Manhattan location. This exceptional residence offers panoramic city views, soaring ceilings, and premium finishes throughout. The gourmet kitchen features top-of-the-line appliances, custom cabinetry, and a large island. The primary suite includes a walk-in closet and luxurious en-suite bathroom.\n\nBuilding amenities include a full-time doorman, concierge, fitness center, rooftop terrace, and private parking. Walking distance to Central Park, world-class dining, and cultural institutions.",
+    "agent": {
+      "name": "Katrina Simon",
+      "phone": "(919) 880-4999",
+      "email": "katrina@teamraya.com",
+      "photo": "agent/imgs/Agents/agent-3.png"
+    },
+    "facts": {
+      "propertyType": "Condo",
+      "yearBuilt": 1998,
+      "heating": "Electric, Central",
+      "cooling": "Central Air",
+      "garage": "Valet Parking",
+      "lotSize": "N/A"
+    },
+    "financials": {
+      "price": 1450000,
+      "taxAnnual": 18500,
+      "hoaFee": "$2,400 (Monthly)"
+    },
+    "schools": {
+      "elementary": "PS 87 William Sherman",
+      "middle": "MS 44 William Lord",
+      "high": "LaGuardia High School"
+    },
+    "structure": {
+      "buildArea": "4,200 Sq. Ft.",
+      "yearBuilt": 1998,
+      "subType": "High-Rise Unit"
+    },
+    "mls": "24112845",
+    "mlsStatus": "Coming Soon",
+    "source": "NY",
+    "listingDate": "2026-02-01",
+    "listedBy": "Katrina Simon",
+    "brokerage": "Raya Homes Miami",
+    "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976373946229!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1689624538965!5m2!1sen!2sus",
+    "interior": {
+      "basement": "N/A",
+      "fireplaces": 2,
+      "livingArea": "4,200 Sq. Ft."
+    }
+  },
+  {
+    "id": "prop-4",
+    "slug": "park-avenue-manhattan",
+    "title": "125 Park Avenue",
+    "address": "125 Park Avenue, Manhattan, NY 10022",
+    "location": "Manhattan, NY",
+    "price": 8500000,
+    "status": "for-sale",
+    "type": "condo",
+    "beds": 8,
+    "baths": 10,
+    "bathsFull": 8,
+    "bathsHalf": 2,
+    "sqft": 12000,
+    "featured": false,
+    "photos": [
+      "imgs/Properties/prop-1.png",
+      "imgs/Properties/prop-2.png",
+      "imgs/Properties/prop-3.png"
+    ],
+    "description": "A once-in-a-generation opportunity: the most spectacular penthouse on Park Avenue. This extraordinary 12,000 sq. ft. full-floor residence occupies the entire top floor of the building, offering 360-degree views of Manhattan. With 8 bedrooms, 10 bathrooms, a formal dining room, library, and a private rooftop terrace with a pool, this home is truly one-of-a-kind.\n\nFinished with the finest materials — Venetian plaster walls, herringbone hardwood floors, and custom millwork throughout. Building services include white-glove concierge, private elevator, and 24/7 security.",
+    "agent": {
+      "name": "Siten Aryal",
+      "phone": "(781) 363-8248",
+      "email": "cio@teamraya.com",
+      "photo": "agent/imgs/Agents/agent-4.png"
+    },
+    "facts": {
+      "propertyType": "Condo",
+      "yearBuilt": 2005,
+      "heating": "Gas, Radiant",
+      "cooling": "Multi-Zone Central Air",
+      "garage": "Private Underground",
+      "lotSize": "N/A"
+    },
+    "financials": {
+      "price": 8500000,
+      "taxAnnual": 95000,
+      "hoaFee": "$18,500 (Monthly)"
+    },
+    "schools": {
+      "elementary": "PS 6 Lillie D. Blake",
+      "middle": "Salk School of Science",
+      "high": "Stuyvesant High School"
+    },
+    "structure": {
+      "buildArea": "12,000 Sq. Ft.",
+      "yearBuilt": 2005,
+      "subType": "Penthouse"
+    },
+    "mls": "24133701",
+    "mlsStatus": "Active",
+    "source": "NY",
+    "listingDate": "2025-12-01",
+    "listedBy": "Siten Aryal",
+    "brokerage": "Raya Homes NY",
+    "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976373946229!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1689624538965!5m2!1sen!2sus",
+    "interior": {
+      "basement": "N/A",
+      "fireplaces": 4,
+      "livingArea": "12,000 Sq. Ft."
+    }
+  },
+  {
+    "id": "prop-5",
+    "slug": "park-avenue-raleigh",
+    "title": "45 Park Avenue",
+    "address": "45 Park Avenue, Raleigh, NC 27601",
+    "location": "Raleigh, NC",
+    "price": 650000,
+    "status": "for-sale",
+    "type": "house",
+    "beds": 3,
+    "baths": 2,
+    "bathsFull": 2,
+    "bathsHalf": 0,
+    "sqft": 1800,
+    "featured": false,
+    "photos": [
+      "imgs/Properties/prop-2.png",
+      "imgs/Properties/prop-3.png",
+      "imgs/Properties/prop-1.png"
+    ],
+    "description": "Charming 3-bedroom, 2-bathroom home situated in a desirable Raleigh neighborhood. This well-maintained property features an open floor plan, updated kitchen with granite countertops, hardwood floors, and a beautifully landscaped backyard. The master suite includes a walk-in closet and a renovated bathroom.\n\nConveniently located near downtown Raleigh, top schools, shopping centers, and parks.",
+    "agent": {
+      "name": "Lucy Muzhingi",
+      "phone": "(603) 667-0915",
+      "email": "lucyrudo@teamraya.com",
+      "photo": "agent/imgs/Agents/agent-2.png"
+    },
+    "facts": {
+      "propertyType": "Single Family",
+      "yearBuilt": 2015,
+      "heating": "Gas, Forced Air",
+      "cooling": "Central Air",
+      "garage": "1 Car, Attached",
+      "lotSize": "0.18 Acres"
+    },
+    "financials": {
+      "price": 650000,
+      "taxAnnual": 5800,
+      "hoaFee": "None"
+    },
+    "schools": {
+      "elementary": "Root Elementary",
+      "middle": "Daniels Middle School",
+      "high": "Sanderson High School"
+    },
+    "structure": {
+      "buildArea": "1,800 Sq. Ft.",
+      "yearBuilt": 2015,
+      "subType": "One Story"
+    },
+    "mls": "24078542",
+    "mlsStatus": "Active",
+    "source": "NC",
+    "listingDate": "2026-01-20",
+    "listedBy": "Lucy Muzhingi",
+    "brokerage": "Raya Homes",
+    "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976373946229!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1689624538965!5m2!1sen!2sus",
+    "interior": {
+      "basement": "None",
+      "fireplaces": 0,
+      "livingArea": "1,800 Sq. Ft."
+    }
+  },
+  {
+    "id": "prop-6",
+    "slug": "estate-drive-raleigh",
+    "title": "88 Estate Drive",
+    "address": "88 Estate Dr, Raleigh, NC 27612",
+    "location": "Raleigh, NC",
+    "price": 1200000,
+    "status": "for-sale",
+    "type": "villa",
+    "beds": 5,
+    "baths": 4,
+    "bathsFull": 4,
+    "bathsHalf": 0,
+    "sqft": 3200,
+    "featured": true,
+    "photos": [
+      "imgs/Properties/prop-3.png",
+      "imgs/Properties/prop-1.png",
+      "imgs/Properties/prop-2.png"
+    ],
+    "description": "Magnificent 5-bedroom villa situated on a sprawling estate lot in prestigious North Raleigh. This luxury residence features soaring 12-foot ceilings, a grand foyer, gourmet kitchen with butler's pantry, home theater, and wine cellar. The resort-style backyard boasts a heated pool, outdoor kitchen, and manicured gardens.\n\nBuilt with the finest craftsmanship and materials, this home offers the ultimate in luxury living close to RTP, top-rated schools, and Crabtree Valley Mall.",
+    "agent": {
+      "name": "Sabitra Gyanwali",
+      "phone": "(919) 434-4455",
+      "email": "sabitra.gyanwali@teamraya.com",
+      "photo": "agent/imgs/Agents/agent-1.png"
+    },
+    "facts": {
+      "propertyType": "Villa",
+      "yearBuilt": 2018,
+      "heating": "Gas, Dual Zone",
+      "cooling": "Dual Zone Central Air",
+      "garage": "3 Cars, Attached",
+      "lotSize": "1.20 Acres"
+    },
+    "financials": {
+      "price": 1200000,
+      "taxAnnual": 12400,
+      "hoaFee": "$250 (Monthly)"
+    },
+    "schools": {
+      "elementary": "Leesville Road Elementary",
+      "middle": "Leesville Road Middle",
+      "high": "Leesville Road High School"
+    },
+    "structure": {
+      "buildArea": "3,200 Sq. Ft.",
+      "yearBuilt": 2018,
+      "subType": "Two Story"
+    },
+    "mls": "24101234",
+    "mlsStatus": "Active",
+    "source": "NC",
+    "listingDate": "2026-02-10",
+    "listedBy": "Sabitra Gyanwali",
+    "brokerage": "Raya Homes",
+    "mapEmbed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.15830869428!2d-74.11976373946229!3d40.69766374874431!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew%20York%2C%20NY!5e0!3m2!1sen!2sus!4v1689624538965!5m2!1sen!2sus",
+    "interior": {
+      "basement": "Full, Finished",
+      "fireplaces": 3,
+      "livingArea": "3,200 Sq. Ft."
+    }
+  }
+]
