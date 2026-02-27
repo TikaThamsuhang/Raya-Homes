@@ -97,11 +97,9 @@ document.addEventListener("DOMContentLoaded", async () => {
       renderSuggestions(e.target.value.trim());
     });
 
-    // Show suggestions again if focusing on input that already has text
+    // Show suggestions when focusing on input, whether it has text (matching) or is empty (popular)
     searchInput.addEventListener("focus", (e) => {
-      if (e.target.value.trim()) {
-        renderSuggestions(e.target.value.trim());
-      }
+      renderSuggestions(e.target.value.trim());
     });
 
     // Hide on click outside
